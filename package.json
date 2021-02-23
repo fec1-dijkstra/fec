@@ -1,0 +1,19 @@
+{
+  "name": "fec1-dijkstra",
+  "version": "1.0.0",
+  "description": "fec",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fec1-dijkstra/fec.git"
+  },
+  "author": "fec1-dijkstra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fec1-dijkstra/fec/issues"
+  },
+  "homepage": "https://github.com/fec1-dijkstra/fec#readme"
+}
