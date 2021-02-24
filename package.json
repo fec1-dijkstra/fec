@@ -4,7 +4,8 @@
   "description": "fec",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "build": "webpack --mode development -w",
+    "start": "npx nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,19 @@
   "bugs": {
     "url": "https://github.com/fec1-dijkstra/fec/issues"
   },
-  "homepage": "https://github.com/fec1-dijkstra/fec#readme"
+  "homepage": "https://github.com/fec1-dijkstra/fec#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.5",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "webpack": "^5.24.1",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1"
+  }
 }
