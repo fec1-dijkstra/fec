@@ -34,10 +34,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "jest": "^26.6.3",
-<<<<<<< HEAD
-=======
     "prettier": "^2.2.1",
->>>>>>> 4c3f9dd614a74a03cab91715391173120d73792d
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "webpack": "^5.24.1",
