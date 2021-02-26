@@ -15,12 +15,17 @@ function List(props) {
 
   return (
     <ul className="list-items">
-      {items.map(item => <li key={item} className="item">{item}</li>)}
+      {items.map((item) => (
+        <li key={item} className="item">
+          {item}
+        </li>
+      ))}
     </ul>
   );
 }
 
 List.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   items: PropTypes.array,
 };
 
