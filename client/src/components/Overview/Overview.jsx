@@ -17,7 +17,8 @@ class Overview extends React.Component {
   }
 
   render() {
-    return (
+      console.log(this.props.productInfo)
+      return (
       <div>
         <div>This is the overview component!</div>
         <ImageGallery />

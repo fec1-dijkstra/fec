@@ -13,22 +13,31 @@ class App extends React.Component {
     this.state = {
       items: products,
       productList: [],
+      productInfo: [],
+      productStyles: [],
+      relatedProducts: [],
     };
   }
 
   componentDidMount() {
-    // getProductList(pageNumber, countNumber, cb)
-    queries.getProductList(1, 20, (result) => {
-      this.setState({productList: result});
-    });
+    Promise.all([
+      queries.getProductList(1, 20, (result) => result),
+      queries.getProductInfo(17762, (result) => result),
+      queries.getProductStyles(17762, (result) => result),
+      queries.getRelatedProducts(17762, (result) => result),
+    ])
+      .then(([productList, productInfo, productStyles, relatedProducts]) => {
+        this.setState({productList, productInfo, productStyles, relatedProducts});
+      })
+      .catch((error) => console.log('error caught in App.jsx', error));
   }
 
   render() {
-    const { items } = this.state;
+    const { items, productList, productInfo, productStyles, relatedProducts } = this.state;
     return (
       <div>
         <div> Hello World</div>
-        <Overview />
+        <Overview productInfo={productInfo} productStyles={productStyles} />
         <RelatedItems />
       </div>
     );
