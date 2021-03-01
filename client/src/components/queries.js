@@ -10,7 +10,7 @@ const auth = require('../../../token.js');
 // Helper function for making axios calls //
 const axiosCall = (methodObj, cb) =>
   axios(methodObj)
-    .then((response) => cb(JSON.stringify(response.data)))
+    .then((response) => cb(response.data))
     .catch((error) => console.log('error caught in queries.js', error));
 
 const getProductList = (pageNumber, countNumber, cb) => {

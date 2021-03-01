@@ -13,8 +13,8 @@ class App extends React.Component {
     this.state = {
       items: products,
       productList: [],
-      productInfo: [],
-      productStyles: [],
+      productInfo: {},
+      productStyles: {},
       relatedProducts: [],
     };
   }
@@ -27,7 +27,7 @@ class App extends React.Component {
       queries.getRelatedProducts(17762, (result) => result),
     ])
       .then(([productList, productInfo, productStyles, relatedProducts]) => {
-        this.setState({productList, productInfo, productStyles, relatedProducts});
+        this.setState({ productList, productInfo, productStyles, relatedProducts });
       })
       .catch((error) => console.log('error caught in App.jsx', error));
   }
