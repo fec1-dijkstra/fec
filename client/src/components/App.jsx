@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line import/extensions
 import ReviewTile from './ReviewTile/ReviewTile.jsx';
 import Overview from './Overview/Overview.jsx';
+import RelatedItems from './RelatedItems/RelatedItems.jsx';
 // eslint-disable-next-line import/extensions
 import products from '../../dummydata.js';
 
@@ -17,6 +18,7 @@ class App extends React.Component {
       <div>
         <div> Hello World</div>
         <Overview />
+        <RelatedItems />
       </div>
     );
   }
