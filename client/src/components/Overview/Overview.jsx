@@ -17,10 +17,6 @@ class Overview extends React.Component {
   }
 
   render() {
-    queries.getProductList(1, 1, (result) => {
-      console.log(result);
-    });
-
     return (
       <div>
         <div>This is the overview component!</div>
