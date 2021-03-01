@@ -2,17 +2,17 @@ import React from 'react';
 // eslint-disable-next-line import/extensions
 import ReviewTile from './ReviewTile/ReviewTile.jsx';
 // eslint-disable-next-line import/extensions
-import products from '../../dummydata.js';
+import { products, reviews, qa } from '../../dummydata.js';
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { items: products };
+    this.state = { products, reviews, qa };
   }
 
   render() {
-    const { items } = this.state;
-    return <ReviewTile products={items} />;
+    const { results } = this.state.reviews[0];
+    return <ReviewTile reviews={results} />;
   }
 }
 
