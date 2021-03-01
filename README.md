@@ -1,8 +1,8 @@
 # Front-End Capstone
 
-## *Welcome to Team Dijkstra's Front-End Capstone project.*
+*Welcome to Team Dijkstra's Front-End Capstone project.*
 
-### **To Begin**
+## **To Begin**
 
 Install npm dependencies locally by running:
 
@@ -16,7 +16,7 @@ Then initiate the express server to listen on the specified port:
 
 `npm start`
 
-### **API**
+## **API**
 
 Create a new root file 'token.js' and populate it with the same contents as provided in 'token.sample.js'.
 

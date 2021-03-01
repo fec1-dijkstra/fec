@@ -1,6 +1,6 @@
 # CREED
 
-## *Contributors pledge to the following codes of conduct:*
+*Contributors pledge to the following codes of conduct:*
 
 ### 1. Communication
 
