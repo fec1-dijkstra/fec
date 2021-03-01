@@ -1,5 +1,5 @@
 import React from 'react';
-import queries from '../queries.js';
+import PropTypes from 'prop-types';
 
 import ProductInformation from './ProductInformation.jsx';
 import StyleSelector from './StyleSelector.jsx';
@@ -17,13 +17,13 @@ class Overview extends React.Component {
   }
 
   render() {
-      console.log(this.props.productInfo)
-      return (
+    const { productInfo, productStyles } = this.props;
+    return (
       <div>
         <div>This is the overview component!</div>
         <ImageGallery />
-        <ProductInformation />
-        <StyleSelector />
+        <ProductInformation productInfo={productInfo} />
+        <StyleSelector productStyles={productStyles} />
         <AddToCart />
         <SocialShare />
         <ProductOverview />
@@ -31,4 +31,15 @@ class Overview extends React.Component {
     );
   }
 }
+
+Overview.defaultProps = {
+  productInfo: {},
+  productStyles: {},
+};
+
+Overview.propTypes = {
+  productInfo: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  productStyles: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+};
+
 export default Overview;
