@@ -1,5 +1,11 @@
 import React from 'react';
 
-const ImageGallery = () => <div>This is the image gallery!</div>;
+const ImageGallery = (props) => (
+  <div>
+    <div>Gallery...</div>
+    <div>Thumbnails...</div>
+    <div>Expanded view...</div>
+  </div>
+);
 
 export default ImageGallery;
