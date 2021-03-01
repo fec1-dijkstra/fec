@@ -1,7 +1,9 @@
+/* eslint-disable import/extensions */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import ReviewTile from './ReviewTile.jsx';
 
-class ReviewTile extends React.Component {
+class RenderReviews extends React.Component {
   constructor(props) {
     super();
     this.state = { reviews: props.reviews, total: 2 };
@@ -17,16 +19,9 @@ class ReviewTile extends React.Component {
   render() {
     // console.log(this.state);
     const totalReviews = this.state.reviews.length;
-    const toRender = this.state.reviews.slice(0, this.state.total).map((review) => (
-      <div className="review-tile" key={review.name}>
-        <div className="star-rating">{review.rating}</div>
-        <div className="date">{new Date(review.date).toString().substring(0, 15)}</div>
-        <div className="username">{review.name}</div>
-        <div className="summary">{review.summary}</div>
-        <div className="summary-ext">...rest of summary</div>
-        <div className="review-body">{review.body}</div>
-      </div>
-    ));
+    const toRender = this.state.reviews
+      .slice(0, this.state.total)
+      .map((review) => <ReviewTile review={review} />);
     if (totalReviews > this.state.total) {
       return (
         <div className="reviews">
@@ -41,4 +36,4 @@ class ReviewTile extends React.Component {
   }
 }
 
-export default ReviewTile;
+export default RenderReviews;

@@ -1,18 +1,19 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 // eslint-disable-next-line import/extensions
-import ReviewTile from './ReviewTile/ReviewTile.jsx';
+import RenderReviews from './ReviewTiles/RenderReviews.jsx';
 // eslint-disable-next-line import/extensions
-import { products, reviews, qa } from '../../dummydata.js';
+import { reviews } from '../../dummydata.js';
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { products, reviews, qa };
+    this.state = { reviews };
   }
 
   render() {
     const { results } = this.state.reviews[0];
-    return <ReviewTile reviews={results} />;
+    return <RenderReviews reviews={results} />;
   }
 }
 
