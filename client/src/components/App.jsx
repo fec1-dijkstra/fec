@@ -10,12 +10,16 @@ import queries from './queries.js';
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { items: products };
+    this.state = {
+      items: products,
+      productList: [],
+    };
   }
 
   componentDidMount() {
-    queries.getProductList(1, 1, (result) => {
-      console.log(result);
+    // getProductList(pageNumber, countNumber, cb)
+    queries.getProductList(1, 20, (result) => {
+      this.setState({productList: result});
     });
   }
 

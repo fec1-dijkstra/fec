@@ -7,27 +7,28 @@ const auth = require('../../../token.js');
 //   console.log(result);
 // });
 
-module.exports.queries = {
+const getProductList = (pageNumber, countNumber, cb) => {
+  const page = `page=${pageNumber}`;
+  const count = `count=${countNumber}`;
 
-  getProductList: (pageNumber, countNumber, cb) => {
-    const page = `page=${pageNumber}`;
-    const count = `count=${countNumber}`;
+  const productList = {
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products?${page}&${count}`,
+    headers: {
+      Authorization: auth.myToken,
+      'Content-Type': 'application/json',
+    },
+  };
 
-    const productList = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products?${page}&${count}`,
-      headers: {
-        Authorization: auth.myToken,
-        'Content-Type': 'application/json',
-      },
-    };
+  axios(productList)
+    .then((response) => {
+      cb(JSON.stringify(response.data));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
-    axios(productList)
-      .then((response) => {
-        cb(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
+module.exports = {
+  getProductList,
 };
