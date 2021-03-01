@@ -5,11 +5,10 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import List from '../testComponent';
 
 configure({
-  adapter: new Adapter()
+  adapter: new Adapter(),
 });
 
 describe('List tests', () => {
-
   it('renders list-items', () => {
     const items = ['one', 'two', 'three'];
     const wrapper = shallow(<List items={items} />);
