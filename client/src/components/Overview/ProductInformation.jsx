@@ -1,5 +1,12 @@
 import React from 'react';
 
-const ProductInformation = () => <div>This is the product information!</div>;
+const ProductInformation = (props) => (
+  <div>
+    <div>Star Rating...</div>
+    <div>Category...</div>
+    <div>Title...</div>
+    <div>Price...</div>
+  </div>
+);
 
 export default ProductInformation;
