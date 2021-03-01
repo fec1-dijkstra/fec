@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line import/extensions
 import ReviewTile from './ReviewTile/ReviewTile.jsx';
+// eslint-disable-next-line import/extensions
 import products from '../../dummydata.js';
 
 class App extends React.Component {
@@ -11,7 +12,7 @@ class App extends React.Component {
 
   render() {
     const { items } = this.state;
-    return <ReviewTile products={items} />;
+    return <div> Hello World</div>;
   }
 }
 
