@@ -6,6 +6,8 @@ class QandA extends React.component {
     this.state = {};
   }
 
+  componentDidMount() {}
+
   render() {
     return <div>QandA component goes here!</div>;
   }
