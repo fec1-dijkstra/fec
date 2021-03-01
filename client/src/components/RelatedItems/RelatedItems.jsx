@@ -6,9 +6,7 @@ class RelatedItems extends React.Components {
     this.state = {};
   }
 
-  render() {
-    return();
-  }
+  render() {}
 }
 
 export default RelatedItems;
