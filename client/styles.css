@@ -1,0 +1,49 @@
+.ProductCard {
+  margin-top: 48px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  display: inline-block;
+}
+
+.ProductCardImage {
+  width: 200px;
+}
+
+.SalePrice {
+  color: red;
+}
+
+.OriginalPrice {
+  text-decoration: line-through;
+}
+
+.Category {
+  text-transform: uppercase;
+}
+
+.ProductName {
+  font-weight: bold;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 500px;
+  height: 500px;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0, 0.4);
+}
+
+.modalContent {
+  background-color: #fefefe;
+  margin 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
