@@ -7,6 +7,7 @@ class ReviewTile extends React.Component {
   }
 
   render() {
+    // console.log(this.props);
     const { stars } = this.state;
     return (
       <div className="review-tile">

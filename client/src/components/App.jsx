@@ -12,7 +12,7 @@ class App extends React.Component {
 
   render() {
     const { items } = this.state;
-    return <div> Hello World</div>;
+    return <ReviewTile products={items} />;
   }
 }
 
