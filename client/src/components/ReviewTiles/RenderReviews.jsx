@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
@@ -11,9 +12,9 @@ class RenderReviews extends React.Component {
   }
 
   moreReviews(event) {
+    const { total } = this.state;
     event.preventDefault();
-    const count = this.state.total;
-    this.setState({ total: count + 2 });
+    this.setState({ total: total + 2 });
   }
 
   render() {
