@@ -7,7 +7,15 @@ class QModal extends React.Component {
   }
 
   render() {
-    return <div>QModal</div>;
+    return (
+      <div>
+        QModal
+        <div>Your Question</div>
+        <div>Your Nickname</div>
+        <div>Your Email</div>
+        <button type="button">Submit</button>
+      </div>
+    );
   }
 }
 
