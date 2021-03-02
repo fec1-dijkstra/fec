@@ -21,7 +21,11 @@ class QCard extends React.Component {
         </div>
         <div>
           by Username, Date
-          <div>Helpful? Yes (1)</div>
+          <div>
+            Helpful?
+            <button type="button">Yes</button>
+            <div>(1)</div>
+          </div>
           <div>Report</div>
         </div>
       </div>
