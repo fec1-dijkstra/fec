@@ -7,7 +7,6 @@ import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import QandA from './QandA/QandA.jsx';
 import { products, reviews, qa } from '../../dummydata.js';
 
-import products from '../../dummydata.js';
 import queries from './queries.js';
 
 class App extends React.Component {
@@ -15,7 +14,7 @@ class App extends React.Component {
     super();
     this.state = {
       products,
-      reviews, 
+      reviews,
       qa,
       items: products,
       productList: [],
