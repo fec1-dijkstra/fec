@@ -4,6 +4,7 @@
 import React from 'react';
 import Summary from './Summary.jsx';
 import ReviewBody from './ReviewBody.jsx';
+import Recommends from './Recommends.jsx';
 
 class ReviewTile extends React.Component {
   constructor() {
@@ -20,6 +21,7 @@ class ReviewTile extends React.Component {
         <div className="username">{review.reviewer_name}</div>
         <Summary summary={review.summary} />
         <ReviewBody body={review.body} />
+        <Recommends recommendation={review.recommend} />
       </div>
     );
   }
