@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 const Modal = ({ showModal, handleCloseModal }) => {
@@ -15,15 +17,15 @@ const Modal = ({ showModal, handleCloseModal }) => {
           <thead>
             <tr>
               <th>Current Product Name</th>
-              <th></th>
+              <th />
               <th>Compared Product Name</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td></td>
+              <td />
               <td>Green Leaf Certified</td>
-              <td></td>
+              <td />
             </tr>
             <tr>
               <td>Cashmere</td>
@@ -31,19 +33,19 @@ const Modal = ({ showModal, handleCloseModal }) => {
               <td>100% Cotton</td>
             </tr>
             <tr>
-              <td></td>
+              <td />
               <td>Lifetime Guarantee</td>
-              <td></td>
+              <td />
             </tr>
             <tr>
-              <td></td>
+              <td />
               <td>Satisfaction Guaranteed</td>
-              <td></td>
+              <td />
             </tr>
             <tr>
-              <td></td>
+              <td />
               <td>Non-GMO</td>
-              <td></td>
+              <td />
             </tr>
           </tbody>
         </table>

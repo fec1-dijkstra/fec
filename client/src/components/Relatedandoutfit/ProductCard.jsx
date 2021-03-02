@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import React from 'react';
 import Modal from './Modal.jsx';
 
@@ -12,7 +13,18 @@ class ProductCard extends React.Component {
   }
 
   handleOpenModal() {
-    this.setState({ showModal: true });
+    if (!this.state.showModal) {
+      document.addEventListener('click', this.handleOutsideClick.bind(this), false);
+    } else {
+      document.removeEventListener('click', this.handleOutsideClick.bind(this), false);
+    }
+    this.setState((prevState) => ({
+      showModal: !prevState.showModal
+    }));
+  }
+
+  handleOutsideClick(e) {
+    if (!this.node.contains(e.target)) this.handleOpenModal();
   }
 
   handleCloseModal() {
@@ -22,9 +34,19 @@ class ProductCard extends React.Component {
   render() {
     return (
       <div className="ProductCard">
-        <button type="button" onClick={this.handleOpenModal} id="modalButton">★</button>
-        {/* pass product features and related product features down to modal */}
-        <Modal className="modal" showModal={this.state.showModal} handleCloseModal={this.handleCloseModal} />
+        <div
+          ref={(node) => {
+            this.node = node;
+          }}
+        >
+          <button type="button" onClick={this.handleOpenModal} id="modalButton">★</button>
+          {/* pass product features and related product features down to modal */}
+          <Modal
+            className="modal"
+            showModal={this.state.showModal}
+            handleCloseModal={this.handleCloseModal}
+          />
+        </div>
         <img
           src="https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80"
           alt="DefaultStyleImage"
