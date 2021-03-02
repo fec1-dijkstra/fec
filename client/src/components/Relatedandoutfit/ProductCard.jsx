@@ -43,7 +43,9 @@ class ProductCard extends React.Component {
   render() {
     return (
       <div className="ProductCard">
-        <button type="button" onClick={this.handleOpenModal} id="modalButton">★</button>
+        <button type="button" onClick={this.handleOpenModal} id="modalButton">
+          ★
+        </button>
         {/* pass product features and related product features down to modal */}
         <Modal
           className="modal"
@@ -61,17 +63,20 @@ class ProductCard extends React.Component {
         />
         <div className="ProductInfo">
           {/* From /products/productId .category */}
-          <p className="Category">Tank Top</p>
+          <p className="Category">{this.state.productInfo.category}</p>
           {/* From /products/productId .name - /products/productId/styles .results[0].name */}
-          <p className="ProductName">Forrest Tank Top - Magenta</p>
-          <p className="ProductPrice">
-            {/* products/:id/styles
-            if (.results[0].sale_price) */}
-            <span className="SalePrice">$201.00</span>
-            <span className="OriginalPrice">$253.00</span>
-            {/* else if .results[0].sale_price === null
-              <span>$253.00</span> */}
-          </p>
+          <p className="ProductName">{this.state.productInfo.name}</p>
+          {/* <p className="ProductPrice">
+            {this.state.productStyles.results[0].sale_price ?
+              <div>
+                <span className="SalePrice">${this.state.productStyles.results[0].sale_price}</span>
+                <span className="OriginalPrice">
+                  ${this.state.productStyles.results[0].original_price}
+                </span>
+              </div>
+              : <span>${this.state.productStyles.results[0].original_price}</span>
+            }
+          </p> */}
           {/* calculate star rating from reviews/meta?product_id=PRODUCT_ID
           for (var key in .ratings) {
             total+=obj.key*key (toNumber);

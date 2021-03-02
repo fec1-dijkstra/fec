@@ -4,11 +4,29 @@ import React from 'react';
 
 const Modal = ({ showModal, handleCloseModal, name, relatedName, features, relatedFeatures }) => {
   const showHideClassName = showModal ? 'modal display-block' : 'modal display-none';
-
+  // const comparisonBuild = function (array1, array2) {
+  //   const result = {};
+  //   array1.forEach((element) => {
+  //     result[element.feature] = [element.value, null];
+  //   });
+  //   array2.forEach((element) => {
+  //     if (result[element.feature]) {
+  //       result[element.feature][1] = element.value;
+  //     } else {
+  //       result[element.feature] = [null, element.value];
+  //     }
+  //   });
+  //   return result;
+  // };
+  // let comparison = {};
+  // if (features && relatedFeatures) {
+  //   comparison = comparisonBuild(features, relatedFeatures);
+  // }
+  // if (!comparison) {
+  //   return null;
+  // }
   return (
     <div className={showHideClassName}>
-      {/* /products/productId and /products/relatedProductId .features.forEach
-    render a <tr> component, if feature already exists, add cell with value */}
       <section className="modal-main">
         <h3>COMPARING</h3>
         <button type="button" onClick={handleCloseModal}>
@@ -23,31 +41,13 @@ const Modal = ({ showModal, handleCloseModal, name, relatedName, features, relat
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td />
-              <td>Green Leaf Certified</td>
-              <td />
-            </tr>
-            <tr>
-              <td>Cashmere</td>
-              <td>Fabric</td>
-              <td>100% Cotton</td>
-            </tr>
-            <tr>
-              <td />
-              <td>Lifetime Guarantee</td>
-              <td />
-            </tr>
-            <tr>
-              <td />
-              <td>Satisfaction Guaranteed</td>
-              <td />
-            </tr>
-            <tr>
-              <td />
-              <td>Non-GMO</td>
-              <td />
-            </tr>
+            {/* {Object.keys(comparison).map((feature) => (
+              <tr>
+                {comparison.feature[0] ? <td>{comparison.feature[0]}</td> : <td />}
+                <td>{feature}</td>
+                {comparison.feature[1] ? <td>{comparison.feature[1]}</td> : <td />}
+              </tr>
+            ))} */}
           </tbody>
         </table>
       </section>
