@@ -26,7 +26,7 @@ class QCard extends React.Component {
             <button type="button">Yes</button>
             <div>(1)</div>
           </div>
-          <div>Report</div>
+          <button type="button">Report</button>
         </div>
       </div>
     );
