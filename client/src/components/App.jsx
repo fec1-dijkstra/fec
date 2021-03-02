@@ -1,19 +1,29 @@
+/* eslint-disable import/extensions */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
-// eslint-disable-next-line import/extensions
 import RenderReviews from './ReviewTiles/RenderReviews.jsx';
-// eslint-disable-next-line import/extensions
-import { reviews } from '../../dummydata.js';
+import Overview from './Overview/Overview.jsx';
+import RelatedItems from './RelatedItems/RelatedItems.jsx';
+import QandA from './QandA/QandA.jsx';
+import { products, reviews, qa } from '../../dummydata.js';
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { reviews };
+    this.state = { products, reviews, qa };
   }
 
   render() {
-    const { results } = this.state.reviews[0];
-    return <RenderReviews reviews={results} />;
+    const { products, reviews, qa } = this.state;
+    return (
+      <div>
+        <div> Hello World</div>
+        <Overview />
+        <RelatedItems />
+        <QandA />
+        <RenderReviews />
+      </div>
+    );
   }
 }
 

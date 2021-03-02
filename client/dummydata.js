@@ -347,3 +347,5 @@ export const qa = {
     },
   ],
 };
+
+export default products;
