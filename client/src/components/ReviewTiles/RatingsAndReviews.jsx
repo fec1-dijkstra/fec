@@ -14,7 +14,6 @@ class RatingsAndReviews extends React.Component {
     const { reviews } = this.state;
     return (
       <>
-        <Modal />
         <RenderReviews reviews={reviews} />
       </>
     );
