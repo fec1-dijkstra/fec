@@ -1,5 +1,5 @@
 import React from 'react';
 
-const QSearch = () => <div>QSearch</div>;
+const QSearch = () => <div>QSearch 🔍</div>;
 
 export default QSearch;
