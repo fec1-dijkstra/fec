@@ -44,14 +44,9 @@ class App extends React.Component {
     return (
       <div>
         <div> Hello World</div>
-<<<<<<< HEAD
-        <Overview />
-        <RelatedandOutfit />
-=======
         <Overview productInfo={productInfo} productStyles={productStyles} />
-        <RelatedItems />
+        <RelatedandOutfit />
         <QandA />
->>>>>>> c8271c1c7f4ae47e751ef4039a7a9e3279f71dfc
       </div>
     );
   }
