@@ -6,6 +6,7 @@ import Summary from './Summary.jsx';
 import ReviewBody from './ReviewBody.jsx';
 import Recommends from './Recommends.jsx';
 import Helpful from './Helpful.jsx';
+import ShowPhotos from './ShowPhotos.jsx';
 
 class ReviewTile extends React.Component {
   constructor() {
@@ -24,6 +25,7 @@ class ReviewTile extends React.Component {
         <ReviewBody body={review.body} />
         <Recommends recommendation={review.recommend} />
         <Helpful helpfulness={review.helpfulness} />
+        <ShowPhotos photos={review.photos} />
       </div>
     );
   }
