@@ -1,4 +1,6 @@
 import React from 'react';
+import QCard from './QCard.jsx';
+import QSearch from './QSearch.jsx';
 
 class QandA extends React.Component {
   constructor(props) {
@@ -12,9 +14,9 @@ class QandA extends React.Component {
     return (
       <div>
         QandA component goes here!
-        <div>Nested Inside main QandA: The QASearch Component</div>
-        <div>Nested Inside main QandA: The QuestionList Component</div>
-        <div>Nested Inside main QandA: The AddAQuestion Component</div>
+        <QSearch />
+        <QCard />
+        <button type="button">Add a Question</button>
       </div>
     );
   }
