@@ -4,13 +4,18 @@ class IndvQ extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      question: '',
+      question: 'Why is the sky blue?',
     };
   }
 
   render() {
     const { question } = this.state;
-    return question;
+    return (
+      <div>
+        Q:
+        <div>{question}</div>
+      </div>
+    );
   }
 }
 
