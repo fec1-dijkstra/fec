@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ProductInformation from './ProductInformation.jsx';
-import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import ProductOverview from './ProductOverview.jsx';
@@ -22,11 +21,10 @@ class Overview extends React.Component {
       <div>
         <div>This is the overview component!</div>
         <ImageGallery />
-        <ProductInformation productInfo={productInfo} />
-        <StyleSelector productStyles={productStyles} />
+        <ProductInformation productInfo={productInfo} productStyles={productStyles} />
         <AddToCart />
         <SocialShare />
-        <ProductOverview />
+        <ProductOverview productInfo={productInfo} />
       </div>
     );
   }
