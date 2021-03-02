@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-class  Helpful extends React.Component {
+class Helpful extends React.Component {
   constructor({ helpfulness }) {
     super();
     this.state = { wasClicked: false, helpfulness };
@@ -17,13 +17,20 @@ class  Helpful extends React.Component {
   }
 
   render() {
-    const { helpfulness } = this.state;
+    const { helpfulness, wasClicked } = this.state;
+    if (!wasClicked) {
+      return (
+        <div className="helpfulness">
+          Helpful?{' '}
+          <button className="helpful-button" type="submit" onClick={this.handleClick}>
+            <u>Yes</u>
+          </button>
+          <u>{helpfulness}</u> | <u>Report</u>
+        </div>
+      );
+    }
     return (
       <div className="helpfulness">
-        Helpful?{' '}
-        <button className="helpful-button" type="submit" onClick={this.handleClick}>
-          <u>Yes</u>
-        </button>
         <u>{helpfulness}</u> | <u>Report</u>
       </div>
     );
