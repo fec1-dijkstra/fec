@@ -16,19 +16,21 @@ class App extends React.Component {
       productInfo: {},
       productStyles: {},
       relatedProducts: [],
+      currentProduct: 17762,
     };
   }
 
   componentDidMount() {
-    this.getAll();
+    const { currentProduct } = this.state;
+    this.getAll(1, 20, currentProduct);
   }
 
-  getAll() {
+  getAll(pageNumber, countNumber, productId) {
     Promise.all([
-      queries.getProductList(1, 20, (result) => result),
-      queries.getProductInfo(17762, (result) => result),
-      queries.getProductStyles(17762, (result) => result),
-      queries.getRelatedProducts(17762, (result) => result),
+      queries.getProductList(pageNumber, countNumber, (result) => result),
+      queries.getProductInfo(productId, (result) => result),
+      queries.getProductStyles(productId, (result) => result),
+      queries.getRelatedProducts(productId, (result) => result),
     ])
       .then(([productList, productInfo, productStyles, relatedProducts]) => {
         this.setState({ productList, productInfo, productStyles, relatedProducts });
