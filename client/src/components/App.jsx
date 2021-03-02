@@ -20,6 +20,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.getAll();
+  }
+
+  getAll() {
     Promise.all([
       queries.getProductList(1, 20, (result) => result),
       queries.getProductInfo(17762, (result) => result),
