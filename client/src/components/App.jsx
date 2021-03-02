@@ -1,4 +1,5 @@
 /* eslint-disable import/extensions */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import RatingsAndReviews from './ReviewTiles/RatingsAndReviews.jsx';
 import Overview from './Overview/Overview.jsx';
@@ -12,6 +13,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      products,
+      reviews,
+      qa,
       items: products,
       productList: [],
       productInfo: {},
@@ -40,7 +44,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { items, productList, productInfo, productStyles, relatedProducts } = this.state;
+    const { products, reviews, qa, items, productList, productInfo, productStyles, relatedProducts } = this.state;
     return (
       <div>
         <div> Hello World</div>

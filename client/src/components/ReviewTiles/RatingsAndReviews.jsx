@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import RenderReviews from './RenderReviews.jsx';
+import Modal from './Modal.jsx';
 
 class RatingsAndReviews extends React.Component {
   constructor({ reviews }) {
@@ -13,6 +14,7 @@ class RatingsAndReviews extends React.Component {
     const { reviews } = this.state;
     return (
       <>
+        <Modal />
         <RenderReviews reviews={reviews} />
       </>
     );
