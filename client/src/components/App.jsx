@@ -3,6 +3,8 @@ import React from 'react';
 import ReviewTile from './ReviewTile/ReviewTile.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
+import QandA from './QandA/QandA.jsx';
+// eslint-disable-next-line import/extensions
 import products from '../../dummydata.js';
 import queries from './queries.js';
 
@@ -44,6 +46,7 @@ class App extends React.Component {
         <div> Hello World</div>
         <Overview productInfo={productInfo} productStyles={productStyles} />
         <RelatedItems />
+        <QandA />
       </div>
     );
   }
