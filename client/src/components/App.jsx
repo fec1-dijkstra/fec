@@ -6,8 +6,6 @@ import Overview from './Overview/Overview.jsx';
 import RelatedandOutfit from './RelatedandOutfit/RelatedandOutfit.jsx';
 import QandA from './QandA/QandA.jsx';
 import { products, reviews, qa } from '../../dummydata.js';
-
-import products from '../../dummydata.js';
 import queries from './queries.js';
 
 class App extends React.Component {
@@ -15,7 +13,7 @@ class App extends React.Component {
     super();
     this.state = {
       products,
-      reviews, 
+      reviews,
       qa,
       items: products,
       productList: [],
@@ -45,14 +43,26 @@ class App extends React.Component {
   }
 
   render() {
-    const { products, reviews, qa, items, productList, productInfo, productStyles, relatedProducts } = this.state;
+    const {
+      products,
+      reviews,
+      qa,
+      items,
+      productList,
+      productInfo,
+      productStyles,
+      relatedProducts,
+    } = this.state;
     return (
       <div>
         <div> Hello World</div>
         <Overview productInfo={productInfo} productStyles={productStyles} />
-        <RelatedandOutfit />
+        <RelatedandOutfit
+          relatedProducts={this.state.relatedProducts}
+          productInfo={this.state.productInfo}
+        />
         <QandA />
-        <RenderReviews />
+        {/* <RenderReviews /> */}
       </div>
     );
   }

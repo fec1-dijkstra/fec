@@ -1,52 +1,59 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import Modal from './Modal.jsx';
+import queries from '../queries.js';
 
 class ProductCard extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       showModal: false,
+      currentProductId: this.props.relatedItemId,
+      productInfo: {},
+      productStyles: {},
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  handleOpenModal() {
-    if (!this.state.showModal) {
-      document.addEventListener('click', this.handleOutsideClick.bind(this), false);
-    } else {
-      document.removeEventListener('click', this.handleOutsideClick.bind(this), false);
-    }
-    this.setState((prevState) => ({
-      showModal: !prevState.showModal
-    }));
+  componentDidMount() {
+    const { currentProductId } = this.state;
+    this.getAll(1, 20, currentProductId);
   }
 
-  handleOutsideClick(e) {
-    if (!this.node.contains(e.target)) this.handleOpenModal();
+  handleOpenModal() {
+    this.setState({ showModal: true });
   }
 
   handleCloseModal() {
     this.setState({ showModal: false });
   }
 
+  getAll(pageNumber, countNumber, productId) {
+    Promise.all([
+      queries.getProductInfo(productId, (result) => result),
+      queries.getProductStyles(productId, (result) => result),
+    ])
+      .then(([productInfo, productStyles]) => {
+        this.setState({ productInfo, productStyles });
+      })
+      .catch((error) => console.log('error caught in ProductCard.jsx', error));
+  }
+
   render() {
     return (
       <div className="ProductCard">
-        <div
-          ref={(node) => {
-            this.node = node;
-          }}
-        >
-          <button type="button" onClick={this.handleOpenModal} id="modalButton">★</button>
-          {/* pass product features and related product features down to modal */}
-          <Modal
-            className="modal"
-            showModal={this.state.showModal}
-            handleCloseModal={this.handleCloseModal}
-          />
-        </div>
+        <button type="button" onClick={this.handleOpenModal} id="modalButton">★</button>
+        {/* pass product features and related product features down to modal */}
+        <Modal
+          className="modal"
+          showModal={this.state.showModal}
+          handleCloseModal={this.handleCloseModal}
+          features={this.props.productInfo.features}
+          relatedFeatures={this.state.productInfo.features}
+          name={this.props.productInfo.name}
+          relatedName={this.state.productInfo.name}
+        />
         <img
           src="https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80"
           alt="DefaultStyleImage"

@@ -2,12 +2,14 @@
 import React from 'react';
 import ProductCard from './ProductCard.jsx';
 
-const RelatedItems = function () {
-  // Based on /products/PRODUCT_ID/related
-  // array.map(relatedProductId => {
-  //   <ProductCard relatedProductId={RelatedProductId} productId={productId} />
-  // })
-  return <ProductCard />;
+const RelatedItems = function ({ relatedProducts, productInfo}) {
+  return (
+    <div>
+      {relatedProducts.map((relatedItemId) => (
+        <ProductCard key={relatedItemId} relatedItemId={relatedItemId} productInfo={productInfo} />
+      ))}
+    </div>
+  );
 };
 
 export default RelatedItems;

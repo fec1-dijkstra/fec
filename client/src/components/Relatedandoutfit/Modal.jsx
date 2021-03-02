@@ -2,8 +2,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-const Modal = ({ showModal, handleCloseModal }) => {
+const Modal = ({ showModal, handleCloseModal, name, relatedName, features, relatedFeatures }) => {
   const showHideClassName = showModal ? 'modal display-block' : 'modal display-none';
+
   return (
     <div className={showHideClassName}>
       {/* /products/productId and /products/relatedProductId .features.forEach
@@ -16,9 +17,9 @@ const Modal = ({ showModal, handleCloseModal }) => {
         <table>
           <thead>
             <tr>
-              <th>Current Product Name</th>
+              <th>{name}</th>
               <th />
-              <th>Compared Product Name</th>
+              <th>{relatedName}</th>
             </tr>
           </thead>
           <tbody>

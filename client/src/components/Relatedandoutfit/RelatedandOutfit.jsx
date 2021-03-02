@@ -2,14 +2,13 @@
 import React from 'react';
 import RelatedItems from './RelatedItems.jsx';
 
-const RelatedandOutfit = function () {
+const RelatedandOutfit = function ({ relatedProducts, productInfo }) {
   return (
     <div>
-      {/* Pass productId to RelatedItems as prop */}
-      <RelatedItems />
+      <RelatedItems relatedProducts={relatedProducts} productInfo={productInfo} />
       <div>Outfit</div>
     </div>
   );
-}
+};
 
 export default RelatedandOutfit;
