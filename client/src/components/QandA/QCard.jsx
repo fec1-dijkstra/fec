@@ -13,7 +13,6 @@ class QCard extends React.Component {
       <div>
         QCard
         <div>Q: Some question?</div>
-        <button type="button">Add an Answer</button>
         <div>
           A:
           <div>Some answer.</div>
@@ -28,6 +27,7 @@ class QCard extends React.Component {
           </div>
           <button type="button">Report</button>
         </div>
+        <button type="button">Add an Answer</button>
       </div>
     );
   }
