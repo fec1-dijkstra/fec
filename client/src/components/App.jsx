@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
-import RenderReviews from './ReviewTiles/RenderReviews.jsx';
+// import RenderReviews from './ReviewTiles/RenderReviews.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import QandA from './QandA/QandA.jsx';
@@ -50,7 +50,7 @@ class App extends React.Component {
         <Overview productInfo={productInfo} productStyles={productStyles} />
         <RelatedItems />
         <QandA />
-        <RenderReviews />
+        {/* <RenderReviews /> */}
       </div>
     );
   }
