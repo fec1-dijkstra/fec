@@ -1,6 +1,6 @@
 import React from 'react';
 
-class QModal extends React.Component {
+class AModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -9,8 +9,8 @@ class QModal extends React.Component {
   render() {
     return (
       <div>
-        QModal
-        <div>Your Question</div>
+        AModal
+        <div>Your Answer</div>
         <div>Your Nickname</div>
         <div>Your Email</div>
         <button type="button">Submit</button>
@@ -19,4 +19,4 @@ class QModal extends React.Component {
   }
 }
 
-export default QModal;
+export default AModal;
