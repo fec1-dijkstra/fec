@@ -12,7 +12,10 @@ class QCard extends React.Component {
     return (
       <div>
         QCard
-        <div>Q: Some question?</div>
+        <div>
+          Q:
+          <div>Some question?</div>
+        </div>
         <div>
           A:
           <div>Some answer.</div>
