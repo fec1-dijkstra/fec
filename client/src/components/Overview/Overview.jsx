@@ -24,7 +24,7 @@ class Overview extends React.Component {
         <ProductInformation productInfo={productInfo} productStyles={productStyles} />
         <AddToCart />
         <SocialShare />
-        <ProductOverview />
+        <ProductOverview productInfo={productInfo} />
       </div>
     );
   }
