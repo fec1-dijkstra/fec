@@ -1,10 +1,33 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-const Helpful = ({ helpfulness }) => (
-  <div className="helpfulness">
-    Helpful? <u>Yes</u> <u>{helpfulness}</u> | <u>Report</u>
-  </div>
-);
+class  Helpful extends React.Component {
+  constructor({ helpfulness }) {
+    super();
+    this.state = { wasClicked: false, helpfulness };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    const { helpfulness, wasClicked } = this.state;
+    event.preventDefault();
+    if (!wasClicked) {
+      this.setState({ helpfulness: helpfulness + 1, wasClicked: true });
+    }
+  }
+
+  render() {
+    const { helpfulness } = this.state;
+    return (
+      <div className="helpfulness">
+        Helpful?{' '}
+        <button className="helpful-button" type="submit" onClick={this.handleClick}>
+          <u>Yes</u>
+        </button>
+        <u>{helpfulness}</u> | <u>Report</u>
+      </div>
+    );
+  }
+}
 
 export default Helpful;
