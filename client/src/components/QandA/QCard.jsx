@@ -11,7 +11,7 @@ class QCard extends React.Component {
   render() {
     return (
       <div>
-        QCard
+        ___QCard Component___
         <div>
           Q:
           <div>Some question?</div>
