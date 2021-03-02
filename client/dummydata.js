@@ -1,4 +1,4 @@
-const products = [
+export const products = [
   {
     id: 17762,
     campus: 'hr-rfp',
@@ -60,7 +60,7 @@ const products = [
   },
 ];
 
-const reviews = [
+export const reviews = [
   {
     product: '17762',
     page: 0,
@@ -190,7 +190,7 @@ const reviews = [
   },
 ];
 
-const qa = {
+export const qa = {
   product_id: '17762',
   results: [
     {

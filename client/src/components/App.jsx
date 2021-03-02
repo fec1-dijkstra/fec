@@ -1,10 +1,12 @@
 /* eslint-disable import/extensions */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
-import ReviewTile from './ReviewTile/ReviewTile.jsx';
+import RenderReviews from './ReviewTiles/RenderReviews.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedandOutfit from './RelatedandOutfit/RelatedandOutfit.jsx';
 import QandA from './QandA/QandA.jsx';
-// eslint-disable-next-line import/extensions
+import { products, reviews, qa } from '../../dummydata.js';
+
 import products from '../../dummydata.js';
 import queries from './queries.js';
 
@@ -12,6 +14,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      products,
+      reviews, 
+      qa,
       items: products,
       productList: [],
       productInfo: {},
@@ -40,13 +45,14 @@ class App extends React.Component {
   }
 
   render() {
-    const { items, productList, productInfo, productStyles, relatedProducts } = this.state;
+    const { products, reviews, qa, items, productList, productInfo, productStyles, relatedProducts } = this.state;
     return (
       <div>
         <div> Hello World</div>
         <Overview productInfo={productInfo} productStyles={productStyles} />
         <RelatedandOutfit />
         <QandA />
+        <RenderReviews />
       </div>
     );
   }
