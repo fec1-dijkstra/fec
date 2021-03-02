@@ -1,6 +1,7 @@
 import React from 'react';
 
 import IndvQ from './IndvQ.jsx';
+import IndvA from './IndvA.jsx';
 
 class QCard extends React.Component {
   constructor(props) {
@@ -15,11 +16,7 @@ class QCard extends React.Component {
       <div>
         ___QCard Component___
         <IndvQ />
-        <div>
-          A:
-          <div>Some answer.</div>
-          <div>Some other answer.</div>
-        </div>
+        <IndvA />
         <div>
           by Username, Date
           <div>

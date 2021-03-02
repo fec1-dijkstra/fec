@@ -14,6 +14,15 @@ class IndvA extends React.Component {
       <div>
         A:
         <div>{answer}</div>
+        <div>
+          by Username, Date
+          <div>
+            Helpful?
+            <button type="button">Yes</button>
+            <div>(1)</div>
+          </div>
+          <button type="button">Report</button>
+        </div>
       </div>
     );
   }
