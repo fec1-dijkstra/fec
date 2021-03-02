@@ -30,7 +30,7 @@ class RenderPhoto extends React.Component {
           src={photo.url}
           alt=""
           onClick={this.handleClick}
-          style={{ width: 200, height: 200 }}
+          style={{ width: 150, height: 150 }}
         />
       );
     }
