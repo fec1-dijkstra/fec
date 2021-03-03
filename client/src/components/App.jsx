@@ -67,7 +67,11 @@ class App extends React.Component {
           productInfo={this.state.productInfo}
         />
         <QandA />
-        <RatingsAndReviews reviews={reviews[0].results} product={reviews[0].product} />
+        <RatingsAndReviews
+          reviews={reviews[0].results}
+          product={reviews[0].product}
+          meta={reviewsMeta}
+        />
         <Stars productId={17106} />
       </div>
     );

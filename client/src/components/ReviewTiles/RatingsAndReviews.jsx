@@ -12,6 +12,7 @@ class RatingsAndReviews extends React.Component {
 
   render() {
     const { reviews, product } = this.state;
+    const { meta } = this.props;
     return (
       <>
         <RenderReviews reviews={reviews} product={product} />

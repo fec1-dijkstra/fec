@@ -21,7 +21,6 @@ class RenderReviews extends React.Component {
   render() {
     const list = this;
     const { reviews, product } = this.state;
-    debugger;
     const totalReviews = this.state.reviews.length;
     const toRender = reviews
       .slice(0, this.state.total)

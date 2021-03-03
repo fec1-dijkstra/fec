@@ -29,7 +29,7 @@ class ProductInformation extends React.Component {
   render() {
     const { productInfo } = this.props;
     const { selectedStyle } = this.state;
-    console.log(productInfo)
+    // console.log(productInfo)
     return (
       <div>
         <div>Star Rating...</div>
