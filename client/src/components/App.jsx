@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
-import RenderReviews from './ReviewTiles/RenderReviews.jsx';
+// import RenderReviews from './ReviewTiles/RenderReviews.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedandOutfit from './RelatedandOutfit/RelatedandOutfit.jsx';
 import QandA from './QandA/QandA.jsx';
