@@ -19,7 +19,9 @@ class RenderReviews extends React.Component {
   }
 
   render() {
+    const list = this;
     const { reviews, product } = this.state;
+    debugger;
     const totalReviews = this.state.reviews.length;
     const toRender = reviews
       .slice(0, this.state.total)
@@ -27,7 +29,7 @@ class RenderReviews extends React.Component {
     if (totalReviews > this.state.total) {
       return (
         <>
-          <SortBy reviews={reviews} product={product} />
+          <SortBy reviews={reviews} product={product} list={list} />
           <div className="reviews">
             {toRender}
             <button type="submit" id="more-reviews" onClick={this.moreReviews}>
