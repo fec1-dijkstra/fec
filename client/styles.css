@@ -1,0 +1,84 @@
+.ProductCard {
+  margin-top: 48px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  display: inline-block;
+}
+
+.ProductCardImage {
+  width: 200px;
+}
+
+.SalePrice {
+  color: red;
+}
+
+.OriginalPrice {
+  text-decoration: line-through;
+}
+
+.Category {
+  text-transform: uppercase;
+}
+
+.ProductName {
+  font-weight: bold;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 500px;
+  height: 300px;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0, 0.6);
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.modal-main {
+  position: fixed;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.star-ratings-css {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 25px;
+  height: 25px;
+  width: 100px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+}
+
+.star-ratings-css-top {
+  color: #e7711b;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.star-ratings-css-bottom {
+  padding: 0;
+  display: block;
+  z-index: 0;
+}
