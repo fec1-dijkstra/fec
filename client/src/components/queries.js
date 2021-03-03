@@ -1,4 +1,5 @@
 const axios = require('axios');
+// eslint-disable-next-line import/no-unresolved
 const auth = require('../../../token.js');
 
 // EXAMPLE CALL FROM COMPONENT //

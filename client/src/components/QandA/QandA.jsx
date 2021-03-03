@@ -5,6 +5,8 @@ import QList from './QList.jsx';
 
 import { qa } from '../../../dummydata.js';
 
+import { qa } from '../../../dummydata.js';
+
 class QandA extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,10 @@ class QandA extends React.Component {
         <div>----start----</div>
         <QSearch />
         <QCard data={data} />
+<<<<<<< HEAD
         <QList />
+=======
+>>>>>>> 958440894c040ea6b11e732b2140da53bc20ebd6
         <button type="button">Add a Question</button>
         <div>-----end-----</div>
       </div>
