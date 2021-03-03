@@ -3,6 +3,18 @@ import PropTypes from 'prop-types';
 import AddToCart from './AddToCart.jsx';
 
 class StyleSelector extends React.Component {
+  static salePrice(selectedStyle) {
+    if (selectedStyle.sale_price) {
+      return (
+        <>
+          <div className="OriginalPrice">{selectedStyle.original_price}</div>
+          <div className="SalePrice">{selectedStyle.sale_price}</div>
+        </>
+      );
+    }
+    return <div>{selectedStyle.original_price}</div>;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +46,7 @@ class StyleSelector extends React.Component {
     const { selectedStyle } = this.state;
     return (
       <>
-        <div>{selectedStyle.original_price}</div>
+        {StyleSelector.salePrice(selectedStyle)}
         <div>
           Style `{'>'}` {selectedStyle.name}
         </div>
