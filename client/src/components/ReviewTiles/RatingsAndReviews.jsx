@@ -16,7 +16,7 @@ class RatingsAndReviews extends React.Component {
     return (
       <>
         <RenderReviews reviews={reviews} product={product} />
-        <AddReview />
+        <AddReview meta={meta} />
       </>
     );
   }

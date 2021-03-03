@@ -1,4 +1,5 @@
 import React from 'react';
+import RenderButtons from './RadioButtons.jsx';
 
 class AddReview extends React.Component {
   constructor() {
@@ -19,6 +20,8 @@ class AddReview extends React.Component {
   }
 
   render() {
+    const { meta } = this.props;
+    console.log(meta);
     const { show } = this.state;
     if (show) {
       return (
@@ -33,6 +36,7 @@ class AddReview extends React.Component {
               <input type="radio" value="yes" name="recommend" /> Yes
               <input type="radio" value="no" name="recommend" /> No
             </div>
+            <RenderButtons meta={meta} />
             <button type="submit" onClick={this.showModal}>
               Close
             </button>
