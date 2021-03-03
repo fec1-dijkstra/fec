@@ -6,16 +6,18 @@ import Answer from './Answer.jsx';
 class QCard extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      data: []
+      data: [],
     };
   }
 
   render() {
+    const { data } = this.state;
     return (
       <div>
         ___QCard Component___
-        <Question />
+        <Question data={data} />
         <Answer />
       </div>
     );
