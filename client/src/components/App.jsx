@@ -67,7 +67,7 @@ class App extends React.Component {
         />
         <QandA />
         {/* <RenderReviews /> */}
-        <Stars percentage={84} />
+        <Stars productId={17106} />
       </div>
     );
   }
