@@ -5,17 +5,21 @@ class IndvA extends React.Component {
     super(props);
     this.state = {
       answer: 'Because it is.',
+      username: 'DaffyDuck123',
+      date: 'Month DD, YYYY',
     };
   }
 
   render() {
     const { answer } = this.state;
+    const { username } = this.state;
+    const { date } = this.state;
     return (
       <div>
         A:
         <div>{answer}</div>
         <div>
-          by Username, Date
+          by {username}, {date}
           <div>
             Helpful?
             <button type="button">Yes</button>
