@@ -7,7 +7,6 @@ import RelatedandOutfit from './RelatedandOutfit/RelatedandOutfit.jsx';
 import QandA from './QandA/QandA.jsx';
 import { products, reviews, qa } from '../../dummydata.js';
 import queries from './queries.js';
-import Stars from './Stars.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -67,7 +66,6 @@ class App extends React.Component {
         />
         <QandA />
         {/* <RenderReviews /> */}
-        <Stars productId={17106} />
       </div>
     );
   }

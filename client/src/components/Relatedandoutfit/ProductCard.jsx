@@ -2,6 +2,7 @@
 import React from 'react';
 import Modal from './Modal.jsx';
 import queries from '../queries.js';
+import Stars from '../Stars.jsx';
 
 class ProductCard extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class ProductCard extends React.Component {
 
   componentDidMount() {
     const { currentProductId } = this.state;
-    this.getAll(1, 20, currentProductId);
+    // this.getAll(1, 20, currentProductId);
   }
 
   handleOpenModal() {
@@ -46,7 +47,6 @@ class ProductCard extends React.Component {
         <button type="button" onClick={this.handleOpenModal} id="modalButton">
           ★
         </button>
-        {/* pass product features and related product features down to modal */}
         <Modal
           className="modal"
           showModal={this.state.showModal}
@@ -56,15 +56,14 @@ class ProductCard extends React.Component {
           name={this.props.productInfo.name}
           relatedName={this.state.productInfo.name}
         />
+        {/* this.state.productStyles.results[0].photos[0].url */}
         <img
           src="https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80"
           alt="DefaultStyleImage"
           className="ProductCardImage"
         />
         <div className="ProductInfo">
-          {/* From /products/productId .category */}
           <p className="Category">{this.state.productInfo.category}</p>
-          {/* From /products/productId .name - /products/productId/styles .results[0].name */}
           <p className="ProductName">{this.state.productInfo.name}</p>
           {/* <p className="ProductPrice">
             {this.state.productStyles.results[0].sale_price ?
@@ -77,13 +76,7 @@ class ProductCard extends React.Component {
               : <span>${this.state.productStyles.results[0].original_price}</span>
             }
           </p> */}
-          {/* calculate star rating from reviews/meta?product_id=PRODUCT_ID
-          for (var key in .ratings) {
-            total+=obj.key*key (toNumber);
-            ratings+=obj.key
-          }
-          average=total/ratings */}
-          <p className="Stars">★★★☆☆</p>
+          <Stars productId={this.state.productInfo.id} />
         </div>
       </div>
     );
