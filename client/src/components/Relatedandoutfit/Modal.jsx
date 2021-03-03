@@ -53,9 +53,9 @@ const TableBody = function({features, relatedFeatures}) {
     <tbody>
       {Object.keys(comparison).map((feature) => (
         <tr key={feature}>
-          {comparison[feature][0] ? <td>{comparison[feature][0]}</td> : <td />}
+          {comparison[feature][0] ? (typeof comparison[feature][0] === 'boolean') ? <td>✓</td> : <td>{comparison[feature][0]}</td> : <td />}
           <td>{feature}</td>
-          {comparison[feature][1] ? <td>{comparison[feature][1]}</td> : <td />}
+          {comparison[feature][1] ? (typeof comparison[feature][1] === 'boolean') ? <td>✓</td> : <td>{comparison[feature][1]}</td> : <td />}
         </tr>
       ))}
     </tbody>

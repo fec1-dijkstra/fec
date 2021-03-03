@@ -24,11 +24,16 @@ class App extends React.Component {
       reviewsMeta: {},
       relatedProductInfo: [],
     };
+    this.handleProductChange = this.handleProductChange.bind(this);
   }
 
   componentDidMount() {
     const { currentProduct } = this.state;
     this.getAll(1, 20, currentProduct);
+  }
+
+  handleProductChange(id) {
+    this.setState({ currentProduct: id, relatedProductInfo: []}, this.getAll(1, 20, this.state.currentProduct));
   }
 
   getAll(pageNumber, countNumber, productId) {
@@ -40,7 +45,9 @@ class App extends React.Component {
       queries.getReviewsMeta(productId, (result) => result),
     ])
       .then(([productList, productInfo, productStyles, relatedProducts, reviewsMeta]) => {
-        this.setState({ productList, productInfo, productStyles, relatedProducts, reviewsMeta }, () => {
+        this.setState(
+          { productList, productInfo, productStyles, relatedProducts, reviewsMeta },
+          () => {
             relatedProducts.map((id) => this.getRelated(id));
           }
         );
@@ -54,10 +61,13 @@ class App extends React.Component {
       queries.getProductStyles(relatedId, (result) => result),
     ]).then(([productInfo, productStyles]) => {
       this.setState((state) => {
-        return {relatedProductInfo: state.relatedProductInfo.concat({productInfo, productStyles})}
+        return {
+          relatedProductInfo: state.relatedProductInfo.concat({ productInfo, productStyles }),
+        };
       })
     });
   }
+
 
   render() {
     const {
@@ -76,9 +86,9 @@ class App extends React.Component {
         <div> Hello World</div>
         <Overview productInfo={productInfo} productStyles={productStyles} />
         <RelatedandOutfit
-          relatedProducts={this.state.relatedProducts}
           productInfo={this.state.productInfo}
           relatedProductInfo={this.state.relatedProductInfo}
+          handleProductChange={this.handleProductChange}
         />
         <QandA />
         {/* <RenderReviews /> */}

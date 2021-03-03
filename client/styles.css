@@ -28,7 +28,8 @@
 
 .modal {
   position: fixed;
-  z-index: 1;
+  margin: auto;
+  z-index: 2;
   left: 0;
   top: 0;
   width: 500px;
@@ -51,7 +52,8 @@
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 100%;
+  width: 500px;
+  z-index: 2;
 }
 
 .star-ratings-css {

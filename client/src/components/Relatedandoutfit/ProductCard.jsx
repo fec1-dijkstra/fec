@@ -1,7 +1,6 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import Modal from './Modal.jsx';
-import queries from '../queries.js';
 import Stars from '../Stars.jsx';
 
 class ProductCard extends React.Component {
@@ -12,6 +11,7 @@ class ProductCard extends React.Component {
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleOpenModal() {
@@ -22,11 +22,16 @@ class ProductCard extends React.Component {
     this.setState({ showModal: false });
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    this.props.handleProductChange(this.props.relatedProduct.productInfo.id);
+  }
+
   render() {
     return (
-      <div className="ProductCard">
+      <div className="ProductCard" onClick={this.handleClick}>
         <button type="button" onClick={this.handleOpenModal} id="modalButton">
-          ★
+          ☆
         </button>
         <Modal
           className="modal"

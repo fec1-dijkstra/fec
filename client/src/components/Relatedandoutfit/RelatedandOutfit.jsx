@@ -2,13 +2,13 @@
 import React from 'react';
 import RelatedItems from './RelatedItems.jsx';
 
-const RelatedandOutfit = function ({ relatedProducts, productInfo, relatedProductInfo }) {
+const RelatedandOutfit = function ({ handleProductChange, productInfo, relatedProductInfo }) {
   return (
     <div>
       <RelatedItems
-        relatedProducts={relatedProducts}
         productInfo={productInfo}
         relatedProductInfo={relatedProductInfo}
+        handleProductChange={handleProductChange}
       />
       <div>Outfit</div>
     </div>
