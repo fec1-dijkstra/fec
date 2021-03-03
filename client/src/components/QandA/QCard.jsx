@@ -1,23 +1,24 @@
 import React from 'react';
 
-import IndvQ from './IndvQ.jsx';
-import IndvA from './IndvA.jsx';
+import Question from './Question.jsx';
+import Answer from './Answer.jsx';
 
 class QCard extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      data: []
+      data: [],
     };
   }
 
   render() {
+    const { data } = this.state;
     return (
       <div>
         ___QCard Component___
-        <IndvQ />
-        <IndvA />
-        <button type="button">Add an Answer</button>
+        <Question data={data} />
+        <Answer />
       </div>
     );
   }
