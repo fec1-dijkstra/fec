@@ -1,10 +1,11 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
-// import RenderReviews from './ReviewTiles/RenderReviews.jsx';
+import RatingsAndReviews from './ReviewTiles/RatingsAndReviews.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedandOutfit from './RelatedandOutfit/RelatedandOutfit.jsx';
 import QandA from './QandA/QandA.jsx';
+// eslint-disable-next-line import/extensions
 import { products, reviews, qa } from '../../dummydata.js';
 import queries from './queries.js';
 import Stars from './Stars.jsx';
@@ -82,7 +83,7 @@ class App extends React.Component {
           productInfo={this.state.productInfo}
         />
         <QandA />
-        {/* <RenderReviews /> */}
+        <RatingsAndReviews reviews={reviews[0].results} />
         <Stars productId={17106} />
       </div>
     );
