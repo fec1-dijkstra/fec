@@ -4,16 +4,16 @@ import React from 'react';
 import RenderReviews from './RenderReviews.jsx';
 
 class RatingsAndReviews extends React.Component {
-  constructor({ reviews }) {
+  constructor({ reviews, product }) {
     super();
-    this.state = { reviews };
+    this.state = { reviews, product };
   }
 
   render() {
-    const { reviews } = this.state;
+    const { reviews, product } = this.state;
     return (
       <>
-        <RenderReviews reviews={reviews} />
+        <RenderReviews reviews={reviews} product={product} />
       </>
     );
   }
