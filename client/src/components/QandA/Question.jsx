@@ -1,6 +1,6 @@
 import React from 'react';
 
-class IndvQ extends React.Component {
+class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,4 +20,4 @@ class IndvQ extends React.Component {
   }
 }
 
-export default IndvQ;
+export default Question;

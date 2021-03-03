@@ -1,7 +1,7 @@
 import React from 'react';
 
-import IndvQ from './IndvQ.jsx';
-import IndvA from './IndvA.jsx';
+import Question from './Question.jsx';
+import Answer from './Answer.jsx';
 
 class QCard extends React.Component {
   constructor(props) {
@@ -15,8 +15,8 @@ class QCard extends React.Component {
     return (
       <div>
         ___QCard Component___
-        <IndvQ />
-        <IndvA />
+        <Question />
+        <Answer />
       </div>
     );
   }

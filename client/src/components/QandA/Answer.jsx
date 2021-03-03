@@ -1,6 +1,6 @@
 import React from 'react';
 
-class IndvA extends React.Component {
+class Answer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,4 +32,4 @@ class IndvA extends React.Component {
   }
 }
 
-export default IndvA;
+export default Answer;
