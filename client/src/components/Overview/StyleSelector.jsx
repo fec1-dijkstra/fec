@@ -10,6 +10,10 @@ class StyleSelector extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.findDefaultStyle();
+  }
+
   componentDidUpdate(prevProps) {
     const { productStyles } = this.props;
     if (prevProps.productStyles.results !== productStyles.results) {

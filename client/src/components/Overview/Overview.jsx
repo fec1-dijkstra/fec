@@ -6,13 +6,16 @@ import ImageGallery from './ImageGallery.jsx';
 import ProductOverview from './ProductOverview.jsx';
 import SocialShare from './SocialShare.jsx';
 
-const Overview = ({ productInfo, productStyles }) => {
+const Overview = ({ productInfo, productStyles, reviewsMeta }) => {
   if (productInfo.id) {
     return (
       <>
-        <div>This is the overview component!</div>
         <ImageGallery />
-        <ProductInformation productInfo={productInfo} productStyles={productStyles} />
+        <ProductInformation
+          productInfo={productInfo}
+          productStyles={productStyles}
+          reviewsMeta={reviewsMeta}
+        />
         <SocialShare />
         <ProductOverview productInfo={productInfo} />
       </>
@@ -24,11 +27,13 @@ const Overview = ({ productInfo, productStyles }) => {
 Overview.defaultProps = {
   productInfo: {},
   productStyles: {},
+  reviewsMeta: {},
 };
 
 Overview.propTypes = {
   productInfo: PropTypes.oneOfType([PropTypes.object]),
   productStyles: PropTypes.oneOfType([PropTypes.object]),
+  reviewsMeta: PropTypes.oneOfType([PropTypes.object]),
 };
 
 export default Overview;
