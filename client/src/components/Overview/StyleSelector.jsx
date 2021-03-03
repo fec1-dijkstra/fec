@@ -27,14 +27,16 @@ class StyleSelector extends React.Component {
   }
 
   render() {
+    const { selectedStyle } = this.state;
     return (
-      <div>
+      <>
+        <div>{selectedStyle.original_price}</div>
         <div>
-          Style `{'>'}` {this.state.selectedStyle.name}
+          Style `{'>'}` {selectedStyle.name}
         </div>
         <div>Thumbnails...</div>
-        <AddToCart selectedStyle={this.state.selectedStyle} />
-      </div>
+        <AddToCart selectedStyle={selectedStyle} />
+      </>
     );
   }
 }
