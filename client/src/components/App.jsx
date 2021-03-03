@@ -22,6 +22,7 @@ class App extends React.Component {
       relatedProducts: [],
       currentProduct: 17762,
       reviewsMeta: {},
+      relatedProductInfo: [],
     };
   }
 
@@ -39,9 +40,23 @@ class App extends React.Component {
       queries.getReviewsMeta(productId, (result) => result),
     ])
       .then(([productList, productInfo, productStyles, relatedProducts, reviewsMeta]) => {
-        this.setState({ productList, productInfo, productStyles, relatedProducts, reviewsMeta });
+        this.setState({ productList, productInfo, productStyles, relatedProducts, reviewsMeta }, () => {
+            relatedProducts.map((id) => this.getRelated(id));
+          }
+        );
       })
       .catch((error) => console.log('error caught in App.jsx', error));
+  }
+
+  getRelated(relatedId) {
+    Promise.all([
+      queries.getProductInfo(relatedId, (result) => result),
+      queries.getProductStyles(relatedId, (result) => result),
+    ]).then(([productInfo, productStyles]) => {
+      this.setState((state) => {
+        return {relatedProductInfo: state.relatedProductInfo.concat({productInfo, productStyles})}
+      })
+    });
   }
 
   render() {
@@ -63,6 +78,7 @@ class App extends React.Component {
         <RelatedandOutfit
           relatedProducts={this.state.relatedProducts}
           productInfo={this.state.productInfo}
+          relatedProductInfo={this.state.relatedProductInfo}
         />
         <QandA />
         {/* <RenderReviews /> */}
