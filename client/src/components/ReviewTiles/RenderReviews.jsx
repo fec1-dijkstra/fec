@@ -41,7 +41,12 @@ class RenderReviews extends React.Component {
         </>
       );
     }
-    return <div className="reviews">{toRender}</div>;
+    return (
+      <>
+        <SortBy product={product} list={list} />
+        <div className="reviews">{toRender}</div>;
+      </>
+    );
   }
 }
 

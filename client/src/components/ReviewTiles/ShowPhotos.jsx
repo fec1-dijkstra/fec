@@ -35,7 +35,7 @@ class RenderPhoto extends React.Component {
       );
     }
     return (
-      <div className="modal">
+      <div className="image-modal">
         <img className="image" src={photo.url} alt="" onClick={this.handleClick} />
       </div>
     );
