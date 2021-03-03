@@ -22,7 +22,9 @@ class ReviewTile extends React.Component {
       <div className="review-tile" key={review.name}>
         <div className="star-rating">{review.rating}</div>
         <div className="date">{new Date(review.date).toString().substring(3, 15)}</div>
-        <div className="username">{review.reviewer_name}</div>
+        <div className="username">
+          <u>{review.reviewer_name}</u>
+        </div>
         <Response response={review.response} />
         <Summary summary={review.summary} />
         <ReviewBody body={review.body} />
