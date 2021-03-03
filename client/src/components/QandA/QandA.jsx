@@ -1,6 +1,7 @@
 import React from 'react';
 import QCard from './QCard.jsx';
 import QSearch from './QSearch.jsx';
+import QList from './QList.jsx';
 
 import { qa } from '../../../dummydata.js';
 
@@ -22,6 +23,7 @@ class QandA extends React.Component {
         <div>----start----</div>
         <QSearch />
         <QCard data={data} />
+        <QList />
         <button type="button">Add a Question</button>
         <div>-----end-----</div>
       </div>

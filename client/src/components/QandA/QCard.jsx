@@ -8,7 +8,6 @@ class QCard extends React.Component {
     super(props);
 
     this.state = {
-      // eslint-disable-next-line react/destructuring-assignment
       data: [],
     };
   }
