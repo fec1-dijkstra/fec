@@ -3,12 +3,14 @@ import React from 'react';
 import Question from './Question.jsx';
 import Answer from './Answer.jsx';
 
+import { qa } from '../../../dummydata.js';
+
 class QCard extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: [],
+      data: qa,
     };
   }
 
