@@ -7,7 +7,7 @@ class SortBy extends React.Component {
   constructor({ reviews, product }) {
     super();
     this.state = {
-      options: ['newest', 'helpful', 'relevant'],
+      options: ['relevant', 'newest', 'helpful' ],
       current: '',
       reviews,
       product,
@@ -25,20 +25,16 @@ class SortBy extends React.Component {
       },
     };
     event.preventDefault();
+    const self = this;
     const { product } = this.state;
     debugger;
     const text = event.target.value;
     axios(
       `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${product}&sort=${text}`,
       config
-    )
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    this.setState({ current: text });
+    ).then((data) => {
+      self.setState({ current: text, product: data.data.results });
+    });
   }
 
   render() {
