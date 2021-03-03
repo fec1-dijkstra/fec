@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Sizes from './Sizes.jsx';
+import Quantities from './Quantitites.jsx';
 
 class AddToCart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       skus: {},
-      allSizes: [],
-      allQuantities: [],
+      allSizes: {},
+      allQuantities: {},
       selectedSize: '',
-      selectedQuantity: '',
-      maxQuantity: '',
+      selectedQuantity: 1,
+      maxQuantity: 0,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -26,9 +27,9 @@ class AddToCart extends React.Component {
   handleChange(event) {
     const { value } = event.target;
     const { allSizes, allQuantities } = this.state;
-    const maxQuantity = allQuantities[allSizes.indexOf(value)];
+    const maxQuantity = allQuantities.quantities[allSizes.sizes.indexOf(value)];
     if (event.target.id === 'size-selector') {
-      this.setState({ selectedSize: value, maxQuantity });
+      this.setState({ selectedSize: value, selectedQuantity: 1, maxQuantity });
     }
     if (event.target.id === 'quantity-selector') {
       this.setState({ selectedQuantity: value });
@@ -40,8 +41,8 @@ class AddToCart extends React.Component {
       const allSizesAndQuantities = AddToCart.getAllSizesAndQuantities(selectedStyle.skus);
       this.setState({
         skus: selectedStyle.skus,
-        allSizes: allSizesAndQuantities[0],
-        allQuantities: allSizesAndQuantities[1],
+        allSizes: { sizes: allSizesAndQuantities[0] },
+        allQuantities: { quantities: allSizesAndQuantities[1] },
       });
     }
   }
@@ -60,8 +61,7 @@ class AddToCart extends React.Component {
   }
 
   render() {
-    const { allSizes, allQuantities, selectedSize, selectedQuantity } = this.state;
-    console.log(allSizes);
+    const { allSizes, selectedSize, selectedQuantity, maxQuantity } = this.state;
     return (
       <>
         <select
@@ -71,7 +71,7 @@ class AddToCart extends React.Component {
           onChange={this.handleChange}
         >
           <option value="">SELECT SIZE</option>
-          <Sizes allSizes={{allSizes: allSizes}} />
+          <Sizes allSizes={allSizes} />
         </select>
         <select
           name="quantity-selector"
@@ -80,6 +80,7 @@ class AddToCart extends React.Component {
           onChange={this.handleChange}
         >
           <option value="1">1</option>
+          <Quantities maxQuantity={maxQuantity} />
         </select>
         <button type="submit">ADD TO BAG</button>
       </>
@@ -92,7 +93,7 @@ AddToCart.defaultProps = {
 };
 
 AddToCart.propTypes = {
-  selectedStyle: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  selectedStyle: PropTypes.oneOfType([PropTypes.object]),
 };
 
 export default AddToCart;

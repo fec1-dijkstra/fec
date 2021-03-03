@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const Sizes = ({ allSizes }) => {
   let key = 0;
-  if (allSizes && allSizes.length > 0) {
-    return allSizes.map((size) => {
+  if (allSizes.sizes && allSizes.sizes.length > 0) {
+    return allSizes.sizes.map((size) => {
       key += 1;
       return (
         <option key={key} value={size}>
@@ -17,11 +17,11 @@ const Sizes = ({ allSizes }) => {
 };
 
 Sizes.defaultProps = {
-  allSizes: [],
+  allSizes: {},
 };
 
 Sizes.propTypes = {
-  allSizes: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  allSizes: PropTypes.oneOfType([PropTypes.object]),
 };
 
 export default Sizes;

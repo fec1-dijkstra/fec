@@ -44,7 +44,7 @@ StyleSelector.defaultProps = {
 };
 
 StyleSelector.propTypes = {
-  productStyles: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  productStyles: PropTypes.oneOfType([PropTypes.object]),
 };
 
 export default StyleSelector;
