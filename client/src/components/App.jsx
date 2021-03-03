@@ -51,7 +51,7 @@ class App extends React.Component {
         <Overview productInfo={productInfo} productStyles={productStyles} />
         <RelatedItems />
         <QandA />
-        <RatingsAndReviews reviews={reviews[0].results} product={reviews.product} />
+        <RatingsAndReviews reviews={reviews[0].results} product={reviews[0].product} />
       </div>
     );
   }
