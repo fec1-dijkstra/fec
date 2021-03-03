@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Modal extends React.Component {
+class AddReview extends React.Component {
   constructor() {
     super();
     this.state = { show: false };
@@ -16,14 +16,23 @@ class Modal extends React.Component {
   render() {
     const { show } = this.state;
     if (show) {
-      return <div>Hello</div>;
+      return (
+        <div className="modal-background">
+          <div className="modal-box">
+            <div id="text">This is the review modal!</div>
+            <button type="submit" onClick={this.showModal}>
+              Close
+            </button>
+          </div>
+        </div>
+      );
     }
     return (
       <button type="submit" onClick={this.showModal}>
-        Show Modal
+        Leave Your Review
       </button>
     );
   }
 }
 
-export default Modal;
+export default AddReview;

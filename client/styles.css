@@ -83,7 +83,7 @@
   z-index: 0;
 }
 
-.image-modal {
+.modal-background {
   position: fixed;
   z-index: 1;
   left: 0;
