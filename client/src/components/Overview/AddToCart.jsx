@@ -8,15 +8,16 @@ class AddToCart extends React.Component {
     super(props);
     this.state = {
       allSkus: {},
-      selectedSku: null,
       allSizes: {},
       allQuantities: {},
+      selectedSku: null,
       selectedSize: '',
       selectedQuantity: 1,
       maxQuantity: 0,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.addCurrentSelectionsToCart = this.addCurrentSelectionsToCart.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -72,11 +73,13 @@ class AddToCart extends React.Component {
   }
 
   addCurrentSelectionsToCart() {
+    const { selectedStyle } = this.props;
     const { selectedSku, selectedSize, selectedQuantity } = this.state;
     if (selectedSku) {
       alert(
         `ADDED TO BAG: SKU: ${selectedSku} Size: ${selectedSize} Quantity: ${selectedQuantity}`
       );
+      this.setState({ selectedSku: null, selectedSize: '', selectedQuantity: 1, maxQuantity: 0 });
     }
   }
 
