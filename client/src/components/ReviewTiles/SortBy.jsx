@@ -29,7 +29,7 @@ class SortBy extends React.Component {
     const text = event.target.value;
     debugger;
     axios(
-      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${product}&sort=${text}`,
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${product}&sort=${text}&count=25`,
       config
     ).then((data) => {
       self.setState({ current: text }, self.props.list.setState({ reviews: data.data.results }));

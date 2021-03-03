@@ -29,12 +29,14 @@ class RenderReviews extends React.Component {
     if (totalReviews > this.state.total) {
       return (
         <>
-          <SortBy reviews={reviews} product={product} list={list} />
           <div className="reviews">
-            {toRender}
-            <button type="submit" id="more-reviews" onClick={this.moreReviews}>
-              More Reviews
-            </button>
+            <SortBy product={product} list={list} />
+            <div className="reviews-container">
+              {toRender}
+              <button type="submit" id="more-reviews" onClick={this.moreReviews}>
+                More Reviews
+              </button>
+            </div>
           </div>
         </>
       );
