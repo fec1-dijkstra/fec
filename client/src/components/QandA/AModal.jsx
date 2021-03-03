@@ -39,7 +39,7 @@ class AModal extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="test">
-          Add Answer
+          Add an Answer
           <textarea value={textAreaValue} onChange={this.handleTextAreaChange} />
           <input type="text" value={nickname} onChange={this.handleNicknameChange} />
           <input type="text" value={email} onChange={this.handleEmailChange} />
