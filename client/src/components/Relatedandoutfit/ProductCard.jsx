@@ -47,12 +47,12 @@ class ProductCard extends React.Component {
           <p className="ProductName">{this.props.relatedProduct.productInfo.name}</p>
           <p className="ProductPrice">
             {this.props.relatedProduct.productStyles.results[0].sale_price ?
-              <div>
+              <>
                 <span className="SalePrice">${this.props.relatedProduct.productStyles.results[0].sale_price}</span>
                 <span className="OriginalPrice">
                   ${this.props.relatedProduct.productStyles.results[0].original_price}
                 </span>
-              </div>
+              </>
               : <span>${this.props.relatedProduct.productStyles.results[0].original_price}</span>
             }
           </p>
