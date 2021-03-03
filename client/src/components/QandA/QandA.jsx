@@ -14,9 +14,11 @@ class QandA extends React.Component {
     return (
       <div>
         QandA component goes here!
+        <div>----start----</div>
         <QSearch />
         <QCard />
         <button type="button">Add a Question</button>
+        <div>-----end-----</div>
       </div>
     );
   }

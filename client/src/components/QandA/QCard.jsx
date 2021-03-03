@@ -17,7 +17,6 @@ class QCard extends React.Component {
         ___QCard Component___
         <IndvQ />
         <IndvA />
-        <button type="button">Add an Answer</button>
       </div>
     );
   }
