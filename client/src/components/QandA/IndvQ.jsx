@@ -14,6 +14,7 @@ class IndvQ extends React.Component {
       <div>
         Q:
         <div>{question}</div>
+        <button type="button">Add an Answer</button>
       </div>
     );
   }
