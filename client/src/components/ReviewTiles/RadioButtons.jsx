@@ -1,4 +1,5 @@
 import React from 'react';
+import identifyChar from './identifyChar.js';
 
 const RenderButtons = ({ meta }) => {
   const chars = Object.keys(meta.characteristics);
@@ -20,14 +21,15 @@ class RadioButton extends React.Component {
 
   render() {
     const { char } = this.props;
+    const options = identifyChar(char);
     return (
-      <div className="radio-btn" onChange={this.handleChange}>
-        <input type="radio" value={1} name={char} />
-        <input type="radio" value={2} name={char} />
-        <input type="radio" value={3} name={char} />
-        <input type="radio" value={4} name={char} />
-        <input type="radio" value={5} name={char} />
-        {char}
+      <div className={`${char}-radio-btn`} onChange={this.handleChange}>
+        <b>{char}</b>
+        <input type="radio" value={1} name={char} /> {options[0]}
+        <input type="radio" value={2} name={char} /> {options[1]}
+        <input type="radio" value={3} name={char} /> {options[2]}
+        <input type="radio" value={4} name={char} /> {options[3]}
+        <input type="radio" value={5} name={char} /> {options[4]}
       </div>
     );
   }

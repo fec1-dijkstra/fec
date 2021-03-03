@@ -32,12 +32,14 @@ class AddReview extends React.Component {
             <div id="item">
               About the <b>Placeholder</b> here
             </div>
-            <div className="radio" onChange={this.select}>
-              Would you Recommend this Product?
-              <input type="radio" value="yes" name="recommend" /> Yes
-              <input type="radio" value="no" name="recommend" /> No
-            </div>
-            <RenderButtons meta={meta} />
+            <form>
+              <div className="radio" onChange={this.select}>
+                Would you Recommend this Product?
+                <input type="radio" value="yes" name="recommend" /> Yes
+                <input type="radio" value="no" name="recommend" /> No
+              </div>
+              <RenderButtons meta={meta} />
+            </form>
             <button type="submit" onClick={this.showModal}>
               Close
             </button>
