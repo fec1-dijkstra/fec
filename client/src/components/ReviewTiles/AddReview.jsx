@@ -6,6 +6,7 @@ class AddReview extends React.Component {
     super();
     this.state = { show: false, rec: null };
     this.showModal = this.showModal.bind(this);
+    this.select = this.select.bind(this);
   }
 
   showModal(e) {
@@ -21,7 +22,7 @@ class AddReview extends React.Component {
 
   render() {
     const { meta } = this.props;
-    console.log(meta);
+    // console.log(meta);
     const { show } = this.state;
     if (show) {
       return (
