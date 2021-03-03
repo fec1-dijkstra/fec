@@ -76,7 +76,6 @@ class App extends React.Component {
           productInfo={productInfo}
           productStyles={productStyles}
           reviewsMeta={reviewsMeta}
-          allReviews={allReviews}
         />
         <RelatedandOutfit
           relatedProducts={this.state.relatedProducts}

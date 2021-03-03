@@ -6,33 +6,43 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewsCount: '',
+      ratingsCount: 0,
     };
+  }
+
+  componentDidMount() {
+    const { reviewsMeta } = this.props;
+    this.countReviews(reviewsMeta);
   }
 
   componentDidUpdate(prevProps) {
     const { reviewsMeta } = this.props;
-    if (prevProps.reviewsMeta !== reviewsMeta) {
+    if (prevProps.reviewsMeta.product_id !== reviewsMeta.product_id) {
       this.countReviews(reviewsMeta);
     }
   }
 
   countReviews(reviewsMeta) {
-    const ratingsCount = 0;
+    let ratingsCount = 0;
     const allRatings = Object.entries(reviewsMeta.ratings);
     for (let i = 0; i < allRatings.length; i += 1) {
-      ratingsCount += allRatings[i][1];
+      ratingsCount += Number(allRatings[i][1]);
     }
+    this.setState({ ratingsCount });
   }
 
   render() {
-    const { productInfo, reviewsMeta } = this.props;
-    return (
-      <>
-        <Stars productId={productInfo.id} />
-        <div>Read all {console.log(reviewsMeta)} reviews</div>
-      </>
-    );
+    const { productInfo } = this.props;
+    const { ratingsCount } = this.state;
+    if (ratingsCount > 0) {
+      return (
+        <>
+          <Stars productId={productInfo.id} />
+          <div>Read all {ratingsCount} reviews</div>
+        </>
+      );
+    }
+    return <></>;
   }
 }
 
