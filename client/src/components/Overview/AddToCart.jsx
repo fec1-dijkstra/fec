@@ -33,11 +33,13 @@ class AddToCart extends React.Component {
       allSkus: {},
       allSizes: {},
       allQuantities: {},
+      allCart: [],
       selectedSku: null,
       selectedSize: '',
       selectedQuantity: 1,
       maxQuantity: 0,
       needsPlease: false,
+      toggleCart: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -71,6 +73,7 @@ class AddToCart extends React.Component {
         selectedQuantity: 1,
         maxQuantity,
         needsPlease: false,
+        toggleCart: false,
       });
     }
     if (event.target.id === 'quantity-selector') {
@@ -81,11 +84,16 @@ class AddToCart extends React.Component {
   handleClick(event) {
     const { selectedSize } = this.state;
     event.preventDefault();
-    if (selectedSize === '' && this.selectElement) {
-      AddToCart.moveFocus(this.selectElement);
-      this.setState({ needsPlease: true });
-    } else {
-      this.addCurrentSelectionsToCart();
+    if (event.target.id === 'add-to-bag-btn') {
+      if (selectedSize === '' && this.selectElement) {
+        AddToCart.moveFocus(this.selectElement);
+        this.setState({ needsPlease: true });
+      } else {
+        this.addCurrentSelectionsToCart();
+      }
+    }
+    if (event.target.id === 'view-bag-btn') {
+      this.showCart();
     }
   }
 
@@ -99,6 +107,7 @@ class AddToCart extends React.Component {
         selectedSize: '',
         selectedQuantity: 1,
         needsPlease: false,
+        toggleCart: false,
       });
     }
   }
@@ -110,25 +119,65 @@ class AddToCart extends React.Component {
   addCurrentSelectionsToCart() {
     const { selectedSku, selectedQuantity } = this.state;
     if (selectedSku) {
-      queries.postCart(selectedSku, () =>
-        this.setState({ selectedSku: null, selectedSize: '', selectedQuantity: 1, maxQuantity: 0 })
-      );
+      queries
+        .postCart(selectedSku, (result) => result)
+        .then(() =>
+          queries.getCart((result) => {
+            this.setState({
+              selectedSku: null,
+              selectedSize: '',
+              selectedQuantity: 1,
+              maxQuantity: 0,
+              toggleCart: true,
+              allCart: result,
+            });
+          })
+        );
     }
   }
 
+  cartCount() {
+    const { allCart } = this.state;
+    let count = 0;
+    for (let i = 0; i < allCart.length; i++) {
+      count += Number(allCart[i].count);
+    }
+    return count;
+  }
+
+  showCart() {
+    this.setState({toggleCart: false});
+  }
+
   render() {
-    const { allSizes, selectedSize, selectedQuantity, maxQuantity, needsPlease } = this.state;
+    const {
+      allSizes,
+      selectedSize,
+      selectedQuantity,
+      maxQuantity,
+      needsPlease,
+      toggleCart,
+    } = this.state;
     const { selectedStyle, productInfo } = this.props;
     if (allSizes.sizes) {
       let max = maxQuantity;
       if (max > 15) {
         max = 15;
       }
-      let addToBagButton = (
-        <button type="submit" onClick={this.handleClick}>
-          ADD TO BAG
-        </button>
-      );
+      let addToBagButton = () => {
+        if (toggleCart) {
+          return (
+            <button type="submit" id="view-bag-btn" onClick={this.handleClick}>
+              VIEW BAG {`(${this.cartCount()})`}
+            </button>
+          );
+        }
+        return (
+          <button type="submit" id="add-to-bag-btn" onClick={this.handleClick}>
+            ADD TO BAG
+          </button>
+        );
+      };
       let defaultSize = 'SELECT SIZE';
       const targetSize = allSizes.sizes.length;
       if (allSizes.sizes.length < 1) {
@@ -144,13 +193,13 @@ class AddToCart extends React.Component {
           return <div>Please select size</div>;
         }
         return <></>;
-      }
+      };
       return (
         <>
           {pleaseSelect()}
           <select
-            onFocus={ e => e.target.size = targetSize.toString()}
-            onBlur={ e => e.target.size = '0'}
+            onFocus={(e) => (e.target.size = targetSize.toString())}
+            onBlur={(e) => (e.target.size = '0')}
             name="size-selector"
             id="size-selector"
             value={selectedSize}
@@ -173,7 +222,7 @@ class AddToCart extends React.Component {
             <option value="1">{defaultQuantity}</option>
             <Quantities max={max} />
           </select>
-          {addToBagButton}
+          {addToBagButton()}
           <SocialShare selectedStyle={selectedStyle} productInfo={productInfo} />
         </>
       );
