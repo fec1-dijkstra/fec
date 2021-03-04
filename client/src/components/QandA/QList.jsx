@@ -1,7 +1,5 @@
 import React from 'react';
 import QCard from './QCard.jsx';
-import Question from './Question.jsx';
-import Answer from './Answer.jsx';
 
 // TODO: render a bunch of question cards
 // this is where I'll want to store the questions to be rendered
