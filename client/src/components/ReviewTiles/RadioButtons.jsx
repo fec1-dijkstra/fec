@@ -20,10 +20,8 @@ class RadioButton extends React.Component {
     const stateObj = () => {
       const returnObj = {};
       returnObj[name] = value;
-      // debugger;
       return returnObj;
     };
-    // debugger;
     self.setState(stateObj);
   }
 

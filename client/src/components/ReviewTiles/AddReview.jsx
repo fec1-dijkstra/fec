@@ -1,11 +1,17 @@
 import React from 'react';
 import RenderButtons from './RadioButtons.jsx';
 import CharsLeft from './CharsLeft.jsx';
+import ReviewRating from './ReviewRating.jsx';
 
 class AddReview extends React.Component {
   constructor() {
     super();
-    this.state = { show: false, rec: null, charsLeft: 50, photos: [] };
+    this.state = {
+      show: false,
+      rec: null,
+      charsLeft: 50,
+      photos: [],
+    };
     this.showModal = this.showModal.bind(this);
     this.select = this.select.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -19,10 +25,12 @@ class AddReview extends React.Component {
     this.setState({ charsLeft: 50 - charCount });
   }
 
+  // eslint-disable-next-line react/sort-comp
   uploadPhoto(event) {
     const { photos } = this.state;
     const photo = event.target.value;
     debugger;
+    this.setState({ photos: photos.concat(photo) });
   }
 
   showModal(e) {
@@ -45,8 +53,7 @@ class AddReview extends React.Component {
   render() {
     const { meta } = this.props;
     const self = this;
-    // console.log(meta);
-    const { show, charsLeft } = this.state;
+    const { show, charsLeft, photos } = this.state;
     if (show) {
       return (
         <div className="modal-background">
@@ -56,6 +63,7 @@ class AddReview extends React.Component {
               About the <b>Placeholder</b> here
             </div>
             <form onSubmit={this.handleSubmit}>
+              <ReviewRating />
               <div className="radio" onChange={this.select}>
                 Would you Recommend this Product?
                 <input type="radio" value="yes" name="recommend" /> Yes
@@ -75,6 +83,7 @@ class AddReview extends React.Component {
               <div>
                 <input className="info" type="text" placeholder="Example: jackson11!" />
               </div>
+              <img src={photos[0]} alt="" />
               <div className="caution">
                 For privacy reasons, do not use your full name or email address
               </div>
