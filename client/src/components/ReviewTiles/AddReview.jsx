@@ -9,6 +9,7 @@ class AddReview extends React.Component {
     this.state = {
       show: false,
       rec: null,
+      reviewBody: '',
       charsLeft: 50,
       photos: [],
       rating: 0,
@@ -22,15 +23,17 @@ class AddReview extends React.Component {
 
   handleChange(event) {
     event.preventDefault();
-    const charCount = event.target.value.length;
-    this.setState({ charsLeft: 50 - charCount });
+    const chars = event.target.value;
+    this.setState({
+      charsLeft: 50 - chars.length,
+      reviewBody: chars,
+    });
   }
 
   // eslint-disable-next-line react/sort-comp
   uploadPhoto(event) {
     const { photos } = this.state;
     const photo = event.target.value;
-    debugger;
     this.setState({ photos: photos.concat(photo) });
   }
 
