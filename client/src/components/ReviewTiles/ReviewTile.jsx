@@ -9,7 +9,7 @@ import Recommends from './Recommends.jsx';
 import Helpful from './Helpful.jsx';
 import ShowPhotos from './ShowPhotos.jsx';
 import Response from './Response.jsx';
-import ReviewRating from './ReviewRating.jsx';
+import SelectStars from './SelectStars.jsx';
 
 class ReviewTile extends React.Component {
   constructor() {
@@ -21,7 +21,7 @@ class ReviewTile extends React.Component {
     const { review } = this.props;
     return (
       <div className="review-tile" key={review.name}>
-        <ReviewRating rating={review.rating} />
+        <SelectStars rating={review.rating} />
         <div className="date">{new Date(review.date).toString().substring(3, 15)}</div>
         <div className="username">
           <u>{review.reviewer_name}</u>
