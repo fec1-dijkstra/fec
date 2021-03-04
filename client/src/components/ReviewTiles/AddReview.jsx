@@ -2,6 +2,7 @@ import React from 'react';
 import RenderButtons from './RadioButtons.jsx';
 import CharsLeft from './CharsLeft.jsx';
 import ReviewRating from './ReviewRating.jsx';
+import ReviewField from './ReviewField.jsx';
 
 class AddReview extends React.Component {
   constructor() {
@@ -74,7 +75,12 @@ class AddReview extends React.Component {
                 <input type="radio" value="no" name="recommend" /> No
               </div>
               <RenderButtons meta={meta} self={self} />
-              <input className="info" type="text" placeholder={`Example: "Best Purchase Ever!"`} />
+              <ReviewField
+                placeholder={`Example: "Best Purchase Ever!"`}
+                limit={60}
+                prop="summary"
+                self={self}
+              />
               <div>
                 <textarea
                   className="info"

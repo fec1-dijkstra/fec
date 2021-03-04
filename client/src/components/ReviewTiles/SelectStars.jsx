@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SelectStars = ({ rating }) => {
-  debugger;
   const starCount = [0, 0, 0, 0, 0];
   const starRating = starCount.map(() => {
     if (rating > 0) {
