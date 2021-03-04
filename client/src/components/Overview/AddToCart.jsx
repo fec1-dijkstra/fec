@@ -5,6 +5,27 @@ import Quantities from './Quantitites.jsx';
 import SocialShare from './SocialShare.jsx';
 
 class AddToCart extends React.Component {
+  static moveFocus(element) {
+    element.focus();
+  }
+
+  static getAllSizesAndQuantities(skus) {
+    const allSkus = [];
+    const allSizes = [];
+    const allQuantities = [];
+    if (skus) {
+      const skuList = Object.entries(skus);
+      for (let i = 0; i < skuList.length; i += 1) {
+        if (skuList[i][1].quantity > 0) {
+          allSkus.push(skuList[i][0]);
+          allSizes.push(skuList[i][1].size);
+          allQuantities.push(skuList[i][1].quantity);
+        }
+      }
+    }
+    return [allSkus, allSizes, allQuantities];
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -15,10 +36,13 @@ class AddToCart extends React.Component {
       selectedSize: '',
       selectedQuantity: 1,
       maxQuantity: 0,
+      needsPlease: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.addCurrentSelectionsToCart = this.addCurrentSelectionsToCart.bind(this);
+    this.pleaseSelect = this.pleaseSelect.bind(this);
+    this.selectElement = null;
   }
 
   componentDidMount() {
@@ -40,7 +64,13 @@ class AddToCart extends React.Component {
     const selectedSku = allSkus.skus[valueIndex];
     const maxQuantity = allQuantities.quantities[valueIndex];
     if (event.target.id === 'size-selector') {
-      this.setState({ selectedSku, selectedSize: value, selectedQuantity: 1, maxQuantity });
+      this.setState({
+        selectedSku,
+        selectedSize: value,
+        selectedQuantity: 1,
+        maxQuantity,
+        needsPlease: false,
+      });
     }
     if (event.target.id === 'quantity-selector') {
       this.setState({ selectedQuantity: value });
@@ -48,8 +78,14 @@ class AddToCart extends React.Component {
   }
 
   handleClick(event) {
+    const { selectedSize } = this.state;
     event.preventDefault();
-    this.addCurrentSelectionsToCart();
+    if (selectedSize === '' && this.selectElement) {
+      AddToCart.moveFocus(this.selectElement);
+      this.setState({ needsPlease: true });
+    } else {
+      this.addCurrentSelectionsToCart();
+    }
   }
 
   getSkus(selectedStyle) {
@@ -61,23 +97,13 @@ class AddToCart extends React.Component {
         allQuantities: { quantities: allSizesAndQuantities[2] },
         selectedSize: '',
         selectedQuantity: 1,
+        needsPlease: false,
       });
     }
   }
 
-  static getAllSizesAndQuantities(skus) {
-    const allSkus = [];
-    const allSizes = [];
-    const allQuantities = [];
-    if (skus) {
-      const skuList = Object.entries(skus);
-      for (let i = 0; i < skuList.length; i += 1) {
-        allSkus.push(skuList[i][0]);
-        allSizes.push(skuList[i][1].size);
-        allQuantities.push(skuList[i][1].quantity);
-      }
-    }
-    return [allSkus, allSizes, allQuantities];
+  pleaseSelect(element) {
+    this.selectElement = element;
   }
 
   addCurrentSelectionsToCart() {
@@ -92,37 +118,63 @@ class AddToCart extends React.Component {
   }
 
   render() {
-    const { allSizes, selectedSize, selectedQuantity, maxQuantity } = this.state;
+    const { allSizes, selectedSize, selectedQuantity, maxQuantity, needsPlease } = this.state;
     const { selectedStyle, productInfo } = this.props;
-    let defaultSize = 1;
-    if (selectedSize === '') {
-      defaultSize = '-';
-    }
-    if (allSizes.sizes && allSizes.sizes.length > 0) {
+    if (allSizes.sizes) {
+      let max = maxQuantity;
+      if (max > 15) {
+        max = 15;
+      }
+      let addToBagButton = (
+        <button type="submit" onClick={this.handleClick}>
+          ADD TO BAG
+        </button>
+      );
+      let defaultSize = 'SELECT SIZE';
+      const targetSize = allSizes.sizes.length;
+      if (allSizes.sizes.length < 1) {
+        defaultSize = 'OUT OF STOCK';
+        addToBagButton = <></>;
+      }
+      let defaultQuantity = 1;
+      if (selectedSize === '') {
+        defaultQuantity = '-';
+      }
+      const pleaseSelect = () => {
+        if (needsPlease) {
+          return <div>Please select size</div>;
+        }
+        return <></>;
+      }
       return (
         <>
+          {pleaseSelect()}
           <select
+            onFocus={ e => e.target.size = targetSize.toString()}
+            onBlur={ e => e.target.size = '0'}
             name="size-selector"
             id="size-selector"
             value={selectedSize}
             onChange={this.handleChange}
+            disabled={allSizes.sizes.length < 1}
+            ref={this.pleaseSelect}
           >
-            <option value="">SELECT SIZE</option>
+            <option value="">{defaultSize}</option>
             <Sizes allSizes={allSizes} />
           </select>
           <select
+            onFocus={(e) => (e.target.size = max.toString())}
+            onBlur={(e) => (e.target.size = '0')}
             name="quantity-selector"
             id="quantity-selector"
             value={selectedQuantity}
             onChange={this.handleChange}
             disabled={selectedSize === ''}
           >
-            <option value="1">{defaultSize}</option>
-            <Quantities maxQuantity={maxQuantity} />
+            <option value="1">{defaultQuantity}</option>
+            <Quantities max={max} />
           </select>
-          <button type="submit" onClick={this.handleClick}>
-            ADD TO BAG
-          </button>
+          {addToBagButton}
           <SocialShare selectedStyle={selectedStyle} productInfo={productInfo} />
         </>
       );
