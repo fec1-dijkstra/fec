@@ -35,7 +35,7 @@ const SocialShare = ({ selectedStyle, productInfo }) => {
         target="_blank"
         rel="noreferrer"
       >
-        Save
+        Pin
       </a>
     </>
   );

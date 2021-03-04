@@ -40,10 +40,14 @@ class StyleSelector extends React.Component {
 
   handleClick(event) {
     const { productStyles } = this.props;
-    const selectedStyle = productStyles.results.find(
-      (style) => style.style_id === Number(event.target.value)
-    );
-    return this.setState({ selectedStyle });
+    let { selectedStyle } = this.state;
+    if (Number(event.target.value) !== selectedStyle.style_id) {
+      selectedStyle = productStyles.results.find(
+        (style) => style.style_id === Number(event.target.value)
+      );
+      return this.setState({ selectedStyle });
+    }
+    return undefined;
   }
 
   findDefaultStyle() {
@@ -52,7 +56,7 @@ class StyleSelector extends React.Component {
       const selectedStyle = productStyles.results.find((style) => style[`default?`] === true);
       return this.setState({ selectedStyle });
     }
-    return <></>;
+    return undefined;
   }
 
   render() {
