@@ -91,7 +91,7 @@ class AddToCart extends React.Component {
 
   render() {
     const { allSizes, selectedSize, selectedQuantity, maxQuantity } = this.state;
-    const { selectedStyle } = this.props;
+    const { selectedStyle, productInfo } = this.props;
     if (allSizes.sizes && allSizes.sizes.length > 0) {
       return (
         <>
@@ -116,7 +116,7 @@ class AddToCart extends React.Component {
           <button type="submit" onClick={this.handleClick}>
             ADD TO BAG
           </button>
-          <SocialShare selectedStyle={selectedStyle} />
+          <SocialShare selectedStyle={selectedStyle} productInfo={productInfo} />
         </>
       );
     }
@@ -126,10 +126,12 @@ class AddToCart extends React.Component {
 
 AddToCart.defaultProps = {
   selectedStyle: {},
+  productInfo: {},
 };
 
 AddToCart.propTypes = {
   selectedStyle: PropTypes.oneOfType([PropTypes.object]),
+  productInfo: PropTypes.oneOfType([PropTypes.object]),
 };
 
 export default AddToCart;

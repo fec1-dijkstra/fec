@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AddToCart from './AddToCart.jsx';
 
 class StyleSelector extends React.Component {
-  static salePrice(selectedStyle) {
+  static setPrice(selectedStyle) {
     if (selectedStyle.sale_price) {
       return (
         <>
@@ -19,6 +19,7 @@ class StyleSelector extends React.Component {
     super(props);
     this.state = {
       selectedStyle: {},
+      onSale: [],
     };
   }
 
@@ -39,19 +40,21 @@ class StyleSelector extends React.Component {
       const selectedStyle = productStyles.results.find((style) => style[`default?`] === true);
       return this.setState({ selectedStyle });
     }
+    return <></>;
   }
 
   render() {
     const { selectedStyle } = this.state;
+    const { productInfo } = this.props;
     if (selectedStyle.name) {
       return (
         <>
-          {StyleSelector.salePrice(selectedStyle)}
+          {StyleSelector.setPrice(selectedStyle)}
           <div>
             Style `{'>'}` {selectedStyle.name}
           </div>
           <div>Thumbnails...</div>
-          <AddToCart selectedStyle={selectedStyle} />
+          <AddToCart selectedStyle={selectedStyle} productInfo={productInfo} />
         </>
       );
     }
@@ -61,10 +64,12 @@ class StyleSelector extends React.Component {
 
 StyleSelector.defaultProps = {
   productStyles: {},
+  productInfo: {},
 };
 
 StyleSelector.propTypes = {
   productStyles: PropTypes.oneOfType([PropTypes.object]),
+  productInfo: PropTypes.oneOfType([PropTypes.object]),
 };
 
 export default StyleSelector;

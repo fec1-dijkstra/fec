@@ -9,7 +9,7 @@ const ProductInformation = ({ productInfo, productStyles, reviewsMeta }) => (
     <div>{productInfo.category}</div>
     <div>{productInfo.name}</div>
 
-    <StyleSelector productStyles={productStyles} />
+    <StyleSelector productStyles={productStyles} productInfo={productInfo} />
   </>
 );
 
