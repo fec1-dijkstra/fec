@@ -1,12 +1,20 @@
 import React from 'react';
 import RenderButtons from './RadioButtons.jsx';
+import CharsLeft from './CharsLeft.jsx';
 
 class AddReview extends React.Component {
   constructor() {
     super();
-    this.state = { show: false, rec: null };
+    this.state = { show: false, rec: null, charsLeft: 50 };
     this.showModal = this.showModal.bind(this);
     this.select = this.select.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    event.preventDefault();
+    const charCount = event.target.value.length;
+    this.setState({ charsLeft: 50 - charCount });
   }
 
   showModal(e) {
@@ -23,7 +31,7 @@ class AddReview extends React.Component {
   render() {
     const { meta } = this.props;
     // console.log(meta);
-    const { show } = this.state;
+    const { show, charsLeft } = this.state;
     if (show) {
       return (
         <div className="modal-background">
@@ -46,9 +54,11 @@ class AddReview extends React.Component {
               />
               <div>
                 <textarea
-                  style={{ width: 600, height: 300 }}
+                  onChange={this.handleChange}
+                  style={{ width: 602, height: 300 }}
                   placeholder="Why did you like the Product or not?"
                 />
+                <CharsLeft chars={charsLeft} />
               </div>
             </form>
             <button type="submit" onClick={this.showModal}>
