@@ -82,3 +82,7 @@
   display: block;
   z-index: 0;
 }
+
+.selected-style-icon {
+  font-weight: 900;
+}

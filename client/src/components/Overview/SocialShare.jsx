@@ -8,7 +8,7 @@ const SocialShare = ({ selectedStyle, productInfo }) => {
   } else {
     price = selectedStyle.original_price;
   }
-  const twitterQuery = `Hei%20ma%20d00dz%20check%20oot%20d33z%20Saweeet%20${productInfo.name}%20i%20pickd%20up%20for%20juzz%20${price}%20from%20mi%20fav%20websyte`;
+  const twitterQuery = `Hei%20ma%20d00dz%20check%20oot%20diz%20Saweeet%20~${selectedStyle.name}~%20${productInfo.name}%20i%20foond%20for%20juzz%20$${price}%20from%20mi%20fav%20websyte`;
   return (
     <>
       <a

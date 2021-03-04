@@ -59,6 +59,8 @@ class AddToCart extends React.Component {
         allSkus: { skus: allSizesAndQuantities[0] },
         allSizes: { sizes: allSizesAndQuantities[1] },
         allQuantities: { quantities: allSizesAndQuantities[2] },
+        selectedSize: '',
+        selectedQuantity: 1,
       });
     }
   }
