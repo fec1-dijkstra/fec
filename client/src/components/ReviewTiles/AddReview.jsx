@@ -11,6 +11,7 @@ class AddReview extends React.Component {
       rec: null,
       charsLeft: 50,
       photos: [],
+      rating: 0,
     };
     this.showModal = this.showModal.bind(this);
     this.select = this.select.bind(this);
@@ -63,7 +64,7 @@ class AddReview extends React.Component {
               About the <b>Placeholder</b> here
             </div>
             <form onSubmit={this.handleSubmit}>
-              <ReviewRating />
+              <ReviewRating self={self} />
               <div className="radio" onChange={this.select}>
                 Would you Recommend this Product?
                 <input type="radio" value="yes" name="recommend" /> Yes
