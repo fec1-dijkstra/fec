@@ -3,23 +3,19 @@ import React from 'react';
 import Question from './Question.jsx';
 import Answer from './Answer.jsx';
 
-import { qa } from '../../../dummydata.js';
-
 class QCard extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: qa,
+      data: [],
     };
   }
 
   render() {
-    const { data } = this.state;
     return (
       <div>
-        ___QCard Component___
-        <Question data={data} />
+        <Question question={this.props.question} />
         <Answer />
       </div>
     );

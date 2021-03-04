@@ -1,22 +1,30 @@
 import React from 'react';
+import QCard from './QCard.jsx';
+import Question from './Question.jsx';
+import Answer from './Answer.jsx';
+
+// TODO: render a bunch of question cards
+// this is where I'll want to store the questions to be rendered
 
 class QList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      questions: ['Are my pants too big?', 'Why is my nose so small?'],
+      questions: ['Question one?', 'Question two?', 'Question three?', 'Question four?'],
     };
   }
 
   render() {
     const { questions } = this.state;
-    const questionsList = questions.map((question, i) => <div key={question}>{question}</div>);
+    const QuestionCards = questions.map((question) => {
+      return <QCard question={question}/>
+    })
 
     return (
       <div>
-        QList
-        <div>{questionsList}</div>
+        ___QList___
+        <div>{QuestionCards}</div>
       </div>
     );
   }

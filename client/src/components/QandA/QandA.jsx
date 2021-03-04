@@ -1,7 +1,8 @@
 import React from 'react';
-import QCard from './QCard.jsx';
 import QSearch from './QSearch.jsx';
 import QList from './QList.jsx';
+
+// import { qa } from '../../../dummydata.js';
 
 class QandA extends React.Component {
   constructor(props) {
@@ -9,15 +10,13 @@ class QandA extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {}
-
   render() {
+    // console.log('qa:', qa);
     return (
       <div>
         QandA component goes here!
         <div>----start----</div>
         <QSearch />
-        <QCard />
         <QList />
         <button type="button">Add a Question</button>
         <div>-----end-----</div>
