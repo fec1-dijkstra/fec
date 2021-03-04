@@ -15,7 +15,7 @@ ProductOverview.defaultProps = {
 };
 
 ProductOverview.propTypes = {
-  productInfo: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  productInfo: PropTypes.oneOfType([PropTypes.object]),
 };
 
 export default ProductOverview;

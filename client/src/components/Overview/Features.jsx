@@ -13,11 +13,11 @@ const Features = ({ productInfo }) => {
 };
 
 Features.defaultProps = {
-  productInfo: [],
+  productInfo: {},
 };
 
 Features.propTypes = {
-  productInfo: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  productInfo: PropTypes.oneOfType([PropTypes.object]),
 };
 
 export default Features;

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StyleSelector from './StyleSelector.jsx';
+import Reviews from './Reviews.jsx';
 
-class ProductInformation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedStyle: {},
-    };
-  }
+const ProductInformation = ({ productInfo, productStyles, reviewsMeta }) => (
+  <>
+    <Reviews productInfo={productInfo} reviewsMeta={reviewsMeta} />
+    <div>{productInfo.category}</div>
+    <div>{productInfo.name}</div>
 
+<<<<<<< HEAD
   componentDidUpdate(prevProps) {
     if (prevProps.productStyles.results !== this.props.productStyles.results) {
       this.findDefaultStyle();
@@ -44,15 +44,22 @@ class ProductInformation extends React.Component {
     );
   }
 }
+=======
+    <StyleSelector productStyles={productStyles} />
+  </>
+);
+>>>>>>> eed5345b28c12b44b5f20bec9d3ee907ffa05f9c
 
 ProductInformation.defaultProps = {
   productInfo: {},
   productStyles: {},
+  reviewsMeta: {},
 };
 
 ProductInformation.propTypes = {
-  productInfo: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  productStyles: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  productInfo: PropTypes.oneOfType([PropTypes.object]),
+  productStyles: PropTypes.oneOfType([PropTypes.object]),
+  reviewsMeta: PropTypes.oneOfType([PropTypes.object]),
 };
 
 export default ProductInformation;
