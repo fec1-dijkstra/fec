@@ -39,6 +39,17 @@ class AddReview extends React.Component {
                 <input type="radio" value="no" name="recommend" /> No
               </div>
               <RenderButtons meta={meta} />
+              <input
+                type="text"
+                placeholder={`Example: "Best Purchase Ever!"`}
+                style={{ width: 600 }}
+              />
+              <div>
+                <textarea
+                  style={{ width: 600, height: 300 }}
+                  placeholder="Why did you like the Product or not?"
+                />
+              </div>
             </form>
             <button type="submit" onClick={this.showModal}>
               Close
