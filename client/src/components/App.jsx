@@ -24,24 +24,34 @@ class App extends React.Component {
       relatedProducts: [],
       currentProduct: 17762,
       reviewsMeta: {},
+      allReviews: {},
+      sortBy: 'newest',
     };
   }
 
   componentDidMount() {
-    const { currentProduct } = this.state;
-    this.getAll(1, 20, currentProduct);
+    const { currentProduct, sortBy } = this.state;
+    this.getAll(1, 20, sortBy, currentProduct);
   }
 
-  getAll(pageNumber, countNumber, productId) {
+  getAll(pageNumber, countNumber, sortBy, productId) {
     Promise.all([
       queries.getProductList(pageNumber, countNumber, (result) => result),
       queries.getProductInfo(productId, (result) => result),
       queries.getProductStyles(productId, (result) => result),
       queries.getRelatedProducts(productId, (result) => result),
       queries.getReviewsMeta(productId, (result) => result),
+      queries.getReviews(pageNumber, countNumber, sortBy, productId, (result) => result),
     ])
-      .then(([productList, productInfo, productStyles, relatedProducts, reviewsMeta]) => {
-        this.setState({ productList, productInfo, productStyles, relatedProducts, reviewsMeta });
+      .then(([productList, productInfo, productStyles, relatedProducts, reviewsMeta, allReviews]) => {
+          this.setState({
+            productList,
+            productInfo,
+            productStyles,
+            relatedProducts,
+            reviewsMeta,
+            allReviews,
+          });
       })
       .catch((error) => console.log('error caught in App.jsx', error));
   }
@@ -57,11 +67,16 @@ class App extends React.Component {
       productStyles,
       relatedProducts,
       reviewsMeta,
+      allReviews,
     } = this.state;
     return (
       <div>
         <div> Hello World</div>
-        <Overview productInfo={productInfo} productStyles={productStyles} />
+        <Overview
+          productInfo={productInfo}
+          productStyles={productStyles}
+          reviewsMeta={reviewsMeta}
+        />
         <RelatedandOutfit
           relatedProducts={this.state.relatedProducts}
           productInfo={this.state.productInfo}

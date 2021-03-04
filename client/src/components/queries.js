@@ -77,7 +77,20 @@ const getReviewsMeta = (productId, cb) => {
   };
 
   return axiosCall(reviewsMeta, cb);
-}
+};
+
+const getReviews = (pageNumber, countNumber, sortBy, productId, cb) => {
+  const allReviews = {
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?page=${pageNumber}&count=${countNumber}&sort=${sortBy}&product_id=${productId}`,
+    headers: {
+      Authorization: auth.myToken,
+      'Content-Type': 'application/json',
+    },
+  };
+
+  return axiosCall(allReviews, cb);
+};
 
 module.exports = {
   getProductList,
@@ -85,4 +98,5 @@ module.exports = {
   getProductStyles,
   getRelatedProducts,
   getReviewsMeta,
+  getReviews,
 };
