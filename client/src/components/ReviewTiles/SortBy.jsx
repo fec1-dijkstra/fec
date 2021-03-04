@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import axios from 'axios';
 import { myToken } from '../../../../token.js';
 // pass in state of RenderReviews (reviews) and invoke sort function
@@ -28,7 +27,6 @@ class SortBy extends React.Component {
     const self = this;
     const { product } = this.state;
     const text = event.target.value;
-    debugger;
     axios(
       `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${product}&sort=${text}&count=25`,
       config
@@ -49,5 +47,3 @@ class SortBy extends React.Component {
 }
 
 export default SortBy;
-=======
->>>>>>> eed5345b28c12b44b5f20bec9d3ee907ffa05f9c
