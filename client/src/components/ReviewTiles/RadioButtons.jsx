@@ -1,9 +1,9 @@
 import React from 'react';
-import identifyChar from './identifyChar.js';
+import identifyChar from './functions/identifyChar.js';
 
-const RenderButtons = ({ meta }) => {
+const RenderButtons = ({ meta, self }) => {
   const chars = Object.keys(meta.characteristics);
-  const buttons = chars.map((char) => <RadioButton char={char} />);
+  const buttons = chars.map((char) => <RadioButton char={char} self={self} />);
   return <div className="radio-btns">{buttons}</div>;
 };
 
@@ -15,8 +15,16 @@ class RadioButton extends React.Component {
   }
 
   handleChange(event) {
-    const val = event.target.value;
-    this.setState({ option: val });
+    const { self } = this.props;
+    const { value, name } = event.target;
+    const stateObj = () => {
+      const returnObj = {};
+      returnObj[name] = value;
+      // debugger;
+      return returnObj;
+    };
+    // debugger;
+    self.setState(stateObj);
   }
 
   render() {
