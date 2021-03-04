@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import ProductInformation from './ProductInformation.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import ProductOverview from './ProductOverview.jsx';
-import SocialShare from './SocialShare.jsx';
 
 const Overview = ({ productInfo, productStyles, reviewsMeta }) => {
   if (productInfo.id) {
@@ -16,7 +15,6 @@ const Overview = ({ productInfo, productStyles, reviewsMeta }) => {
           productStyles={productStyles}
           reviewsMeta={reviewsMeta}
         />
-        <SocialShare />
         <ProductOverview productInfo={productInfo} />
       </>
     );

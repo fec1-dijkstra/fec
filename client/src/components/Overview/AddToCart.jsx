@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Sizes from './Sizes.jsx';
 import Quantities from './Quantitites.jsx';
+import SocialShare from './SocialShare.jsx';
 
 class AddToCart extends React.Component {
   constructor(props) {
@@ -18,6 +19,11 @@ class AddToCart extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.addCurrentSelectionsToCart = this.addCurrentSelectionsToCart.bind(this);
+  }
+
+  componentDidMount() {
+    const { selectedStyle } = this.props;
+    this.getSkus(selectedStyle);
   }
 
   componentDidUpdate(prevProps) {
@@ -85,31 +91,36 @@ class AddToCart extends React.Component {
 
   render() {
     const { allSizes, selectedSize, selectedQuantity, maxQuantity } = this.state;
-    return (
-      <>
-        <select
-          name="size-selector"
-          id="size-selector"
-          value={selectedSize}
-          onChange={this.handleChange}
-        >
-          <option value="">SELECT SIZE</option>
-          <Sizes allSizes={allSizes} />
-        </select>
-        <select
-          name="quantity-selector"
-          id="quantity-selector"
-          value={selectedQuantity}
-          onChange={this.handleChange}
-        >
-          <option value="1">1</option>
-          <Quantities maxQuantity={maxQuantity} />
-        </select>
-        <button type="submit" onClick={this.handleClick}>
-          ADD TO BAG
-        </button>
-      </>
-    );
+    const { selectedStyle } = this.props;
+    if (allSizes.sizes && allSizes.sizes.length > 0) {
+      return (
+        <>
+          <select
+            name="size-selector"
+            id="size-selector"
+            value={selectedSize}
+            onChange={this.handleChange}
+          >
+            <option value="">SELECT SIZE</option>
+            <Sizes allSizes={allSizes} />
+          </select>
+          <select
+            name="quantity-selector"
+            id="quantity-selector"
+            value={selectedQuantity}
+            onChange={this.handleChange}
+          >
+            <option value="1">1</option>
+            <Quantities maxQuantity={maxQuantity} />
+          </select>
+          <button type="submit" onClick={this.handleClick}>
+            ADD TO BAG
+          </button>
+          <SocialShare selectedStyle={selectedStyle} />
+        </>
+      );
+    }
+    return <></>;
   }
 }
 

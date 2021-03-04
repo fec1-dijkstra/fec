@@ -26,12 +26,12 @@ class StyleSelector extends React.Component {
     this.findDefaultStyle();
   }
 
-  componentDidUpdate(prevProps) {
-    const { productStyles } = this.props;
-    if (prevProps.productStyles.results !== productStyles.results) {
-      this.findDefaultStyle();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   const { productStyles } = this.props;
+  //   if (prevProps.productStyles.results !== productStyles.results) {
+  //     this.findDefaultStyle();
+  //   }
+  // }
 
   findDefaultStyle() {
     const { productStyles } = this.props;
@@ -39,21 +39,23 @@ class StyleSelector extends React.Component {
       const selectedStyle = productStyles.results.find((style) => style[`default?`] === true);
       return this.setState({ selectedStyle });
     }
-    return {};
   }
 
   render() {
     const { selectedStyle } = this.state;
-    return (
-      <>
-        {StyleSelector.salePrice(selectedStyle)}
-        <div>
-          Style `{'>'}` {selectedStyle.name}
-        </div>
-        <div>Thumbnails...</div>
-        <AddToCart selectedStyle={selectedStyle} />
-      </>
-    );
+    if (selectedStyle.name) {
+      return (
+        <>
+          {StyleSelector.salePrice(selectedStyle)}
+          <div>
+            Style `{'>'}` {selectedStyle.name}
+          </div>
+          <div>Thumbnails...</div>
+          <AddToCart selectedStyle={selectedStyle} />
+        </>
+      );
+    }
+    return <></>;
   }
 }
 
