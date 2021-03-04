@@ -94,6 +94,10 @@ class AddToCart extends React.Component {
   render() {
     const { allSizes, selectedSize, selectedQuantity, maxQuantity } = this.state;
     const { selectedStyle, productInfo } = this.props;
+    let defaultSize = 1;
+    if (selectedSize === '') {
+      defaultSize = '-';
+    }
     if (allSizes.sizes && allSizes.sizes.length > 0) {
       return (
         <>
@@ -111,8 +115,9 @@ class AddToCart extends React.Component {
             id="quantity-selector"
             value={selectedQuantity}
             onChange={this.handleChange}
+            disabled={selectedSize === ''}
           >
-            <option value="1">1</option>
+            <option value="1">{defaultSize}</option>
             <Quantities maxQuantity={maxQuantity} />
           </select>
           <button type="submit" onClick={this.handleClick}>
