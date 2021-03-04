@@ -3,17 +3,14 @@ import React from 'react';
 class Question extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      question: 'Why is the sky blue?',
-    };
+    this.state = {};
   }
 
   render() {
-    const { question } = this.state;
     return (
       <div>
         Q:
-        <div>{question}</div>
+        <div>{this.props.question}</div>
         <button type="button">Add an Answer</button>
       </div>
     );
