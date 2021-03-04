@@ -112,3 +112,12 @@
   overflow-y: scroll;
   height: 70vh;
 }
+
+.checked {
+  color: #e7711b;
+}
+
+.unchecked {
+  color: #c5c5c5;
+  text-shadow: 0px 1px 0 #a2a2a2;
+}

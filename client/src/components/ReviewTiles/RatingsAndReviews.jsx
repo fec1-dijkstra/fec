@@ -3,6 +3,7 @@
 import React from 'react';
 import RenderReviews from './RenderReviews.jsx';
 import AddReview from './AddReview.jsx';
+import Stars from '../Stars.jsx';
 
 class RatingsAndReviews extends React.Component {
   constructor({ reviews, product }) {
