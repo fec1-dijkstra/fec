@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Sizes from './Sizes.jsx';
 import Quantities from './Quantitites.jsx';
 import SocialShare from './SocialShare.jsx';
+import queries from '../queries.js';
 
 class AddToCart extends React.Component {
   static moveFocus(element) {
@@ -107,13 +108,11 @@ class AddToCart extends React.Component {
   }
 
   addCurrentSelectionsToCart() {
-    const { selectedStyle } = this.props;
-    const { selectedSku, selectedSize, selectedQuantity } = this.state;
+    const { selectedSku, selectedQuantity } = this.state;
     if (selectedSku) {
-      alert(
-        `ADDED TO BAG: SKU: ${selectedSku} Size: ${selectedSize} Quantity: ${selectedQuantity}`
+      queries.postCart(selectedSku, () =>
+        this.setState({ selectedSku: null, selectedSize: '', selectedQuantity: 1, maxQuantity: 0 })
       );
-      this.setState({ selectedSku: null, selectedSize: '', selectedQuantity: 1, maxQuantity: 0 });
     }
   }
 

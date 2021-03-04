@@ -92,6 +92,33 @@ const getReviews = (pageNumber, countNumber, sortBy, productId, cb) => {
   return axiosCall(allReviews, cb);
 };
 
+const getCart = (cb) => {
+  const allCart = {
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/cart`,
+    headers: {
+      Authorization: auth.myToken,
+      'Content-Type': 'application/json',
+    },
+  };
+
+  return axiosCall(allCart, cb);
+};
+
+const postCart = (skuId, cb) => {
+  const toCart = {
+    method: 'post',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/cart`,
+    data: { sku_id: skuId },
+    headers: {
+      Authorization: auth.myToken,
+      'Content-Type': 'application/json',
+    },
+  };
+
+  return axiosCall(toCart, cb);
+};
+
 module.exports = {
   getProductList,
   getProductInfo,
@@ -99,4 +126,6 @@ module.exports = {
   getRelatedProducts,
   getReviewsMeta,
   getReviews,
+  getCart,
+  postCart,
 };
