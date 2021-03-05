@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AddToCart from './AddToCart.jsx';
 import Styles from './Styles.jsx';
+import ImageGallery from './ImageGallery.jsx';
 
 class StyleSelector extends React.Component {
   static setPrice(selectedStyle) {
@@ -16,13 +17,10 @@ class StyleSelector extends React.Component {
     return <div>{selectedStyle.original_price}</div>;
   }
 
-
-
   constructor(props) {
     super(props);
     this.state = {
       selectedStyle: {},
-      onSale: [],
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -65,6 +63,7 @@ class StyleSelector extends React.Component {
     if (selectedStyle.name) {
       return (
         <>
+          <ImageGallery selectedStyle={selectedStyle} />
           {StyleSelector.setPrice(selectedStyle)}
           <div>
             Style <b>{'>'}</b> {selectedStyle.name}

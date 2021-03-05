@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ProductInformation from './ProductInformation.jsx';
-import ImageGallery from './ImageGallery.jsx';
 import ProductOverview from './ProductOverview.jsx';
 
 const Overview = ({ productInfo, productStyles, reviewsMeta }) => {
   if (productInfo.id) {
     return (
       <>
-        <ImageGallery />
         <ProductInformation
           productInfo={productInfo}
           productStyles={productStyles}

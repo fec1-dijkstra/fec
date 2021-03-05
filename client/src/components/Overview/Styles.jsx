@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyleSelector from './StyleSelector.jsx';
 
 const Styles = ({ productStyles, selectedStyle, handleClick }) => {
   let key = 0;

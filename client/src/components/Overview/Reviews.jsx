@@ -28,7 +28,7 @@ class Reviews extends React.Component {
     for (let i = 0; i < allRatings.length; i += 1) {
       ratingsCount += Number(allRatings[i][1]);
     }
-    this.setState({ ratingsCount });
+    return ratingsCount;
   }
 
   render() {
@@ -38,7 +38,7 @@ class Reviews extends React.Component {
       return (
         <>
           <Stars productId={productInfo.id} />
-          <div>Read all {ratingsCount} reviews</div>
+          <div>Read all {this.countReviews()} reviews</div>
         </>
       );
     }
