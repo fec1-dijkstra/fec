@@ -14,7 +14,8 @@ class ProductCard extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleOpenModal() {
+  handleOpenModal(e) {
+    e.stopPropagation();
     this.setState({ showModal: true });
   }
 
@@ -29,7 +30,7 @@ class ProductCard extends React.Component {
 
   render() {
     return (
-      <div className="ProductCard" onClick={this.handleClick}>
+      <div className="ProductCard carousel_item" onClick={this.handleClick}>
         <button type="button" onClick={this.handleOpenModal} id="modalButton">
           ☆
         </button>

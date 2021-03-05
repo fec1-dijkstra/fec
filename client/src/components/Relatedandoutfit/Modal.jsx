@@ -7,7 +7,7 @@ const Modal = ({ showModal, handleCloseModal, name, relatedName, features, relat
 
   return (
     <div className={showHideClassName}>
-      <section className="modal-main">
+      <section className="modal-main" onClick={(e) => e.stopPropagation()}>
         <h3>COMPARING</h3>
         <button type="button" onClick={handleCloseModal}>
           Close

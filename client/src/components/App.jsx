@@ -88,12 +88,12 @@ class App extends React.Component {
         <Overview productInfo={productInfo} productStyles={productStyles} />
         <RelatedandOutfit
           productInfo={this.state.productInfo}
+          productStyles={this.state.productStyles}
           relatedProductInfo={this.state.relatedProductInfo}
           handleProductChange={this.handleProductChange}
         />
         <QandA />
         <RatingsAndReviews reviews={reviews[0].results} />
-        <Stars productId={17106} />
       </div>
     );
   }

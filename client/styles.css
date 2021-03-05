@@ -1,13 +1,28 @@
 .ProductCard {
+  width: 250px;
+  height: 350px;
   margin-top: 48px;
   border: 1px solid rgb(221, 221, 221);
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  margin: 10px;
   display: inline-block;
 }
 
 .ProductCardImage {
   width: 200px;
+  height: 200px;
+}
+
+.OutfitCard {
+  width: 250px;
+  height: 350px;
+  margin-top: 48px;
+  border: 1px solid rgb(221, 221, 221);
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  margin: 10px;
+  display: inline-block;
 }
 
 .SalePrice {
@@ -82,4 +97,26 @@
   padding: 0;
   display: block;
   z-index: 0;
+}
+
+.carousel {
+  overflow: auto;
+  white-space: nowrap;
+  scroll-snap-type: y mandatory;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel::-webkit-scrollbar-track {
+  display: none;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.carousel_item {
+  scroll-snap-align: start;
 }
