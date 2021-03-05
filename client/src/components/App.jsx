@@ -37,10 +37,13 @@ class App extends React.Component {
   }
 
   handleProductChange(id) {
-    this.setState({ currentProduct: id, relatedProductInfo: []}, this.getAll(1, 20, this.state.currentProduct));
+    this.setState(
+      { currentProduct: id, relatedProductInfo: [] },
+      this.getAll(1, 20, this.state.currentProduct)
+    );
   }
 
-  getAll(pageNumber, countNumber, productId) {
+  getAll(pageNumber, countNumber, sortBy, productId) {
     Promise.all([
       queries.getProductList(pageNumber, countNumber, (result) => result),
       queries.getProductInfo(productId, (result) => result),
@@ -65,14 +68,11 @@ class App extends React.Component {
       queries.getProductInfo(relatedId, (result) => result),
       queries.getProductStyles(relatedId, (result) => result),
     ]).then(([productInfo, productStyles]) => {
-      this.setState((state) => {
-        return {
-          relatedProductInfo: state.relatedProductInfo.concat({ productInfo, productStyles }),
-        };
-      })
+      this.setState((state) => ({
+        relatedProductInfo: state.relatedProductInfo.concat({ productInfo, productStyles }),
+      }));
     });
   }
-
 
   render() {
     const {
