@@ -22,9 +22,11 @@ class RenderReviews extends React.Component {
     const list = this;
     const { reviews, product } = this.state;
     const totalReviews = this.state.reviews.length;
-    const toRender = reviews
-      .slice(0, this.state.total)
-      .map((review) => <ReviewTile review={review} />);
+    const toRender = reviews.slice(0, this.state.total).map((review) => (
+      <div className="review-tile" key={review.review_id}>
+        <ReviewTile review={review} />
+      </div>
+    ));
     if (totalReviews > this.state.total) {
       return (
         <>

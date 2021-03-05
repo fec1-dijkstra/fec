@@ -37,7 +37,11 @@ class SortBy extends React.Component {
 
   render() {
     const { options, current } = this.state;
-    const dropdowns = options.map((option) => <option value={option}>{option}</option>);
+    const dropdowns = options.map((option) => (
+      <option value={option} key={option}>
+        {option}
+      </option>
+    ));
     return (
       <select value={current} onChange={this.handleChange}>
         {dropdowns}

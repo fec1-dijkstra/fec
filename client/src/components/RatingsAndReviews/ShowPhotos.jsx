@@ -4,7 +4,9 @@
 import React from 'react';
 
 const ShowPhotos = ({ photos }) => {
-  const allPhotos = photos.map((photo) => <RenderPhoto photo={photo} />);
+  const allPhotos = photos.map((photo) => (
+    <RenderPhoto photo={photo} keyval={photo.id} key={photo.id} />
+  ));
   return <div className="photos">{allPhotos}</div>;
 };
 
@@ -22,7 +24,7 @@ class RenderPhoto extends React.Component {
   }
 
   render() {
-    const { photo } = this.props;
+    const { photo, keyval } = this.props;
     const { wasClicked } = this.state;
     if (!wasClicked) {
       return (
@@ -31,11 +33,12 @@ class RenderPhoto extends React.Component {
           alt=""
           onClick={this.handleClick}
           style={{ width: 150, height: 150 }}
+          key={keyval}
         />
       );
     }
     return (
-      <div className="modal-background">
+      <div className="modal-background" key={keyval}>
         <img className="image" src={photo.url} alt="" onClick={this.handleClick} />
       </div>
     );

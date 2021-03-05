@@ -99,7 +99,10 @@
   margin-left: auto;
   margin-right: auto;
 }
-
+.photo-container {
+  position: relative;
+  width: 150px;
+}
 .modal-box {
   background-color: #fefefe;
   margin: 15% auto;

@@ -20,7 +20,7 @@ class ReviewTile extends React.Component {
   render() {
     const { review } = this.props;
     return (
-      <div className="review-tile" key={review.name}>
+      <>
         <SelectStars rating={review.rating} />
         <div className="date">{new Date(review.date).toString().substring(3, 15)}</div>
         <div className="username">
@@ -32,7 +32,7 @@ class ReviewTile extends React.Component {
         <Recommends recommendation={review.recommend} />
         <Helpful helpfulness={review.helpfulness} />
         <ShowPhotos photos={review.photos} />
-      </div>
+      </>
     );
   }
 }
