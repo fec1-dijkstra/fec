@@ -5,6 +5,10 @@ import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
 
 class ImageGallery extends React.Component {
+  static moveFocus(element) {
+    element.focus();
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -16,14 +20,16 @@ class ImageGallery extends React.Component {
     this.openExpand = this.openExpand.bind(this);
     this.closeExpand = this.closeExpand.bind(this);
     this.zoomExpand = this.zoomExpand.bind(this);
+    this.expandedRef = this.expandedRef.bind(this);
+    this.refElement = null;
   }
 
-  componentDidUpdate(prevProps) {
-    const { selectedStyle } = this.props;
-    if (prevProps.selectedStyle.style_id !== selectedStyle.style_id) {
-      this.closeExpand();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   const { selectedStyle } = this.props;
+  //   if (prevProps.selectedStyle.style_id !== selectedStyle.style_id) {
+  //     this.resetGallery();
+  //   }
+  // }
 
   handleClick(event) {
     let { selectedThumbnail } = this.state;
@@ -34,15 +40,22 @@ class ImageGallery extends React.Component {
     return undefined;
   }
 
+  // resetGallery() {
+  //   this.setState({ selectedThumbnail: 0, isExpanded: false, zoomExpanded: false });
+  // }
+
   openExpand() {
     const { isExpanded } = this.state;
     if (!isExpanded) {
-      this.setState({ isExpanded: true });
+      this.setState({ isExpanded: true }, () => ImageGallery.moveFocus(this.refElement));
     }
   }
 
   closeExpand() {
-    this.setState({ isExpanded: false });
+    const { isExpanded } = this.state;
+    if (isExpanded) {
+      this.setState({ isExpanded: false });
+    }
   }
 
   zoomExpand() {
@@ -57,6 +70,10 @@ class ImageGallery extends React.Component {
     }
   }
 
+  expandedRef(ref) {
+    this.refElement = ref;
+  }
+
   render() {
     const { selectedStyle } = this.props;
     const { selectedThumbnail, isExpanded } = this.state;
@@ -66,7 +83,9 @@ class ImageGallery extends React.Component {
         <ExpandedView
           selectedStyle={selectedStyle}
           selectedThumbnail={selectedThumbnail}
-          openExpand={this.zoomExpand}
+          zoomExpand={this.zoomExpand}
+          closeExpand={this.closeExpand}
+          expandedRef={this.expandedRef}
         />
       );
     }

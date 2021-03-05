@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Styles = ({ productStyles, selectedStyle, handleClick }) => {
   let key = 0;
   if (productStyles.results && productStyles.results.length > 0) {
-    return productStyles.results.map((style) => {
+    const allStyles = productStyles.results.map((style) => {
       let styleClass = 'overview-style-icon';
       if (style.style_id === selectedStyle.style_id) {
         styleClass = 'overview-selected-style-icon';
@@ -16,6 +16,14 @@ const Styles = ({ productStyles, selectedStyle, handleClick }) => {
         </option>
       );
     });
+    let firstStyle;
+    for (let i = 0; i < allStyles.length; i++) {
+      if (allStyles[i].props.className === 'overview-selected-style-icon') {
+        firstStyle = allStyles[i];
+        allStyles.splice(i, 1);
+      }
+    }
+    return [firstStyle, ...allStyles];
   }
   return <></>;
 };

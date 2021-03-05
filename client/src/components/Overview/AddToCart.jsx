@@ -53,12 +53,12 @@ class AddToCart extends React.Component {
     this.getSkus(selectedStyle);
   }
 
-  componentDidUpdate(prevProps) {
-    const { selectedStyle } = this.props;
-    if (prevProps.selectedStyle.style_id !== selectedStyle.style_id) {
-      this.getSkus(selectedStyle);
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   const { selectedStyle } = this.props;
+  //   if (prevProps.selectedStyle.style_id !== selectedStyle.style_id) {
+  //     this.getSkus(selectedStyle);
+  //   }
+  // }
 
   handleChange(event) {
     const { value } = event.target;
@@ -146,7 +146,7 @@ class AddToCart extends React.Component {
   }
 
   showCart() {
-    this.setState({toggleCart: false});
+    this.setState({ toggleCart: false });
   }
 
   render() {

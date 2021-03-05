@@ -29,12 +29,12 @@ class StyleSelector extends React.Component {
     this.findDefaultStyle();
   }
 
-  // componentDidUpdate(prevProps) {
-  //   const { productStyles } = this.props;
-  //   if (prevProps.productStyles.results !== productStyles.results) {
-  //     this.findDefaultStyle();
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    const { productStyles } = this.props;
+    if (prevProps.productStyles.product_id !== productStyles.product_id) {
+      this.findDefaultStyle();
+    }
+  }
 
   handleClick(event) {
     const { productStyles } = this.props;

@@ -4,12 +4,11 @@
   height: auto;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
+  flex-flow: row wrap;
 }
 
 .overview-product-information {
   background-color:darkgray;
-  width: auto;
-  height: auto;
 }
 
 #overview-category {
@@ -134,4 +133,10 @@
 
 #overview-default-view-img {
   background-color: royalblue;
+}
+
+.overview-expanded-view, #overview-expanded-view-img {
+  background-color:darkorange;
+  width: 800px;
+  height: 400px;
 }
