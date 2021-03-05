@@ -13,11 +13,9 @@ class QCard extends React.Component {
   }
 
   render() {
-    const { data } = this.state;
     return (
       <div>
-        ___QCard Component___
-        <Question data={data} />
+        <Question question={this.props.question} />
         <Answer />
       </div>
     );

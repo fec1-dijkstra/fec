@@ -24,13 +24,15 @@ class App extends React.Component {
       currentProduct: 17762,
       reviewsMeta: {},
       relatedProductInfo: [],
+      allReviews: {},
+      sortBy: 'newest',
     };
     this.handleProductChange = this.handleProductChange.bind(this);
   }
 
   componentDidMount() {
-    const { currentProduct } = this.state;
-    this.getAll(1, 20, currentProduct);
+    const { currentProduct, sortBy } = this.state;
+    this.getAll(1, 20, sortBy, currentProduct);
   }
 
   handleProductChange(id) {
@@ -44,6 +46,7 @@ class App extends React.Component {
       queries.getProductStyles(productId, (result) => result),
       queries.getRelatedProducts(productId, (result) => result),
       queries.getReviewsMeta(productId, (result) => result),
+      queries.getReviews(pageNumber, countNumber, sortBy, productId, (result) => result),
     ])
       .then(([productList, productInfo, productStyles, relatedProducts, reviewsMeta]) => {
         this.setState(
@@ -81,11 +84,16 @@ class App extends React.Component {
       productStyles,
       relatedProducts,
       reviewsMeta,
+      allReviews,
     } = this.state;
     return (
       <div>
         <div> Hello World</div>
-        <Overview productInfo={productInfo} productStyles={productStyles} />
+        <Overview
+          productInfo={productInfo}
+          productStyles={productStyles}
+          reviewsMeta={reviewsMeta}
+        />
         <RelatedandOutfit
           productInfo={this.state.productInfo}
           productStyles={this.state.productStyles}
