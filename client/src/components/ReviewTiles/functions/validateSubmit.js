@@ -1,27 +1,30 @@
 const validateSubmit = (state, meta) => {
   console.log(state);
   console.log(meta);
-  const formReqs = ['recommended', 'username', 'summary', 'email'];
+  const formReqs = ['recommended', 'username', 'email'];
   const { characteristics } = meta;
   const keys = Object.keys(characteristics);
-  let isValidated = true;
-  keys.map((key) => {
-    if (!state[key]) {
-      console.log(`error: value for ${key} not found`);
-      isValidated = false;
+  let validation = true;
+  if (state && meta) {
+    keys.map((key) => {
+      if (!state[key]) {
+        validation = `a selection for ${key} is required`;
+        return null;
+      }
       return null;
-    }
-    return null;
-  });
-  formReqs.map((param) => {
-    if (!state[param]) {
-      console.log(`error: value for ${param} not found`);
-      isValidated = false;
+    });
+    formReqs.map((param) => {
+      if (!state[param] && !validation) {
+        validation = `value for ${param} is required`;
+        return null;
+      }
       return null;
+    });
+    if (state.charsLeft > 0 && !validation) {
+      validation = 'review must be at least 50 characters long';
     }
-    return null;
-  });
-  return isValidated
+  }
+  return validation;
 };
 
 module.exports = {

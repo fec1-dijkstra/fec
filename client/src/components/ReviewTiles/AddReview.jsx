@@ -4,6 +4,7 @@ import CharsLeft from './CharsLeft.jsx';
 import ReviewRating from './ReviewRating.jsx';
 import ReviewField from './ReviewField.jsx';
 import { validateSubmit } from './functions/validateSubmit.js';
+import DisplayError from './DisplayError.jsx';
 
 class AddReview extends React.Component {
   constructor() {
@@ -15,6 +16,7 @@ class AddReview extends React.Component {
       charsLeft: 50,
       photos: [],
       rating: 0,
+      error: '',
     };
     this.showModal = this.showModal.bind(this);
     this.select = this.select.bind(this);
@@ -54,13 +56,18 @@ class AddReview extends React.Component {
     event.preventDefault();
     const { state } = this;
     const { meta } = this.props;
-    validateSubmit(state, meta);
+    const status = validateSubmit(state, meta);
+    if (status !== true) {
+      this.setState({ error: status });
+    } else {
+      console.log('able to post!');
+    }
   }
 
   render() {
     const { meta, productName } = this.props;
     const self = this;
-    const { show, charsLeft, photos } = this.state;
+    const { show, charsLeft, photos, error } = this.state;
     if (show) {
       return (
         <div className="modal-background">
@@ -112,6 +119,7 @@ class AddReview extends React.Component {
               </div>
               <input type="file" onChange={this.uploadPhoto} />
               <button type="submit">Submit</button>
+              <DisplayError error={error} />
             </form>
             <button type="button" onClick={this.showModal}>
               Close
