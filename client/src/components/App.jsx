@@ -70,6 +70,7 @@ class App extends React.Component {
       allReviews,
     } = this.state;
     // <Stars productId={17106} />
+    debugger;
     return (
       <div>
         <div> Hello World</div>
@@ -87,6 +88,7 @@ class App extends React.Component {
           reviews={reviews[0].results}
           product={reviews[0].product}
           meta={reviewsMeta}
+          productName={productInfo.name}
         />
       </div>
     );

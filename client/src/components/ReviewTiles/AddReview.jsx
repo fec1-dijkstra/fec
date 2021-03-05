@@ -56,7 +56,7 @@ class AddReview extends React.Component {
   }
 
   render() {
-    const { meta } = this.props;
+    const { meta, productName } = this.props;
     const self = this;
     const { show, charsLeft, photos } = this.state;
     if (show) {
@@ -64,9 +64,7 @@ class AddReview extends React.Component {
         <div className="modal-background">
           <div className="modal-box">
             <div id="write">Write your Review</div>
-            <div id="item">
-              About the <b>Placeholder</b> here
-            </div>
+            <div id="item">About the {productName} here</div>
             <form onSubmit={this.handleSubmit}>
               <ReviewRating self={self} />
               <div className="radio" onChange={this.select}>
@@ -87,18 +85,28 @@ class AddReview extends React.Component {
                   onChange={this.handleChange}
                   style={{ height: 200 }}
                   placeholder="Why did you like the Product or not?"
+                  maxLength="1000"
                 />
                 <CharsLeft chars={charsLeft} />
               </div>
               <div>
-                <input className="info" type="text" placeholder="Example: jackson11!" />
+                <ReviewField
+                  placeholder="Example: jackson11!"
+                  limit={60}
+                  prop="username"
+                  self={self}
+                />
               </div>
-              <img src={photos[0]} alt="" />
               <div className="caution">
                 For privacy reasons, do not use your full name or email address
               </div>
               <div>
-                <input className="info" type="text" placeholder="Example: jackson11@email.com" />
+                <ReviewField
+                  placeholder="Example: jackson11@email.com"
+                  limit={60}
+                  prop="email"
+                  self={self}
+                />
               </div>
               <input type="file" onChange={this.uploadPhoto} />
               <button type="submit">Submit</button>

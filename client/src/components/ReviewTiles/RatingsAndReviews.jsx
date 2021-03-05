@@ -3,7 +3,6 @@
 import React from 'react';
 import RenderReviews from './RenderReviews.jsx';
 import AddReview from './AddReview.jsx';
-import Stars from '../Stars.jsx';
 
 class RatingsAndReviews extends React.Component {
   constructor({ reviews, product }) {
@@ -12,12 +11,13 @@ class RatingsAndReviews extends React.Component {
   }
 
   render() {
+    debugger;
     const { reviews, product } = this.state;
-    const { meta } = this.props;
+    const { meta, productName } = this.props;
     return (
       <>
         <RenderReviews reviews={reviews} product={product} />
-        <AddReview meta={meta} />
+        <AddReview meta={meta} productName={productName} />
       </>
     );
   }
