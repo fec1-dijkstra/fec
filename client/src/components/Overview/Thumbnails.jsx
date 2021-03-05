@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Thumbnails = ({ selectedStyle, selectedThumbnail, handleClick}) => {
+const Thumbnails = ({ selectedStyle, selectedThumbnail, handleClick }) => {
   let key = 0;
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
     return selectedStyle.photos.map((photo, index) => {
@@ -26,13 +26,13 @@ const Thumbnails = ({ selectedStyle, selectedThumbnail, handleClick}) => {
 };
 
 Thumbnails.defaultProps = {
-  productStyles: {},
+  selectedThumbnail: 0,
   selectedStyle: {},
   handleClick: (event) => event,
 };
 
 Thumbnails.propTypes = {
-  productStyles: PropTypes.oneOfType([PropTypes.object]),
+  selectedThumbnail: PropTypes.number,
   selectedStyle: PropTypes.oneOfType([PropTypes.object]),
   handleClick: PropTypes.func,
 };
