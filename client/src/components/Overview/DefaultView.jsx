@@ -5,7 +5,7 @@ const DefaultView = ({ selectedStyle, selectedThumbnail, openExpand }) => {
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
     return (
       <img
-        role="asdf"
+        onKeyPress="asdf"
         src={selectedStyle.photos[selectedThumbnail].url}
         alt={`${selectedStyle.name} default view`}
         className="default-view"
