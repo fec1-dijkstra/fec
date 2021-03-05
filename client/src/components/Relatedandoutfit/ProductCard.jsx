@@ -24,7 +24,7 @@ class ProductCard extends React.Component {
 
   render() {
     return (
-      <div className="ProductCard carousel_item" onClick={this.handleClick}>
+      <div className="ProductCard carousel_item" onClick={this.handleClick.bind(this)}>
         <button className="toggle-button" onClick={this.showModal} >
           ☆
         </button>
@@ -37,11 +37,12 @@ class ProductCard extends React.Component {
           name={this.props.productInfo.name}
           relatedName={this.props.relatedProduct.productInfo.name}
         />
-        <img
-          src={this.props.relatedProduct.productStyles.results[0].photos[0].url}
-          alt="DefaultStyleImage"
-          className="ProductCardImage"
-        />
+        <div className="ProductCardImage">
+          <img
+            src={this.props.relatedProduct.productStyles.results[0].photos[0].url}
+            alt="DefaultStyleImage"
+          />
+        </div>
         <div className="ProductInfo">
           <p className="Category">{this.props.relatedProduct.productInfo.category}</p>
           <p className="ProductName">{this.props.relatedProduct.productInfo.name}</p>

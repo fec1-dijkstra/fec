@@ -22,15 +22,16 @@ class OutfitCard extends React.Component {
     return (
       <div className="ProductCard carousel_item" onClick={this.handleClick}>
         <button type="button" onClick={this.handleRemove} id="removeButton">x</button>
-        <img src={this.props.outfit[5]} alt="DefaultStyleImage" className="ProductCardImage" />
+        <div className="ProductCardImage">
+          <img src={this.props.outfit[5]} alt="DefaultStyleImage" />
+        </div>
         <div className="ProductInfo">
           <p className="Category">{this.props.outfit[2]}</p>
           <p className="ProductName">{this.props.outfit[1]}</p>
           <p className="ProductPrice">
             {!this.props.outfit[4].includes("null") ?
               <>
-                <span className="SalePrice">${this.props.outfit[4]}</span>
-                <span className="OriginalPrice">${this.props.outfit[3]}</span>
+                <span className="SalePrice">${this.props.outfit[4]}</span> <span className="OriginalPrice">${this.props.outfit[3]}</span>
               </>
               : <span>${this.props.outfit[3]}</span>
             }
