@@ -11,7 +11,6 @@ class RatingsAndReviews extends React.Component {
   }
 
   render() {
-    debugger;
     const { reviews, product } = this.state;
     const { meta, productName } = this.props;
     return (

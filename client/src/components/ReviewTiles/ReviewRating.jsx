@@ -17,7 +17,6 @@ class ReviewRating extends React.Component {
     event.preventDefault();
     const { id } = event.target;
     const { self } = this.props;
-    debugger;
     this.setState({ rating: id }, self.setState({ rating: id }));
   }
 
