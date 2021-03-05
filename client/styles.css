@@ -121,10 +121,4 @@
   scroll-snap-align: start;
 }
 
-.selected-style-icon {
-  font-weight: 900;
-}
 
-.selected-thumbnail-icon {
-  border: 10px solid #e7711b;
-}
