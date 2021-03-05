@@ -7,20 +7,14 @@ class ProductCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false,
+      show: false,
     };
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.showModal = this.showModal.bind(this);
   }
 
-  handleOpenModal(e) {
+  showModal(e) {
     e.stopPropagation();
-    this.setState({ showModal: true });
-  }
-
-  handleCloseModal() {
-    this.setState({ showModal: false });
+    this.setState({ show: !this.state.show });
   }
 
   handleClick(e) {
@@ -31,13 +25,13 @@ class ProductCard extends React.Component {
   render() {
     return (
       <div className="ProductCard carousel_item" onClick={this.handleClick}>
-        <button type="button" onClick={this.handleOpenModal} id="modalButton">
+        <button className="toggle-button" onClick={this.showModal} >
           ☆
         </button>
         <Modal
           className="modal"
-          showModal={this.state.showModal}
-          handleCloseModal={this.handleCloseModal}
+          show={this.state.show}
+          onClose={this.showModal}
           features={this.props.productInfo.features}
           relatedFeatures={this.props.relatedProduct.productInfo.features}
           name={this.props.productInfo.name}

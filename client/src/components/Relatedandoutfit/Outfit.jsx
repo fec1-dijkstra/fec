@@ -41,15 +41,18 @@ class Outfit extends React.Component {
 
   render() {
     return (
-      <div className="carousel">
-          <div className="ProductCard carousel_item" onClick={this.handleAdd}>+</div>
-        {this.state.outfits.map((outfit) => (
-          <OutfitCard key={outfit.split(',')[0]} outfit={outfit.split(',')} handleDelete={this.handleDelete} handleProductChange={this.props.handleProductChange} />
-        ))}
-        <div className="carousel_actions">
-          <button className="carousel_left" >&#10094;</button>
-          <button className="carousel_right">&#10095;</button>
-          {/* onclick="plusDivs(-1)" onclick="plusDivs(+1)" */}
+      <div>
+        <h3>Your Outfit</h3>
+        <div className="carousel">
+            <div className="ProductCard carousel_item" onClick={this.handleAdd}>+</div>
+          {this.state.outfits.map((outfit) => (
+            <OutfitCard key={outfit.split(',')[0]} outfit={outfit.split(',')} handleDelete={this.handleDelete} handleProductChange={this.props.handleProductChange} />
+          ))}
+          <div className="carousel_actions">
+            <button className="carousel_left" >&#10094;</button>
+            <button className="carousel_right">&#10095;</button>
+            {/* onclick="plusDivs(-1)" onclick="plusDivs(+1)" */}
+          </div>
         </div>
       </div>
     );

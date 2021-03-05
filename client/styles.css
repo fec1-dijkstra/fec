@@ -49,25 +49,17 @@
   top: 0;
   width: 500px;
   height: 300px;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0, 0.6);
+  align-content: middle;
 }
 
-.display-block {
-  display: block;
-}
-
-.display-none {
-  display: none;
-}
-
-.modal-main {
+.content {
   position: fixed;
+  vertical-align: middle;
+  overflow: auto;
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 500px;
   z-index: 2;
 }
 
