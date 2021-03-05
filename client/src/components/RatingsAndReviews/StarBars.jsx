@@ -1,7 +1,6 @@
 import React from 'react';
 
 const DisplayBars = ({ meta }) => {
-  debugger;
   if (JSON.stringify(meta) === '{}' || !meta) {
     return null;
   }
