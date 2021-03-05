@@ -1,15 +1,27 @@
 const validateSubmit = (state, meta) => {
   console.log(state);
   console.log(meta);
+  const formReqs = ['recommended', 'username', 'summary', 'email'];
   const { characteristics } = meta;
   const keys = Object.keys(characteristics);
+  let isValidated = true;
   keys.map((key) => {
     if (!state[key]) {
       console.log(`error: value for ${key} not found`);
+      isValidated = false;
       return null;
     }
     return null;
   });
+  formReqs.map((param) => {
+    if (!state[param]) {
+      console.log(`error: value for ${param} not found`);
+      isValidated = false;
+      return null;
+    }
+    return null;
+  });
+  return isValidated
 };
 
 module.exports = {
