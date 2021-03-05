@@ -17,6 +17,7 @@ class AddReview extends React.Component {
       photos: [],
       rating: 0,
       error: '',
+      characteristics: {},
     };
     this.showModal = this.showModal.bind(this);
     this.select = this.select.bind(this);
@@ -55,12 +56,18 @@ class AddReview extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { state } = this;
+    const { rating, summary, reviewBody, recommendation, username, email, photos } = this.state;
     const { meta } = this.props;
     const status = validateSubmit(state, meta);
+    debugger;
     if (status !== true) {
       this.setState({ error: status });
     } else {
       console.log('able to post!');
+      const postObj = {
+        product_id: null,
+        rating: null
+      };
     }
   }
 

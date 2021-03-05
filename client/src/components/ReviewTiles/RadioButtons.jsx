@@ -17,12 +17,14 @@ class RadioButton extends React.Component {
   handleChange(event) {
     const { self } = this.props;
     const { value, name } = event.target;
-    const stateObj = () => {
-      const returnObj = {};
-      returnObj[name] = value;
-      return returnObj;
-    };
-    self.setState(stateObj);
+    // const stateObj = () => {
+    //   const returnObj = {};
+    //   returnObj[name] = value;
+    //   return returnObj;
+    // };
+    const { characteristics } = self.state;
+    characteristics[name] = value;
+    self.setState({ characteristics });
   }
 
   render() {
