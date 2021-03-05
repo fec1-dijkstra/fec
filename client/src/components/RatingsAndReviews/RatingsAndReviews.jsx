@@ -4,6 +4,7 @@ import React from 'react';
 import RenderReviews from './RenderReviews.jsx';
 import AddReview from './AddReview.jsx';
 import DisplayBars from './StarBars.jsx';
+import AverageScore from './AverageScore.jsx';
 
 class RatingsAndReviews extends React.Component {
   constructor({ reviews, product }) {
@@ -16,6 +17,7 @@ class RatingsAndReviews extends React.Component {
     const { meta, productName } = this.props;
     return (
       <>
+        <AverageScore meta={meta} />
         <DisplayBars meta={meta} />
         <RenderReviews reviews={reviews} product={product} />
         <AddReview meta={meta} productName={productName} />
