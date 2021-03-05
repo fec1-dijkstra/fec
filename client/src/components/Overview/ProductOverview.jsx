@@ -5,28 +5,32 @@ import Features from './Features.jsx';
 const ProductOverview = ({ productInfo }) => {
   const hasSlogan = () => {
     if (productInfo.slogan) {
-      return <div>{productInfo.slogan}</div>;
+      return <div id="overview-slogan">{productInfo.slogan}</div>;
     }
     return <></>;
   };
   const hasDescription = () => {
     if (productInfo.description) {
-      return <div>{productInfo.description}</div>;
+      return <div id="overview-description">{productInfo.description}</div>;
     }
     return <></>;
   };
   const hasFeatures = () => {
     if (productInfo.features) {
-      return <Features productInfo={productInfo} />;
+      return (
+        <div className="overview-features">
+          <Features productInfo={productInfo} />
+        </div>
+      );
     }
     return <></>;
   };
   return (
-    <>
+    <div className="overview-product-overview">
       {hasSlogan()}
       {hasDescription()}
       {hasFeatures()}
-    </>
+    </div>
   );
 };
 

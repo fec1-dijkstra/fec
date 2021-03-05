@@ -2,49 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Stars from '../Stars.jsx';
 
-class Reviews extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ratingsCount: 0,
-    };
+const countReviews = (reviewsMeta) => {
+  let ratingsCount = 0;
+  const allRatings = Object.entries(reviewsMeta.ratings);
+  for (let i = 0; i < allRatings.length; i += 1) {
+    ratingsCount += Number(allRatings[i][1]);
   }
+  return ratingsCount;
+};
 
-  componentDidMount() {
-    const { reviewsMeta } = this.props;
-    this.countReviews(reviewsMeta);
+const Reviews = ({ productInfo, reviewsMeta }) => {
+  const ratingsCount = countReviews(reviewsMeta);
+  if (ratingsCount > 0) {
+    return (
+      <div className="overview-reviews">
+        <Stars productId={productInfo.id} />
+        <div>Read all {ratingsCount} reviews</div>
+      </div>
+    );
   }
-
-  componentDidUpdate(prevProps) {
-    const { reviewsMeta } = this.props;
-    if (prevProps.reviewsMeta.product_id !== reviewsMeta.product_id) {
-      this.countReviews(reviewsMeta);
-    }
-  }
-
-  countReviews(reviewsMeta) {
-    let ratingsCount = 0;
-    const allRatings = Object.entries(reviewsMeta.ratings);
-    for (let i = 0; i < allRatings.length; i += 1) {
-      ratingsCount += Number(allRatings[i][1]);
-    }
-    return ratingsCount;
-  }
-
-  render() {
-    const { productInfo } = this.props;
-    const { ratingsCount } = this.state;
-    if (ratingsCount > 0) {
-      return (
-        <>
-          <Stars productId={productInfo.id} />
-          <div>Read all {this.countReviews()} reviews</div>
-        </>
-      );
-    }
-    return <></>;
-  }
-}
+  return <></>;
+};
 
 Reviews.defaultProps = {
   productInfo: {},

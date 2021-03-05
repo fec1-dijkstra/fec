@@ -4,13 +4,19 @@ import PropTypes from 'prop-types';
 const ExpandedView = ({ selectedStyle, selectedThumbnail, openExpand }) => {
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
     return (
-      <img
-        src={selectedStyle.photos[selectedThumbnail].url}
-        alt={`${selectedStyle.name} default view`}
+      <div
         className="expanded-view"
         onClick={openExpand}
-        id="expanded-view-photo"
+        onKeyPress={openExpand}
+        tabIndex={0}
+        role="button"
+      >
+        <img
+          src={selectedStyle.photos[selectedThumbnail].url}
+          alt={`${selectedStyle.name} default view`}
+          id="expanded-view-photo"
         />
+      </div>
     );
   }
   return <></>;

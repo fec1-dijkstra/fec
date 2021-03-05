@@ -1,7 +1,137 @@
-.selected-style-icon {
+.overview {
+  background-color: aquamarine;
+  width: auto;
+  height: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+}
+
+.overview-product-information {
+  background-color:darkgray;
+  width: auto;
+  height: auto;
+}
+
+#overview-category {
+  background-color: darkorchid;
+}
+
+#overview-name {
+  background-color: darksalmon;
+}
+
+#overview-price {
+  background-color:powderblue;
+}
+
+#overview-price-slash {
+  background-color: darkseagreen;
+  text-decoration: line-through;
+}
+
+#overview-sale-price {
+  background-color: darkturquoise;
+  color: red;
+}
+
+.overview-reviews {
+  background-color:cadetblue;
+  width: auto;
+  height: auto;
+}
+
+.overview-style-icon {
+  background-color: coral;
+  font-weight: 100;
+}
+
+.overview-selected-style-icon {
+  background-color:cyan;
   font-weight: 900;
 }
 
-.selected-thumbnail-icon {
+#overview-style-name {
+  background-color: red;
+}
+
+#overview-add-to-bag-btn {
+  background-color: firebrick;
+}
+
+#overview-view-bag-btn {
+  background-color: forestgreen;
+}
+
+#overview-please-select {
+  background-color: gray;
+}
+
+#overview-size-selector {
+  background-color: greenyellow;
+}
+
+#overview-quantity-selector {
+  background-color: hotpink;
+}
+
+.overview-social-share {
+  background-color:lawngreen;
+}
+
+#overview-facebook-share-button {
+  background-color: lightgrey;
+}
+
+#overview-twitter-share-button {
+  background-color: maroon;
+}
+
+#overview-pinterest-share-button {
+  background-color: mediumturquoise;
+}
+
+.overview-product-overview {
+  background-color: royalblue;
+}
+
+#overview-slogan {
+  background-color: thistle;
+}
+
+#overview-description {
+  background-color: springgreen;
+}
+
+.overview-features {
+  background-color: skyblue;
+}
+
+.overview-gallery {
+  background-color: yellow;
+}
+
+.overview-thumbnails {
+  background-color: palevioletred;
+  width: 50px;
+}
+
+.overview-thumbnail-icon, .overview-selected-thumbnail-icon, img {
+  background-color: gold;
+  width: 50px;
+  height: 50px;
+}
+
+.overview-selected-thumbnail-icon {
+  background-color: darkorchid;
   border: 10px solid #e7711b;
+}
+
+.overview-default-view, #overview-default-view-img {
+  background-color:darkgreen;
+  width: 400px;
+  height: 200px;
+}
+
+#overview-default-view-img {
+  background-color: royalblue;
 }

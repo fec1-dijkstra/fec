@@ -4,14 +4,19 @@ import PropTypes from 'prop-types';
 const DefaultView = ({ selectedStyle, selectedThumbnail, openExpand }) => {
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
     return (
-      <img
-        onKeyPress="asdf"
-        src={selectedStyle.photos[selectedThumbnail].url}
-        alt={`${selectedStyle.name} default view`}
-        className="default-view"
+      <div
+        className="overview-default-view"
         onClick={openExpand}
-        id="default-view-photo"
-      />
+        onKeyPress={openExpand}
+        tabIndex={0}
+        role="button"
+      >
+        <img
+          src={selectedStyle.photos[selectedThumbnail].url}
+          alt={`${selectedStyle.name} default view`}
+          id="overview-default-view-img"
+        />
+      </div>
     );
   }
   return <></>;

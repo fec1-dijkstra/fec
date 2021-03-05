@@ -21,8 +21,9 @@ class App extends React.Component {
       productInfo: {},
       productStyles: {},
       relatedProducts: [],
-      // currentProduct: 17762,
-      currentProduct: 17067,
+      // 17762 - first product in list
+      // 17068 - fully out of stock
+      currentProduct: 17070,
       reviewsMeta: {},
       relatedProductInfo: [],
       allReviews: {},
@@ -39,7 +40,7 @@ class App extends React.Component {
   handleProductChange(id) {
     this.setState(
       { currentProduct: id, relatedProductInfo: [] },
-      this.getAll(1, 20, this.state.currentProduct)
+      this.getAll(1, 20, this.state.sortBy, this.state.currentProduct)
     );
   }
 
@@ -89,7 +90,7 @@ class App extends React.Component {
     } = this.state;
     return (
       <div>
-        <div> Hello World</div>
+        {/* <div> Hello World</div> */}
         <Overview
           productInfo={productInfo}
           productStyles={productStyles}

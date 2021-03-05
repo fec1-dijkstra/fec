@@ -9,12 +9,12 @@ class StyleSelector extends React.Component {
     if (selectedStyle.sale_price) {
       return (
         <>
-          <div className="OriginalPrice">{selectedStyle.original_price}</div>
-          <div className="SalePrice">{selectedStyle.sale_price}</div>
+          <div id="overview-price-slash">{selectedStyle.original_price}</div>
+          <div id="overview-sale-price">{selectedStyle.sale_price}</div>
         </>
       );
     }
-    return <div>{selectedStyle.original_price}</div>;
+    return <div id="overview-price">{selectedStyle.original_price}</div>;
   }
 
   constructor(props) {
@@ -65,10 +65,9 @@ class StyleSelector extends React.Component {
         <>
           <ImageGallery selectedStyle={selectedStyle} />
           {StyleSelector.setPrice(selectedStyle)}
-          <div>
+          <div id="overview-style-name">
             Style <b>{'>'}</b> {selectedStyle.name}
           </div>
-
           <Styles
             productStyles={productStyles}
             selectedStyle={selectedStyle}

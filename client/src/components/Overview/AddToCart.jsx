@@ -66,7 +66,7 @@ class AddToCart extends React.Component {
     const valueIndex = allSizes.sizes.indexOf(value);
     const selectedSku = allSkus.skus[valueIndex];
     const maxQuantity = allQuantities.quantities[valueIndex];
-    if (event.target.id === 'size-selector') {
+    if (event.target.id === 'overview-size-selector') {
       this.setState({
         selectedSku,
         selectedSize: value,
@@ -76,7 +76,7 @@ class AddToCart extends React.Component {
         toggleCart: false,
       });
     }
-    if (event.target.id === 'quantity-selector') {
+    if (event.target.id === 'overview-quantity-selector') {
       this.setState({ selectedQuantity: value });
     }
   }
@@ -84,7 +84,7 @@ class AddToCart extends React.Component {
   handleClick(event) {
     const { selectedSize } = this.state;
     event.preventDefault();
-    if (event.target.id === 'add-to-bag-btn') {
+    if (event.target.id === 'overview-add-to-bag-btn') {
       if (selectedSize === '' && this.selectElement) {
         AddToCart.moveFocus(this.selectElement);
         this.setState({ needsPlease: true });
@@ -92,7 +92,7 @@ class AddToCart extends React.Component {
         this.addCurrentSelectionsToCart();
       }
     }
-    if (event.target.id === 'view-bag-btn') {
+    if (event.target.id === 'overview-view-bag-btn') {
       this.showCart();
     }
   }
@@ -167,13 +167,13 @@ class AddToCart extends React.Component {
       let addToBagButton = () => {
         if (toggleCart) {
           return (
-            <button type="submit" id="view-bag-btn" onClick={this.handleClick}>
+            <button type="submit" id="overview-view-bag-btn" onClick={this.handleClick}>
               VIEW BAG {`(${this.cartCount()})`}
             </button>
           );
         }
         return (
-          <button type="submit" id="add-to-bag-btn" onClick={this.handleClick}>
+          <button type="submit" id="overview-add-to-bag-btn" onClick={this.handleClick}>
             ADD TO BAG
           </button>
         );
@@ -182,7 +182,7 @@ class AddToCart extends React.Component {
       const targetSize = allSizes.sizes.length;
       if (allSizes.sizes.length < 1) {
         defaultSize = 'OUT OF STOCK';
-        addToBagButton = <></>;
+        addToBagButton = () => <></>;
       }
       let defaultQuantity = 1;
       if (selectedSize === '') {
@@ -190,7 +190,7 @@ class AddToCart extends React.Component {
       }
       const pleaseSelect = () => {
         if (needsPlease) {
-          return <div>Please select size</div>;
+          return <div id="overview-please-select">Please select size</div>;
         }
         return <></>;
       };
@@ -200,8 +200,8 @@ class AddToCart extends React.Component {
           <select
             onFocus={(e) => (e.target.size = targetSize.toString())}
             onBlur={(e) => (e.target.size = '0')}
-            name="size-selector"
-            id="size-selector"
+            name="overview-size-selector"
+            id="overview-size-selector"
             value={selectedSize}
             onChange={this.handleChange}
             disabled={allSizes.sizes.length < 1}
@@ -213,8 +213,8 @@ class AddToCart extends React.Component {
           <select
             onFocus={(e) => (e.target.size = max.toString())}
             onBlur={(e) => (e.target.size = '0')}
-            name="quantity-selector"
-            id="quantity-selector"
+            name="overview-quantity-selector"
+            id="overview-quantity-selector"
             value={selectedQuantity}
             onChange={this.handleChange}
             disabled={selectedSize === ''}

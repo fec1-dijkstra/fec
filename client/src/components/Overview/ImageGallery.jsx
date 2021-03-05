@@ -55,8 +55,6 @@ class ImageGallery extends React.Component {
       console.log('zoom in');
       this.setState({ zoomExpanded: true });
     }
-
-
   }
 
   render() {
@@ -73,19 +71,21 @@ class ImageGallery extends React.Component {
       );
     }
     return (
-      <>
-        <Thumbnails
-          selectedStyle={selectedStyle}
-          selectedThumbnail={selectedThumbnail}
-          handleClick={this.handleClick}
-        />
+      <div className="overview-gallery">
+        <div className="overview-thumbnails">
+          <Thumbnails
+            selectedStyle={selectedStyle}
+            selectedThumbnail={selectedThumbnail}
+            handleClick={this.handleClick}
+          />
+        </div>
         <DefaultView
           selectedStyle={selectedStyle}
           selectedThumbnail={selectedThumbnail}
           openExpand={this.openExpand}
         />
         {viewExpanded}
-      </>
+      </div>
     );
   }
 }

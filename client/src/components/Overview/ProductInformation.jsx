@@ -4,13 +4,13 @@ import StyleSelector from './StyleSelector.jsx';
 import Reviews from './Reviews.jsx';
 
 const ProductInformation = ({ productInfo, productStyles, reviewsMeta }) => (
-  <>
+  <div className="overview-product-information">
     <Reviews productInfo={productInfo} reviewsMeta={reviewsMeta} />
-    <div>{productInfo.category}</div>
-    <div>{productInfo.name}</div>
+    <div id="overview-category">{productInfo.category}</div>
+    <div id="overview-name">{productInfo.name}</div>
 
     <StyleSelector productStyles={productStyles} productInfo={productInfo} />
-  </>
+  </div>
 );
 
 ProductInformation.defaultProps = {

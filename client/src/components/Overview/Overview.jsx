@@ -7,14 +7,14 @@ import ProductOverview from './ProductOverview.jsx';
 const Overview = ({ productInfo, productStyles, reviewsMeta }) => {
   if (productInfo.id) {
     return (
-      <>
+      <div className="overview">
         <ProductInformation
           productInfo={productInfo}
           productStyles={productStyles}
           reviewsMeta={reviewsMeta}
         />
         <ProductOverview productInfo={productInfo} />
-      </>
+      </div>
     );
   }
   return <></>;

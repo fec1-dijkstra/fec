@@ -5,9 +5,9 @@ const Styles = ({ productStyles, selectedStyle, handleClick }) => {
   let key = 0;
   if (productStyles.results && productStyles.results.length > 0) {
     return productStyles.results.map((style) => {
-      let styleClass = 'style-icon';
+      let styleClass = 'overview-style-icon';
       if (style.style_id === selectedStyle.style_id) {
-        styleClass = 'selected-style-icon';
+        styleClass = 'overview-selected-style-icon';
       }
       key += 1;
       return (

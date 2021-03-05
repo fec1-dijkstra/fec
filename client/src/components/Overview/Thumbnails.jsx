@@ -5,20 +5,26 @@ const Thumbnails = ({ selectedStyle, selectedThumbnail, handleClick }) => {
   let key = 0;
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
     return selectedStyle.photos.map((photo, index) => {
-      let thumbnailClass = 'thumbnail-icon';
+      let thumbnailClass = 'overview-thumbnail-icon';
       if (index === selectedThumbnail) {
-        thumbnailClass = 'selected-thumbnail-icon';
+        thumbnailClass = 'overview-selected-thumbnail-icon';
       }
       key += 1;
       return (
-        <img
-          key={key}
-          src={photo.thumbnail_url}
-          alt={`${selectedStyle.name} thumbnail ${index}`}
+        <div
           className={thumbnailClass}
           onClick={handleClick}
-          id={index}
-         />
+          onKeyPress={handleClick}
+          tabIndex={0}
+          role="button"
+        >
+          <img
+            key={key}
+            src={photo.thumbnail_url}
+            alt={`${selectedStyle.name} thumbnail ${index}`}
+            id={index}
+          />
+        </div>
       );
     });
   }
