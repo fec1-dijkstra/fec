@@ -21,7 +21,7 @@ const validateSubmit = (state, meta) => {
   let validation;
   if (state && meta) {
     keys.map((key) => {
-      if (!state.characteristics[key] || state.characteristics[key].length === 0) {
+      if (state.characteristics[key] === undefined || state.characteristics[key].length === 0) {
         validation = `a selection for ${key} is required`;
         return null;
       }

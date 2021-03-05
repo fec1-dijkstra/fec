@@ -1,4 +1,7 @@
+/* eslint-disable import/extensions */
 import React from 'react';
+import axios from 'axios';
+import { myToken } from '../../../../token.js'
 import RenderButtons from './RadioButtons.jsx';
 import CharsLeft from './CharsLeft.jsx';
 import ReviewRating from './ReviewRating.jsx';
@@ -49,25 +52,55 @@ class AddReview extends React.Component {
   }
 
   select(event) {
-    const pick = event.target.value;
+    let pick = event.target.value;
+    if (pick === 'yes') {
+      pick = true;
+    } else {
+      pick = false;
+    }
     this.setState({ recommendation: pick });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const { state } = this;
-    const { rating, summary, reviewBody, recommendation, username, email, photos } = this.state;
+    const {
+      rating,
+      summary,
+      reviewBody,
+      recommendation,
+      username,
+      email,
+      photos,
+      characteristics,
+    } = this.state;
     const { meta } = this.props;
     const status = validateSubmit(state, meta);
-    debugger;
     if (status !== true) {
       this.setState({ error: status });
     } else {
-      console.log('able to post!');
       const postObj = {
-        product_id: null,
-        rating: null
+        product_id: meta.product_id,
+        rating,
+        summary,
+        body: reviewBody,
+        recommend: recommendation,
+        name: username,
+        email,
+        photos,
+        characteristics,
       };
+      const request = {
+        method: 'post',
+        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/',
+        headers: {
+          Authorization: myToken,
+        },
+        data: postObj,
+      };
+      // need characteristic_id inside of each characteristic (reference learn)
+
+      // axios(request).then(this.setState({ show: false, error: '' }));
     }
   }
 

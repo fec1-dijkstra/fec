@@ -7,7 +7,7 @@ class SortBy extends React.Component {
   constructor({ product }) {
     super();
     this.state = {
-      options: ['relevant', 'newest', 'helpful' ],
+      options: ['relevant', 'newest', 'helpful'],
       current: '',
       product,
     };
