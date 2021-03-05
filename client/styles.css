@@ -136,3 +136,10 @@
 .error {
   color: red;
 }
+
+.bar-background {
+  background-color: lightgrey;
+  height: 15px;
+  width: 150px;
+  margin: 10px;
+}
