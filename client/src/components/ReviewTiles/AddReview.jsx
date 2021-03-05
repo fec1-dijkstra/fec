@@ -3,6 +3,7 @@ import RenderButtons from './RadioButtons.jsx';
 import CharsLeft from './CharsLeft.jsx';
 import ReviewRating from './ReviewRating.jsx';
 import ReviewField from './ReviewField.jsx';
+import { validateSubmit } from './functions/validateSubmit.js';
 
 class AddReview extends React.Component {
   constructor() {
@@ -51,8 +52,9 @@ class AddReview extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { rec } = this.state;
-    debugger;
+    const { state } = this;
+    const { meta } = this.props;
+    validateSubmit(state, meta);
   }
 
   render() {
