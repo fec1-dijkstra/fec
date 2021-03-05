@@ -11,7 +11,7 @@ class AddReview extends React.Component {
     super();
     this.state = {
       show: false,
-      rec: null,
+      recommendation: null,
       reviewBody: '',
       charsLeft: 50,
       photos: [],
@@ -49,7 +49,7 @@ class AddReview extends React.Component {
 
   select(event) {
     const pick = event.target.value;
-    this.setState({ rec: pick });
+    this.setState({ recommendation: pick });
   }
 
   handleSubmit(event) {

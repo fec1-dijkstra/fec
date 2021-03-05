@@ -1,13 +1,27 @@
+const validateEmail = (email) => {
+  if (!email) {
+    return false;
+  }
+  if (!email.includes('.com') && !email.includes('.net')) {
+    return false;
+  }
+  const emailArr = email.split('@');
+  const username = emailArr[0];
+  const domainAndDot = emailArr[1].split('.');
+  if (username.length < 1 || domainAndDot.length < 2 || domainAndDot[0].length < 1) {
+    return false;
+  }
+  return true;
+};
+
 const validateSubmit = (state, meta) => {
-  console.log(state);
-  console.log(meta);
-  const formReqs = ['recommended', 'username', 'email'];
+  const formReqs = ['recommendation', 'username', 'email', 'rating'];
   const { characteristics } = meta;
   const keys = Object.keys(characteristics);
-  let validation = true;
+  let validation;
   if (state && meta) {
     keys.map((key) => {
-      if (!state[key]) {
+      if (!state[key] || state[key].length === 0) {
         validation = `a selection for ${key} is required`;
         return null;
       }
@@ -23,6 +37,12 @@ const validateSubmit = (state, meta) => {
     if (state.charsLeft > 0 && !validation) {
       validation = 'review must be at least 50 characters long';
     }
+    if (!validateEmail(state.email) && !validation) {
+      validation = 'email address not valid';
+    }
+  }
+  if (!validation) {
+    validation = true;
   }
   return validation;
 };
