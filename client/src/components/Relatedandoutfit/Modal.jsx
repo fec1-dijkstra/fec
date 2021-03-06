@@ -19,6 +19,7 @@ class Modal extends React.Component {
       <div className="modal" id="modal" onClick={(e) => {this.onClick(e)}}>
           <div className="content" onClick={(e) => e.stopPropagation()}>
           <h3>Comparing</h3>
+          <div id="overflowTable">
             <table>
               <thead>
                 <tr>
@@ -29,10 +30,8 @@ class Modal extends React.Component {
               </thead>
               <TableBody features={this.props.features} relatedFeatures={this.props.relatedFeatures} />
             </table>
-            <button className="actionButton" onClick={(e) => {this.onClick(e)}}>
-              x
-            </button>
           </div>
+        </div>
       </div>
     );
   }

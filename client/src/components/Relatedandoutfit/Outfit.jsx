@@ -11,10 +11,24 @@ class Outfit extends React.Component {
     this.scrollRight = this.scrollRight.bind(this);
     this.scrollLeft = this.scrollLeft.bind(this);
     this.scrolled = this.scrolled.bind(this);
+    this.arrowHandler = this.arrowHandler.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ outfits: this.getCurrentOutfit() });
+    this.setState({ outfits: this.getCurrentOutfit() }, this.arrowHandler());
+    // window.addEventListener('resize', this.arrowHandler);
+    // document.getElementById('outfitCarousel').addEventListener('resize', this.arrowHandler);
+  }
+
+  arrowHandler() {
+    const element = document.getElementById('outfitCarousel');
+    console.log(element.scrollWidth, document.body.clientWidth);
+    if(element.scrollWidth <= document.body.clientWidth) {
+      document.getElementById('outfit_carousel_right').style.display = 'none';
+      document.getElementById('outfit_carousel_left').style.display = 'none';
+    } else {
+      document.getElementById('outfit_carousel_left').style.display = 'none';
+    }
   }
 
   handleAdd() {
@@ -55,12 +69,12 @@ class Outfit extends React.Component {
   scrolled() {
     const element = document.getElementById('outfitCarousel');
     if(element.offsetWidth + element.scrollLeft > element.scrollWidth - 50) {
-      document.getElementById('carousel_right').style.display = 'none';
+      document.getElementById('outfit_carousel_right').style.display = 'none';
     } else if (element.scrollLeft < 50) {
-      document.getElementById('carousel_left').style.display = 'none';
+      document.getElementById('outfit_carousel_left').style.display = 'none';
     } else {
-      document.getElementById('carousel_right').style.display = 'block';
-      document.getElementById('carousel_left').style.display = 'block';
+      document.getElementById('outfit_carousel_right').style.display = 'block';
+      document.getElementById('outfit_carousel_left').style.display = 'block';
     }
   }
 
@@ -79,8 +93,8 @@ class Outfit extends React.Component {
           ))}
         </div>
           <div className="carousel_actions">
-            <button id="carousel_left" onClick={this.scrollLeft}></button>
-            <button id="carousel_right" onClick={this.scrollRight}></button>
+            <button id="outfit_carousel_left" onClick={this.scrollLeft}></button>
+            <button id="outfit_carousel_right" onClick={this.scrollRight}></button>
           </div>
       </div>
     );
