@@ -1,3 +1,7 @@
+body {
+  font-family: 'Helvetica', sans-serif;
+}
+
 .ProductCard {
   width: 250px;
   height: 350px;
@@ -41,11 +45,7 @@
   text-decoration: line-through;
 }
 
-.Category {
-  text-transform: uppercase;
-  color: rgb(85, 85, 85);
-}
-
+.Category,
 h3 {
   text-transform: uppercase;
   color: rgb(85, 85, 85);
@@ -106,25 +106,22 @@ h3 {
 }
 
 .carousel {
-  overflow-y: auto;
+  position: relative;
+  width: 90vw;
+  overflow-x: auto;
   white-space: nowrap;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 
-.carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel::-webkit-scrollbar-track {
-  display: none;
-}
-
+.carousel::-webkit-scrollbar,
+.carousel::-webkit-scrollbar-track,
 .carousel::-webkit-scrollbar-thumb {
   display: none;
 }
 
 .carousel_item {
-  scroll-snap-align: start;
+  scroll-snap-align: end;
 }
 
 .actionButton {
@@ -158,4 +155,31 @@ table {
 
 .right-column {
   text-align: right;
+}
+
+.carousel_actions button {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  opacity: 0.4;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel_actions button:hover {
+  opacity: 1;
+}
+
+#carousel_left {
+  top: 45%;
+  left: 50px;
+  background: url(https://image.flaticon.com/icons/svg/130/130882.svg) no-repeat;
+  margin: 0 0 0 -50px;
+}
+
+#carousel_right {
+  top: 45%;
+  right: 50px;
+  background: url(https://image.flaticon.com/icons/svg/130/130884.svg) no-repeat;
+  margin: 0 -50px 0 0;
 }
