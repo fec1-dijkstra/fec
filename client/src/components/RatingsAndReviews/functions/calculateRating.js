@@ -8,7 +8,9 @@ const calculateRating = (ratings) => {
     totalReviews += Number(ratings[rating]);
     aggregateScore += Number(ratings[rating]) * Number(rating);
   });
-  return aggregateScore / totalReviews;
+  let average = aggregateScore / totalReviews;
+  average = Math.round(average / 0.25) / 4;
+  return (average * 100) / 5;
 };
 
 module.exports = {

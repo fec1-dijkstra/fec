@@ -169,5 +169,38 @@
 
 .averageScore {
   text-align: center;
-  width: 150px;
+  width: 170px;
+}
+
+.star-rating {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 25px;
+  height: 20px;
+  width: 125px;
+  margin: 0;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+}
+
+.star-rating-top {
+  color: #e7711b;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  width: 120px;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.star-rating-bot {
+  padding: 0;
+  display: block;
+  z-index: 0;
+  width: 125px;
 }
