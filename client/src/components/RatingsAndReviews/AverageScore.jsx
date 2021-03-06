@@ -4,7 +4,6 @@ const AverageScore = ({ meta }) => {
   if (JSON.stringify(meta) === '{}') {
     return null;
   }
-  debugger;
   let totalReviews = 0;
   let aggregateScore = 0;
   Object.keys(meta.ratings).forEach((rating) => {

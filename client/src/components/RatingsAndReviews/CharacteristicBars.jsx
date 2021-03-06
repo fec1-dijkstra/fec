@@ -8,22 +8,27 @@ class CharacteristicBars extends React.Component {
 
   render() {
     const { characteristics } = this.props.meta;
-    const bars = Object.keys(characteristics).map((char) => (
+    const bars = Object.keys(characteristics).map((char) => {
+      console.log(characteristics[char].value);
+        return (
       <div className="char-subcontainer" key={char.id}>
-        <div className="char-slider" id={char.value} />
+        <div
+          className="char-slider"
+          style={{ marginLeft: `${(characteristics[char].value * 75) / 5}%` }}
+        />
         <RenderBar />
         <div className="char-title">{char.id}</div>
       </div>
-    ));
+    )});
     return <div className="char-container">{bars}</div>;
   }
 }
 
 const RenderBar = () => (
   <>
+    <div className="char-segment" style={{ marginLeft: '0px' }} />
     <div className="char-segment" />
-    <div className="char-segment" />
-    <div className="char-segment" />
+    <div className="char-segment" style={{ marginRight: '0px' }} />
   </>
 );
 
