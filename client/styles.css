@@ -204,3 +204,18 @@
   z-index: 0;
   width: 125px;
 }
+
+.char-segment {
+  width: 50px;
+  height: 7px;
+  background-color: lightgrey;
+  margin: 5px;
+  margin-left: 2px;
+  display: inline-block;
+}
+
+.char-subcontainer {
+  width: 200px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
