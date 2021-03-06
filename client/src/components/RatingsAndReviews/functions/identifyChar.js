@@ -1,7 +1,13 @@
 const identifyChar = (string) => {
   switch (string) {
     case 'Size':
-      return ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too wide'];
+      return [
+        'A size too small',
+        '1/2 a size too small',
+        'Perfect',
+        '1/2 a size too big',
+        'A size too wide',
+      ];
     case 'Width':
       return ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'];
     case 'Comfort':

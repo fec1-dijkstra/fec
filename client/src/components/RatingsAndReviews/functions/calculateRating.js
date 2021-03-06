@@ -4,7 +4,7 @@ const calculateRating = (ratings) => {
   }
   let totalReviews = 0;
   let aggregateScore = 0;
-  Object.keys(ratings).forEach((rating) => {;
+  Object.keys(ratings).forEach((rating) => {
     totalReviews += Number(ratings[rating]);
     aggregateScore += Number(ratings[rating]) * Number(rating);
   });
