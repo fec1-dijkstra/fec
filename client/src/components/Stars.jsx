@@ -39,7 +39,7 @@ class Stars extends React.Component {
           <span>★★★★★</span>
         </div>
         <div className="star-ratings-css-bottom">
-          <span>★★★★★</span>
+          <span>☆☆☆☆☆</span>
         </div>
       </div>
     );

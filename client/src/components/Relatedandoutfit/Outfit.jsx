@@ -44,7 +44,11 @@ class Outfit extends React.Component {
       <div>
         <h3>Your Outfit</h3>
         <div className="carousel">
-            <div className="ProductCard carousel_item" onClick={this.handleAdd}>+</div>
+            <div className="ProductCard carousel_item" onClick={this.handleAdd}>
+              <button className="actionButton" id="addOutfit">+</button>
+              <div className="ProductCardImage"></div>
+              <div className="ProductInfo"></div>
+            </div>
           {this.state.outfits.map((outfit) => (
             <OutfitCard key={outfit.split(',')[0]} outfit={outfit.split(',')} handleDelete={this.handleDelete} handleProductChange={this.props.handleProductChange} />
           ))}
