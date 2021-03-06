@@ -64,7 +64,6 @@ class StyleSelector extends React.Component {
     if (selectedStyle.name) {
       return (
         <>
-        {console.log(selectedStyle)}
           <ImageGallery selectedStyle={selectedStyle} />
           {StyleSelector.setPrice(selectedStyle)}
           <div id="overview-style-name">

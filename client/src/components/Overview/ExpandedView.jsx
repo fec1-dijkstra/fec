@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ExpandedView = ({ selectedStyle, selectedThumbnail, zoomExpand, closeExpand, expandedRef }) => {
+const ExpandedView = ({ selectedStyle, selectedThumbnail, zoomExpand, openExpand, expandedRef }) => {
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
     return (
       <div
         className="overview-expanded-view"
-        onBlur={closeExpand}
+        onBlur={openExpand}
         onClick={zoomExpand}
         onKeyPress={zoomExpand}
         tabIndex={0}
@@ -28,15 +28,14 @@ ExpandedView.defaultProps = {
   selectedThumbnail: 0,
   selectedStyle: {},
   zoomExpand: (event) => event,
-  closeExpand: (event) => event,
-
+  openExpand: (event) => event,
 };
 
 ExpandedView.propTypes = {
   selectedThumbnail: PropTypes.number,
   selectedStyle: PropTypes.oneOfType([PropTypes.object]),
   zoomExpand: PropTypes.func,
-  closeExpand: PropTypes.func,
+  openExpand: PropTypes.func,
 };
 
 export default ExpandedView;

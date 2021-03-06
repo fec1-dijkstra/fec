@@ -15,13 +15,16 @@ class ImageGallery extends React.Component {
       selectedThumbnail: 0,
       isExpanded: false,
       zoomExpanded: false,
+      isBlur: false,
     };
     this.handleClick = this.handleClick.bind(this);
     this.openExpand = this.openExpand.bind(this);
-    this.closeExpand = this.closeExpand.bind(this);
+    // this.closeExpand = this.closeExpand.bind(this);
     this.zoomExpand = this.zoomExpand.bind(this);
     this.expandedRef = this.expandedRef.bind(this);
+    this.registerMouse = this.registerMouse.bind(this);
     this.refElement = null;
+    this.mouseDown = false;
   }
 
   // componentDidMount() {
@@ -48,19 +51,29 @@ class ImageGallery extends React.Component {
     this.setState({ selectedThumbnail: 0, isExpanded: false, zoomExpanded: false });
   }
 
-  openExpand() {
-    const { isExpanded } = this.state;
-    if (!isExpanded) {
+  openExpand(event) {
+    const { isExpanded, isBlur } = this.state;
+    if (!isExpanded && this.mouseDown) {
+      this.mouseDown = false;
       this.setState({ isExpanded: true }, () => ImageGallery.moveFocus(this.refElement));
-    }
-  }
-
-  closeExpand() {
-    const { isExpanded } = this.state;
-    if (isExpanded) {
+    } else {
+      this.mouseDown = false;
       this.setState({ isExpanded: false });
     }
   }
+
+  registerMouse() {
+    if (this.mouseDown === false) {
+      this.mouseDown = true;
+    }
+  }
+
+  // closeExpand() {
+  //   const { isExpanded } = this.state;
+  //   if (isExpanded) {
+  //     this.setState({ isExpanded: false });
+  //   }
+  // }
 
   zoomExpand() {
     const { zoomExpanded } = this.state;
@@ -88,7 +101,7 @@ class ImageGallery extends React.Component {
           selectedStyle={selectedStyle}
           selectedThumbnail={selectedThumbnail}
           zoomExpand={this.zoomExpand}
-          closeExpand={this.closeExpand}
+          openExpand={this.openExpand}
           expandedRef={this.expandedRef}
         />
       );
@@ -106,6 +119,7 @@ class ImageGallery extends React.Component {
           selectedStyle={selectedStyle}
           selectedThumbnail={selectedThumbnail}
           openExpand={this.openExpand}
+          registerMouse={this.registerMouse}
         />
         {viewExpanded}
       </div>
