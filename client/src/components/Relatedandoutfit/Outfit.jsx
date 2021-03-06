@@ -10,6 +10,7 @@ class Outfit extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.scrollRight = this.scrollRight.bind(this);
     this.scrollLeft = this.scrollLeft.bind(this);
+    this.scrolled = this.scrolled.bind(this);
   }
 
   componentDidMount() {
@@ -42,18 +43,24 @@ class Outfit extends React.Component {
   }
 
   scrollRight() {
-    document.getElementById('carousel-left').style.display = 'block';
+    Array.from(document.getElementsByClassName(`outfit carousel_item`), e => e.style['scroll-snap-align'] = "end");
     document.getElementById('outfitCarousel').scrollBy(250, 0);
-    if (window.scrollX === 0) {
-      document.getElementById('carousel-left').style.display = 'none';
-    }
   }
 
   scrollLeft() {
-    document.getElementById('carousel-right').style.display = 'block';
+    Array.from(document.getElementsByClassName(`outfit carousel_item`), e => e.style['scroll-snap-align'] = "start");
     document.getElementById('outfitCarousel').scrollBy(-250, 0);
-    if (window.scrollX === 0) {
-      document.getElementById('carousel-left').style.display = 'none';
+  }
+
+  scrolled() {
+    const element = document.getElementById('outfitCarousel');
+    if(element.offsetWidth + element.scrollLeft > element.scrollWidth - 50) {
+      document.getElementById('carousel_right').style.display = 'none';
+    } else if (element.scrollLeft < 50) {
+      document.getElementById('carousel_left').style.display = 'none';
+    } else {
+      document.getElementById('carousel_right').style.display = 'block';
+      document.getElementById('carousel_left').style.display = 'block';
     }
   }
 
@@ -61,8 +68,8 @@ class Outfit extends React.Component {
     return (
       <div id="YourOutfit">
         <h3>Your Outfit</h3>
-        <div className="carousel" id="outfitCarousel">
-            <div className="ProductCard carousel_item" onClick={this.handleAdd}>
+        <div className="carousel" id="outfitCarousel" onScroll={this.scrolled} >
+            <div className="ProductCard outfit carousel_item" onClick={this.handleAdd}>
               <button className="actionButton" id="addOutfit">+</button>
               <div className="ProductCardImage"></div>
               <div className="ProductInfo"></div>

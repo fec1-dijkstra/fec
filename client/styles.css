@@ -1,5 +1,6 @@
 body {
   font-family: 'Helvetica', sans-serif;
+  overflow-x: hidden;
 }
 
 .ProductCard {
@@ -13,6 +14,10 @@ body {
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   align-content: center;
+}
+
+.ProductCard:hover {
+  cursor: pointer;
 }
 
 .ProductCardImage {
@@ -120,10 +125,6 @@ h3 {
   display: none;
 }
 
-.carousel_item {
-  scroll-snap-align: end;
-}
-
 .actionButton {
   display: block;
   border: none;
@@ -138,6 +139,14 @@ h3 {
   font-size: 50px;
   grid-row: 2 / span 1;
   grid-column: 2 / span 1;
+}
+
+#removeButton {
+  background: url(https://www.flaticon.com/svg/vstatic/svg/786/786195.svg?token=exp=1615049066~hmac=3925775be4ee3c24c9b051bb4b224e70)
+    no-repeat;
+  width: 25px;
+  height: 25px;
+  margin: 5px;
 }
 
 table {
@@ -157,8 +166,12 @@ table {
   text-align: right;
 }
 
+.carousel_actions {
+  position: relative;
+}
+
 .carousel_actions button {
-  position: fixed;
+  position: absolute;
   width: 50px;
   height: 50px;
   opacity: 0.4;
@@ -171,15 +184,15 @@ table {
 }
 
 #carousel_left {
-  top: 45%;
-  left: 50px;
+  top: -200px;
+  left: 5vw;
   background: url(https://image.flaticon.com/icons/svg/130/130882.svg) no-repeat;
   margin: 0 0 0 -50px;
 }
 
 #carousel_right {
-  top: 45%;
-  right: 50px;
+  top: -200px;
+  left: 90vw;
   background: url(https://image.flaticon.com/icons/svg/130/130884.svg) no-repeat;
   margin: 0 -50px 0 0;
 }

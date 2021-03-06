@@ -20,8 +20,8 @@ class OutfitCard extends React.Component {
 
   render() {
     return (
-      <div className="ProductCard carousel_item" onClick={this.handleClick}>
-        <button onClick={this.handleRemove} className="actionButton" id="removeButton" >x</button>
+      <div className="ProductCard outfit carousel_item" onClick={this.handleClick}>
+        <button onClick={this.handleRemove} className="actionButton" id="removeButton" ></button>
         <div className="ProductCardImage">
           <img src={this.props.outfit[5]} alt="DefaultStyleImage" />
         </div>
@@ -31,12 +31,12 @@ class OutfitCard extends React.Component {
           <p className="ProductPrice">
             {!this.props.outfit[4].includes("null") ?
               <>
-                <span className="SalePrice">${this.props.outfit[4]}</span> <span className="OriginalPrice">${this.props.outfit[3]}</span>
+                <span className="SalePrice">${this.props.outfit[4].trim()}</span> <span className="OriginalPrice">${this.props.outfit[3].trim()}</span>
               </>
-              : <span>${this.props.outfit[3]}</span>
+              : <span>${this.props.outfit[3].trim()}</span>
             }
           </p>
-          <Stars productId={this.props.outfit[0]} />
+          <Stars productId={this.props.outfit[0].trim()} />
         </div>
       </div>
     );
