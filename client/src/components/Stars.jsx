@@ -31,7 +31,6 @@ class Stars extends React.Component {
         total += rating * ratings[rating];
       }
       const percentage = Math.round(((total / count) * 125) / 5);
-      debugger;
       self.setState({ style: { width: `${percentage}%` } });
     });
   }

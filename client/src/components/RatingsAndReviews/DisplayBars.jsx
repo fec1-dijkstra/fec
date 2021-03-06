@@ -19,7 +19,8 @@ const DisplayBars = ({ meta }) => {
   });
   const starKeys = Object.keys(meta.ratings);
   const starRatings = starKeys.map((stars, index) => (
-    <div key={`bar-${stars}`}>
+    <div className="bar-container" key={`bar-${stars}`}>
+      <span className="bar-text">{stars}</span>
       <div className="bar-background" key={`${stars}-star-background`} />
       <div
         className="star-bar"
