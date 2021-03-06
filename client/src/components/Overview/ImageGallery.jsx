@@ -24,12 +24,16 @@ class ImageGallery extends React.Component {
     this.refElement = null;
   }
 
-  // componentDidUpdate(prevProps) {
-  //   const { selectedStyle } = this.props;
-  //   if (prevProps.selectedStyle.style_id !== selectedStyle.style_id) {
-  //     this.resetGallery();
-  //   }
+  // componentDidMount() {
+  //   this.resetGallery();
   // }
+
+  componentDidUpdate(prevProps) {
+    const { selectedStyle } = this.props;
+    if (prevProps.selectedStyle.style_id !== selectedStyle.style_id) {
+      this.resetGallery();
+    }
+  }
 
   handleClick(event) {
     let { selectedThumbnail } = this.state;
@@ -40,9 +44,9 @@ class ImageGallery extends React.Component {
     return undefined;
   }
 
-  // resetGallery() {
-  //   this.setState({ selectedThumbnail: 0, isExpanded: false, zoomExpanded: false });
-  // }
+  resetGallery() {
+    this.setState({ selectedThumbnail: 0, isExpanded: false, zoomExpanded: false });
+  }
 
   openExpand() {
     const { isExpanded } = this.state;

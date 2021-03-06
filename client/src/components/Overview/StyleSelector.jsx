@@ -21,6 +21,7 @@ class StyleSelector extends React.Component {
     super(props);
     this.state = {
       selectedStyle: {},
+      defaultStyle: {},
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -52,17 +53,18 @@ class StyleSelector extends React.Component {
     const { productStyles } = this.props;
     if (productStyles.results && productStyles.results.length > 0) {
       const selectedStyle = productStyles.results.find((style) => style[`default?`] === true);
-      return this.setState({ selectedStyle });
+      return this.setState({ selectedStyle, defaultStyle: selectedStyle });
     }
     return undefined;
   }
 
   render() {
-    const { selectedStyle } = this.state;
+    const { selectedStyle, defaultStyle } = this.state;
     const { productInfo, productStyles } = this.props;
     if (selectedStyle.name) {
       return (
         <>
+        {console.log(selectedStyle)}
           <ImageGallery selectedStyle={selectedStyle} />
           {StyleSelector.setPrice(selectedStyle)}
           <div id="overview-style-name">
@@ -70,6 +72,7 @@ class StyleSelector extends React.Component {
           </div>
           <Styles
             productStyles={productStyles}
+            defaultStyle={defaultStyle}
             selectedStyle={selectedStyle}
             handleClick={this.handleClick}
           />
