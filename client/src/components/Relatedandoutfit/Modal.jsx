@@ -18,19 +18,19 @@ class Modal extends React.Component {
     return (
       <div className="modal" id="modal" onClick={(e) => {this.onClick(e)}}>
           <div className="content" onClick={(e) => e.stopPropagation()}>
-          <h3>COMPARING</h3>
+          <h3>Comparing</h3>
             <table>
               <thead>
                 <tr>
-                  <th>{this.props.name}</th>
-                  <th />
-                  <th>{this.props.relatedName}</th>
+                  <th className="left-column">{this.props.name}</th>
+                  <th className="center-column"/>
+                  <th className="right-column">{this.props.relatedName}</th>
                 </tr>
               </thead>
               <TableBody features={this.props.features} relatedFeatures={this.props.relatedFeatures} />
             </table>
-            <button className="toggle-button" onClick={(e) => {this.onClick(e)}}>
-              close
+            <button className="actionButton" onClick={(e) => {this.onClick(e)}}>
+              x
             </button>
           </div>
       </div>
@@ -67,9 +67,9 @@ const TableBody = function({features, relatedFeatures}) {
     <tbody>
       {Object.keys(comparison).map((feature) => (
         <tr key={feature}>
-          {comparison[feature][0] ? (typeof comparison[feature][0] === 'boolean') ? <td>✓</td> : <td>{comparison[feature][0]}</td> : <td />}
-          <td>{feature}</td>
-          {comparison[feature][1] ? (typeof comparison[feature][1] === 'boolean') ? <td>✓</td> : <td>{comparison[feature][1]}</td> : <td />}
+          {comparison[feature][0] ? (typeof comparison[feature][0] === 'boolean') ? <td className="left-column">✓</td> : <td className="left-column">{comparison[feature][0]}</td> : <td />}
+          <td className="center-column">{feature}</td>
+          {comparison[feature][1] ? (typeof comparison[feature][1] === 'boolean') ? <td className="right-column">✓</td> : <td className="right-column">{comparison[feature][1]}</td> : <td />}
         </tr>
       ))}
     </tbody>

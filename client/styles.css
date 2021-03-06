@@ -46,6 +46,11 @@
   color: rgb(85, 85, 85);
 }
 
+h3 {
+  text-transform: uppercase;
+  color: rgb(85, 85, 85);
+}
+
 .ProductName {
   font-weight: bold;
 }
@@ -56,20 +61,19 @@
   z-index: 2;
   left: 0;
   top: 0;
-  width: 500px;
-  height: 300px;
   align-content: middle;
 }
 
 .content {
   position: fixed;
-  vertical-align: middle;
   overflow: auto;
+  vertical-align: center;
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   z-index: 2;
+  color: grey;
 }
 
 .star-ratings-css {
@@ -102,7 +106,7 @@
 }
 
 .carousel {
-  overflow: auto;
+  overflow-y: auto;
   white-space: nowrap;
   scroll-snap-type: y mandatory;
 }
@@ -137,4 +141,21 @@
   font-size: 50px;
   grid-row: 2 / span 1;
   grid-column: 2 / span 1;
+}
+
+table {
+  width: 100%;
+  column-width: 75px;
+}
+
+.left-column {
+  text-align: left;
+}
+
+.center-column {
+  text-align: center;
+}
+
+.right-column {
+  text-align: right;
 }
