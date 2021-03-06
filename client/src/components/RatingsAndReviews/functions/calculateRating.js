@@ -10,7 +10,7 @@ const calculateRating = (ratings) => {
   });
   let average = aggregateScore / totalReviews;
   average = Math.round(average / 0.25) / 4;
-  return (average * 100) / 5;
+  return average * 25;
 };
 
 module.exports = {
