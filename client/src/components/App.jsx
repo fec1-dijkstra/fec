@@ -8,7 +8,6 @@ import QandA from './QandA/QandA.jsx';
 // eslint-disable-next-line import/extensions
 import { products, reviews, qa } from '../../dummydata.js';
 import queries from './queries.js';
-import Stars from './Stars.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -24,9 +23,11 @@ class App extends React.Component {
       relatedProducts: [],
       currentProduct: 17762,
       reviewsMeta: {},
+      relatedProductInfo: [],
       allReviews: {},
       sortBy: 'newest',
     };
+    this.handleProductChange = this.handleProductChange.bind(this);
   }
 
   componentDidMount() {
@@ -34,7 +35,11 @@ class App extends React.Component {
     this.getAll(1, 20, sortBy, currentProduct);
   }
 
-  getAll(pageNumber, countNumber, sortBy, productId) {
+  handleProductChange(id) {
+    this.setState({ currentProduct: id, relatedProductInfo: []}, this.getAll(1, 20, this.state.currentProduct));
+  }
+
+  getAll(pageNumber, countNumber, productId) {
     Promise.all([
       queries.getProductList(pageNumber, countNumber, (result) => result),
       queries.getProductInfo(productId, (result) => result),
@@ -43,18 +48,30 @@ class App extends React.Component {
       queries.getReviewsMeta(productId, (result) => result),
       queries.getReviews(pageNumber, countNumber, sortBy, productId, (result) => result),
     ])
-      .then(([productList, productInfo, productStyles, relatedProducts, reviewsMeta, allReviews]) => {
-          this.setState({
-            productList,
-            productInfo,
-            productStyles,
-            relatedProducts,
-            reviewsMeta,
-            allReviews,
-          });
+      .then(([productList, productInfo, productStyles, relatedProducts, reviewsMeta]) => {
+        this.setState(
+          { productList, productInfo, productStyles, relatedProducts, reviewsMeta },
+          () => {
+            relatedProducts.map((id) => this.getRelated(id));
+          }
+        );
       })
       .catch((error) => console.log('error caught in App.jsx', error));
   }
+
+  getRelated(relatedId) {
+    Promise.all([
+      queries.getProductInfo(relatedId, (result) => result),
+      queries.getProductStyles(relatedId, (result) => result),
+    ]).then(([productInfo, productStyles]) => {
+      this.setState((state) => {
+        return {
+          relatedProductInfo: state.relatedProductInfo.concat({ productInfo, productStyles }),
+        };
+      })
+    });
+  }
+
 
   render() {
     const {
@@ -79,8 +96,10 @@ class App extends React.Component {
           reviewsMeta={reviewsMeta}
         />
         <RelatedandOutfit
-          relatedProducts={this.state.relatedProducts}
           productInfo={this.state.productInfo}
+          productStyles={this.state.productStyles}
+          relatedProductInfo={this.state.relatedProductInfo}
+          handleProductChange={this.handleProductChange}
         />
         <QandA />
         <RatingsAndReviews
