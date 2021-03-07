@@ -53,9 +53,9 @@ class App extends React.Component {
       queries.getReviewsMeta(productId, (result) => result),
       queries.getReviews(pageNumber, countNumber, sortBy, productId, (result) => result),
     ])
-      .then(([productList, productInfo, productStyles, relatedProducts, reviewsMeta]) => {
+      .then(([productList, productInfo, productStyles, relatedProducts, reviewsMeta, productReviews]) => {
         this.setState(
-          { productList, productInfo, productStyles, relatedProducts, reviewsMeta },
+          { productList, productInfo, productStyles, relatedProducts, reviewsMeta, reviews: productReviews },
           () => {
             relatedProducts.map((id) => this.getRelated(id));
           }
@@ -89,6 +89,7 @@ class App extends React.Component {
       allReviews,
     } = this.state;
     // <Stars productId={17106} />
+    debugger;
     return (
       <div>
         {/* <div> Hello World</div> */}
@@ -105,8 +106,8 @@ class App extends React.Component {
         />
         <QandA />
         <RatingsAndReviews
-          reviews={reviews[0].results}
-          product={reviews[0].product}
+          reviews={reviews.results}
+          product={reviews.product}
           meta={reviewsMeta}
           productName={productInfo.name}
         />

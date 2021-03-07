@@ -9,14 +9,13 @@ import AverageScore from './AverageScore.jsx';
 import CharacteristicBars from './CharacteristicBars.jsx';
 
 class RatingsAndReviews extends React.Component {
-  constructor({ reviews, product }) {
+  constructor() {
     super();
-    this.state = { reviews, product };
+    this.state = {};
   }
 
   render() {
-    const { reviews, product } = this.state;
-    const { meta, productName } = this.props;
+    const { meta, productName, reviews, product } = this.props;
     if (!meta || JSON.stringify(meta) === '{}') {
       return null;
     }

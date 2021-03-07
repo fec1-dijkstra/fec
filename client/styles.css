@@ -274,6 +274,10 @@
   margin-bottom: 5%;
 }
 
+.tile {
+  margin: 50px;
+}
+
 .add-review {
   margin: 25px;
   margin-left: 0;
