@@ -206,16 +206,17 @@
 }
 
 .char-segment {
-  width: 50px;
+  width: 80px;
   height: 7px;
   background-color: lightgrey;
   margin: 5px;
   margin-left: 2px;
   display: inline-block;
+  text-align: center;
 }
 
 .char-subcontainer {
-  width: 165px;
+  width: 255px;
   margin-top: 25px;
   margin-bottom: 25px;
 }
@@ -226,4 +227,16 @@
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 7px solid black;
+}
+
+.segment-text {
+  margin: 5px;
+  width: 50px;
+}
+
+.text-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: small;
+  text-align: center;
 }
