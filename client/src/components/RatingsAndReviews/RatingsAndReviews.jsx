@@ -28,7 +28,7 @@ class RatingsAndReviews extends React.Component {
           <DisplayBars meta={meta} />
           <CharacteristicBars meta={meta} />
         </div>
-        <div className= "please-work">
+        <div className="please-work">
           <RenderReviews reviews={reviews} product={product} />
           <AddReview meta={meta} productName={productName} />
         </div>

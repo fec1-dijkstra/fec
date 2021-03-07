@@ -32,10 +32,12 @@ class RenderReviews extends React.Component {
         <>
           <div className="reviews">
             <SortBy product={product} list={list} />
-            <button type="submit" id="more-reviews" onClick={this.moreReviews}>
-              More Reviews
-            </button>
-            <div className="reviews-container">{toRender}</div>
+            <div className="reviews-container">
+              {toRender}
+              <button type="submit" id="more-reviews" onClick={this.moreReviews}>
+                More Reviews
+              </button>
+            </div>
           </div>
         </>
       );
