@@ -170,6 +170,7 @@
 .averageScore {
   text-align: center;
   width: 170px;
+  margin-left: 10%;
 }
 
 .star-rating {
