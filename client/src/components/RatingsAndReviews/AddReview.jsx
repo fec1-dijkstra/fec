@@ -161,7 +161,7 @@ class AddReview extends React.Component {
               <button type="submit">Submit</button>
               <DisplayError error={error} />
             </form>
-            <button type="button" onClick={this.showModal}>
+            <button type="button" className="add-review" onClick={this.showModal}>
               Close
             </button>
           </div>

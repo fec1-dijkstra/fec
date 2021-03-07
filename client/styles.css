@@ -180,7 +180,7 @@
   width: 125px;
   margin: 0;
   margin-bottom: 10px;
-  margin-left: 25px;
+  margin-left: 15%;
   position: relative;
   padding: 0;
   text-shadow: 0px 1px 0 #a2a2a2;
@@ -217,8 +217,12 @@
 
 .char-subcontainer {
   width: 255px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.bar-container {
+  margin-left: 10%;
 }
 
 .char-slider {
@@ -239,4 +243,16 @@
   justify-content: space-between;
   font-size: small;
   text-align: center;
+}
+
+.overview {
+  width: 25%;
+  position: absolute;
+  margin-left: 5%;
+}
+
+.please-work {
+  float: right;
+  width: 70%;
+  margin-bottom: 5%;
 }
