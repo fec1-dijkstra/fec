@@ -22,7 +22,7 @@ class RatingsAndReviews extends React.Component {
     }
     return (
       <>
-        <div className="overview">
+        <div className="item-summary">
           <StarRating meta={meta} />
           <AverageScore meta={meta} />
           <DisplayBars meta={meta} />

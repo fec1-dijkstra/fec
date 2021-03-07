@@ -262,7 +262,7 @@
   text-align: center;
 }
 
-.overview {
+.item-summary {
   width: 25%;
   position: absolute;
   margin-left: 5%;
@@ -277,6 +277,7 @@
 .add-review {
   margin: 25px;
   margin-left: 0;
+}
 .carousel {
   overflow: auto;
   white-space: nowrap;

@@ -10,14 +10,17 @@ const DisplayBars = ({ meta }) => {
     total += Number(num);
     return null;
   });
-  const percentages = Object.values(ratings).map((val) => {
-    const calc = Math.abs((val / total) * 300);
+  const percentages = [0, 0, 0, 0, 0];
+  Object.keys(ratings).map((val) => {
+    const calc = Math.abs((ratings[val] / total) * 300);
     if (calc > 300) {
-      return 300;
+      percentages[val - 1] = 300;
+      return null;
     }
-    return calc;
+    percentages[val - 1] = calc;
+    return null;
   });
-  const starKeys = Object.keys(meta.ratings);
+  const starKeys = ['1', '2', '3', '4', '5'];
   const starRatings = starKeys.map((stars, index) => (
     <div className="bar-container" key={`bar-${stars}`}>
       <span className="bar-text">{stars}</span>

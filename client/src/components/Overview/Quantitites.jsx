@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Quantities = ({ maxQuantity }) => {
+const Quantities = ({ max }) => {
   let key = 0;
 
-  if (maxQuantity > 0) {
+  if (max > 0) {
     const quantities = [];
-    for (let i = 2; i < maxQuantity; i += 1) {
+    for (let i = 2; i <= max; i += 1) {
       key += 1;
       quantities.push(
         <option key={key} value={i}>
@@ -20,11 +20,11 @@ const Quantities = ({ maxQuantity }) => {
 };
 
 Quantities.defaultProps = {
-  maxQuantity: 1,
+  max: 1,
 };
 
 Quantities.propTypes = {
-  maxQuantity: PropTypes.number,
+  max: PropTypes.number,
 };
 
 export default Quantities;

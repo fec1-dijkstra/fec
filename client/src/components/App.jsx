@@ -21,7 +21,9 @@ class App extends React.Component {
       productInfo: {},
       productStyles: {},
       relatedProducts: [],
-      currentProduct: 17762,
+      // 17762 - first product in list
+      // 17068 - fully out of stock
+      currentProduct: 17067,
       reviewsMeta: {},
       relatedProductInfo: [],
       allReviews: {},
@@ -36,10 +38,13 @@ class App extends React.Component {
   }
 
   handleProductChange(id) {
-    this.setState({ currentProduct: id, relatedProductInfo: []}, this.getAll(1, 20, this.state.currentProduct));
+    this.setState(
+      { currentProduct: id, relatedProductInfo: [] },
+      this.getAll(1, 20, this.state.sortBy, this.state.currentProduct)
+    );
   }
 
-  getAll(pageNumber, countNumber, productId) {
+  getAll(pageNumber, countNumber, sortBy, productId) {
     Promise.all([
       queries.getProductList(pageNumber, countNumber, (result) => result),
       queries.getProductInfo(productId, (result) => result),
@@ -64,14 +69,11 @@ class App extends React.Component {
       queries.getProductInfo(relatedId, (result) => result),
       queries.getProductStyles(relatedId, (result) => result),
     ]).then(([productInfo, productStyles]) => {
-      this.setState((state) => {
-        return {
-          relatedProductInfo: state.relatedProductInfo.concat({ productInfo, productStyles }),
-        };
-      })
+      this.setState((state) => ({
+        relatedProductInfo: state.relatedProductInfo.concat({ productInfo, productStyles }),
+      }));
     });
   }
-
 
   render() {
     const {
@@ -89,7 +91,7 @@ class App extends React.Component {
     // <Stars productId={17106} />
     return (
       <div>
-        <div> Hello World</div>
+        {/* <div> Hello World</div> */}
         <Overview
           productInfo={productInfo}
           productStyles={productStyles}
