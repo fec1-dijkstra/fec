@@ -52,7 +52,7 @@ class ProductCard extends React.Component {
         />
         <div className="ProductCardImage">
           <img
-            src={this.props.relatedProduct.productStyles.results[0].photos[0].url}
+            src={this.props.relatedProduct.productStyles.results[0].photos[0].url || "https://wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg"}
             alt="DefaultStyleImage"
           />
         </div>

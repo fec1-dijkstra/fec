@@ -203,17 +203,17 @@ table {
 
 .left-column {
   text-align: left;
-  width: 150px;
+  width: 200px;
 }
 
 .center-column {
   text-align: center;
-  width: 150px;
+  width: 200px;
 }
 
 .right-column {
   text-align: right;
-  width: 150px;
+  width: 200px;
 }
 
 thead th {

@@ -21,7 +21,7 @@ class App extends React.Component {
       productInfo: {},
       productStyles: {},
       relatedProducts: [],
-      currentProduct: 17762,
+      currentProduct: 17068,
       reviewsMeta: {},
       relatedProductInfo: [],
       allReviews: {},
