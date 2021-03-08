@@ -7,20 +7,27 @@ class ProductCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false,
+      show: false,
     };
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.bodyScroll = this.bodyScroll.bind(this);
   }
 
-  handleOpenModal(e) {
+  showModal(e) {
     e.stopPropagation();
-    this.setState({ showModal: true });
+    this.setState({ show: !this.state.show }, this.bodyScroll(window.scrollY));
   }
 
-  handleCloseModal() {
-    this.setState({ showModal: false });
+  bodyScroll(x) {
+    if(!this.state.show) {
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${x}px`;
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
   }
 
   handleClick(e) {
@@ -30,32 +37,32 @@ class ProductCard extends React.Component {
 
   render() {
     return (
-      <div className="ProductCard carousel_item" onClick={this.handleClick}>
-        <button type="button" onClick={this.handleOpenModal} id="modalButton">
-          ☆
+      <div className="ProductCard related_carousel_item" onClick={this.handleClick.bind(this)}>
+        <button className="actionButton" onClick={this.showModal} >
+        ★
         </button>
         <Modal
           className="modal"
-          showModal={this.state.showModal}
-          handleCloseModal={this.handleCloseModal}
+          show={this.state.show}
+          onClose={this.showModal}
           features={this.props.productInfo.features}
           relatedFeatures={this.props.relatedProduct.productInfo.features}
           name={this.props.productInfo.name}
           relatedName={this.props.relatedProduct.productInfo.name}
         />
-        <img
-          src={this.props.relatedProduct.productStyles.results[0].photos[0].url}
-          alt="DefaultStyleImage"
-          className="ProductCardImage"
-        />
+        <div className="ProductCardImage">
+          <img
+            src={this.props.relatedProduct.productStyles.results[0].photos[0].url || "https://wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg"}
+            alt="DefaultStyleImage"
+          />
+        </div>
         <div className="ProductInfo">
           <p className="Category">{this.props.relatedProduct.productInfo.category}</p>
           <p className="ProductName">{this.props.relatedProduct.productInfo.name}</p>
           <p className="ProductPrice">
             {this.props.relatedProduct.productStyles.results[0].sale_price ?
               <>
-                <span className="SalePrice">${this.props.relatedProduct.productStyles.results[0].sale_price}</span>
-                <span className="OriginalPrice">
+                <span className="SalePrice">${this.props.relatedProduct.productStyles.results[0].sale_price}</span> <span className="OriginalPrice">
                   ${this.props.relatedProduct.productStyles.results[0].original_price}
                 </span>
               </>

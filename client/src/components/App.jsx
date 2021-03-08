@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
-import RatingsAndReviews from './ReviewTiles/RatingsAndReviews.jsx';
+import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedandOutfit from './RelatedandOutfit/RelatedandOutfit.jsx';
 import QandA from './QandA/QandA.jsx';
@@ -38,10 +38,9 @@ class App extends React.Component {
   }
 
   handleProductChange(id) {
-    this.setState(
-      { currentProduct: id, relatedProductInfo: [] },
-      this.getAll(1, 20, this.state.sortBy, this.state.currentProduct)
-    );
+    this.setState({ currentProduct: id, relatedProductInfo: [] }, () => {
+      this.getAll(1, 20, this.state.sortBy, this.state.currentProduct);
+    });
   }
 
   getAll(pageNumber, countNumber, sortBy, productId) {
@@ -53,9 +52,25 @@ class App extends React.Component {
       queries.getReviewsMeta(productId, (result) => result),
       queries.getReviews(pageNumber, countNumber, sortBy, productId, (result) => result),
     ])
-      .then(([productList, productInfo, productStyles, relatedProducts, reviewsMeta]) => {
+      .then(
+        ([
+          productList,
+          productInfo,
+          productStyles,
+          relatedProducts,
+          reviewsMeta,
+          productReviews,
+        ]) => {
         this.setState(
-          { productList, productInfo, productStyles, relatedProducts, reviewsMeta },
+            {
+              productList,
+              productInfo,
+              productStyles,
+              relatedProducts,
+              reviewsMeta,
+              reviews: productReviews,
+              allReviews: productReviews,
+            },
           () => {
             relatedProducts.map((id) => this.getRelated(id));
           }
@@ -88,6 +103,7 @@ class App extends React.Component {
       reviewsMeta,
       allReviews,
     } = this.state;
+
     return (
       <div>
         {/* <div> Hello World</div> */}
@@ -103,7 +119,14 @@ class App extends React.Component {
           handleProductChange={this.handleProductChange}
         />
         <QandA />
-        <RatingsAndReviews reviews={reviews[0].results} />
+        <RatingsAndReviews
+          reviews={reviews.results}
+          allReviews={allReviews.results}
+          product={reviews.product}
+          meta={reviewsMeta}
+          productName={productInfo.name}
+          app={this}
+        />
       </div>
     );
   }

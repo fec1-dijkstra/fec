@@ -3,10 +3,12 @@ import React from 'react';
 import RelatedItems from './RelatedItems.jsx';
 import Outfit from './Outfit.jsx';
 
-const RelatedandOutfit = function ({ handleProductChange, productInfo, relatedProductInfo, productStyles }) {
+const RelatedandOutfit = function ({ handleProductChange, productInfo, relatedProductInfo, productStyles, showComparisonModal, handleModalOpen}) {
   return (
     <div>
       <RelatedItems
+        showComparisonModal={showComparisonModal}
+        handleModalOpen={handleModalOpen}
         productInfo={productInfo}
         relatedProductInfo={relatedProductInfo}
         handleProductChange={handleProductChange}
