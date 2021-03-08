@@ -16,8 +16,10 @@ const Reviews = ({ productInfo, reviewsMeta }) => {
   if (ratingsCount > 0) {
     return (
       <div className="overview-reviews">
-        <Stars productId={productInfo.id} />
-        <div>Read all {ratingsCount} reviews</div>
+        <div className="overview-stars">
+          <Stars productId={productInfo.id} />
+        </div>
+        <div className="overview-reviews-count">Read all {ratingsCount} reviews</div>
       </div>
     );
   }

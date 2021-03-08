@@ -5,10 +5,11 @@ import Reviews from './Reviews.jsx';
 
 const ProductInformation = ({ productInfo, productStyles, reviewsMeta }) => (
   <div className="overview-product-information">
-    <Reviews productInfo={productInfo} reviewsMeta={reviewsMeta} />
-    <div id="overview-category">{productInfo.category}</div>
-    <div id="overview-name">{productInfo.name}</div>
-
+    <div className="overview-product-information-meta">
+      <Reviews productInfo={productInfo} reviewsMeta={reviewsMeta} />
+      <div id="overview-category">{productInfo.category}</div>
+      <div id="overview-name">{productInfo.name}</div>
+    </div>
     <StyleSelector productStyles={productStyles} productInfo={productInfo} />
   </div>
 );

@@ -1,146 +1,405 @@
+.overview-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin: 0 auto;
+  width: 960px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
 .overview {
-  background-color: aquamarine;
-  width: auto;
+  width: 100%;
+  min-height: 700px;
+
   height: auto;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
 }
 
+/* Product Information */
+.overview-product {
+  order: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
 .overview-product-information {
-  background-color:darkgray;
+  order: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-product-information-meta {
+  align-self: flex-end;
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-end;
+  right: 0px;
+  width: 340px;
 }
 
 #overview-category {
-  background-color: darkorchid;
+  order: 1;
+  font-size: 20px;
+  font-weight: 100;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #overview-name {
-  background-color: darksalmon;
+  order: 2;
+  font-weight: 900;
+  font-size: 40px;
+  margin-bottom: 15px;
 }
 
-#overview-price {
-  background-color:powderblue;
+.overview-price {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
+
+/* #overview-price {
+  background-color:powderblue;
+} */
 
 #overview-price-slash {
-  background-color: darkseagreen;
   text-decoration: line-through;
+  margin-right: 7px;
 }
 
 #overview-sale-price {
-  background-color: darkturquoise;
   color: red;
 }
 
+/* Reviews */
 .overview-reviews {
-  background-color:cadetblue;
+  order: 0;
   width: auto;
+  height: auto;
+  display: flex;
+}
+
+.overview-stars {
+  width: 140px;
+  height: 40px;
+}
+
+.overview-stars .star-ratings-css {
+  margin: 0px;
+}
+
+.overview-reviews-count {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+/* Style Selector */
+/* .overview-style-selector {
+  order: 3;
+} */
+
+.overview-style-section {
+  position: absolute;
+  width: 340px;
+  right: 0;
   height: auto;
 }
 
+.overview-style-icon-area {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+
+}
+
 .overview-style-icon {
-  background-color: coral;
   font-weight: 100;
+  margin-top: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  margin: 5px;
+  border: 2px solid rgb(55, 55, 55);
+  outline-style: none;
 }
 
 .overview-selected-style-icon {
-  background-color:cyan;
   font-weight: 900;
+  opacity: .6;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  margin-top: 20px;
+  margin: 5px;
+  border: 2px solid rgb(55, 55, 55);
+  outline-style: none;
+}
+
+.overview-style-icon img {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+
+.overview-selected-style-icon img {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
 }
 
 /* .overview-default-style-icon {
   background-color: darkseagreen;
 } */
 
+.overview-bag-and-star {
+  display: flex;
+  justify-content: space-between;
+}
+
 #overview-style-name {
-  background-color: red;
+  margin-bottom: 10px;
 }
 
-#overview-add-to-bag-btn {
-  background-color: firebrick;
+/* Add To Cart */
+#overview-size-selector, #overview-add-to-bag-btn, #overview-quantity-selector, #overview-view-bag-btn, #overview-star-button {
+  background-color: white;
+  width: 200px;
+  height: 50px;
+  border: 2px solid rgb(55, 55, 55);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  padding-left: 15px;
+  margin-right: 20px;
+  appearance: none;
+  outline-style: none;
 }
 
-#overview-view-bag-btn {
-  background-color: forestgreen;
+#overview-add-to-bag-btn, #overview-view-bag-btn {
+  margin-top: 15px;
+  width: 260px;
 }
 
-#overview-please-select {
-  background-color: gray;
-}
-
-#overview-size-selector {
-  background-color: greenyellow;
+#overview-star-button {
+  margin-top: 15px;
+  width: 50px;
+  height: 50px;
+  margin-right: 0px;
 }
 
 #overview-quantity-selector {
-  background-color: hotpink;
+  width: 120px;
+  margin-right: 0;
 }
 
+#overview-please-select {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+/* .overview-add-to-cart {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+} */
+
+/* Social Share */
 .overview-social-share {
-  background-color:lawngreen;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  justify-content: flex-end;
+}
+
+.overview-facebook, .overview-twitter, .overview-pinterest {
+  margin-right: 15px;
+  background-color: white;
+  text-align: center;
+  padding-top: 8px;
+  font-size: 14px;
+  width: 50px;
+  height: 20px;
+  text-align: center;
+}
+.overview-pinterest {
+  margin-right: 0;
 }
 
 #overview-facebook-share-button {
-  background-color: lightgrey;
+  text-decoration: none;
 }
 
 #overview-twitter-share-button {
-  background-color: maroon;
+  text-decoration: none;
 }
 
 #overview-pinterest-share-button {
-  background-color: mediumturquoise;
+  text-decoration: none;
+}
+
+/* Product Overview */
+.overview-overview {
+  order: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
 }
 
 .overview-product-overview {
-  background-color: royalblue;
+  order: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+}
+
+.overview-product-overview-main {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  margin-top: 20px;
 }
 
 #overview-slogan {
-  background-color: thistle;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 #overview-description {
-  background-color: springgreen;
+  font-size: 14px;
 }
 
+/* Features */
 .overview-features {
-  background-color: skyblue;
+  width: 360px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px;
 }
 
+.overview-specific-feature {
+  width: 340px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  font-size: 14px;
+  border-left: 4px solid rgb(55, 55, 55);
+}
+
+/* Gallery */
 .overview-gallery {
-  background-color: yellow;
+  order: -1;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .overview-thumbnails {
-  background-color: palevioletred;
-  width: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 60px;
+  height: 385px;
+  position: absolute;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  left: 0px;
+  top: 2%;
 }
 
-.overview-thumbnail-icon, .overview-selected-thumbnail-icon, img {
-  background-color: gold;
+.overview-thumbnail-icon, .overview-selected-thumbnail-icon {
   width: 50px;
   height: 50px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  outline-style: none;
+  border-color: transparent;
+  box-shadow: 0px 0px 4px #FFF;
+  border: 2px solid rgb(55, 55, 55);
 }
 
-.overview-selected-thumbnail-icon {
-  background-color: darkorchid;
-  border: 10px solid #e7711b;
+/* .overview-thumbnail-icon img, .overview-selected-thumbnail-icon img {
+  border-radius: 8px;
+} */
+
+.overview-thumbnail-icon img, .overview-selected-thumbnail-icon img, .overview-thumbnail-outline {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  max-height: 50px;
+  object-fit: cover;
 }
 
-.overview-default-view, #overview-default-view-img {
-  background-color:darkgreen;
-  width: 400px;
-  height: 200px;
+.overview-thumbnail-outline {
+  border-bottom: 2px solid rgb(55, 55, 55);
+  width: 40px;
+  height: 50px;
+  padding-bottom: 5px;
+  margin-left: 6px;
+  background-color: transparent;
+  position: absolute;
+}
+
+.overview-selected-thumbnail-icon img {
+  opacity: 0.6;
+}
+
+.overview-default-view {
+  background-color:#ededed;
+  width: 525px;
+  height: 525px;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
 }
 
 #overview-default-view-img {
-  background-color: royalblue;
+  object-fit:contain;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-.overview-expanded-view, #overview-expanded-view-img {
-  background-color:darkorange;
-  width: 800px;
-  height: 400px;
+.overview-expanded-view {
+  overflow: visible;
+}
+
+#overview-expanded-view-img {
+  object-fit:contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+img:after {
+  visibility: hidden;
 }
