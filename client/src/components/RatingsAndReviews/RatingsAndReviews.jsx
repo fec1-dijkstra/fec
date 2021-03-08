@@ -16,7 +16,7 @@ class RatingsAndReviews extends React.Component {
   }
 
   render() {
-    const { meta, productName, reviews, product } = this.props;
+    const { meta, productName, reviews, product, allReviews, app } = this.props;
     if (!meta || JSON.stringify(meta) === '{}') {
       return null;
     }
@@ -25,8 +25,8 @@ class RatingsAndReviews extends React.Component {
         <div className="item-summary">
           <StarRating meta={meta} />
           <AverageScore meta={meta} />
+          <DisplayBars meta={meta} allReviews={allReviews} app={app} />
           <AverageRecs meta={meta} />
-          <DisplayBars meta={meta} />
           <CharacteristicBars meta={meta} />
         </div>
         <div className="please-work">

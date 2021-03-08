@@ -20,22 +20,23 @@ class OutfitCard extends React.Component {
 
   render() {
     return (
-      <div className="ProductCard carousel_item" onClick={this.handleClick}>
-        <button type="button" onClick={this.handleRemove} id="removeButton">x</button>
-        <img src={this.props.outfit[5]} alt="DefaultStyleImage" className="ProductCardImage" />
+      <div className="ProductCard outfit carousel_item" onClick={this.handleClick}>
+        <button onClick={this.handleRemove} className="actionButton" id="removeButton" ></button>
+        <div className="ProductCardImage">
+          <img src={this.props.outfit[5].includes("null") ? "https://wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg" : this.props.outfit[5]} alt="DefaultStyleImage" />
+        </div>
         <div className="ProductInfo">
           <p className="Category">{this.props.outfit[2]}</p>
           <p className="ProductName">{this.props.outfit[1]}</p>
           <p className="ProductPrice">
             {!this.props.outfit[4].includes("null") ?
               <>
-                <span className="SalePrice">${this.props.outfit[4]}</span>
-                <span className="OriginalPrice">${this.props.outfit[3]}</span>
+                <span className="SalePrice">${this.props.outfit[4].trim()}</span> <span className="OriginalPrice">${this.props.outfit[3].trim()}</span>
               </>
-              : <span>${this.props.outfit[3]}</span>
+              : <span>${this.props.outfit[3].trim()}</span>
             }
           </p>
-          <Stars productId={this.props.outfit[0]} />
+          <Stars productId={this.props.outfit[0].trim()} />
         </div>
       </div>
     );

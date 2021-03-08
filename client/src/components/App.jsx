@@ -38,10 +38,9 @@ class App extends React.Component {
   }
 
   handleProductChange(id) {
-    this.setState(
-      { currentProduct: id, relatedProductInfo: [] },
-      this.getAll(1, 20, this.state.sortBy, this.state.currentProduct)
-    );
+    this.setState({ currentProduct: id, relatedProductInfo: [] }, () => {
+      this.getAll(1, 20, this.state.sortBy, this.state.currentProduct);
+    });
   }
 
   getAll(pageNumber, countNumber, sortBy, productId) {
@@ -53,9 +52,25 @@ class App extends React.Component {
       queries.getReviewsMeta(productId, (result) => result),
       queries.getReviews(pageNumber, countNumber, sortBy, productId, (result) => result),
     ])
-      .then(([productList, productInfo, productStyles, relatedProducts, reviewsMeta, productReviews]) => {
+      .then(
+        ([
+          productList,
+          productInfo,
+          productStyles,
+          relatedProducts,
+          reviewsMeta,
+          productReviews,
+        ]) => {
         this.setState(
-          { productList, productInfo, productStyles, relatedProducts, reviewsMeta, reviews: productReviews },
+            {
+              productList,
+              productInfo,
+              productStyles,
+              relatedProducts,
+              reviewsMeta,
+              reviews: productReviews,
+              allReviews: productReviews,
+            },
           () => {
             relatedProducts.map((id) => this.getRelated(id));
           }
@@ -106,9 +121,11 @@ class App extends React.Component {
         <QandA />
         <RatingsAndReviews
           reviews={reviews.results}
+          allReviews={allReviews.results}
           product={reviews.product}
           meta={reviewsMeta}
           productName={productInfo.name}
+          app={this}
         />
       </div>
     );
