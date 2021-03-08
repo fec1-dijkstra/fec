@@ -21,7 +21,9 @@ class App extends React.Component {
       productInfo: {},
       productStyles: {},
       relatedProducts: [],
-      currentProduct: 18076,
+      // 17762 - first product in list
+      // 17068 - fully out of stock
+      currentProduct: 17067,
       reviewsMeta: {},
       relatedProductInfo: [],
       allReviews: {},
@@ -66,11 +68,9 @@ class App extends React.Component {
       queries.getProductInfo(relatedId, (result) => result),
       queries.getProductStyles(relatedId, (result) => result),
     ]).then(([productInfo, productStyles]) => {
-      this.setState((state) => {
-        return {
-          relatedProductInfo: state.relatedProductInfo.concat({ productInfo, productStyles }),
-        };
-      })
+      this.setState((state) => ({
+        relatedProductInfo: state.relatedProductInfo.concat({ productInfo, productStyles }),
+      }));
     });
   }
 
@@ -89,7 +89,7 @@ class App extends React.Component {
     } = this.state;
     return (
       <div>
-        <div> Hello World</div>
+        {/* <div> Hello World</div> */}
         <Overview
           productInfo={productInfo}
           productStyles={productStyles}
