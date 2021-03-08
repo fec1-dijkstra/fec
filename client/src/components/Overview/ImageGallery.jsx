@@ -15,7 +15,6 @@ class ImageGallery extends React.Component {
       selectedThumbnail: 0,
       isExpanded: false,
       zoomExpanded: false,
-      isBlur: false,
     };
     this.handleClick = this.handleClick.bind(this);
     this.openExpand = this.openExpand.bind(this);
@@ -52,7 +51,7 @@ class ImageGallery extends React.Component {
   }
 
   openExpand(event) {
-    const { isExpanded, isBlur } = this.state;
+    const { isExpanded } = this.state;
     if (!isExpanded && this.mouseDown) {
       this.mouseDown = false;
       this.setState({ isExpanded: true }, () => ImageGallery.moveFocus(this.refElement));

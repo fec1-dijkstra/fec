@@ -27,8 +27,10 @@ const ProductOverview = ({ productInfo }) => {
   };
   return (
     <div className="overview-product-overview">
-      {hasSlogan()}
-      {hasDescription()}
+      <div className="overview-product-overview-main">
+        {hasSlogan()}
+        {hasDescription()}
+      </div>
       {hasFeatures()}
     </div>
   );

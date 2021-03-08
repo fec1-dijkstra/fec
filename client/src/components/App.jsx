@@ -23,7 +23,7 @@ class App extends React.Component {
       relatedProducts: [],
       // 17762 - first product in list
       // 17068 - fully out of stock
-      currentProduct: 17067,
+      currentProduct: 17762,
       reviewsMeta: {},
       relatedProductInfo: [],
       allReviews: {},

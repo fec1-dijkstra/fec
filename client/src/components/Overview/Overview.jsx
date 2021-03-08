@@ -7,13 +7,19 @@ import ProductOverview from './ProductOverview.jsx';
 const Overview = ({ productInfo, productStyles, reviewsMeta }) => {
   if (productInfo.id) {
     return (
-      <div className="overview">
-        <ProductInformation
-          productInfo={productInfo}
-          productStyles={productStyles}
-          reviewsMeta={reviewsMeta}
-        />
-        <ProductOverview productInfo={productInfo} />
+      <div className="overview-wrapper">
+        <div className="overview-component">
+          <div className="overview-product">
+            <ProductInformation
+              productInfo={productInfo}
+              productStyles={productStyles}
+              reviewsMeta={reviewsMeta}
+            />
+          </div>
+          <div className="overview-overview">
+            <ProductOverview productInfo={productInfo} />
+          </div>
+        </div>
       </div>
     );
   }
