@@ -8,7 +8,7 @@ const Overview = ({ productInfo, productStyles, reviewsMeta }) => {
   if (productInfo.id) {
     return (
       <div className="overview-wrapper">
-        <div className="overview">
+        <div className="overview-component">
           <div className="overview-product">
             <ProductInformation
               productInfo={productInfo}
