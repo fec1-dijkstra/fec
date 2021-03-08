@@ -37,7 +37,7 @@ class ProductCard extends React.Component {
 
   render() {
     return (
-      <div className="ProductCard carousel_item" onClick={this.handleClick.bind(this)}>
+      <div className="ProductCard related_carousel_item" onClick={this.handleClick.bind(this)}>
         <button className="actionButton" onClick={this.showModal} >
         ★
         </button>

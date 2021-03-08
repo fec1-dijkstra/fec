@@ -15,7 +15,7 @@ class Outfit extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ outfits: this.getCurrentOutfit() }, this.arrowHandler());
+    this.setState({ outfits: this.getCurrentOutfit() });
     // window.addEventListener('resize', this.arrowHandler);
     // document.getElementById('outfitCarousel').addEventListener('resize', this.arrowHandler);
   }
@@ -27,7 +27,7 @@ class Outfit extends React.Component {
       document.getElementById('outfit_carousel_right').style.display = 'none';
       document.getElementById('outfit_carousel_left').style.display = 'none';
     } else {
-      document.getElementById('outfit_carousel_left').style.display = 'none';
+      this.scrolled();
     }
   }
 

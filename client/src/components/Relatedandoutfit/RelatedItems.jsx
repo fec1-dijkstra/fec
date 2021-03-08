@@ -21,8 +21,21 @@ class RelatedItems extends React.Component {
       document.getElementById('related_carousel_right').style.display = 'none';
       document.getElementById('related_carousel_left').style.display = 'none';
     } else {
-      document.getElementById('related_carousel_left').style.display = 'none';
+      this.scrolled();
     }
+  }
+
+  scrollRight() {
+    Array.from(document.getElementsByClassName(`related_carousel_item`), e => e.style['scroll-snap-align'] = "end");
+    document.getElementById('relatedCarousel').scrollBy(250, 0);
+  }
+
+  scrollLeft() {
+    Array.from(
+      document.getElementsByClassName(`related_carousel_item`),
+      (e) => (e.style['scroll-snap-align'] = 'start')
+    );
+    document.getElementById('relatedCarousel').scrollBy(-250, 0);
   }
 
   scrolled() {
@@ -35,16 +48,6 @@ class RelatedItems extends React.Component {
       document.getElementById('related_carousel_right').style.display = 'block';
       document.getElementById('related_carousel_left').style.display = 'block';
     }
-  }
-
-  scrollRight() {
-    Array.from(document.getElementsByClassName(`related carousel_item`), e => e.style['scroll-snap-align'] = "end");
-    document.getElementById('relatedCarousel').scrollBy(250, 0);
-  }
-
-  scrollLeft() {
-    Array.from(document.getElementsByClassName(`related carousel_item`), e => e.style['scroll-snap-align'] = "start");
-    document.getElementById('relatedCarousel').scrollBy(-250, 0);
   }
 
   render() {

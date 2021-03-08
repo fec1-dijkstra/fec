@@ -21,7 +21,7 @@ class App extends React.Component {
       productInfo: {},
       productStyles: {},
       relatedProducts: [],
-      currentProduct: 17068,
+      currentProduct: 18076,
       reviewsMeta: {},
       relatedProductInfo: [],
       allReviews: {},
@@ -102,7 +102,7 @@ class App extends React.Component {
           handleProductChange={this.handleProductChange}
         />
         <QandA />
-        {/* <RatingsAndReviews reviews={reviews[0].results} /> */}
+        <RatingsAndReviews reviews={reviews[0].results} />
       </div>
     );
   }
