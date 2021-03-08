@@ -312,7 +312,7 @@
 .overview-gallery {
   order: -1;
   width: 600px;
-  height: 600px;
+  height: auto;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -320,6 +320,7 @@
   position: absolute;
   left: 0;
   top: 0;
+  background-color:#ededed;
 }
 
 .overview-thumbnails {
@@ -331,7 +332,7 @@
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
-  left: 0px;
+  left: 6px;
   top: 2%;
 }
 
