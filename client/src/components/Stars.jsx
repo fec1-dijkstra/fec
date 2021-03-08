@@ -14,11 +14,15 @@ class Stars extends React.Component {
   }
 
   ratingCalc(id) {
+    if (!id) {
+      return null;
+    }
+    const self = this;
     let ratings = {};
     queries.getReviewsMeta(id, (data) => {
       ratings = data.ratings;
       if (Object.keys(ratings).length === 0) {
-        this.setState({ style: { width: '0%' } });
+        self.setState({ style: { width: '0%' } });
       }
       let total = 0;
       let count = 0;
@@ -26,9 +30,8 @@ class Stars extends React.Component {
         count += Number(ratings[rating]);
         total += rating * ratings[rating];
       }
-      const rounded = Math.ceil(total / count / 0.25) * 0.25;
-      const percentage = rounded * 100 / 5;
-      this.setState({ style: { width: `${percentage}%` } });
+      const percentage = Math.round(((total / count) * 125) / 5);
+      self.setState({ style: { width: `${percentage}%` } });
     });
   }
 

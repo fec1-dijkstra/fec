@@ -3,7 +3,11 @@ import React from 'react';
 
 const Response = ({ response }) => {
   if (response) {
-    return <div className="response">{response}</div>;
+    return (
+      <div className="response">
+        <i>{response}</i>
+      </div>
+    );
   }
   return null;
 };

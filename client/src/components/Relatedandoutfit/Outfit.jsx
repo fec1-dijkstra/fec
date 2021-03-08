@@ -15,7 +15,7 @@ class Outfit extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ outfits: this.getCurrentOutfit() });
+    this.setState({ outfits: this.getCurrentOutfit() }, this.arrowHandler());
     // window.addEventListener('resize', this.arrowHandler);
     // document.getElementById('outfitCarousel').addEventListener('resize', this.arrowHandler);
   }
