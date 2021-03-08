@@ -38,10 +38,9 @@ class App extends React.Component {
   }
 
   handleProductChange(id) {
-    this.setState(
-      { currentProduct: id, relatedProductInfo: [] },
-      this.getAll(1, 20, this.state.sortBy, this.state.currentProduct)
-    );
+    this.setState({ currentProduct: id, relatedProductInfo: [] }, () => {
+      this.getAll(1, 20, this.state.sortBy, this.state.currentProduct);
+    });
   }
 
   getAll(pageNumber, countNumber, sortBy, productId) {
