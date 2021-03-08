@@ -126,6 +126,7 @@ class App extends React.Component {
           product={reviews.product}
           meta={reviewsMeta}
           productName={productInfo.name}
+          app={this}
         />
       </div>
     );
