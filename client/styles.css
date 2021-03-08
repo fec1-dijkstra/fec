@@ -282,6 +282,14 @@
   margin: 25px;
   margin-left: 0;
 }
+
+.rec-percent {
+  font-size: small;
+  width: 250px;
+  text-align: center;
+  margin-left: 5%;
+}
+
 .carousel {
   overflow: auto;
   white-space: nowrap;

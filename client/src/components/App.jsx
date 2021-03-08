@@ -88,8 +88,7 @@ class App extends React.Component {
       reviewsMeta,
       allReviews,
     } = this.state;
-    // <Stars productId={17106} />
-    debugger;
+
     return (
       <div>
         {/* <div> Hello World</div> */}

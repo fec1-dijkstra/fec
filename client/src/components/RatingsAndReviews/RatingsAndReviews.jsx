@@ -7,6 +7,7 @@ import AddReview from './AddReview.jsx';
 import DisplayBars from './DisplayBars.jsx';
 import AverageScore from './AverageScore.jsx';
 import CharacteristicBars from './CharacteristicBars.jsx';
+import AverageRecs from './AverageRecs.jsx';
 
 class RatingsAndReviews extends React.Component {
   constructor() {
@@ -24,6 +25,7 @@ class RatingsAndReviews extends React.Component {
         <div className="item-summary">
           <StarRating meta={meta} />
           <AverageScore meta={meta} />
+          <AverageRecs meta={meta} />
           <DisplayBars meta={meta} />
           <CharacteristicBars meta={meta} />
         </div>
