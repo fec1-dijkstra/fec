@@ -195,7 +195,7 @@ class AddToCart extends React.Component {
         return <></>;
       };
       return (
-        <>
+        <div className="overview-add-to-cart">
           {pleaseSelect()}
           <select
             onFocus={(e) => (e.target.size = targetSize.toString())}
@@ -222,9 +222,14 @@ class AddToCart extends React.Component {
             <option value="1">{defaultQuantity}</option>
             <Quantities max={max} />
           </select>
-          {addToBagButton()}
+          <div className="overview-bag-and-star">
+            {addToBagButton()}
+            <button type="button" id="overview-star-button">
+              ☆
+            </button>
+          </div>
           <SocialShare selectedStyle={selectedStyle} productInfo={productInfo} />
-        </>
+        </div>
       );
     }
     return <></>;

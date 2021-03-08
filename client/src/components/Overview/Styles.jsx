@@ -15,9 +15,21 @@ const Styles = ({ productStyles, selectedStyle, defaultStyle, handleClick }) => 
       }
       key += 1;
       return (
-        <option key={key} value={style.style_id} className={styleClass} onClick={handleClick}>
-          {style.name}
-        </option>
+        <div
+          onClick={handleClick}
+          className={styleClass}
+          value={style.style_id}
+          onKeyPress={handleClick}
+          tabIndex={0}
+          role="button"
+        >
+          <img
+            src={style.photos[0].thumbnail_url}
+            id={style.style_id}
+            key={key}
+            alt={`${style.name} style icon`}
+          />
+        </div>
       );
     });
     let firstStyle;

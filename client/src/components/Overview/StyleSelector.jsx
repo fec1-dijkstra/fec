@@ -9,12 +9,12 @@ class StyleSelector extends React.Component {
     if (selectedStyle.sale_price) {
       return (
         <>
-          <div id="overview-price-slash">{selectedStyle.original_price}</div>
-          <div id="overview-sale-price">{selectedStyle.sale_price}</div>
+          <div id="overview-price-slash">{`$${selectedStyle.original_price}`}</div>
+          <div id="overview-sale-price">{`$${selectedStyle.sale_price}`}</div>
         </>
       );
     }
-    return <div id="overview-price">{selectedStyle.original_price}</div>;
+    return <div id="overview-price">{`$${selectedStyle.original_price}`}</div>;
   }
 
   constructor(props) {
@@ -40,11 +40,13 @@ class StyleSelector extends React.Component {
   handleClick(event) {
     const { productStyles } = this.props;
     let { selectedStyle } = this.state;
-    if (Number(event.target.value) !== selectedStyle.style_id) {
+    if (Number(event.target.id) !== selectedStyle.style_id) {
       selectedStyle = productStyles.results.find(
-        (style) => style.style_id === Number(event.target.value)
+        (style) => style.style_id === Number(event.target.id)
       );
-      return this.setState({ selectedStyle });
+      if (selectedStyle) {
+        return this.setState({ selectedStyle });
+      }
     }
     return undefined;
   }
@@ -63,20 +65,24 @@ class StyleSelector extends React.Component {
     const { productInfo, productStyles } = this.props;
     if (selectedStyle.name) {
       return (
-        <>
+        <div className="overview-style-selector">
           <ImageGallery selectedStyle={selectedStyle} />
-          {StyleSelector.setPrice(selectedStyle)}
-          <div id="overview-style-name">
-            Style <b>{'>'}</b> {selectedStyle.name}
+          <div className="overview-style-section">
+            <div className="overview-price">{StyleSelector.setPrice(selectedStyle)}</div>
+            <div id="overview-style-name">
+              <b>Style {'>'}</b> {selectedStyle.name}
+            </div>
+            <div className="overview-style-icon-area">
+              <Styles
+                productStyles={productStyles}
+                defaultStyle={defaultStyle}
+                selectedStyle={selectedStyle}
+                handleClick={this.handleClick}
+              />
+            </div>
+            <AddToCart selectedStyle={selectedStyle} productInfo={productInfo} />
           </div>
-          <Styles
-            productStyles={productStyles}
-            defaultStyle={defaultStyle}
-            selectedStyle={selectedStyle}
-            handleClick={this.handleClick}
-          />
-          <AddToCart selectedStyle={selectedStyle} productInfo={productInfo} />
-        </>
+        </div>
       );
     }
     return <></>;

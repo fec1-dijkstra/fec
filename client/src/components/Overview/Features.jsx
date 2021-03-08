@@ -6,10 +6,14 @@ const Features = ({ productInfo }) => {
   if (productInfo.features && productInfo.features.length > 0) {
     return productInfo.features.map((feature) => {
       key += 1;
-      return <div key={key}>{feature.feature}</div>;
+      return (
+        <div className="overview-specific-feature" key={key}>
+          ✓ {feature.feature}
+        </div>
+      );
     });
   }
-  return <div />;
+  return <></>;
 };
 
 Features.defaultProps = {
