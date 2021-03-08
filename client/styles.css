@@ -285,9 +285,10 @@
 
 .rec-percent {
   font-size: small;
-  width: 250px;
+  width: 225px;
   text-align: center;
   margin-left: 5%;
+  margin-bottom: 25px;
 }
 
 .carousel {
