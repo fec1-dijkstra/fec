@@ -52,9 +52,17 @@
   width: 70%;
 }
 
+.reviews {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+}
+
 .reviews-container {
   overflow-y: scroll;
   height: 70vh;
+  grid-column-start: 0;
+  grid-column-end: 3;
 }
 
 .checked {
@@ -190,24 +198,20 @@
 }
 
 .item-summary {
-  width: 25%;
-  position: absolute;
   margin-left: 5%;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 
-.please-work {
-  float: right;
-  width: 70%;
-  margin-bottom: 5%;
+.ratings-reviews {
+  display: grid;
+  grid-template-columns: 25%, 25%, 25%, 25%;
 }
 
 .tile {
   margin: 50px;
-}
-
-.add-review {
-  margin: 25px;
-  margin-left: 0;
 }
 
 .rec-percent {
@@ -216,4 +220,48 @@
   text-align: center;
   margin-left: 5%;
   margin-bottom: 25px;
+}
+
+.review-tile {
+  min-height: 250px;
+}
+
+.helpfulness {
+  margin-top: 25px;
+}
+
+#more-reviews,
+.add-review {
+  background-color: white;
+  width: 150px;
+  height: 50px;
+  border: 2px solid rgb(55, 55, 55);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  padding-left: 15px;
+  margin-right: 20px;
+  appearance: none;
+  outline-style: none;
+  grid-column: 2;
+}
+
+.add-review {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+#more-reviews {
+  grid-column: 1;
+  grid-row: 2;
+  margin: ;
+}
+
+.please-work {
+  display: grid;
+  grid-template-columns: 50%, 50%;
+  grid-template-rows: 80%, 20%;
+  margin-bottom: 5%;
+  grid-column-start: 2;
+  grid-column-end: 5;
 }

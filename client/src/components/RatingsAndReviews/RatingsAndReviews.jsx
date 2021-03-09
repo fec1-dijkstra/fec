@@ -21,7 +21,7 @@ class RatingsAndReviews extends React.Component {
       return null;
     }
     return (
-      <>
+      <div className="ratings-reviews">
         <div className="item-summary">
           <StarRating meta={meta} />
           <AverageScore meta={meta} />
@@ -33,7 +33,7 @@ class RatingsAndReviews extends React.Component {
           <RenderReviews reviews={reviews} product={product} />
           <AddReview meta={meta} productName={productName} />
         </div>
-      </>
+      </div>
     );
   }
 }
