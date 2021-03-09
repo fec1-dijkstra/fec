@@ -207,6 +207,7 @@
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 2;
+  margin-bottom: 10%;
 }
 
 .ratings-reviews {
@@ -228,6 +229,11 @@
 
 .review-tile {
   min-height: 250px;
+  margin-left: 0;
+}
+
+.tile {
+  margin-left: 0;
 }
 
 .helpfulness {

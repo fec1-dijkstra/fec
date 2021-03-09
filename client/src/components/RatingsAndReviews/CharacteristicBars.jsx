@@ -17,7 +17,7 @@ class CharacteristicBars extends React.Component {
             className="char-slider"
             style={{ marginLeft: `${(characteristics[char].value / 5) * 100 * 2.49}px` }}
           />
-          <RenderBar labels={labels}/>
+          <RenderBar labels={labels} />
           <div className="char-title">{char.id}</div>
         </div>
       );
