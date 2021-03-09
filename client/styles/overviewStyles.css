@@ -7,7 +7,7 @@
   margin: 0 auto;
   width: 960px;
   margin-bottom: 40px;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 
 .overview-component {
@@ -349,7 +349,6 @@
   margin-top: 5px;
   margin-bottom: 5px;
   outline-style: none;
-  border-color: transparent;
   box-shadow: 0px 0px 4px #FFF;
   border: 2px solid rgb(55, 55, 55);
   background-color: white;
@@ -390,6 +389,7 @@
   overflow: scroll;
   position: absolute;
   left: 0;
+  outline-style: none;
 }
 
 #overview-default-view-img {
@@ -398,17 +398,53 @@
   max-height: 100%;
 }
 
+.overview-expanded-view-wrapper {
+  height: 100vh;
+  width: 100vw;
+  /* height: 100vh; */
+  outline-style: none;
+  position: fixed;
+  z-index: 99;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* left: auto; */
+}
+
+.overview-fade-out {
+  background-color: black;
+  opacity: .5;
+  width: 100%;
+  height: 100%;
+}
+
 .overview-expanded-view {
-  overflow: visible;
+  /* overflow: visible; */
+  outline-style: none;
+  position: absolute;
+  z-index: 100;
+  margin: auto;
+  width: 80%;
+  height: 80%;
+  /* left: 0; */
+  /* top: 40px; */
+  /* overflow:hidden; */
+  background-color:#ededed;
 }
 
 #overview-expanded-view-img {
   object-fit:contain;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-img {
+/* img {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -416,4 +452,4 @@ img {
 
 img:after {
   visibility: hidden;
-}
+} */

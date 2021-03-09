@@ -6,7 +6,7 @@ import ExpandedView from './ExpandedView.jsx';
 
 class ImageGallery extends React.Component {
   static moveFocus(element) {
-    element.focus();
+    element.focus({ preventScroll: true });
   }
 
   constructor(props) {
