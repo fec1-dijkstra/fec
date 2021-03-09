@@ -4,7 +4,7 @@ import React from 'react';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedandOutfit from './RelatedandOutfit/RelatedandOutfit.jsx';
-import QandA from './QandA/QandA.jsx';
+// import QandA from './QandA/QandA.jsx';
 // eslint-disable-next-line import/extensions
 import { products, reviews, qa } from '../../dummydata.js';
 import queries from './queries.js';
@@ -118,7 +118,7 @@ class App extends React.Component {
           relatedProductInfo={this.state.relatedProductInfo}
           handleProductChange={this.handleProductChange}
         />
-        <QandA />
+        {/* <QandA /> */}
         <RatingsAndReviews
           reviews={reviews.results}
           allReviews={allReviews.results}

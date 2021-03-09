@@ -40,12 +40,14 @@ class StyleSelector extends React.Component {
   handleClick(event) {
     const { productStyles } = this.props;
     let { selectedStyle } = this.state;
-    if (Number(event.target.id) !== selectedStyle.style_id) {
-      selectedStyle = productStyles.results.find(
-        (style) => style.style_id === Number(event.target.id)
-      );
-      if (selectedStyle) {
-        return this.setState({ selectedStyle });
+    if (selectedStyle.style_id) {
+      if (Number(event.target.id) !== selectedStyle.style_id) {
+        selectedStyle = productStyles.results.find(
+          (style) => style.style_id === Number(event.target.id)
+        );
+        if (selectedStyle) {
+          return this.setState({ selectedStyle });
+        }
       }
     }
     return undefined;
@@ -66,6 +68,7 @@ class StyleSelector extends React.Component {
     if (selectedStyle.name) {
       return (
         <div className="overview-style-selector">
+          <div className="overview-gallery-protection" />
           <ImageGallery selectedStyle={selectedStyle} />
           <div className="overview-style-section">
             <div className="overview-price">{StyleSelector.setPrice(selectedStyle)}</div>

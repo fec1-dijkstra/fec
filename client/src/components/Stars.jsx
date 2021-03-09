@@ -13,6 +13,12 @@ class Stars extends React.Component {
     this.ratingCalc(this.props.productId);
   }
 
+  componentDidUpdate (prevProps) {
+    if (prevProps.productId !== this.props.productId) {
+      this.ratingCalc(this.props.productId);
+    }
+  }
+
   ratingCalc(id) {
     if (!id) {
       return null;

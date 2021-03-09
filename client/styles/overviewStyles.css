@@ -24,7 +24,6 @@
 .overview-product {
   width: 100%;
   flex-direction: column;
-  /* min-height: 630px; */
 }
 
 .overview-product-information {
@@ -42,6 +41,7 @@
   justify-content: flex-end;
   right: 0px;
   width: 340px;
+  height: auto;
 }
 
 #overview-category {
@@ -59,20 +59,17 @@
   font-size: 40px;
   margin: 0;
   height: 40px;
+  height: auto;
 }
 
 .overview-price {
   display: flex;
   flex-direction: row;
   font-size: 20px;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 20px;
   font-size: 16px;
 }
-
-/* #overview-price {
-  background-color:powderblue;
-} */
 
 #overview-price-slash {
   text-decoration: line-through;
@@ -119,7 +116,8 @@
   display: flex;
   height: auto;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .overview-style-section {
@@ -164,6 +162,7 @@
 
 .overview-style-icon img, .overview-selected-style-icon img {
   border-radius: 100%;
+  object-fit:cover;
 }
 
 /* .overview-default-style-icon {
@@ -210,6 +209,8 @@
 #overview-please-select {
   margin-top: 15px;
   margin-bottom: 5px;
+  font-size: 15px;
+  color: red;
 }
 
 /* .overview-add-to-cart {
@@ -224,8 +225,8 @@
   padding-top: 10px;
   display: flex;
   flex-direction: row;
-  margin-bottom: 20px;
   justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
 .overview-facebook, .overview-twitter, .overview-pinterest {
@@ -275,9 +276,9 @@
 .overview-product-overview-main {
   display: flex;
   flex-direction: column;
-  width: 600px;
-  margin-top: 20px;
-  padding: 20px;
+  /* width: 644px; */
+  padding-right: 10px;
+  /* border-right: 2px solid rgb(55, 55, 55); */
 }
 
 #overview-slogan {
@@ -287,24 +288,25 @@
 
 #overview-description {
   font-size: 14px;
+  line-height: 20px;
 }
 
 /* Features */
 .overview-features {
-  width: 340px;
-  height: auto;
+  width: 338px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 20px;
+  border-left: 2px solid rgb(55, 55, 55);
 }
 
 .overview-specific-feature {
   width: 340px;
-  padding-left: 20px;
-  padding-bottom: 20px;
+  padding-left: 30px;
   font-size: 14px;
-  border-left: 4px solid rgb(55, 55, 55);
+  line-height: 10px;
+  padding-bottom: 20px;
 }
 
 /* Gallery */
@@ -320,6 +322,11 @@
   left: 0;
   top: 0;
   background-color:#ededed;
+}
+
+.overview-gallery-protection {
+  position: relative;
+  height: 400px;
 }
 
 .overview-thumbnails {

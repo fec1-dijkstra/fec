@@ -1,6 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const urlCheck = (url) => {
+  const search = url.search('http');
+  if (search === 0) {
+    return url;
+  }
+  if (search > 0) {
+    return url.slice(search);
+  }
+  return null;
+};
+
 const Thumbnails = ({ selectedStyle, selectedThumbnail, handleClick }) => {
   let key = 0;
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
@@ -23,7 +34,7 @@ const Thumbnails = ({ selectedStyle, selectedThumbnail, handleClick }) => {
         >
           {selectedOutline}
           <img
-            src={photo.thumbnail_url}
+            src={urlCheck(photo.thumbnail_url)}
             alt={`${selectedStyle.name} thumbnail ${index}`}
             id={index}
           />
