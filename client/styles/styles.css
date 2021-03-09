@@ -198,6 +198,10 @@
 }
 
 .item-summary {
+  display: grid;
+  grid-template-columns: auto, auto, auto;
+  grid-template-rows: 10%, 10%, 30%, 50%;
+
   margin-left: 5%;
   grid-column-start: 1;
   grid-column-end: 2;

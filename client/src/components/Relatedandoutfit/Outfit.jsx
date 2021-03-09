@@ -22,7 +22,7 @@ class Outfit extends React.Component {
 
   arrowHandler() {
     const element = document.getElementById('outfitCarousel');
-    console.log(element.scrollWidth, document.body.clientWidth);
+    // console.log(element.scrollWidth, document.body.clientWidth);
     if(element.scrollWidth <= document.body.clientWidth) {
       document.getElementById('outfit_carousel_right').style.display = 'none';
       document.getElementById('outfit_carousel_left').style.display = 'none';
