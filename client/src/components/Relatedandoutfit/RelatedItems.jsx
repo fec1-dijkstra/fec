@@ -5,49 +5,40 @@ import ProductCard from './ProductCard.jsx';
 class RelatedItems extends React.Component {
   constructor(props) {
     super(props);
-    this.scrollRight = this.scrollRight.bind(this);
-    this.scrollLeft = this.scrollLeft.bind(this);
-    this.scrolled = this.scrolled.bind(this);
-    this.arrowHandler = this.arrowHandler.bind(this);
+    this.state = {
+      startIndex: 0,
+    };
+    this.scroll = this.scroll.bind(this);
+    this.showArrows = this.showArrows.bind(this);
   }
 
-  componentDidMount() {
-    this.arrowHandler();
-  }
-
-  arrowHandler() {
-    const element = document.getElementById('relatedCarousel');
-    if(element.scrollWidth <= document.body.clientWidth) {
-      document.getElementById('related_carousel_right').style.display = 'none';
+  showArrows() {
+    if (this.state.startIndex === 0) {
       document.getElementById('related_carousel_left').style.display = 'none';
-    } else {
-      this.scrolled();
-    }
-  }
-
-  scrollRight() {
-    Array.from(document.getElementsByClassName(`related_carousel_item`), e => e.style['scroll-snap-align'] = "end");
-    document.getElementById('relatedCarousel').scrollBy(250, 0);
-  }
-
-  scrollLeft() {
-    Array.from(
-      document.getElementsByClassName(`related_carousel_item`),
-      (e) => (e.style['scroll-snap-align'] = 'start')
-    );
-    document.getElementById('relatedCarousel').scrollBy(-250, 0);
-  }
-
-  scrolled() {
-    const element = document.getElementById('relatedCarousel');
-    if(element.offsetWidth + element.scrollLeft > element.scrollWidth - 50) {
-      document.getElementById('related_carousel_right').style.display = 'none';
-    } else if (element.scrollLeft < 50) {
-      document.getElementById('related_carousel_left').style.display = 'none';
-    } else {
-      document.getElementById('related_carousel_right').style.display = 'block';
+      if (document.getElementsByClassName('related_carousel_item').length < 4 || this.state.startIndex + 4 === document.getElementsByClassName('related_carousel_item').length) {
+        document.getElementById('related_carousel_right').style.display = 'none';
+      } else {
+        document.getElementById('related_carousel_right').style.display = 'block';
+      }
+    } else if (this.state.startIndex !== 0) {
       document.getElementById('related_carousel_left').style.display = 'block';
+      if (document.getElementsByClassName('related_carousel_item').length - 4 === this.state.startIndex) {
+        document.getElementById('related_carousel_right').style.display = 'none';
+      } else {
+        document.getElementById('related_carousel_right').style.display = 'block';
+      }
     }
+  }
+
+  scroll(n) {
+    if (n === 1) {
+      document.getElementById('relatedCarousel').scrollBy(240, 0);
+    }
+    if (n === -1) {
+      document.getElementById('relatedCarousel').scrollBy(-240, 0);
+    }
+    const newState = this.state.startIndex + n;
+    this.setState({ startIndex: newState }, () => this.showArrows());
   }
 
   render() {
@@ -56,12 +47,12 @@ class RelatedItems extends React.Component {
         <h3>Related Products</h3>
         <div className="carousel" id="relatedCarousel" onScroll={this.scrolled}>
           {this.props.relatedProductInfo.map((relatedProduct) => (
-            <ProductCard key={relatedProduct.productInfo.id} relatedProduct={relatedProduct} productInfo={this.props.productInfo} handleProductChange={this.props.handleProductChange} />
+            <ProductCard key={relatedProduct.productInfo.id} relatedProduct={relatedProduct} productInfo={this.props.productInfo} handleProductChange={this.props.handleProductChange} showArrows={this.showArrows} />
           ))}
         </div>
           <div className="carousel_actions">
-            <button id="related_carousel_left" onClick={this.scrollLeft}></button>
-            <button id="related_carousel_right" onClick={this.scrollRight}></button>
+            <button id="related_carousel_left" onClick={() => this.scroll(-1)}></button>
+            <button id="related_carousel_right" onClick={() => this.scroll(1)}></button>
           </div>
       </div>
     );
@@ -69,5 +60,3 @@ class RelatedItems extends React.Component {
 }
 
 export default RelatedItems;
-
-// () => handleProductChange(relatedProduct.productInfo.id)

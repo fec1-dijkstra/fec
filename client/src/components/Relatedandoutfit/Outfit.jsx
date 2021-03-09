@@ -4,31 +4,15 @@ import OutfitCard from './OutfitCard.jsx';
 class Outfit extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { outfits: [] };
+    this.state = { outfits: [], startIndex: 0 };
     this.handleAdd = this.handleAdd.bind(this);
     this.getCurrentOutfit = this.getCurrentOutfit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.scrollRight = this.scrollRight.bind(this);
-    this.scrollLeft = this.scrollLeft.bind(this);
-    this.scrolled = this.scrolled.bind(this);
-    this.arrowHandler = this.arrowHandler.bind(this);
+    this.showArrows = this.showArrows.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ outfits: this.getCurrentOutfit() }, this.arrowHandler());
-    // window.addEventListener('resize', this.arrowHandler);
-    // document.getElementById('outfitCarousel').addEventListener('resize', this.arrowHandler);
-  }
-
-  arrowHandler() {
-    const element = document.getElementById('outfitCarousel');
-    console.log(element.scrollWidth, document.body.clientWidth);
-    if(element.scrollWidth <= document.body.clientWidth) {
-      document.getElementById('outfit_carousel_right').style.display = 'none';
-      document.getElementById('outfit_carousel_left').style.display = 'none';
-    } else {
-      this.scrolled();
-    }
+    this.setState({ outfits: this.getCurrentOutfit() }, () => this.showArrows());
   }
 
   handleAdd() {
@@ -38,12 +22,34 @@ class Outfit extends React.Component {
       `${id}`,
       `${id}, ${name}, ${category}, ${original_price}, ${sale_price}, ${photos[0].url}`
     );
-    this.setState({ outfits: this.getCurrentOutfit() });
+    this.setState({ outfits: this.getCurrentOutfit() }, () => this.showArrows());
   }
 
   handleDelete(id) {
     localStorage.removeItem(`${id}`);
-    this.setState({ outfits: this.getCurrentOutfit() });
+    this.setState({ outfits: this.getCurrentOutfit() }, () => this.showArrows());
+  }
+
+  showArrows() {
+    console.log('called');
+    if (this.state.startIndex === 0) {
+      document.getElementById('outfit_carousel_left').style.display = 'none';
+      if (document.getElementsByClassName('outfit_carousel_item').length < 4 || this.state.startIndex + 4 === document.getElementsByClassName('outfit_carousel_item').length) {
+        document.getElementById('outfit_carousel_right').style.display = 'none';
+      } else {
+        console.log('right');
+        document.getElementById('outfit_carousel_right').style.display = 'block';
+      }
+    } else if (this.state.startIndex !== 0) {
+      console.log('left');
+      document.getElementById('outfit_carousel_left').style.display = 'block';
+      if (document.getElementsByClassName('outfit_carousel_item').length - 4 === this.state.startIndex) {
+        document.getElementById('outfit_carousel_right').style.display = 'none';
+      } else {
+        console.log('right');
+        document.getElementById('outfit_carousel_right').style.display = 'block';
+      }
+    }
   }
 
   getCurrentOutfit() {
@@ -56,26 +62,15 @@ class Outfit extends React.Component {
     return outfits;
   }
 
-  scrollRight() {
-    Array.from(document.getElementsByClassName(`outfit carousel_item`), e => e.style['scroll-snap-align'] = "end");
-    document.getElementById('outfitCarousel').scrollBy(250, 0);
-  }
-
-  scrollLeft() {
-    Array.from(document.getElementsByClassName(`outfit carousel_item`), e => e.style['scroll-snap-align'] = "start");
-    document.getElementById('outfitCarousel').scrollBy(-250, 0);
-  }
-
-  scrolled() {
-    const element = document.getElementById('outfitCarousel');
-    if(element.offsetWidth + element.scrollLeft > element.scrollWidth - 50) {
-      document.getElementById('outfit_carousel_right').style.display = 'none';
-    } else if (element.scrollLeft < 50) {
-      document.getElementById('outfit_carousel_left').style.display = 'none';
-    } else {
-      document.getElementById('outfit_carousel_right').style.display = 'block';
-      document.getElementById('outfit_carousel_left').style.display = 'block';
+  scroll(n) {
+    if (n === 1) {
+      document.getElementById('outfitCarousel').scrollBy(240, 0);
     }
+    if (n === -1) {
+      document.getElementById('outfitCarousel').scrollBy(-240, 0);
+    }
+    const newState = this.state.startIndex + n;
+    this.setState({ startIndex: newState }, () => this.showArrows());
   }
 
   render() {
@@ -83,18 +78,18 @@ class Outfit extends React.Component {
       <div id="YourOutfit">
         <h3>Your Outfit</h3>
         <div className="carousel" id="outfitCarousel" onScroll={this.scrolled} >
-            <div className="ProductCard outfit carousel_item" onClick={this.handleAdd}>
-              <button className="actionButton" id="addOutfit">+</button>
+            <div className="ProductCard outfit_carousel_item addItem" onClick={this.handleAdd}>
+              <button id="addOutfit" title="Add current product to your outfit">+</button>
               <div className="ProductCardImage"></div>
               <div className="ProductInfo"></div>
             </div>
           {this.state.outfits.map((outfit) => (
-            <OutfitCard key={outfit.split(',')[0]} outfit={outfit.split(',')} handleDelete={this.handleDelete} handleProductChange={this.props.handleProductChange} />
+            <OutfitCard key={outfit.split(',')[0]} outfit={outfit.split(',')} handleDelete={this.handleDelete} handleProductChange={this.props.handleProductChange} showArrows={this.showArrows}/>
           ))}
         </div>
           <div className="carousel_actions">
-            <button id="outfit_carousel_left" onClick={this.scrollLeft}></button>
-            <button id="outfit_carousel_right" onClick={this.scrollRight}></button>
+            <button id="outfit_carousel_left" onClick={() => this.scroll(-1)}></button>
+            <button id="outfit_carousel_right" onClick={() => this.scroll(1)}></button>
           </div>
       </div>
     );
