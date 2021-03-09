@@ -7,6 +7,17 @@ import ExpandedView from './ExpandedView.jsx';
 class ImageGallery extends React.Component {
   static moveFocus(element) {
     element.focus({ preventScroll: true });
+    ImageGallery.disableScrolling();
+  }
+
+  static disableScrolling(){
+    var x=window.scrollX;
+    var y=window.scrollY;
+    window.onscroll=function(){window.scrollTo(x, y);};
+}
+
+  static enableScrolling(){
+    window.onscroll=function(){};
   }
 
   constructor(props) {
@@ -57,7 +68,7 @@ class ImageGallery extends React.Component {
       this.setState({ isExpanded: true }, () => ImageGallery.moveFocus(this.refElement));
     } else {
       this.mouseDown = false;
-      this.setState({ isExpanded: false });
+      this.setState({ isExpanded: false }, () => ImageGallery.enableScrolling());
     }
   }
 
