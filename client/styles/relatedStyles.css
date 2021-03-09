@@ -151,6 +151,7 @@ h3 {
   width: 25px;
   height: 25px;
   margin: 5px;
+  z-index: 1;
 }
 
 .carousel_actions {
@@ -224,5 +225,3 @@ thead th {
   height: 30px;
   background-color: rgb(221, 221, 221);
 }
-
-

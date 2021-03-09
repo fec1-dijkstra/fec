@@ -58,7 +58,7 @@
 }
 
 .checked {
-  color: #e7711b;
+  color: rgb(125, 125, 125);
 }
 
 .unchecked {
@@ -95,6 +95,10 @@
   height: 15px;
 }
 
+.star-bar:hover {
+  background-color: gray;
+}
+
 .bar-text {
   width: 10px;
   margin-bottom: -20px;
@@ -127,7 +131,7 @@
 }
 
 .star-rating-top {
-  color: #e7711b;
+  color: rgb(125, 125, 125);
   padding: 0;
   position: absolute;
   z-index: 1;
@@ -212,13 +216,4 @@
   text-align: center;
   margin-left: 5%;
   margin-bottom: 25px;
-}
-
-.carousel {
-  overflow: auto;
-  white-space: nowrap;
-}
-
-.carousel_item {
-  scroll-snap-align: start;
 }
