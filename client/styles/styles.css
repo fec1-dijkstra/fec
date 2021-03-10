@@ -54,8 +54,7 @@
 
 .reviews {
   grid-column-start: 1;
-  grid-column-end: 5;
-  width: 100%;
+  grid-column-end: 4;
 }
 
 .reviews-container {
@@ -213,11 +212,11 @@
 
 .ratings-reviews {
   display: grid;
-  grid-template-columns: 25%, 25%, 25%, 25%;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .tile {
-  margin: 50px;
+  margin: 0, 0, 25px, 0;
 }
 
 .img {
@@ -233,14 +232,14 @@
 }
 
 .review-tile {
-  min-height: 250px;
   margin-left: 0;
   border-color: lightgrey;
   border-radius: 2px;
 }
 
 .body {
-  width: 70%;
+  max-width: 70%;
+  word-wrap: break-word;
 }
 
 .tile {
