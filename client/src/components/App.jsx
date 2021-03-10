@@ -4,7 +4,7 @@ import React from 'react';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedandOutfit from './RelatedandOutfit/RelatedandOutfit.jsx';
-import QandA from './QandA/QandA.jsx';
+// import QandA from './QandA/QandA.jsx';
 // eslint-disable-next-line import/extensions
 import { products, reviews, qa } from '../../dummydata.js';
 import queries from './queries.js';
@@ -23,6 +23,9 @@ class App extends React.Component {
       relatedProducts: [],
       // 17762 - first product in list
       // 17068 - fully out of stock
+      // 17067 - multiple images
+      // 17073 - broken
+      // 17068 - no images
       currentProduct: 17762,
       reviewsMeta: {},
       relatedProductInfo: [],
@@ -103,7 +106,6 @@ class App extends React.Component {
       reviewsMeta,
       allReviews,
     } = this.state;
-
     return (
       <div>
         {/* <div> Hello World</div> */}
@@ -111,6 +113,7 @@ class App extends React.Component {
           productInfo={productInfo}
           productStyles={productStyles}
           reviewsMeta={reviewsMeta}
+          handleProductChange={this.handleProductChange}
         />
         <RelatedandOutfit
           productInfo={this.state.productInfo}
@@ -118,7 +121,7 @@ class App extends React.Component {
           relatedProductInfo={this.state.relatedProductInfo}
           handleProductChange={this.handleProductChange}
         />
-        <QandA />
+        {/* <QandA /> */}
         <RatingsAndReviews
           product={reviews.product}
           meta={reviewsMeta}

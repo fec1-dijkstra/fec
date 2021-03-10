@@ -10,7 +10,9 @@ const ProductInformation = ({ productInfo, productStyles, reviewsMeta }) => (
       <div id="overview-category">{productInfo.category}</div>
       <div id="overview-name">{productInfo.name}</div>
     </div>
-    <StyleSelector productStyles={productStyles} productInfo={productInfo} />
+    <div className="overview-style-selector-area">
+      <StyleSelector productStyles={productStyles} productInfo={productInfo} />
+    </div>
   </div>
 );
 
