@@ -1,15 +1,24 @@
-body {
-  font-family: 'Helvetica', sans-serif;
-  overflow-x: hidden;
-  /* background: yellow; */
+.RelatedandOutfit {
+  display: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin: 0 auto;
+  width: 960px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .ProductCard {
-  width: 250px;
-  height: 350px;
+  width: 231px;
+  height: 330px;
   margin-top: 48px;
   border: 1px solid rgb(221, 221, 221);
-  margin: 10px;
+  margin: 3.5px;
   display: inline-grid;
   position: relative;
   grid-template-rows: 1fr 1fr 1fr;
@@ -81,8 +90,10 @@ h3 {
   border: 1px solid #888;
   z-index: 10;
   color: grey;
-  left: 25%;
-  top: 10%;
+  left: 50%;
+  top: 50%;
+  margin-top: -100px;
+  margin-left: -600px;
 }
 
 .star-ratings-css {
@@ -116,7 +127,7 @@ h3 {
 
 .carousel {
   position: relative;
-  width: 90vw;
+  width: 960px;
   overflow-x: auto;
   white-space: nowrap;
   scroll-snap-type: x mandatory;
@@ -131,28 +142,34 @@ h3 {
 
 .actionButton {
   display: block;
-  border: none;
-  background: none;
-  cursor: pointer;
+  border: black;
   position: absolute;
-  right: 0px;
+  right: 2px;
+  background-color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  justify-content: center;
 }
 
 #addOutfit {
+  background: none;
+  border: none;
   position: static;
   font-size: 50px;
   grid-row: 2 / span 1;
   grid-column: 2 / span 1;
+  cursor: pointer;
 }
 
-#removeButton {
+/* #removeButton {
   background: url(https://www.flaticon.com/svg/vstatic/svg/786/786195.svg?token=exp=1615049066~hmac=3925775be4ee3c24c9b051bb4b224e70)
     no-repeat;
-  width: 25px;
-  height: 25px;
-  margin: 5px;
-  z-index: 1;
-}
+  border: none;
+  cursor: pointer;
+  background: none;
+} */
 
 .carousel_actions {
   position: relative;
@@ -174,7 +191,7 @@ h3 {
 #outfit_carousel_left,
 #related_carousel_left {
   top: -200px;
-  left: 5vw;
+  left: -10px;
   background: url(https://image.flaticon.com/icons/svg/130/130882.svg) no-repeat;
   margin: 0 0 0 -50px;
 }
@@ -182,7 +199,7 @@ h3 {
 #outfit_carousel_right,
 #related_carousel_right {
   top: -200px;
-  left: 90vw;
+  right: -10px;
   background: url(https://image.flaticon.com/icons/svg/130/130884.svg) no-repeat;
   margin: 0 -50px 0 0;
 }

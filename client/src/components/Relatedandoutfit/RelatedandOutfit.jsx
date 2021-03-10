@@ -5,7 +5,7 @@ import Outfit from './Outfit.jsx';
 
 const RelatedandOutfit = function ({ handleProductChange, productInfo, relatedProductInfo, productStyles, showComparisonModal, handleModalOpen}) {
   return (
-    <div>
+    <div className="RelatedandOutfit" >
       <RelatedItems
         showComparisonModal={showComparisonModal}
         handleModalOpen={handleModalOpen}

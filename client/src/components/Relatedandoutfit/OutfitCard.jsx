@@ -8,8 +8,13 @@ class OutfitCard extends React.Component {
     this.handleRemove = this.handleRemove.bind(this);
   }
 
+  componentDidMount() {
+    this.props.showArrows();
+  }
+
   handleClick(e) {
     e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.props.handleProductChange(this.props.outfit[0]);
   }
 
@@ -20,8 +25,10 @@ class OutfitCard extends React.Component {
 
   render() {
     return (
-      <div className="ProductCard outfit carousel_item" onClick={this.handleClick}>
-        <button onClick={this.handleRemove} className="actionButton" id="removeButton" ></button>
+      <div className="ProductCard outfit_carousel_item" onClick={this.handleClick}>
+        <div className="actionButton">
+          <button onClick={this.handleRemove} className = "actionButton" id="removeButton" title="Remove from your outfit" >x</button>
+        </div>
         <div className="ProductCardImage">
           <img src={this.props.outfit[5].includes("null") ? "https://wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg" : this.props.outfit[5]} alt="DefaultStyleImage" />
         </div>
