@@ -43,7 +43,7 @@ class SortBy extends React.Component {
       </option>
     ));
     return (
-      <select value={current} onChange={this.handleChange}>
+      <select className="sort-by" value={current} onChange={this.handleChange}>
         {dropdowns}
       </select>
     );

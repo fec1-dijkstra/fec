@@ -16,16 +16,16 @@ class RatingsAndReviews extends React.Component {
   }
 
   render() {
-    const { meta, productName, reviews, product, allReviews, app } = this.props;
+    const { meta, productName, reviews, product, allReviews, app, reviewData } = this.props;
     if (!meta || JSON.stringify(meta) === '{}') {
       return null;
     }
     return (
-      <>
+      <div className="ratings-reviews">
         <div className="item-summary">
           <StarRating meta={meta} />
           <AverageScore meta={meta} />
-          <DisplayBars meta={meta} allReviews={allReviews} app={app} />
+          <DisplayBars meta={meta} allReviews={allReviews} app={app} reviewData={reviewData} />
           <AverageRecs meta={meta} />
           <CharacteristicBars meta={meta} />
         </div>
@@ -33,7 +33,7 @@ class RatingsAndReviews extends React.Component {
           <RenderReviews reviews={reviews} product={product} />
           <AddReview meta={meta} productName={productName} />
         </div>
-      </>
+      </div>
     );
   }
 }
