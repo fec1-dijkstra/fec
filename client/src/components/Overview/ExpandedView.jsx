@@ -1,23 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ExpandedView = ({ selectedStyle, selectedThumbnail, zoomExpand, openExpand, expandedRef }) => {
+const ExpandedView = ({
+  selectedStyle,
+  selectedThumbnail,
+  zoomExpand,
+  openExpand,
+  expandedRef,
+}) => {
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
     return (
-      <div
-        className="overview-expanded-view"
-        onBlur={openExpand}
-        onClick={zoomExpand}
-        onKeyPress={zoomExpand}
-        tabIndex={0}
-        role="button"
-        ref={expandedRef}
-      >
-        <img
-          src={selectedStyle.photos[selectedThumbnail].url}
-          alt={`${selectedStyle.name} default view`}
-          id="overview-expanded-view-img"
-        />
+      <div className="overview-expanded-view-wrapper">
+        <div className="overview-fade-out" />
+        <div
+          className="overview-expanded-view"
+          onBlur={openExpand}
+          onClick={zoomExpand}
+          onKeyPress={zoomExpand}
+          tabIndex={0}
+          role="button"
+          ref={expandedRef}
+        >
+          <img
+            src={selectedStyle.photos[selectedThumbnail].url}
+            alt={`${selectedStyle.name} default view`}
+            id="overview-expanded-view-img"
+          />
+        </div>
       </div>
     );
   }
@@ -29,6 +38,7 @@ ExpandedView.defaultProps = {
   selectedStyle: {},
   zoomExpand: (event) => event,
   openExpand: (event) => event,
+  expandedRef: (event) => event,
 };
 
 ExpandedView.propTypes = {
@@ -36,6 +46,7 @@ ExpandedView.propTypes = {
   selectedStyle: PropTypes.oneOfType([PropTypes.object]),
   zoomExpand: PropTypes.func,
   openExpand: PropTypes.func,
+  expandedRef: PropTypes.func,
 };
 
 export default ExpandedView;

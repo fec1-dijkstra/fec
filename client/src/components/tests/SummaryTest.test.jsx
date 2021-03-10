@@ -3,7 +3,7 @@
 import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
-import Summary from '../ReviewTiles/Summary.jsx';
+import Summary from '../RatingsAndReviews/Summary.jsx';
 
 configure({
   adapter: new Adapter(),
