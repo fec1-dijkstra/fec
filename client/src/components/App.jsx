@@ -105,10 +105,7 @@ class App extends React.Component {
       relatedProducts,
       reviewsMeta,
       allReviews,
-      currentProduct,
     } = this.state;
-    console.log('thisssss', currentProduct)
-
     return (
       <div>
         {/* <div> Hello World</div> */}
