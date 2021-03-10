@@ -63,6 +63,7 @@
   height: 70vh;
   grid-column-start: 0;
   grid-column-end: 3;
+  border: 2px solid rgb(125, 125, 125);
 }
 
 .checked {
@@ -219,6 +220,10 @@
   margin: 50px;
 }
 
+.img {
+  border-radius: 25%;
+}
+
 .rec-percent {
   font-size: small;
   width: 225px;
@@ -230,6 +235,8 @@
 .review-tile {
   min-height: 250px;
   margin-left: 0;
+  border-color: lightgrey;
+  border-radius: 2px;
 }
 
 .body {
