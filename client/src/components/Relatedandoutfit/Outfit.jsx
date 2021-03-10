@@ -19,7 +19,6 @@ class Outfit extends React.Component {
   calculateScroll(scrollOnDelete) {
     const element = document.getElementById('outfitCarousel');
     const scrolled = element.scrollLeft;
-    console.log(scrolled);
     if (scrolled === 0) {
       this.setState({ startIndex: 0}, () => this.showArrows());
     } else {
@@ -39,9 +38,7 @@ class Outfit extends React.Component {
 
   handleDelete(id) {
     localStorage.removeItem(`${id}`);
-    let currentScroll = document.getElementById('outfitCarousel').scrollLeft;
-    console.log(currentScroll);
-    this.setState({ outfits: this.getCurrentOutfit() }, () => this.calculateScroll());
+    this.setState({ outfits: this.getCurrentOutfit() }, this.calculateScroll());
   }
 
   showArrows() {

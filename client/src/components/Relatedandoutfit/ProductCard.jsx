@@ -14,7 +14,6 @@ class ProductCard extends React.Component {
   }
 
   componentDidMount() {
-    console.log('product card mounted');
     this.props.showArrows();
   }
 
@@ -40,6 +39,7 @@ class ProductCard extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.resetStartIndex();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.props.handleProductChange(this.props.relatedProduct.productInfo.id);
   }
 

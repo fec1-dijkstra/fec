@@ -11,7 +11,7 @@ class CharacteristicBars extends React.Component {
     const { characteristics } = this.props.meta;
     const bars = Object.keys(characteristics).map((char) => {
       const labels = identifyChar(char);
-      console.log(characteristics[char].value);
+      // console.log(characteristics[char].value);
       return (
         <div className="char-subcontainer" key={char.id}>
           <div

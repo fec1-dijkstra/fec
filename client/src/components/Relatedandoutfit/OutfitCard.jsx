@@ -14,6 +14,7 @@ class OutfitCard extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.props.handleProductChange(this.props.outfit[0]);
   }
 
