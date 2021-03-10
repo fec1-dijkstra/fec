@@ -11,14 +11,17 @@ class CharacteristicBars extends React.Component {
     const { characteristics } = this.props.meta;
     const bars = Object.keys(characteristics).map((char) => {
       const labels = identifyChar(char);
-      console.log(characteristics[char].value);
+<<<<<<< HEAD
+=======
+      // console.log(characteristics[char].value);
+>>>>>>> c75fcfebcfd4f12954e8776c86ea1c6fbcf8b7d6
       return (
         <div className="char-subcontainer" key={char.id}>
           <div
             className="char-slider"
             style={{ marginLeft: `${(characteristics[char].value / 5) * 100 * 2.49}px` }}
           />
-          <RenderBar labels={labels}/>
+          <RenderBar labels={labels} />
           <div className="char-title">{char.id}</div>
         </div>
       );

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const AverageRecs = ({ meta }) => {
-  ;
   if (JSON.stringify(meta) === '{}') {
     return null;
   }
@@ -10,7 +9,7 @@ const AverageRecs = ({ meta }) => {
     (Number(recommended.true) / (Number(recommended.true) + Number(recommended.false))) * 100
   );
   const test = (1 / 2) * 100;
-  return <div className="rec-percent">{percentage}% of people recommend this product</div>;
+  return <div className="rec-percent">{percentage}% of reviewers recommend this product</div>;
 };
 
 export default AverageRecs;
