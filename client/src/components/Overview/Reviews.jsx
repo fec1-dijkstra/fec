@@ -11,6 +11,12 @@ const countReviews = (reviewsMeta) => {
   return ratingsCount;
 };
 
+const scrollToReviews = () => {
+  const titleElement = document.getElementsByClassName('item-summary');
+  console.log(titleElement);
+  titleElement[0].scrollIntoView({ behavior: 'smooth' });
+};
+
 const Reviews = ({ productInfo, reviewsMeta }) => {
   const ratingsCount = countReviews(reviewsMeta);
   if (ratingsCount > 0) {
@@ -19,7 +25,7 @@ const Reviews = ({ productInfo, reviewsMeta }) => {
         <div className="overview-stars">
           <Stars productId={productInfo.id} />
         </div>
-        <div className="overview-reviews-count">Read all {ratingsCount} reviews</div>
+        <div className="overview-reviews-count" onClick={scrollToReviews}>Read all {ratingsCount} reviews</div>
       </div>
     );
   }

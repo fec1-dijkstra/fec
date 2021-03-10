@@ -10,14 +10,16 @@ class ImageGallery extends React.Component {
     ImageGallery.disableScrolling();
   }
 
-  static disableScrolling(){
-    var x=window.scrollX;
-    var y=window.scrollY;
-    window.onscroll=function(){window.scrollTo(x, y);};
-}
+  static disableScrolling() {
+    const x = window.scrollX;
+    const y = window.scrollY;
+    window.onscroll = () => {
+      window.scrollTo(x, y);
+    };
+  }
 
-  static enableScrolling(){
-    window.onscroll=function(){};
+  static enableScrolling() {
+    window.onscroll = () => {};
   }
 
   constructor(props) {
