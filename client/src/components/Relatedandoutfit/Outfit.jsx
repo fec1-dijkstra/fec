@@ -18,16 +18,9 @@ class Outfit extends React.Component {
 
   calculateScroll(scrollOnDelete) {
     const element = document.getElementById('outfitCarousel');
-<<<<<<< HEAD
-    // console.log(element.scrollWidth, document.body.clientWidth);
-    if(element.scrollWidth <= document.body.clientWidth) {
-      document.getElementById('outfit_carousel_right').style.display = 'none';
-      document.getElementById('outfit_carousel_left').style.display = 'none';
-=======
     const scrolled = element.scrollLeft;
     if (scrolled === 0) {
       this.setState({ startIndex: 0}, () => this.showArrows());
->>>>>>> c75fcfebcfd4f12954e8776c86ea1c6fbcf8b7d6
     } else {
       this.setState({startIndex: scrolled/240}, () => this.showArrows())
     }
