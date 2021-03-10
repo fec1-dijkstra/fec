@@ -7,7 +7,66 @@
   margin: 0 auto;
   width: 960px;
   margin-bottom: 40px;
+  color: rgb(80, 80, 80);
+  font-size: 15px;
   /* margin-top: 40px; */
+}
+
+.overview-header {
+  height: 70px;
+  width: 100%;
+  background-color:rgb(80, 80, 80);
+  overflow: visible;
+  z-index: 98;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.overview-header h1 {
+  font-size: 25px;
+  margin-left: 40px;
+  text-decoration: underline;
+  font-weight: 900;
+  color: white;
+}
+
+.overview-search {
+  color: white;
+  width: 400px;
+  margin-right: 40px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#overview-search-field {
+  border: none;
+  border-bottom: 2px solid white;
+  width: 125px;
+  margin-right: 10px;
+  background-color: transparent;
+  outline: none;
+  color: white;
+  font-size: 15px;
+}
+
+.overview-announcement {
+  font-size: 15px;
+  margin-bottom: 15px;
+  font-weight: 100;
+}
+
+#overview-new-product-highlight {
+  text-decoration: underline;
+  color: rgb(80, 80, 80);
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .overview-component {
@@ -18,9 +77,18 @@
   align-items: center;
   position: relative;
   display: flex;
+
 }
 
 /* Product Information */
+.overview-product-wrapper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  /* flex-direction: row; */
+  /* justify-content: space-between; */
+}
+
 .overview-product {
   width: 100%;
   flex-direction: column;
@@ -86,6 +154,7 @@
   width: auto;
   height: auto;
   display: flex;
+  margin-top: 25px;
 }
 
 .overview-stars {
@@ -146,7 +215,7 @@
 }
 
 .overview-style-icon, .overview-selected-style-icon {
-  border: 2px solid rgb(55, 55, 55);
+  border: 2px solid rgb(80, 80, 80);
   outline-style: none;
   margin: 5px;
   margin-right: 15px;
@@ -171,15 +240,19 @@
 
 .overview-bag-and-star {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 /* Add To Cart */
+/* button {
+  border: none;
+} */
+
 #overview-size-selector, #overview-add-to-bag-btn, #overview-quantity-selector, #overview-view-bag-btn, #overview-star-button {
   background-color: white;
   width: 200px;
   height: 50px;
-  border: 2px solid rgb(55, 55, 55);
+  border: 2px solid rgb(80, 80, 80);
   font-size: 14px;
   font-weight: 600;
   text-align: left;
@@ -187,11 +260,12 @@
   margin-right: 20px;
   appearance: none;
   outline-style: none;
+  color: rgb(80, 80, 80);
 }
 
 #overview-add-to-bag-btn, #overview-view-bag-btn {
   margin-top: 15px;
-  width: 260px;
+  width: 270px;
 }
 
 #overview-star-button {
@@ -269,6 +343,7 @@
 .overview-product-overview {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   height: auto;
 }
@@ -278,7 +353,7 @@
   flex-direction: column;
   /* width: 644px; */
   padding-right: 10px;
-  /* border-right: 2px solid rgb(55, 55, 55); */
+  /* border-right: 2px solid rgb(80, 80, 80); */
 }
 
 #overview-slogan {
@@ -298,7 +373,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border-left: 2px solid rgb(55, 55, 55);
+  border-left: 2px solid rgb(80, 80, 80);
 }
 
 .overview-specific-feature {
@@ -310,10 +385,10 @@
 }
 
 /* Gallery */
-.overview-gallery {
+.overview-gallery, .overview-gallery-protection {
   order: -1;
-  width: 600px;
-  height: auto;
+  width: 575px;
+  height: 475px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -326,7 +401,8 @@
 
 .overview-gallery-protection {
   position: relative;
-  height: 400px;
+  height: 475px;
+  margin-bottom: 20px;
 }
 
 .overview-thumbnails {
@@ -350,8 +426,8 @@
   margin-bottom: 5px;
   outline-style: none;
   box-shadow: 0px 0px 4px #FFF;
-  border: 2px solid rgb(55, 55, 55);
-  background-color: white;
+  border: 2px solid rgb(80, 80, 80);
+  background-color: #ededed;
 }
 
 /* .overview-thumbnail-icon img, .overview-selected-thumbnail-icon img {
@@ -371,7 +447,7 @@
   /* margin-left: 6px; */
   background-color: transparent;
   position: absolute;
-  border-bottom: 3px solid rgb(55, 55, 55);
+  border-bottom: 3px solid rgb(80, 80, 80);
   left: 0;
   max-width: 54px;
   margin: 0;
@@ -383,8 +459,8 @@
 
 .overview-default-view {
   background-color:#ededed;
-  width: 575px;
-  height: 475px;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   overflow: scroll;
@@ -445,7 +521,13 @@
   height: 100%;
 }
 
-/* img {
+/* .overview-broken-image {
+  background-color: dodgerblue;
+  width: auto;
+  height: auto;
+} */
+
+img {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -453,4 +535,4 @@
 
 img:after {
   visibility: hidden;
-} */
+}

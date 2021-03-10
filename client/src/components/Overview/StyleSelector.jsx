@@ -14,6 +14,9 @@ class StyleSelector extends React.Component {
         </>
       );
     }
+    if (selectedStyle.original_price === 'NO LONGER AVAILABLE') {
+      return <div id="overview-price">{`${selectedStyle.original_price}`}</div>;
+    }
     return <div id="overview-price">{`$${selectedStyle.original_price}`}</div>;
   }
 
@@ -56,7 +59,22 @@ class StyleSelector extends React.Component {
   findDefaultStyle() {
     const { productStyles } = this.props;
     if (productStyles.results && productStyles.results.length > 0) {
-      const selectedStyle = productStyles.results.find((style) => style[`default?`] === true);
+      let selectedStyle = productStyles.results.find((style) => style[`default?`] === true);
+      if (!selectedStyle) {
+        if (productStyles.results[0]) {
+          [selectedStyle] = productStyles.results;
+        } else {
+          selectedStyle = {
+            'default?': true,
+            name: 'NONE',
+            original_price: 'NO LONGER AVAILABLE',
+            photos: [],
+            sale_price: null,
+            skus: {},
+            style_id: 0,
+          };
+        }
+      }
       return this.setState({ selectedStyle, defaultStyle: selectedStyle });
     }
     return undefined;
@@ -68,7 +86,6 @@ class StyleSelector extends React.Component {
     if (selectedStyle.name) {
       return (
         <div className="overview-style-selector">
-          <div className="overview-gallery-protection" />
           <ImageGallery selectedStyle={selectedStyle} />
           <div className="overview-style-section">
             <div className="overview-price">{StyleSelector.setPrice(selectedStyle)}</div>

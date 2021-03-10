@@ -1,24 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const urlCheck = (url) => {
+  if (url) {
+    const search = url.search('http');
+    if (search === 0) {
+      return url;
+    }
+    if (search > 0) {
+      return url.slice(search);
+    }
+  }
+  return null;
+};
+
 const DefaultView = ({ selectedStyle, selectedThumbnail, openExpand, registerMouse }) => {
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
-    return (
-      <div
-        className="overview-default-view"
-        onMouseUp={openExpand}
-        onMouseDown={registerMouse}
-        // onKeyPress={openExpand}
-        tabIndex={0}
-        role="button"
-      >
-        <img
-          src={selectedStyle.photos[selectedThumbnail].url}
-          alt={`${selectedStyle.name} default view`}
-          id="overview-default-view-img"
-        />
-      </div>
-    );
+    let renderDefault = <></>;
+    if (urlCheck(selectedStyle.photos[selectedThumbnail].url)) {
+      renderDefault = (
+        <div
+          className="overview-default-view"
+          onMouseUp={openExpand}
+          onMouseDown={registerMouse}
+          // onKeyPress={openExpand}
+          tabIndex={0}
+          role="button"
+        >
+          <img
+            src={urlCheck(selectedStyle.photos[selectedThumbnail].url)}
+            alt={`${selectedStyle.name} default view`}
+            id="overview-default-view-img"
+          />
+        </div>
+      );
+    }
+    return renderDefault;
   }
   return <></>;
 };

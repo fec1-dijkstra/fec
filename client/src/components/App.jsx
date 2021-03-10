@@ -23,7 +23,10 @@ class App extends React.Component {
       relatedProducts: [],
       // 17762 - first product in list
       // 17068 - fully out of stock
-      currentProduct: 17762,
+      // 17067 - multiple images
+      // 17073 - broken
+      // 17068 - no images
+      currentProduct: 17073,
       reviewsMeta: {},
       relatedProductInfo: [],
       allReviews: {},
@@ -102,7 +105,9 @@ class App extends React.Component {
       relatedProducts,
       reviewsMeta,
       allReviews,
+      currentProduct,
     } = this.state;
+    console.log('thisssss', currentProduct)
 
     return (
       <div>
@@ -111,6 +116,7 @@ class App extends React.Component {
           productInfo={productInfo}
           productStyles={productStyles}
           reviewsMeta={reviewsMeta}
+          handleProductChange={this.handleProductChange}
         />
         <RelatedandOutfit
           productInfo={this.state.productInfo}
