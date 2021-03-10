@@ -232,6 +232,10 @@
   margin-left: 0;
 }
 
+.body {
+  width: 70%;
+}
+
 .tile {
   margin-left: 0;
 }

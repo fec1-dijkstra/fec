@@ -34,7 +34,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const { currentProduct, sortBy } = this.state;
-    this.getAll(1, 20, sortBy, currentProduct);
+    this.getAll(1, 100, sortBy, currentProduct);
   }
 
   handleProductChange(id) {
@@ -69,7 +69,7 @@ class App extends React.Component {
               relatedProducts,
               reviewsMeta,
               reviews: productReviews,
-              allReviews: productReviews,
+              allReviews: { ...productReviews },
             },
           () => {
             relatedProducts.map((id) => this.getRelated(id));
@@ -120,12 +120,13 @@ class App extends React.Component {
         />
         <QandA />
         <RatingsAndReviews
-          reviews={reviews.results}
-          allReviews={allReviews.results}
           product={reviews.product}
           meta={reviewsMeta}
           productName={productInfo.name}
           app={this}
+          reviews={reviews.results}
+          allReviews={allReviews.results}
+          reviewData={reviews}
         />
       </div>
     );
