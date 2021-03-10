@@ -10,6 +10,11 @@ class RelatedItems extends React.Component {
     };
     this.scroll = this.scroll.bind(this);
     this.showArrows = this.showArrows.bind(this);
+    this.resetStartIndex = this.resetStartIndex.bind(this);
+  }
+
+  resetStartIndex () {
+    this.setState({ startIndex: 0 });
   }
 
   showArrows() {
@@ -47,7 +52,7 @@ class RelatedItems extends React.Component {
         <h3>Related Products</h3>
         <div className="carousel" id="relatedCarousel" onScroll={this.scrolled}>
           {this.props.relatedProductInfo.map((relatedProduct) => (
-            <ProductCard key={relatedProduct.productInfo.id} relatedProduct={relatedProduct} productInfo={this.props.productInfo} handleProductChange={this.props.handleProductChange} showArrows={this.showArrows} />
+            <ProductCard key={relatedProduct.productInfo.id} relatedProduct={relatedProduct} productInfo={this.props.productInfo} handleProductChange={this.props.handleProductChange} showArrows={this.showArrows} resetStartIndex={this.resetStartIndex}/>
           ))}
         </div>
           <div className="carousel_actions">

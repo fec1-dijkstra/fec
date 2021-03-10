@@ -9,10 +9,22 @@ class Outfit extends React.Component {
     this.getCurrentOutfit = this.getCurrentOutfit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.showArrows = this.showArrows.bind(this);
+    this.calculateScroll = this.calculateScroll.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ outfits: this.getCurrentOutfit() }, () => this.showArrows());
+    this.setState({ outfits: this.getCurrentOutfit() }, () => this.calculateScroll());
+  }
+
+  calculateScroll(scrollOnDelete) {
+    const element = document.getElementById('outfitCarousel');
+    const scrolled = element.scrollLeft;
+    console.log(scrolled);
+    if (scrolled === 0) {
+      this.setState({ startIndex: 0}, () => this.showArrows());
+    } else {
+      this.setState({startIndex: scrolled/240}, () => this.showArrows())
+    }
   }
 
   handleAdd() {
@@ -22,31 +34,29 @@ class Outfit extends React.Component {
       `${id}`,
       `${id}, ${name}, ${category}, ${original_price}, ${sale_price}, ${photos[0].url}`
     );
-    this.setState({ outfits: this.getCurrentOutfit() }, () => this.showArrows());
+    this.setState({ outfits: this.getCurrentOutfit() }, () => this.calculateScroll());
   }
 
   handleDelete(id) {
     localStorage.removeItem(`${id}`);
-    this.setState({ outfits: this.getCurrentOutfit() }, () => this.showArrows());
+    let currentScroll = document.getElementById('outfitCarousel').scrollLeft;
+    console.log(currentScroll);
+    this.setState({ outfits: this.getCurrentOutfit() }, () => this.calculateScroll());
   }
 
   showArrows() {
-    console.log('called');
     if (this.state.startIndex === 0) {
       document.getElementById('outfit_carousel_left').style.display = 'none';
       if (document.getElementsByClassName('outfit_carousel_item').length < 4 || this.state.startIndex + 4 === document.getElementsByClassName('outfit_carousel_item').length) {
         document.getElementById('outfit_carousel_right').style.display = 'none';
       } else {
-        console.log('right');
         document.getElementById('outfit_carousel_right').style.display = 'block';
       }
     } else if (this.state.startIndex !== 0) {
-      console.log('left');
       document.getElementById('outfit_carousel_left').style.display = 'block';
       if (document.getElementsByClassName('outfit_carousel_item').length - 4 === this.state.startIndex) {
         document.getElementById('outfit_carousel_right').style.display = 'none';
       } else {
-        console.log('right');
         document.getElementById('outfit_carousel_right').style.display = 'block';
       }
     }
