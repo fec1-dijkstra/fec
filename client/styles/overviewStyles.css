@@ -8,7 +8,7 @@
   width: 960px;
   margin-bottom: 40px;
   color: rgb(80, 80, 80);
-  font-size: 15px;
+  font-size: 13px;
   /* margin-top: 40px; */
 }
 
@@ -51,11 +51,11 @@
   background-color: transparent;
   outline: none;
   color: white;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .overview-announcement {
-  font-size: 15px;
+  font-size: 13px;
   margin-bottom: 15px;
   font-weight: 100;
 }
@@ -114,7 +114,7 @@
 
 #overview-category {
   order: 1;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 100;
   margin-top: 10px;
   margin-bottom: 5px;
@@ -124,7 +124,7 @@
 #overview-name {
   order: 2;
   font-weight: 900;
-  font-size: 40px;
+  font-size: 35px;
   margin: 0;
   height: 40px;
   height: auto;
@@ -198,7 +198,7 @@
 #overview-style-name {
   margin-bottom: 10px;
   text-transform: uppercase;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .overview-style-icon-area {
@@ -283,7 +283,7 @@
 #overview-please-select {
   margin-top: 15px;
   margin-bottom: 5px;
-  font-size: 15px;
+  font-size: 13px;
   color: red;
 }
 
