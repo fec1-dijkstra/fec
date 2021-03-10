@@ -54,7 +54,7 @@
 
 .reviews {
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 5;
   width: 100%;
 }
 
@@ -280,7 +280,7 @@
 
 .please-work {
   display: grid;
-  grid-template-columns: 50%, 50%;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 80%, 20%;
   margin-bottom: 5%;
   grid-column-start: 2;
