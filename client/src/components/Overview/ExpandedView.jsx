@@ -22,10 +22,10 @@ const ExpandedView = ({
           ref={expandedRef}
         >
           <div className="overview-arrow-background overview-expanded-arrow-background-left">
-            <div className="overview-arrow" />
+            <div className="overview-expanded-arrow" />
           </div>
           <div className="overview-arrow-background overview-expanded-arrow-background-right">
-            <div className="overview-arrow" />
+            <div className="overview-expanded-arrow" />
           </div>
           <img
             src={selectedStyle.photos[selectedThumbnail].url}

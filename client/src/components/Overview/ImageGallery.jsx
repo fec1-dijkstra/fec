@@ -91,10 +91,13 @@ class ImageGallery extends React.Component {
     }
   }
 
-  addFade() {
+  addFadeTop() {
     return <div className="overview-thumb-fade-top" />;
   }
 
+  addFadeBottom() {
+    return <div className="overview-thumb-fade-bottom" />;
+  }
   // closeExpand() {
   //   const { isExpanded } = this.state;
   //   if (isExpanded) {
@@ -135,7 +138,8 @@ class ImageGallery extends React.Component {
     }
     return (
       <div className="overview-gallery">
-        {this.addFade()}
+        {/* {this.addFadeTop()} */}
+        {/* {this.addFadeBottom()} */}
         <div className="overview-thumbnails">
           <Thumbnails
             selectedStyle={selectedStyle}

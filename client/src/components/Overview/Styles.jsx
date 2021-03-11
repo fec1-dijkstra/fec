@@ -18,10 +18,16 @@ const Styles = ({ productStyles, selectedStyle, defaultStyle, handleClick }) => 
   let key = 0;
   if (productStyles.results && productStyles.results.length > 0) {
     const allStyles = productStyles.results.map((style) => {
+      let checkMark = <></>;
       let defaultId = style.style_id;
       let styleClass = 'overview-style-icon';
       if (style.style_id === selectedStyle.style_id) {
         styleClass = 'overview-selected-style-icon';
+        checkMark = (
+          <div className="overview-checkmark-background overview-selected-checkmark-background">
+            <div className="overview-checkmark" />
+          </div>
+        );
       }
       if (style.style_id === defaultStyle.style_id) {
         defaultId = 'overview-default-style-icon';
@@ -45,6 +51,7 @@ const Styles = ({ productStyles, selectedStyle, defaultStyle, handleClick }) => 
           key={key}
           id={defaultId}
         >
+          {checkMark}
           {styleImg}
         </div>
       );
