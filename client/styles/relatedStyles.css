@@ -209,6 +209,7 @@ h3 {
   white-space: nowrap;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+  z-index: 1;
 }
 
 .carousel::-webkit-scrollbar,
@@ -269,6 +270,7 @@ h3 {
   border: none;
   cursor: pointer;
   box-sizing: content-box;
+  z-index: 5;
 }
 
 .carousel_actions button:hover {
@@ -281,8 +283,9 @@ h3 {
   top: 150px;
   left: 65px;
   background: url(../src/components/Relatedandoutfit/icons/left.png) no-repeat;
+  background-position: center;
+  background-size: 100%;
   margin: 0 0 0 -50px;
-  z-index: 100;
 }
 
 #outfit_carousel_right,
@@ -290,8 +293,9 @@ h3 {
   top: 150px;
   right: 105px;
   background: url(../src/components/Relatedandoutfit/icons/right.png) no-repeat;
+  background-size: 100%;
+  background-position: center;
   margin: 0 -50px 0 0;
-  z-index: 100;
 }
 
 #overflowTable {
