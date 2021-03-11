@@ -107,54 +107,16 @@
   background-color: gray;
 }
 
-.bar-text {
-  width: 10px;
-  margin-bottom: -20px;
-  float: left;
-}
-
-.bar-container {
-  width: 170px;
-  height: 25px;
-}
-
 .averageScore {
-  text-align: center;
-  width: 170px;
-  margin-left: 10%;
+  font-size: 40px;
+  font-weight: bold;
+  grid-column: 1;
+  grid-row: 1;
+  margin-left: 25px;
+  height: 50px;
 }
-
-.star-rating {
-  unicode-bidi: bidi-override;
-  color: #c5c5c5;
-  font-size: 25px;
-  height: 20px;
-  width: 125px;
-  margin: 0;
-  margin-bottom: 10px;
-  margin-left: 15%;
-  position: relative;
-  padding: 0;
-  text-shadow: 0px 1px 0 #a2a2a2;
-}
-
-.star-rating-top {
-  color: rgb(125, 125, 125);
-  padding: 0;
-  position: absolute;
-  z-index: 1;
-  display: block;
-  width: 120px;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-}
-
-.star-rating-bot {
-  padding: 0;
-  display: block;
-  z-index: 0;
-  width: 125px;
+.char-container {
+  grid-row: 4;
 }
 
 .char-segment {
@@ -171,10 +133,6 @@
   width: 255px;
   margin-top: 15px;
   margin-bottom: 15px;
-}
-
-.bar-container {
-  margin-left: 10%;
 }
 
 .char-slider {
@@ -199,15 +157,62 @@
 
 .item-summary {
   display: grid;
-  grid-template-columns: auto, auto, auto;
-  grid-template-rows: 10%, 10%, 30%, 50%;
-
+  grid-template-rows: 1fr, 5fr, 1fr, 5fr;
   margin-left: 5%;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
   margin-bottom: 10%;
+}
+
+.star-rating {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 25px;
+  height: 20px;
+  width: 125px;
+  margin: 0;
+  margin-left: 75px;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.star-rating-top {
+  color: rgb(125, 125, 125);
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  width: 120px;
+  margin-bottom: 10px;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.star-rating-bot {
+  padding: 0;
+  display: block;
+  z-index: 0;
+  margin-bottom: 10px;
+  width: 125px;
+}
+
+.bars-container {
+  grid-row: 2;
+  width: 225px;
+}
+
+.bar-text {
+  width: 10px;
+  margin-bottom: -20px;
+  float: left;
+}
+
+.bar-container {
+  width: 170px;
+  height: 25px;
+  margin-left: 10%;
 }
 
 .ratings-reviews {
@@ -216,7 +221,7 @@
 }
 
 .tile {
-  margin: 0, 0, 25px, 0;
+  border-bottom: rgb(125, 125, 125) solid 2px;
 }
 
 .img {
@@ -227,8 +232,7 @@
   font-size: small;
   width: 225px;
   text-align: center;
-  margin-left: 5%;
-  margin-bottom: 25px;
+  grid-row: 3;
 }
 
 .review-tile {
@@ -245,9 +249,11 @@
 .tile {
   margin-left: 0;
 }
+.recommends {
+  margin-top: 25px;
+}
 
 .helpfulness {
-  margin-top: 25px;
 }
 
 #more-reviews,
