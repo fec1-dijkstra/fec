@@ -15,6 +15,7 @@ class ProductCard extends React.Component {
 
   componentDidMount() {
     this.props.showArrows();
+
   }
 
   showModal(e) {
@@ -46,8 +47,7 @@ class ProductCard extends React.Component {
   render() {
     return (
       <div className="ProductCard related_carousel_item" onClick={this.handleClick.bind(this)}>
-        <button className="actionButton" onClick={this.showModal} title="Compare to current item">
-        ★
+        <button className="actionButton" id="comparisonButton" onClick={this.showModal} title="Compare to current item">
         </button>
         <Modal
           className="modal"

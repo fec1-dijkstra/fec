@@ -1,7 +1,16 @@
+.body {
+  color: #222222;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto', 'Droid Sans',
+    'Segoe UI', 'Helvetica', Arial, sans-serif;
+}
+
+#YourOutfit,
+#RelatedProducts {
+  position: relative;
+}
+
 .RelatedandOutfit {
-  display: relative;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -10,24 +19,56 @@
   width: 960px;
   margin-bottom: 40px;
   margin-top: 40px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .ProductCard {
-  width: 231px;
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto', 'Droid Sans',
+    'Segoe UI', 'Helvetica', Arial, sans-serif;
+  color: #222222;
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: normal;
+  width: 230px;
   height: 330px;
-  margin-top: 48px;
-  border: 1px solid rgb(221, 221, 221);
-  margin: 3.5px;
+  margin-top: 20px;
+  margin-bottom: 48px;
+  padding: 10px;
   display: inline-grid;
   position: relative;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   align-content: center;
+  box-sizing: border-box;
+}
+
+.ProductCard .actionButton {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 100ms, opacity 100ms;
 }
 
 .ProductCard:hover {
   cursor: pointer;
+}
+
+.ProductCard:hover .actionButton {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 100ms;
+}
+
+.ProductCard:hover img {
+  box-shadow: 0 0 10px rgb(191, 191, 191);
+}
+
+#addItem:hover {
+  border: 1px rgb(129, 128, 128);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgb(191, 191, 191);
+}
+
+#addItem:hover #addOutfit {
+  transform: scale(1.1);
 }
 
 .ProductCardImage {
@@ -40,34 +81,49 @@
   grid-row-start: 3;
   grid-row-end: span 1;
   grid-column: 1 / span 3;
-  line-height: 50%;
+  line-height: 0.3;
   font-size: 15px;
   padding: 5px;
-  /* background-color: blue; */
 }
 
 .ProductCardImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .SalePrice {
-  color: red;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: normal;
 }
 
 .OriginalPrice {
   text-decoration: line-through;
+  color: #2e8539;
 }
 
-.Category,
 h3 {
-  text-transform: uppercase;
-  color: rgb(85, 85, 85);
+  font-family: 'Guardian-EgypTT', serif;
+  font-weight: 300;
+  letter-spacing: 0.35px;
+  font-size: 26px;
+  line-height: 42px;
+}
+
+.Category h3 {
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 18px;
 }
 
 .ProductName {
-  font-weight: bold;
+  color: #595959;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: normal;
 }
 
 .comparisonModal {
@@ -82,18 +138,36 @@ h3 {
 }
 
 .content {
-  position: absolute;
+  position: relative;
+  display: inline-block;
+  box-shadow: 0 6px 36px rgb(34 34 34 / 33%);
+  background: #fff;
+  border-radius: 24px;
   overflow: auto;
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  z-index: 10;
-  color: grey;
-  left: 50%;
-  top: 50%;
-  margin-top: -100px;
-  margin-left: -600px;
+  margin: 100px;
+  padding: 30px;
+  z-index: 100;
+  animation: 0.5s fadein;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0.9;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.content h3 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
 }
 
 .star-ratings-css {
@@ -109,7 +183,7 @@ h3 {
 }
 
 .star-ratings-css-top {
-  color: rgb(129, 128, 128);
+  color: rgb(68, 68, 68);
   padding: 0;
   position: absolute;
   z-index: 1;
@@ -127,7 +201,7 @@ h3 {
 
 .carousel {
   position: relative;
-  width: 960px;
+  width: 920px;
   overflow-x: auto;
   white-space: nowrap;
   scroll-snap-type: x mandatory;
@@ -141,16 +215,32 @@ h3 {
 }
 
 .actionButton {
-  display: block;
   border: black;
   position: absolute;
-  right: 2px;
-  background-color: white;
+  top: 12px;
+  right: 12px;
   width: 25px;
   height: 25px;
-  border-radius: 50%;
+
   cursor: pointer;
   justify-content: center;
+}
+
+#comparisonButton {
+  background: url(../src/components/Relatedandoutfit/icons/star.png) no-repeat;
+  background-size: 100%;
+  filter: drop-shadow(0 0 2px #222);
+}
+
+#comparisonButton:hover,
+#removeButton:hover {
+  transform: scale(1.1);
+}
+
+#removeButton {
+  background: url(../src/components/Relatedandoutfit/icons/close.png) no-repeat;
+  background-size: 80%;
+  filter: drop-shadow(0 0 2px #222);
 }
 
 #addOutfit {
@@ -163,50 +253,47 @@ h3 {
   cursor: pointer;
 }
 
-/* #removeButton {
-  background: url(https://www.flaticon.com/svg/vstatic/svg/786/786195.svg?token=exp=1615049066~hmac=3925775be4ee3c24c9b051bb4b224e70)
-    no-repeat;
-  border: none;
-  cursor: pointer;
-  background: none;
-} */
-
 .carousel_actions {
   position: relative;
 }
 
 .carousel_actions button {
   position: absolute;
+  padding: 0px;
   width: 50px;
   height: 50px;
-  opacity: 0.4;
+  border-radius: 50px;
   border: none;
   cursor: pointer;
+  box-sizing: content-box;
 }
 
 .carousel_actions button:hover {
-  opacity: 1;
+  box-shadow: 0 0 10px rgb(191, 191, 191);
+  transform: scale(1.1);
 }
 
 #outfit_carousel_left,
 #related_carousel_left {
-  top: -200px;
-  left: -10px;
-  background: url(https://image.flaticon.com/icons/svg/130/130882.svg) no-repeat;
+  top: 150px;
+  left: 65px;
+  background: url(../src/components/Relatedandoutfit/icons/left.png) no-repeat;
   margin: 0 0 0 -50px;
+  z-index: 100;
 }
 
 #outfit_carousel_right,
 #related_carousel_right {
-  top: -200px;
-  right: -10px;
-  background: url(https://image.flaticon.com/icons/svg/130/130884.svg) no-repeat;
+  top: 150px;
+  right: 105px;
+  background: url(../src/components/Relatedandoutfit/icons/right.png) no-repeat;
   margin: 0 -50px 0 0;
+  z-index: 100;
 }
 
 #overflowTable {
   overflow-y: auto;
-  height: 100px;
+  height: 300px;
 }
 
 #overflowTable::-webkit-scrollbar,
@@ -219,19 +306,11 @@ table {
   width: 100%;
 }
 
-.left-column {
-  text-align: left;
-  width: 200px;
-}
-
-.center-column {
-  text-align: center;
-  width: 200px;
-}
-
+.center-column,
+.left-column,
 .right-column {
-  text-align: right;
-  width: 200px;
+  text-align: center;
+  width: 150px;
 }
 
 thead th {
