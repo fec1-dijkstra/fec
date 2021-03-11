@@ -68,7 +68,7 @@ z-index: 100;
 
 .reviews {
   grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 5;
 }
 
 .reviews-container {
@@ -107,6 +107,7 @@ z-index: 100;
   margin-top: 0px;
   margin-bottom: 5px;
   margin-left: 10px;
+  border-radius: 15px;
 }
 
 .star-bar {
@@ -115,6 +116,8 @@ z-index: 100;
   margin-left: 10px;
   margin-top: -20px;
   height: 15px;
+  transition: 200ms ease-out;
+  border-radius: 15px;
 }
 
 .star-bar:hover {
@@ -131,6 +134,7 @@ z-index: 100;
 }
 .char-container {
   grid-row: 4;
+  min-height: 350px;
 }
 
 .char-segment {
@@ -171,7 +175,8 @@ z-index: 100;
 
 .item-summary {
   display: grid;
-  grid-template-rows: 1fr, 5fr, 1fr, 5fr;
+  grid-template-rows: 1fr, 5fr, 1fr, 5fr, 2fr;
+  grid-column: 2;
   margin-left: 5%;
   margin-bottom: 10%;
 }
@@ -215,6 +220,8 @@ z-index: 100;
 .bars-container {
   grid-row: 2;
   width: 225px;
+  float: center;
+  margin-left: 20px;
 }
 
 .bar-text {
@@ -230,8 +237,16 @@ z-index: 100;
 }
 
 .ratings-reviews {
+  color: #222222;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto', 'Droid Sans',
+    'Segoe UI', 'Helvetica', Arial, sans-serif;
+  color: #222222;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto', 'Droid Sans',
+    'Segoe UI', 'Helvetica', Arial, sans-serif;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -247,8 +262,10 @@ z-index: 100;
 .rec-percent {
   font-size: small;
   width: 225px;
+  margin-left: 10px;
   text-align: center;
   grid-row: 3;
+  padding-bottom: -10px;
 }
 
 .sort-text {
@@ -264,6 +281,12 @@ z-index: 100;
 .username {
   color: rgb(65, 65, 65);
   margin-right: 10px;
+  margin-top: 10px;
+  transition: 200ms ease-out;
+}
+
+.username:hover {
+  color: rgb(125, 125, 125);
 }
 
 .date {
@@ -284,6 +307,7 @@ z-index: 100;
 }
 
 .helpfulness {
+  margin-bottom: 10px;
 }
 
 #more-reviews,
@@ -303,6 +327,10 @@ z-index: 100;
   border-radius: 25px;
   transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42), background 150ms ease-out,
     box-shadow 200ms;
+}
+
+button {
+  text-transform: none;
 }
 
 #more-reviews:hover,
@@ -326,6 +354,6 @@ z-index: 100;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 80%, 20%;
   margin-bottom: 5%;
-  grid-column-start: 2;
-  grid-column-end: 5;
+  grid-column-start: 3;
+  grid-column-end: 6;
 }
