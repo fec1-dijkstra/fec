@@ -22,7 +22,7 @@ class Outfit extends React.Component {
     if (scrolled === 0) {
       this.setState({ startIndex: 0}, () => this.showArrows());
     } else {
-      this.setState({startIndex: scrolled/240}, () => this.showArrows())
+      this.setState({startIndex: scrolled/230}, () => this.showArrows())
     }
   }
 
@@ -71,10 +71,10 @@ class Outfit extends React.Component {
 
   scroll(n) {
     if (n === 1) {
-      document.getElementById('outfitCarousel').scrollBy(240, 0);
+      document.getElementById('outfitCarousel').scrollBy(230, 0);
     }
     if (n === -1) {
-      document.getElementById('outfitCarousel').scrollBy(-240, 0);
+      document.getElementById('outfitCarousel').scrollBy(-230, 0);
     }
     const newState = this.state.startIndex + n;
     this.setState({ startIndex: newState }, () => this.showArrows());
@@ -84,8 +84,12 @@ class Outfit extends React.Component {
     return (
       <div id="YourOutfit">
         <h3>Your Outfit</h3>
+          <div className="carousel_actions">
+            <button id="outfit_carousel_left" onClick={() => this.scroll(-1)}></button>
+            <button id="outfit_carousel_right" onClick={() => this.scroll(1)}></button>
+          </div>
         <div className="carousel" id="outfitCarousel" onScroll={this.scrolled} >
-            <div className="ProductCard outfit_carousel_item addItem" onClick={this.handleAdd}>
+            <div className="ProductCard outfit_carousel_item" id="addItem" onClick={this.handleAdd}>
               <button id="addOutfit" title="Add current product to your outfit">+</button>
               <div className="ProductCardImage"></div>
               <div className="ProductInfo"></div>
@@ -94,10 +98,6 @@ class Outfit extends React.Component {
             <OutfitCard key={outfit.split(',')[0]} outfit={outfit.split(',')} handleDelete={this.handleDelete} handleProductChange={this.props.handleProductChange} showArrows={this.showArrows}/>
           ))}
         </div>
-          <div className="carousel_actions">
-            <button id="outfit_carousel_left" onClick={() => this.scroll(-1)}></button>
-            <button id="outfit_carousel_right" onClick={() => this.scroll(1)}></button>
-          </div>
       </div>
     );
   }

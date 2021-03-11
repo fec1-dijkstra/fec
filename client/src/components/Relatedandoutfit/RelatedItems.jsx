@@ -13,7 +13,7 @@ class RelatedItems extends React.Component {
     this.resetStartIndex = this.resetStartIndex.bind(this);
   }
 
-  resetStartIndex () {
+  resetStartIndex() {
     this.setState({ startIndex: 0 });
   }
 
@@ -37,10 +37,10 @@ class RelatedItems extends React.Component {
 
   scroll(n) {
     if (n === 1) {
-      document.getElementById('relatedCarousel').scrollBy(240, 0);
+      document.getElementById('relatedCarousel').scrollBy(230, 0);
     }
     if (n === -1) {
-      document.getElementById('relatedCarousel').scrollBy(-240, 0);
+      document.getElementById('relatedCarousel').scrollBy(-230, 0);
     }
     const newState = this.state.startIndex + n;
     this.setState({ startIndex: newState }, () => this.showArrows());
@@ -50,15 +50,15 @@ class RelatedItems extends React.Component {
     return (
       <div id="RelatedProducts">
         <h3>Related Products</h3>
+          <div className="carousel_actions">
+            <button id="related_carousel_left" onClick={() => this.scroll(-1)}></button>
+            <button id="related_carousel_right" onClick={() => this.scroll(1)}></button>
+          </div>
         <div className="carousel" id="relatedCarousel" onScroll={this.scrolled}>
           {this.props.relatedProductInfo.map((relatedProduct) => (
             <ProductCard key={relatedProduct.productInfo.id} relatedProduct={relatedProduct} productInfo={this.props.productInfo} handleProductChange={this.props.handleProductChange} showArrows={this.showArrows} resetStartIndex={this.resetStartIndex}/>
           ))}
         </div>
-          <div className="carousel_actions">
-            <button id="related_carousel_left" onClick={() => this.scroll(-1)}></button>
-            <button id="related_carousel_right" onClick={() => this.scroll(1)}></button>
-          </div>
       </div>
     );
   }
