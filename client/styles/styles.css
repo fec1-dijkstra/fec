@@ -256,6 +256,16 @@ z-index: 100;
 .tile {
   border-bottom: rgb(125, 125, 125) solid 2px;
   width: 70%;
+  margin-left: 0;
+}
+
+.helpful {
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.report {
+  display: inline-block;
 }
 
 .img {
@@ -304,14 +314,7 @@ z-index: 100;
   margin-bottom: 25px;
 }
 
-.tile {
-  margin-left: 0;
-}
 .recommends {
-}
-
-.helpfulness {
-  margin-bottom: 10px;
 }
 
 #more-reviews,

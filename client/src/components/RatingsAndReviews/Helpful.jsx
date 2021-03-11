@@ -20,7 +20,7 @@ class Helpful extends React.Component {
     const { helpfulness, wasClicked } = this.state;
     if (!wasClicked) {
       return (
-        <div className="helpfulness">
+        <div className="helpful">
           Helpful?{' '}
           <button className="helpful-button" type="submit" onClick={this.handleClick}>
             <u>Yes</u>
@@ -30,8 +30,13 @@ class Helpful extends React.Component {
       );
     }
     return (
-      <div className="helpfulness">
-        <u>{helpfulness}</u> | <u>Report</u>
+      <div className = "tile-vote">
+        <div className="helpful">
+          <u>{helpfulness}</u> |
+        </div>
+        <div className="report">
+          <u>Report</u>
+        </div>
       </div>
     );
   }
