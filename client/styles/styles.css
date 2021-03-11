@@ -30,6 +30,7 @@
   animation: 0.3s fadein;
   position: relative;
 }
+
 /* position: relative;
 display: inline-block;
 left: 30%;
@@ -49,15 +50,66 @@ z-index: 100;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+#photo-upload {
+  float: left;
+  margin-left: 9.7%;
+}
+
+review-add-photo:hover {
+  transform: scale(1.05);
+}
+
+.review-submit {
+  background-color: white;
+  width: 150px;
+  height: 50px;
+  border: 2px solid rgb(55, 55, 55);
+  font-size: 14px;
+  text-align: center;
+  padding-left: 15px;
+  margin-right: 20px;
+  margin-top: 5px;
+  appearance: none;
+  outline-style: none;
+  grid-column: 2;
+  border-radius: 25px;
+  transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42), background 150ms ease-out,
+    box-shadow 200ms;
+}
+
+review-submit:hover {
+  transform: scale(1.05);
+}
+
+.review-submit {
+  background-color: white;
+  width: 150px;
+  height: 50px;
+  border: 2px solid rgb(55, 55, 55);
+  font-size: 14px;
+  text-align: center;
+  padding-left: 15px;
+  margin-right: 20px;
+  margin-top: 5px;
+  appearance: none;
+  outline-style: none;
+  grid-column: 2;
+  border-radius: 25px;
+  transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42), background 150ms ease-out,
+    box-shadow 200ms;
+}
+
 .image {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
+
 .photo-container {
   position: relative;
   width: 150px;
 }
+
 .modal-box {
   background-color: #fefefe;
   margin: 15% auto;
@@ -80,7 +132,7 @@ z-index: 100;
 /*border: 2px solid rgb(125, 125, 125);*/
 
 .checked {
-  color: rgb(125, 125, 125);
+  color: rgb(68, 68, 68);
   cursor: pointer;
 }
 
@@ -200,13 +252,13 @@ z-index: 100;
 }
 
 .star-rating-top {
-  color: rgb(125, 125, 125);
+  color: rgb(68, 68, 68);
   padding: 0;
   position: absolute;
   z-index: 1;
+  margin-top: 3px;
   display: block;
   width: 120px;
-  margin-bottom: 10px;
   top: 0;
   left: 0;
   overflow: hidden;
@@ -215,8 +267,8 @@ z-index: 100;
 .star-rating-bot {
   padding: 0;
   display: block;
+  margin-top: 3px;
   z-index: 0;
-  margin-bottom: 10px;
   width: 125px;
 }
 
@@ -250,7 +302,6 @@ z-index: 100;
     'Segoe UI', 'Helvetica', Arial, sans-serif;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .tile {
@@ -286,6 +337,14 @@ z-index: 100;
 
 .report {
   display: inline-block;
+  cursor: pointer;
+  transition: 200ms ease-out;
+  cursor: pointer;
+  color: rgb(65, 65, 65);
+}
+
+.report:hover {
+  color: rgb(125, 125, 125);
 }
 
 .img {

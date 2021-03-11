@@ -157,7 +157,12 @@ class AddReview extends React.Component {
                   self={self}
                 />
               </div>
-              <input type="file" className="review-add-photo" onChange={this.uploadPhoto} />
+              <input
+                type="file"
+                id="photo-upload"
+                className="review-add-photo"
+                onChange={this.uploadPhoto}
+              />
               <button className="review-submit" type="submit">Submit</button>
               <DisplayError error={error} />
             </form>
