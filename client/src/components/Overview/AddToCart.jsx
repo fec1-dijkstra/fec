@@ -197,31 +197,33 @@ class AddToCart extends React.Component {
       return (
         <div className="overview-add-to-cart">
           {pleaseSelect()}
-          <select
-            onFocus={(e) => (e.target.size = targetSize.toString())}
-            onBlur={(e) => (e.target.size = '0')}
-            name="overview-size-selector"
-            id="overview-size-selector"
-            value={selectedSize}
-            onChange={this.handleChange}
-            disabled={allSizes.sizes.length < 1}
-            ref={this.pleaseSelect}
-          >
-            <option value="">{defaultSize}</option>
-            <Sizes allSizes={allSizes} />
-          </select>
-          <select
-            onFocus={(e) => (e.target.size = max.toString())}
-            onBlur={(e) => (e.target.size = '0')}
-            name="overview-quantity-selector"
-            id="overview-quantity-selector"
-            value={selectedQuantity}
-            onChange={this.handleChange}
-            disabled={selectedSize === ''}
-          >
-            <option value="1">{defaultQuantity}</option>
-            <Quantities max={max} />
-          </select>
+          <div className="overview-size-and-quantity">
+            <select
+              onFocus={(e) => (e.target.size = targetSize.toString())}
+              onBlur={(e) => (e.target.size = '0')}
+              name="overview-size-selector"
+              id="overview-size-selector"
+              value={selectedSize}
+              onChange={this.handleChange}
+              disabled={allSizes.sizes.length < 1}
+              ref={this.pleaseSelect}
+            >
+              <option value="">{defaultSize}</option>
+              <Sizes allSizes={allSizes} />
+            </select>
+            <select
+              onFocus={(e) => (e.target.size = max.toString())}
+              onBlur={(e) => (e.target.size = '0')}
+              name="overview-quantity-selector"
+              id="overview-quantity-selector"
+              value={selectedQuantity}
+              onChange={this.handleChange}
+              disabled={selectedSize === ''}
+            >
+              <option value="1">{defaultQuantity}</option>
+              <Quantities max={max} />
+            </select>
+          </div>
           <div className="overview-bag-and-star">
             {addToBagButton()}
             <button type="button" id="overview-star-button">

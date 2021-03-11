@@ -35,6 +35,8 @@ const Styles = ({ productStyles, selectedStyle, defaultStyle, handleClick }) => 
       return (
         <div
           onClick={handleClick}
+          // onMouseEnter={handleClick}
+          // onFocus={handleClick}
           className={styleClass}
           value={style.style_id}
           onKeyPress={handleClick}
