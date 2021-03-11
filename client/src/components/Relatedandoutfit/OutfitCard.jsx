@@ -26,9 +26,7 @@ class OutfitCard extends React.Component {
   render() {
     return (
       <div className="ProductCard outfit_carousel_item" onClick={this.handleClick}>
-        <div className="actionButton">
-          <button onClick={this.handleRemove} className = "actionButton" id="removeButton" title="Remove from your outfit" >x</button>
-        </div>
+        <button onClick={this.handleRemove} className = "actionButton" id="removeButton" title="Remove from your outfit" ></button>
         <div className="ProductCardImage">
           <img src={this.props.outfit[5].includes("null") ? "https://wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg" : this.props.outfit[5]} alt="DefaultStyleImage" />
         </div>

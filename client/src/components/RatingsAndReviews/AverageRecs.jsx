@@ -1,10 +1,7 @@
 import React from 'react';
 
 const AverageRecs = ({ meta }) => {
-<<<<<<< HEAD
-=======
   // debugger;
->>>>>>> c75fcfebcfd4f12954e8776c86ea1c6fbcf8b7d6
   if (JSON.stringify(meta) === '{}') {
     return null;
   }
