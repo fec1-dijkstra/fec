@@ -10,7 +10,7 @@ class ProductCard extends React.Component {
       show: false,
     };
     this.showModal = this.showModal.bind(this);
-    // this.bodyScroll = this.bodyScroll.bind(this);
+    this.bodyScroll = this.bodyScroll.bind(this);
   }
 
   componentDidMount() {
@@ -21,21 +21,17 @@ class ProductCard extends React.Component {
   showModal(e) {
     e.stopPropagation();
     this.setState({ show: !this.state.show },
-      // this.bodyScroll(window.scrollY)
+      this.bodyScroll()
     );
   }
 
-  // bodyScroll(x) {
-  //   if(!this.state.show) {
-  //     document.body.style.position = 'fixed';
-  //     document.body.style.top = `-${x}px`;
-  //   } else {
-  //     const scrollY = document.body.style.top;
-  //     document.body.style.position = '';
-  //     document.body.style.top = '';
-  //     window.scrollTo(0, parseInt(scrollY || '0') * -1);
-  //   }
-  // }
+  bodyScroll() {
+    if(!this.state.show) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }
 
   handleClick(e) {
     e.preventDefault();
