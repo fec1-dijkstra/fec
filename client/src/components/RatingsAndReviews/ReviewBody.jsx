@@ -21,8 +21,8 @@ class ReviewBody extends React.Component {
       return (
         <>
           <div className="body">{`${body.substring(0, 250)}...`}</div>
-          <button type="submit" onClick={this.showMore}>
-            show more
+          <button className="show-more" type="submit" onClick={this.showMore}>
+            ...
           </button>
         </>
       );

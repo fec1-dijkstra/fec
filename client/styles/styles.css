@@ -259,6 +259,26 @@ z-index: 100;
   margin-left: 0;
 }
 
+.show-more {
+  background-color: lightgrey;
+  width: 50px;
+  height: 20px;
+  border: none;
+  font-size: 20px;
+  text-align: center;
+  margin-right: 20px;
+  margin-top: 5px;
+  appearance: none;
+  outline-style: none;
+  border-radius: 15px;
+  transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42), background 150ms ease-out,
+    box-shadow 200ms;
+}
+
+.show-more:hover {
+  transform: scale(1.05);
+}
+
 .helpful {
   margin-bottom: 10px;
   display: inline-block;
