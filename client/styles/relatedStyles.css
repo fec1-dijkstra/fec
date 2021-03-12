@@ -209,7 +209,6 @@ h3 {
   white-space: nowrap;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  z-index: 1;
 }
 
 .carousel::-webkit-scrollbar,
@@ -258,7 +257,6 @@ h3 {
 
 .carousel_actions {
   position: relative;
-  z-index: 2;
 }
 
 .carousel_actions button {
@@ -270,7 +268,6 @@ h3 {
   border: none;
   cursor: pointer;
   box-sizing: content-box;
-  z-index: 5;
 }
 
 .carousel_actions button:hover {
@@ -280,7 +277,7 @@ h3 {
 
 #outfit_carousel_left,
 #related_carousel_left {
-  top: 150px;
+  top: -200px;
   left: 65px;
   background: url(../src/components/Relatedandoutfit/icons/left.png) no-repeat;
   background-position: center;
@@ -290,7 +287,7 @@ h3 {
 
 #outfit_carousel_right,
 #related_carousel_right {
-  top: 150px;
+  top: -200px;
   right: 105px;
   background: url(../src/components/Relatedandoutfit/icons/right.png) no-repeat;
   background-size: 100%;

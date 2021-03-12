@@ -86,10 +86,6 @@ class Outfit extends React.Component {
     return (
       <div id="YourOutfit">
         <h3>Your Outfit</h3>
-          <div className="carousel_actions">
-            <button id="outfit_carousel_left" onClick={() => this.scroll(-1)}></button>
-            <button id="outfit_carousel_right" onClick={() => this.scroll(1)}></button>
-          </div>
         <div className="carousel" id="outfitCarousel" onScroll={this.scrolled} >
             <div className="ProductCard outfit_carousel_item" id="addItem" onClick={this.handleAdd}>
               <button id="addOutfit" title="Add current product to your outfit">+</button>
@@ -100,6 +96,10 @@ class Outfit extends React.Component {
             <OutfitCard key={outfit.split(',')[0]} outfit={outfit.split(',')} handleDelete={this.handleDelete} handleProductChange={this.props.handleProductChange} showArrows={this.showArrows}/>
           ))}
         </div>
+          <div className="carousel_actions">
+            <button id="outfit_carousel_left" onClick={() => this.scroll(-1)}></button>
+            <button id="outfit_carousel_right" onClick={() => this.scroll(1)}></button>
+          </div>
       </div>
     );
   }
