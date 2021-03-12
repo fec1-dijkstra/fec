@@ -52,15 +52,26 @@ class ImageGallery extends React.Component {
 
   handleClick(event) {
     let { selectedThumbnail } = this.state;
-    if (selectedThumbnail !== Number(event.target.id)) {
-      selectedThumbnail = Number(event.target.id);
-      return this.setState({ selectedThumbnail, isExpanded: false });
+    let targetId = event.target.id;
+    if (targetId) {
+      if (typeof targetId !== 'number') {
+        targetId = Number(targetId);
+      }
+      if (selectedThumbnail !== targetId) {
+        selectedThumbnail = targetId;
+        if (selectedThumbnail === 0) {
+          return this.setState({ selectedThumbnail });
+        }
+        if (selectedThumbnail) {
+          return this.setState({ selectedThumbnail });
+        }
+      }
     }
     return undefined;
   }
 
   resetGallery() {
-    this.setState({ selectedThumbnail: 0, isExpanded: false, zoomExpanded: false });
+    this.setState({ isExpanded: false, zoomExpanded: false });
   }
 
   openExpand(event) {
@@ -80,6 +91,13 @@ class ImageGallery extends React.Component {
     }
   }
 
+  addFadeTop() {
+    return <div className="overview-thumb-fade-top" />;
+  }
+
+  addFadeBottom() {
+    return <div className="overview-thumb-fade-bottom" />;
+  }
   // closeExpand() {
   //   const { isExpanded } = this.state;
   //   if (isExpanded) {
@@ -120,6 +138,8 @@ class ImageGallery extends React.Component {
     }
     return (
       <div className="overview-gallery">
+        {/* {this.addFadeTop()} */}
+        {/* {this.addFadeBottom()} */}
         <div className="overview-thumbnails">
           <Thumbnails
             selectedStyle={selectedStyle}
