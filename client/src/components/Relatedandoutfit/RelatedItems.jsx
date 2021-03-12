@@ -13,6 +13,10 @@ class RelatedItems extends React.Component {
     this.resetStartIndex = this.resetStartIndex.bind(this);
   }
 
+  componentDidMount() {
+    document.getElementById('outfitCarousel').style.overflow = "hidden";
+  }
+
   resetStartIndex() {
     this.setState({ startIndex: 0 });
   }
@@ -36,12 +40,14 @@ class RelatedItems extends React.Component {
   }
 
   scroll(n) {
+    document.getElementById('outfitCarousel').style.overflow = "auto";
     if (n === 1) {
       document.getElementById('relatedCarousel').scrollBy(230, 0);
     }
     if (n === -1) {
       document.getElementById('relatedCarousel').scrollBy(-230, 0);
     }
+    document.getElementById('outfitCarousel').style.overflow = "hidden";
     const newState = this.state.startIndex + n;
     this.setState({ startIndex: newState }, () => this.showArrows());
   }

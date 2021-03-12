@@ -14,17 +14,16 @@ class Outfit extends React.Component {
 
   componentDidMount() {
     this.setState({ outfits: this.getCurrentOutfit() }, () => this.calculateScroll());
+    document.getElementById('outfitCarousel').style.overflow = "hidden";
   }
 
   calculateScroll() {
     const element = document.getElementById('outfitCarousel');
-    const scrolled = Math.floor(element.scrollLeft);
-    console.log(scrolled);
+    const scrolled = element.scrollLeft;
     if (scrolled === 0) {
       this.setState({ startIndex: 0}, () => this.showArrows());
     } else {
-      this.setState({startIndex: scrolled/230 - 1}, () => this.showArrows())
-      console.log(this.state.startIndex);
+      this.setState({startIndex: Math.floor(scrolled/230)}, () => this.showArrows())
     }
   }
 
@@ -72,12 +71,14 @@ class Outfit extends React.Component {
   }
 
   scroll(n) {
+    document.getElementById('outfitCarousel').style.overflow = "auto";
     if (n === 1) {
       document.getElementById('outfitCarousel').scrollBy(230, 0);
     }
     if (n === -1) {
       document.getElementById('outfitCarousel').scrollBy(-230, 0);
     }
+    document.getElementById('outfitCarousel').style.overflow = "hidden";
     const newState = this.state.startIndex + n;
     this.setState({ startIndex: newState }, () => this.showArrows());
   }
