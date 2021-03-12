@@ -9,8 +9,8 @@ class StyleSelector extends React.Component {
     if (selectedStyle.sale_price) {
       return (
         <>
-          <div id="overview-price-slash">{`$${selectedStyle.original_price}`}</div>
           <div id="overview-sale-price">{`$${selectedStyle.sale_price}`}</div>
+          <div id="overview-price-slash">{`$${selectedStyle.original_price}`}</div>
         </>
       );
     }

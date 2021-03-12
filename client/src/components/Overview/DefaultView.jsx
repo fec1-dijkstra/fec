@@ -15,9 +15,12 @@ const urlCheck = (url) => {
 };
 
 const DefaultView = ({ selectedStyle, selectedThumbnail, openExpand, registerMouse }) => {
+  let renderDefault = <div className="overview-default-view" />;
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
-    let renderDefault = <></>;
-    if (urlCheck(selectedStyle.photos[selectedThumbnail].url)) {
+    if (
+      selectedStyle.photos[selectedThumbnail] &&
+      urlCheck(selectedStyle.photos[selectedThumbnail].url)
+    ) {
       renderDefault = (
         <div
           className="overview-default-view"
@@ -27,6 +30,13 @@ const DefaultView = ({ selectedStyle, selectedThumbnail, openExpand, registerMou
           tabIndex={0}
           role="button"
         >
+          <div className="overview-arrow-background overview-arrow-background-left">
+            <div className="overview-arrow" />
+          </div>
+          <div className="overview-arrow-background overview-arrow-background-right">
+            <div className="overview-arrow" />
+          </div>
+
           <img
             src={urlCheck(selectedStyle.photos[selectedThumbnail].url)}
             alt={`${selectedStyle.name} default view`}
@@ -37,7 +47,7 @@ const DefaultView = ({ selectedStyle, selectedThumbnail, openExpand, registerMou
     }
     return renderDefault;
   }
-  return <></>;
+  return renderDefault;
 };
 
 DefaultView.defaultProps = {
