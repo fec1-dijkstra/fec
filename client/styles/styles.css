@@ -149,6 +149,13 @@ review-add-photo:hover {
 
 .info {
   width: 80%;
+  resize: none;
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto', 'Droid Sans',
+    'Segoe UI', 'Helvetica', Arial, sans-serif;
+  color: #222222;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto', 'Droid Sans',
+    'Segoe UI', 'Helvetica', Arial, sans-serif;
 }
 
 .caution {
