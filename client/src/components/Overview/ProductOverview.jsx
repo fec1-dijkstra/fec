@@ -19,7 +19,9 @@ const ProductOverview = ({ productInfo }) => {
     if (productInfo.features) {
       return (
         <div className="overview-features">
-          <Features productInfo={productInfo} />
+          <div className="overview-all-features">
+            <Features productInfo={productInfo} />
+          </div>
         </div>
       );
     }

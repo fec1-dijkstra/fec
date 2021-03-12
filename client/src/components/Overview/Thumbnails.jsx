@@ -15,10 +15,10 @@ const urlCheck = (url) => {
 };
 
 const Thumbnails = ({ selectedStyle, selectedThumbnail, handleClick }) => {
-  let key = 0;
+  let key = 9999;
   if (selectedStyle.photos) {
     let thumbnailClass = 'overview-thumbnail-icon';
-    let thumb = <div className={thumbnailClass} key={key} />;
+    let thumb = <div className={thumbnailClass} key="error" />;
     if (selectedStyle.photos.length > 0) {
       return selectedStyle.photos.map((photo, index) => {
         let selectedOutline = <></>;
@@ -33,9 +33,12 @@ const Thumbnails = ({ selectedStyle, selectedThumbnail, handleClick }) => {
               key={key}
               className={thumbnailClass}
               onClick={handleClick}
+              onMouseEnter={handleClick}
+              onFocus={handleClick}
               onKeyPress={handleClick}
               tabIndex={0}
               role="button"
+              id={index}
             >
               {selectedOutline}
               <img

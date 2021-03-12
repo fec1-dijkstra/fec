@@ -21,11 +21,11 @@ class ReviewTile extends React.Component {
     const { review } = this.props;
     return (
       <div className="tile">
-        <SelectStars rating={review.rating} />
-        <div className="date">{new Date(review.date).toString().substring(3, 15)}</div>
         <div className="username">
           <u>{review.reviewer_name}</u>
         </div>
+        <div className="date">{new Date(review.date).toString().substring(3, 15)}</div>
+        <SelectStars rating={review.rating} />
         <Response response={review.response} />
         <Summary summary={review.summary} />
         <ReviewBody body={review.body} />

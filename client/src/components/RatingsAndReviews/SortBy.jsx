@@ -43,9 +43,12 @@ class SortBy extends React.Component {
       </option>
     ));
     return (
-      <select className="sort-by" value={current} onChange={this.handleChange}>
-        {dropdowns}
-      </select>
+      <>
+        <div className="sort-text">sort by: </div>
+        <select className="sort-by" value={current} onChange={this.handleChange}>
+          {dropdowns}
+        </select>
+      </>
     );
   }
 }

@@ -7,7 +7,7 @@ const Sizes = ({ allSizes }) => {
     return allSizes.sizes.map((size) => {
       key += 1;
       return (
-        <option key={key} value={size}>
+        <option onClick={(e) => (e.target.size = '0')} key={key} value={size}>
           {size}
         </option>
       );

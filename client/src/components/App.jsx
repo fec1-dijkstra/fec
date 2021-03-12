@@ -26,7 +26,7 @@ class App extends React.Component {
       // 17067 - multiple images
       // 17073 - broken
       // 17068 - no images
-      currentProduct: 17762,
+      currentProduct: 17067,
       reviewsMeta: {},
       relatedProductInfo: [],
       allReviews: {},

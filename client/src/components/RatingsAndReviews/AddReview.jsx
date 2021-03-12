@@ -125,7 +125,7 @@ class AddReview extends React.Component {
               <ReviewField
                 placeholder={`Example: "Best Purchase Ever!"`}
                 limit={60}
-                prop="summary"
+                prop="summary"F
                 self={self}
               />
               <div>
@@ -157,8 +157,15 @@ class AddReview extends React.Component {
                   self={self}
                 />
               </div>
-              <input type="file" onChange={this.uploadPhoto} />
-              <button type="submit">Submit</button>
+              <div className="upload-container">
+                <input
+                  type="file"
+                  id="photo-upload"
+                  className="review-add-photo"
+                  onChange={this.uploadPhoto}
+                />
+              </div>
+              <button className="review-submit" type="submit">Submit</button>
               <DisplayError error={error} />
             </form>
             <button type="button" className="add-review" onClick={this.showModal}>
