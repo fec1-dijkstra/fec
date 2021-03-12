@@ -1,6 +1,8 @@
 button,
 img,
-div {
+div,
+input,
+textarea {
   outline: none;
 }
 
