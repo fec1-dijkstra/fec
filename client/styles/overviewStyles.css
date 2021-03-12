@@ -184,10 +184,10 @@ html {
   margin-top: 6px;
 }
 
-.overview-stars {
+/* .overview-stars {
   width: 110px;
   height: 24px;
-}
+} */
 
 .overview-stars .star-ratings-css {
   margin: 0px;
@@ -200,6 +200,7 @@ html {
   font-size: 14px;
   text-decoration: underline;
   position: relative;
+  padding-left: 6px;
 }
 
 /* Style Selector */
