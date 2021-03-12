@@ -20,7 +20,6 @@ class ImageGallery extends React.Component {
     element.scrollDown(50);
   }
 
-
   static disableScrolling() {
     const x = window.scrollX;
     const y = window.scrollY;
@@ -50,6 +49,7 @@ class ImageGallery extends React.Component {
     this.registerMouse = this.registerMouse.bind(this);
     this.thumbRef = this.thumbRef.bind(this);
     this.onScroll = this.onScroll.bind(this);
+    this.navClick = this.navClick.bind(this);
     this.refElement = null;
     this.refThumb = null;
     this.mouseDown = false;
@@ -114,6 +114,29 @@ class ImageGallery extends React.Component {
   //   }
   // }
 
+  navClick(event) {
+    const { selectedStyle } = this.props;
+    let { selectedThumbnail } = this.state;
+    if (
+      event.target.id === 'overview-arrow-right' ||
+      event.target.className.includes('overview-arrow-background-right')
+    ) {
+      if (selectedThumbnail < selectedStyle.photos.length - 1) {
+        selectedThumbnail += 1;
+        this.setState({ selectedThumbnail });
+      }
+    }
+    if (
+      event.target.id === 'overview-arrow-left' ||
+      event.target.className.includes('overview-arrow-background-left')
+    ) {
+      if (selectedThumbnail > 0) {
+        selectedThumbnail -= 1;
+        this.setState({ selectedThumbnail });
+      }
+    }
+  }
+
   zoomExpand() {
     const { zoomExpanded } = this.state;
     if (zoomExpanded) {
@@ -146,14 +169,29 @@ class ImageGallery extends React.Component {
   addFadeTop() {
     const { topScroll } = this.state;
     if (topScroll) {
-      return <div className="overview-thumb-fade-top" ref={this.scrollUp} />;
+      return (
+        <>
+          <div className="overview-thumb-fade-top" ref={this.scrollUp} />
+          <div className="overview-arrow-background-up overview-arrow-background-thumb">
+            <div className="overview-arrow" />
+          </div>
+        </>
+      );
     }
   }
 
   addFadeBottom() {
+    const { selectedStyle } = this.props;
     const { bottomScroll } = this.state;
-    if (bottomScroll) {
-      return <div className="overview-thumb-fade-bottom" ref={this.scrollDown} />;
+    if (bottomScroll && selectedStyle.photos.length > 7) {
+      return (
+        <>
+          <div className="overview-thumb-fade-bottom" ref={this.scrollDown} />
+          <div className="overview-arrow-background-down overview-arrow-background-thumb">
+            <div className="overview-arrow" />
+          </div>
+        </>
+      );
     }
   }
 
@@ -196,6 +234,7 @@ class ImageGallery extends React.Component {
           selectedThumbnail={selectedThumbnail}
           openExpand={this.openExpand}
           registerMouse={this.registerMouse}
+          navClick={this.navClick}
         />
         {viewExpanded}
       </div>

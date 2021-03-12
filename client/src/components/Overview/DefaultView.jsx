@@ -14,7 +14,7 @@ const urlCheck = (url) => {
   return null;
 };
 
-const DefaultView = ({ selectedStyle, selectedThumbnail, openExpand, registerMouse }) => {
+const DefaultView = ({ selectedStyle, selectedThumbnail, openExpand, registerMouse, navClick }) => {
   let renderDefault = <div className="overview-default-view" />;
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
     if (
@@ -22,19 +22,31 @@ const DefaultView = ({ selectedStyle, selectedThumbnail, openExpand, registerMou
       urlCheck(selectedStyle.photos[selectedThumbnail].url)
     ) {
       renderDefault = (
-        <div
-          className="overview-default-view"
-          onMouseUp={openExpand}
-          onMouseDown={registerMouse}
-          // onKeyPress={openExpand}
-          tabIndex={0}
-          role="button"
-        >
-          <div className="overview-arrow-background overview-arrow-background-left">
-            <div className="overview-arrow" />
+        <div className="overview-default-view">
+          <div
+            className="overview-expand-bubble"
+            onMouseUp={openExpand}
+            onMouseDown={registerMouse}
+            // onKeyPress={openExpand}
+            tabIndex={0}
+            role="button"
+          />
+          <div className="overview-arrow-background overview-arrow-background-left"
+            onClick={navClick}
+            role="button"
+            onKeyPress={navClick}
+            tabIndex={0}
+          >
+            <div className="overview-arrow" id="overview-arrow-left" />
           </div>
-          <div className="overview-arrow-background overview-arrow-background-right">
-            <div className="overview-arrow" />
+          <div
+            className="overview-arrow-background overview-arrow-background-right"
+            onClick={navClick}
+            role="button"
+            onKeyPress={navClick}
+            tabIndex={0}
+          >
+            <div className="overview-arrow" id="overview-arrow-right" />
           </div>
 
           <img

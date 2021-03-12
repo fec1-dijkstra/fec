@@ -2,6 +2,10 @@ html {
   scroll-behavior: smooth;
 }
 
+/* #app {
+  animation: .6s ease-in 0s 1 photoFadeIn;
+} */
+
 .overview-wrapper {
   -webkit-font-smoothing: antialiased;
   font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto', 'Droid Sans',
@@ -17,6 +21,7 @@ html {
   margin-bottom: 40px;
   font-size: 13px;
   /* margin-top: 40px; */
+  animation: .6s ease-in 0s 1 photoFadeIn;
 }
 
 .overview-header {
@@ -644,6 +649,7 @@ color: white;
 
 .overview-thumbnails {
   position: fixed;
+  animation: 1.2s ease-in 0s 1 photoFadeIn;
 }
 
 .overview-thumbnails, .overview-thumb-fade-top, .overview-thumb-fade-bottom {
@@ -713,11 +719,9 @@ color: white;
   cursor: pointer;
 }
 
-.overview-selected-thumbnail-icon {
-  /* border: 2px solid rgb(80, 80, 80); */
-  /* box-sizing: border-box; */
+/* .overview-selected-thumbnail-icon {
   z-index: 10;
-}
+} */
 
 /* .overview-thumbnail-icon img, .overview-selected-thumbnail-icon img {
   border-radius: 8px;
@@ -765,10 +769,19 @@ color: white;
   cursor: zoom-in;
 }
 
+.overview-expand-bubble {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* z-index: 600; */
+}
+
 #overview-default-view-img {
   object-fit:contain;
   max-width: 100%;
   max-height: 100%;
+  transition: 0;
+  animation: .7s ease-in 0s 1 photoFadeIn;
 }
 
 .overview-expanded-view-wrapper {
@@ -816,6 +829,7 @@ color: white;
   width: 100%;
   height: 100%;
   z-index: 300;
+  animation: .3s ease-in 0s 1 photoFadeIn;
 }
 
 /* .overview-broken-image {
@@ -844,6 +858,19 @@ color: white;
   cursor: pointer;
 }
 
+/* .overview-arrow-background:hover ~ #overview-expand-bubble {
+  pointer-events: none;
+} */
+
+.overview-arrow-background-thumb {
+  background-color: transparent;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  /* box-shadow: 0px 0px 6px rgb(160, 160, 160); */
+  cursor: pointer;
+}
+
 .overview-arrow-background:hover, .overview-arrow-background:hover .overview-arrow, .overview-arrow-background:hover .overview-expanded-arrow {
   opacity: 1;
   background-color: rgb(160, 160, 160);
@@ -869,11 +896,21 @@ color: white;
 }
 
 .overview-arrow-background-down {
-  transform: rotate(180deg);
-  -webkit-transform: rotate(135deg);
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
   position: absolute;
-  top: 46%;
+  bottom: 0;
   left: 4%;
+  z-index: 200;
+}
+
+.overview-arrow-background-up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  position: absolute;
+  top: 0;
+  left: 4%;
+  z-index: 200;
 }
 
 .overview-expanded-arrow {
@@ -893,7 +930,7 @@ color: white;
   position: absolute;
   top: 50%;
   right: 4%;
-  z-index: 301;
+  z-index: 501;
   width: 60px;
   height: 60px;
 }
@@ -980,5 +1017,14 @@ img:after {
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes photoFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
