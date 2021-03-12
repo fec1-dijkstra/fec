@@ -387,6 +387,7 @@ review-add-photo:hover {
   border-bottom: rgb(125, 125, 125) solid 2px;
   width: 70%;
   margin-left: 0;
+  animation: 0.3s fadein;
 }
 
 .show-more {
