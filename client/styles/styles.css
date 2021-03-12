@@ -312,6 +312,7 @@ review-add-photo:hover {
   grid-column: 2;
   margin-left: 5%;
   margin-bottom: 10%;
+  max-height: 700px;
 }
 
 .star-rating {
