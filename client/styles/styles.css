@@ -1,6 +1,6 @@
 .modal {
   position: fixed;
-  z-index: 1;
+  z-index: 440;
   left: 0;
   top: 0;
   width: 100%;
@@ -13,16 +13,17 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  z-index: 450;
 }
 
 .modal-box {
   background-color: #fefefe;
   margin: 15% auto;
-  padding: 20px;
+  padding: 0;
+  padding-bottom: 20px;
   border: 1px solid #888;
-  width: 40%;
+  width: 60%;
   text-align: center;
-
   box-shadow: 0 6px 36px rgb(34 34 34 / 33%);
   background: #fff;
   border-radius: 24px;
@@ -41,7 +42,7 @@ z-index: 100;
 
 .modal-background {
   position: fixed;
-  z-index: 1;
+  z-index: 450;
   left: 0;
   top: 0;
   width: 100%;
@@ -63,28 +64,127 @@ review-add-photo:hover {
   width: 100%;
   height: 25px;
 }
-.review-submit {
-  background-color: black;
-  width: 150px;
-  height: 50px;
-  border: 2px solid black;
-  font-size: 14px;
-  font-weight: bold;
+
+#write {
+  background-color: rgb(80, 80, 80);
   color: white;
-  font-weight: bold;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#item {
+  background-color: rgb(80, 80, 80);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+}
+
+.more-reviews-button {
+  width: 150px;
+  height: 100%;
+  position: relative;
+  margin-top: 10px;
+}
+
+.more-reviews-button-text {
+  position: absolute;
+  margin-top: 25px;
+  line-height: 0;
   text-align: center;
-  padding-left: 15px;
-  margin-right: 20px;
-  margin-top: 5px;
-  appearance: none;
-  outline-style: none;
-  border-radius: 25px;
-  transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42), background 150ms ease-out,
-    box-shadow 200ms;
+  width: 100%;
+  color: white;
+  font-size: 13px;
+  z-index: 100;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.submit-button {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-top: 20px;
+}
+
+.submit-button-text {
+  position: absolute;
+  top: 50%;
+  line-height: 0;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-size: 13px;
+  z-index: 444;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.review-submit {
+  height: 50px;
+  width: 150px;
+  position: relative;
+  color: rgb(80, 80, 80);
+  border-radius: 50px 50px 50px 50px;
+  padding: 0;
+  background-color: rgb(80, 80, 80);
+  box-shadow: none;
+  border: none;
 }
 
 .review-submit:hover {
-  transform: scale(1.05);
+  box-shadow: none;
+  transition: transform 0.1s ease-in;
+  transform: scale(1.04);
+  background-color: rgb(91, 91, 91);
+  color: rgb(91, 91, 91);
+  border: none;
+  z-index: 20;
+}
+
+.close-button {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-top: 10px;
+}
+
+.close-text {
+  position: absolute;
+  top: 50%;
+  line-height: 0;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-size: 13px;
+  z-index: 444;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.review-close {
+  height: 50px;
+  width: 150px;
+  position: relative;
+  color: rgb(80, 80, 80);
+  border-radius: 50px 50px 50px 50px;
+  border: 2px solid rgb(55, 55, 55);
+  padding: 0;
+  background-color: rgb(80, 80, 80);
+  box-shadow: none;
+  border: none;
+}
+
+.review-close:hover {
+  box-shadow: none;
+  transition: transform 0.1s ease-in;
+  transform: scale(1.04);
+  background-color: rgb(91, 91, 91);
+  color: rgb(91, 91, 91);
+  border: none;
+  z-index: 20;
 }
 
 .image {
@@ -97,14 +197,13 @@ review-add-photo:hover {
   position: relative;
   width: 150px;
 }
-
+/*
 .modal-box {
   background-color: #fefefe;
   margin: 15% auto;
-  padding: 20px;
   border: 1px solid #888;
   width: 70%;
-}
+} */
 
 .reviews {
   grid-column-start: 1;
@@ -141,6 +240,7 @@ review-add-photo:hover {
   -webkit-font-smoothing: antialiased;
   font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto', 'Droid Sans',
     'Segoe UI', 'Helvetica', Arial, sans-serif;
+  border-radius: 10px;
 }
 
 .caution {
@@ -162,7 +262,7 @@ review-add-photo:hover {
 }
 
 .star-bar {
-  background-color: black;
+  background-color: #444444;
   z-index: 1;
   margin-left: 10px;
   margin-top: -20px;
@@ -231,6 +331,7 @@ review-add-photo:hover {
   grid-column: 2;
   margin-left: 5%;
   margin-bottom: 10%;
+  max-height: 700px;
 }
 
 .star-rating {
@@ -305,6 +406,7 @@ review-add-photo:hover {
   border-bottom: rgb(125, 125, 125) solid 2px;
   width: 70%;
   margin-left: 0;
+  animation: 0.3s fadein;
 }
 
 .show-more {
@@ -330,14 +432,28 @@ review-add-photo:hover {
 .helpful {
   margin-bottom: 10px;
   display: inline-block;
+  font-weight: 450;
+}
+
+.helpful-yes {
+  display: inline;
+  margin-right: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  color: rgb(65, 65, 65);
+  transition: 100ms ease-out;
+}
+
+.helpful-yes:hover {
+  color: rgb(125, 125, 125);
 }
 
 .report {
   display: inline-block;
-  cursor: pointer;
   transition: 200ms ease-out;
   cursor: pointer;
   color: rgb(65, 65, 65);
+  transition: 100ms ease-out;
 }
 
 .report:hover {
@@ -345,7 +461,15 @@ review-add-photo:hover {
 }
 
 .img {
-  border-radius: 25%;
+  border-radius: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+  filter: opacity(0.8);
+  transition: 200ms;
+}
+
+.img:hover {
+  filter: opacity(1);
 }
 
 .rec-percent {
@@ -371,7 +495,7 @@ review-add-photo:hover {
   color: rgb(65, 65, 65);
   margin-right: 10px;
   margin-top: 10px;
-  transition: 200ms ease-out;
+  transition: 100ms ease-out;
   cursor: pointer;
 }
 
@@ -392,16 +516,12 @@ review-add-photo:hover {
   font-weight: 350;
 }
 
-.recommends {
-}
-
-#more-reviews,
 .add-review {
   background-color: white;
   width: 150px;
   height: 50px;
   border: 2px solid rgb(55, 55, 55);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   text-align: center;
   padding-left: 15px;
