@@ -412,14 +412,28 @@ review-add-photo:hover {
 .helpful {
   margin-bottom: 10px;
   display: inline-block;
+  font-weight: 450;
+}
+
+.helpful-yes {
+  display: inline;
+  margin-right: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  color: rgb(65, 65, 65);
+  transition: 100ms ease-out;
+}
+
+.helpful-yes:hover {
+  color: rgb(125, 125, 125);
 }
 
 .report {
   display: inline-block;
-  cursor: pointer;
   transition: 200ms ease-out;
   cursor: pointer;
   color: rgb(65, 65, 65);
+  transition: 100ms ease-out;
 }
 
 .report:hover {
@@ -453,7 +467,7 @@ review-add-photo:hover {
   color: rgb(65, 65, 65);
   margin-right: 10px;
   margin-top: 10px;
-  transition: 200ms ease-out;
+  transition: 100ms ease-out;
   cursor: pointer;
 }
 
@@ -472,9 +486,6 @@ review-add-photo:hover {
   margin-top: 5px;
   margin-bottom: 25px;
   font-weight: 350;
-}
-
-.recommends {
 }
 
 .add-review {

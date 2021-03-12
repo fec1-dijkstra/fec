@@ -21,11 +21,11 @@ class Helpful extends React.Component {
     if (!wasClicked) {
       return (
         <div className="helpful">
-          <b>Helpful?</b>
-          <button className="helpful-button" type="submit" onClick={this.handleClick}>
+          Helpful?
+          <div className="helpful-yes" onClick={this.handleClick}>
             <u>Yes</u>
-          </button>
-          <u>{helpfulness}</u> |
+          </div>
+          <b>{helpfulness}</b> |
           <div className="report">
             <u>Report</u>
           </div>
@@ -35,7 +35,7 @@ class Helpful extends React.Component {
     return (
       <div className="tile-vote">
         <div className="helpful">
-          <u>{helpfulness}</u> |
+          <b>{helpfulness}</b> |
         </div>
         <div className="report">
           <u>Report</u>
