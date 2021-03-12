@@ -30,7 +30,7 @@ class App extends React.Component {
       reviewsMeta: {},
       relatedProductInfo: [],
       allReviews: {},
-      sortBy: 'newest',
+      sortBy: 'relevant',
     };
     this.handleProductChange = this.handleProductChange.bind(this);
   }
