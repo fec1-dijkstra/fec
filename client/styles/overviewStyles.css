@@ -3,6 +3,10 @@ html {
 }
 
 .overview-wrapper {
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto', 'Droid Sans',
+    'Segoe UI', 'Helvetica', Arial, sans-serif;
+  color: #222222;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,8 +15,6 @@ html {
   margin: 0 auto;
   width: 960px;
   margin-bottom: 40px;
-  color: rgb(80, 80, 80);
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
   /* margin-top: 40px; */
 }
@@ -37,6 +39,7 @@ html {
   color: rgb(80, 80, 80);
   margin: 0;
   line-height: 22px;
+  font-family: "Guardian-EgypTT",serif;
 }
 
 .overview-search {
@@ -67,6 +70,7 @@ html {
   font-size: 13px;
   margin-bottom: 20px;
   font-weight: 100;
+  font-weight: 400;
 }
 
 #overview-new-product-highlight {
@@ -127,33 +131,41 @@ html {
   margin-top: 10px;
   margin-bottom: 5px;
   text-transform: uppercase;
+  font-weight: 400;
 }
 
 #overview-name {
   order: 2;
-  font-weight: 900;
+  font-weight: 100;
   font-size: 35px;
-  margin: 0;
   height: 40px;
+  margin-top: 5px;
   height: auto;
+  font-family: "Guardian-EgypTT",serif;
 }
+
 
 .overview-price {
   display: flex;
   flex-direction: row;
   font-size: 20px;
   margin-top: 15px;
-  margin-bottom: 20px;
-  font-size: 16px;
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: 700;
 }
 
 #overview-price-slash {
   text-decoration: line-through;
-  margin-right: 7px;
+  color: #2e8539;
+  font-size: 15px;
 }
 
 #overview-sale-price {
-  color: red;
+  margin-right: 7px;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: normal;
 }
 
 /* Reviews */
@@ -211,14 +223,14 @@ html {
 #overview-style-name {
   margin-bottom: 10px;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .overview-style-icon-area {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   width: 100%;
 }
 
@@ -253,9 +265,9 @@ color: white;
 
 .overview-selected-style-icon {
   /* border: 2px solid rgb(80, 80, 80); */
+  animation: .3s ease-in 0s 1 fadeInSelect;
   box-shadow: 0px 0px 6px rgb(80, 80, 80);
   font-weight: 900;
-  opacity: 1;
 }
 
 .overview-style-icon img, .overview-selected-style-icon img {
@@ -266,57 +278,152 @@ color: white;
   position: absolute;
 }
 
+/* .overview-selected-style-icon img {
+  animation: .1s ease .3s 1 fadeInSelect;
+} */
 /* .overview-default-style-icon {
   background-color: darkseagreen;
 } */
 
-.overview-size-and-quantity {
+.overview-size-and-quantity, .overview-bag-and-star {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
+  height: 50px;
+  width: 100%;
 }
 
 .overview-bag-and-star {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 /* Add To Cart */
 #overview-size-selector, #overview-add-to-bag-btn, #overview-quantity-selector, #overview-view-bag-btn, #overview-star-button {
   background-color: white;
-  width: 50%;
+  width: 47%;
   height: 50px;
-  border: 2px solid rgb(80, 80, 80);
+  border: 1px solid rgba(80, 80, 80, .5);
+  box-shadow: 0 0 3px rgba(80, 80, 80, .5);
   font-size: 14px;
   font-weight: 600;
   appearance: none;
-  outline-style: none;
+  outline: none;
   color: rgb(80, 80, 80);
-  border-radius: 50px 50px 50px 50px;
   cursor: pointer;
-  text-align: center;
+  border-radius: 6px;
+  padding-left: 10px;
+  position: relative;
 }
 
-#overview-size-selector:hover, #overview-add-to-bag-btn:hover, #overview-quantity-selector:hover, #overview-view-bag-btn:hover, #overview-star-button:hover {
-  transition: background-color .3s ease;
-  transition: color .5s ease;
-  background-color: rgb(80, 80, 80);
-  color: white;
+#overview-size-selector {
+  z-index: 1000;
+  position:absolute;
+  left: 0;
+}
+#overview-quantity-selector {
+  position: absolute;
+  right: 0;
+  z-index: 1000;
+}
+
+#overview-size-selector:focus, #overview-quantity-selector:focus {
+  position: absolute;
+  z-index: 444;
+  overflow:scroll;
+  height: auto;
+  min-height: 50px;
+  padding: 0;
+}
+
+#overview-size-selector:hover, #overview-add-to-bag-btn:hover, #overview-quantity-selector:hover, #overview-view-bag-btn:hover, #overview-star-button:hover, #overview-size-selector:focus, #overview-quantity-selector:focus {
+  transition: border .5s ease;
+  transition: box-shadow .2s ease-in;
+  border: 1px solid rgba(80, 80, 80, 1);
+  box-shadow: 0 0 4px rgba(80, 80, 80, 1);
+  z-index: 1000;
+}
+
+select {
+  appearance: none;
+  border: none;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+  height: auto;
+  z-index: 1000;
+  line-height: 20px;
+}
+
+option {
+  font-weight: 900;
+  background-color: transparent;
+  outline: none;
+  margin-bottom: 10px;
+  z-index: 1000;
+  height: 100%;
+  padding-bottom: 15px;
+  margin: 0;
+  outline:none;
+  padding-top: 15px;
+  padding-left: 10px;
+  width: 100%;
+}
+
+option:hover {
+  background-color: #ededed;
+}
+
+.overview-add-to-bag-button-area {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-top: 20px;
 }
 
 #overview-add-to-bag-btn, #overview-view-bag-btn {
-  margin-top: 20px;
   width: 100%;
+  height: 100%;
   position: relative;
   margin-right: 0;
   margin-left: 0;
+  border-radius: 50px 50px 50px 50px;
+  padding: 0;
+  background-color: rgb(80, 80, 80);
+  box-shadow: none;
+  border: none;
+}
+
+#overview-add-to-bag-btn:hover, #overview-view-bag-btn:hover {
+  box-shadow:none;
+  transition: transform .1s ease-in;
+  transform: scale(1.04);
+  position: absolute;
+  background-color: rgb(91, 91, 91);
+  border:none;
+  z-index: 20;
+}
+
+.overview-add-to-bag-text {
+  position: absolute;
+  top: 50%;
+  line-height: 0;
+  text-align: center;
+  width: 100%;
+  color: white;
+  z-index:444;
+  font-weight: 700;
+  pointer-events: none;
 }
 
 #overview-star-button {
   justify-self: flex-end;
   align-self: flex-end;
-  width: 50px;
+  width: 100px;
   min-width: 50px !important;
   height: 50px;
   margin-left: 20px;
@@ -332,6 +439,10 @@ color: white;
   margin-bottom: 5px;
   font-size: 13px;
   color: red;
+  position:absolute;
+  top:-35px;
+  left: 0;
+  margin-left:10px;
 }
 
 /* .overview-add-to-cart {
@@ -358,7 +469,6 @@ color: white;
   font-size: 14px;
   width: 50px;
   height: 20px;
-  text-align: center;
 }
 .overview-pinterest {
   margin-right: 0;
@@ -418,7 +528,7 @@ color: white;
 
 /* Features */
 .overview-features {
-  width: 657px;
+  width: 57%;
   display: flex;
   flex-direction: column;
   border-left: 2px solid rgb(80, 80, 80);
@@ -633,7 +743,7 @@ color: white;
 } */
 
 .overview-arrow {
-  border: solid rgb(80, 80, 80);
+  border: solid rgb(160, 160, 160);
   border-width: 0 3px 3px 0;
   width: 30%;
   height: 30%;
@@ -648,14 +758,13 @@ color: white;
   border-radius: 100%;
   width: 30px;
   height: 30px;
-  box-shadow: 0px 0px 6px #ededed;
-  opacity: .6;
+  box-shadow: 0px 0px 6px rgb(160, 160, 160);
   cursor: pointer;
 }
 
 .overview-arrow-background:hover, .overview-arrow-background:hover .overview-arrow, .overview-arrow-background:hover .overview-expanded-arrow {
   opacity: 1;
-  background-color: rgb(80, 80, 80);
+  background-color: rgb(160, 160, 160);
   border-color: white;
   transition: background-color .3s ease;
   transition: border-color .5s ease;
@@ -677,14 +786,22 @@ color: white;
   left: 4%;
 }
 
+.overview-arrow-background-down {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(135deg);
+  position: absolute;
+  top: 46%;
+  left: 4%;
+}
+
 .overview-expanded-arrow {
-  border: solid rgb(80, 80, 80);
+  border: solid rgb(160, 160, 160);
   border-width: 0 5px 5px 0;
   width: 30%;
   height: 30%;
   position: absolute;
-  top: 28%;
-  left: 28%;
+  top: 27%;
+  left: 27%;
   cursor: pointer;
 }
 
@@ -711,7 +828,8 @@ color: white;
 }
 
 .overview-checkmark-background {
-  background-color: #ededed;
+  animation: .1s ease-in 0s 1 popIn;
+  background-color: rgb(80, 80, 80);
   border-radius: 100%;
   /* box-shadow: 0px 0px 6px #ededed; */
   z-index: 20;
@@ -722,7 +840,7 @@ color: white;
   position: absolute;
   top: 14%;
   left: 21%;
-  color:rgb(80, 80, 80);
+  color:#ededed;
   font-size: 16px;
 }
 .overview-selected-checkmark-background {
@@ -744,4 +862,23 @@ img {
 
 img:after {
   visibility: hidden;
+}
+
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInSelect {
+  0% {
+    opacity: .6;
+  }
+  100% {
+    opacity: 1;
+  }
 }
