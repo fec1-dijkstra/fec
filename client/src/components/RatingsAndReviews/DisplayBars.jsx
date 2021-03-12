@@ -35,10 +35,10 @@ class DisplayBars extends React.Component {
       return null;
     });
     const percentages = [0, 0, 0, 0, 0];
-    Object.keys(ratings).map((val) => {
+    Object.keys(ratings).map((val, ind) => {
       const calc = Math.abs((ratings[val] / total) * 300);
-      if (calc > 300) {
-        percentages[val - 1] = 300;
+      if (calc > 150) {
+        percentages[ind] = 150;
         return null;
       }
       percentages[val - 1] = calc;

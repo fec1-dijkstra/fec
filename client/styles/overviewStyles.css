@@ -2,6 +2,10 @@ html {
   scroll-behavior: smooth;
 }
 
+/* #app {
+  animation: .6s ease-in 0s 1 photoFadeIn;
+} */
+
 .overview-wrapper {
   -webkit-font-smoothing: antialiased;
   font-family: 'Graphik Webfont', -apple-system, BlinkMacSystemFont, 'Roboto', 'Droid Sans',
@@ -17,6 +21,7 @@ html {
   margin-bottom: 40px;
   font-size: 13px;
   /* margin-top: 40px; */
+  animation: .6s ease-in 0s 1 photoFadeIn;
 }
 
 .overview-header {
@@ -40,6 +45,7 @@ html {
   margin: 0;
   line-height: 22px;
   font-family: "Guardian-EgypTT",serif;
+  letter-spacing: 2px;
 }
 
 .overview-search {
@@ -153,6 +159,7 @@ html {
   margin-bottom: 30px;
   font-size: 30px;
   font-weight: 700;
+  align-items: baseline;
 }
 
 #overview-price-slash {
@@ -163,8 +170,7 @@ html {
 
 #overview-sale-price {
   margin-right: 7px;
-  font-weight: 500;
-  font-size: 16px;
+  font-size: 30px;
   letter-spacing: normal;
 }
 
@@ -299,7 +305,7 @@ color: white;
 }
 
 /* Add To Cart */
-#overview-size-selector, #overview-add-to-bag-btn, #overview-quantity-selector, #overview-view-bag-btn, #overview-star-button {
+#overview-size-selector, #overview-add-to-bag-btn, #overview-quantity-selector, #overview-view-bag-btn, #overview-star-button, .overview-wrapper select:focus {
   background-color: white;
   width: 47%;
   height: 50px;
@@ -312,19 +318,26 @@ color: white;
   color: rgb(80, 80, 80);
   cursor: pointer;
   border-radius: 6px;
-  padding-left: 10px;
   position: relative;
+  padding-left: 10px;
 }
 
 #overview-size-selector {
-  z-index: 1000;
+  z-index: 999;
   position:absolute;
   left: 0;
 }
+
+/* #overview-size-selector {
+  z-index: 999;
+  position:absolute;
+  left: 0;
+} */
+
 #overview-quantity-selector {
   position: absolute;
   right: 0;
-  z-index: 1000;
+  z-index: 999;
 }
 
 #overview-size-selector:focus, #overview-quantity-selector:focus {
@@ -333,21 +346,31 @@ color: white;
   overflow:scroll;
   height: auto;
   min-height: 50px;
-  padding: 0;
+  padding-left: 0;
 }
+
+/* #overview-size-selector::-ms-expand {
+	display: none;
+} */
+
+/* #overview-size-selector:focus, #overview-quantity-selector:focus {
+  padding-left: 10px;
+} */
 
 #overview-size-selector:hover, #overview-add-to-bag-btn:hover, #overview-quantity-selector:hover, #overview-view-bag-btn:hover, #overview-star-button:hover, #overview-size-selector:focus, #overview-quantity-selector:focus {
   transition: border .5s ease;
   transition: box-shadow .2s ease-in;
   border: 1px solid rgba(80, 80, 80, 1);
   box-shadow: 0 0 4px rgba(80, 80, 80, 1);
-  z-index: 1000;
+  z-index: 500;
+  appearance: none;
 }
 
-select {
+.overview-wrapper select, .overview-wrapper select:focus {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   border: none;
-  margin: 0;
   width: 100%;
   font-family: inherit;
   font-size: inherit;
@@ -357,10 +380,25 @@ select {
   height: auto;
   z-index: 1000;
   line-height: 20px;
+  /* padding-left: 10px; */
+  /* overflow: visible; */
+  font-weight: 600;
 }
 
-option {
-  font-weight: 900;
+/* .overview-wrapper select[mutliple] {
+  background-color: aqua;
+} */
+
+/* .overview-wrapper select:focus  {
+  padding-left: 10px;
+} */
+
+/* .overview-wrapper option:checked {
+  padding-left: 10px;
+} */
+
+.overview-wrapper option {
+  font-weight: 600;
   background-color: transparent;
   outline: none;
   margin-bottom: 10px;
@@ -372,11 +410,25 @@ option {
   padding-top: 15px;
   padding-left: 10px;
   width: 100%;
+  /* padding-left: 0px; */
 }
 
-option:hover {
+.overview-wrapper option:hover {
   background-color: #ededed;
 }
+
+/* .overview-wrapper option:default {
+  padding-left: 10px;
+} */
+
+/* .overview-wrapper select option:checked {
+  padding-left: 20px;
+} */
+
+/* .overview-wrapper option::selection {
+  font-size: 20px;
+  padding-left: 20px;
+} */
 
 .overview-add-to-bag-button-area {
   width: 100%;
@@ -408,7 +460,11 @@ option:hover {
   z-index: 20;
 }
 
-.overview-add-to-bag-text {
+#overview-add-to-bag-btn:active, #overview-view-bag-btn:active {
+  transition: transform .1s ease-in;
+  transform: scale(1);
+}
+.overview-add-to-bag-text, .overview-view-bag-text {
   position: absolute;
   top: 50%;
   line-height: 0;
@@ -454,7 +510,7 @@ option:hover {
 
 /* Social Share */
 .overview-social-share {
-  padding-top: 10px;
+  padding-top: 15px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -462,20 +518,40 @@ option:hover {
 }
 
 .overview-facebook, .overview-twitter, .overview-pinterest {
-  margin-right: 15px;
+  margin-right: 5px;
   background-color: white;
-  text-align: center;
-  padding-top: 8px;
-  font-size: 14px;
-  width: 50px;
-  height: 20px;
-}
-.overview-pinterest {
-  margin-right: 0;
+  width: 28px;
+  height: 28px;
+  background-image: url('../src/components/Overview/img/social-icons.png');
+  background-repeat: no-repeat;
+  background-size: 100px;
+  scale: .6;
+  border: none;
+  outline: none;
+  opacity: .6;
 }
 
-#overview-facebook-share-button {
+.overview-facebook:hover, .overview-twitter:hover, .overview-pinterest:hover {
+  transition: opacity .5s ease;
+  opacity: 1;
+}
+
+.overview-pinterest {
+  margin-right: 0;
+  background-position: -78px 0px;
+}
+
+.overview-twitter {
+  background-position: -49px 0px;
+}
+
+.overview-facebook {
+  background-position: 4px 0px;
+}
+
+/* #overview-facebook-share-button {
   text-decoration: none;
+  display: none;
 }
 
 #overview-twitter-share-button {
@@ -484,7 +560,7 @@ option:hover {
 
 #overview-pinterest-share-button {
   text-decoration: none;
-}
+} */
 
 /* Product Overview */
 .overview-overview {
@@ -571,6 +647,11 @@ option:hover {
   height: 500px;
 }
 
+.overview-thumbnails {
+  position: fixed;
+  animation: 1.2s ease-in 0s 1 photoFadeIn;
+}
+
 .overview-thumbnails, .overview-thumb-fade-top, .overview-thumb-fade-bottom {
   display: flex;
   flex-direction: column;
@@ -588,7 +669,7 @@ option:hover {
   /* left: 3%; */
 }
 
-.overview-thumb-fade-top {
+.overview-thumb-fade-bottom {
   position: absolute;
   width: 66px;
   height: 66px;
@@ -597,17 +678,24 @@ option:hover {
   z-index: 4;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%);
   pointer-events: none;
+  animation: .3s ease-out 0s 1 slideUp;
 }
 
-.overview-thumb-fade-bottom {
+.overview-thumb-fade-bottom:hover {
+  animation: moveSlideshow 3s linear;
+  animation-fill-mode: forwards;
+}
+
+.overview-thumb-fade-top {
   position: absolute;
   width: 66px;
   height: 66px;
   left: 0;
   top: 0;
-  z-index: 4;
+  z-index: 10;
   background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%);
   pointer-events: none;
+  animation: .3s ease-out 0s 1 slideDown;
 }
 
 .overview-thumbnails::-webkit-scrollbar {
@@ -631,11 +719,9 @@ option:hover {
   cursor: pointer;
 }
 
-.overview-selected-thumbnail-icon {
-  /* border: 2px solid rgb(80, 80, 80); */
-  /* box-sizing: border-box; */
+/* .overview-selected-thumbnail-icon {
   z-index: 10;
-}
+} */
 
 /* .overview-thumbnail-icon img, .overview-selected-thumbnail-icon img {
   border-radius: 8px;
@@ -683,10 +769,19 @@ option:hover {
   cursor: zoom-in;
 }
 
+.overview-expand-bubble {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* z-index: 600; */
+}
+
 #overview-default-view-img {
   object-fit:contain;
   max-width: 100%;
   max-height: 100%;
+  transition: 0;
+  animation: .7s ease-in 0s 1 photoFadeIn;
 }
 
 .overview-expanded-view-wrapper {
@@ -695,7 +790,7 @@ option:hover {
   /* height: 100vh; */
   outline-style: none;
   position: fixed;
-  z-index: 99;
+  z-index: 1000;
   margin: 0;
   top: 0;
   bottom: 0;
@@ -719,7 +814,7 @@ option:hover {
   /* overflow: visible; */
   outline-style: none;
   position: absolute;
-  z-index: 300;
+  z-index: 1000;
   margin: auto;
   width: 80%;
   height: 80%;
@@ -734,6 +829,7 @@ option:hover {
   width: 100%;
   height: 100%;
   z-index: 300;
+  animation: .3s ease-in 0s 1 photoFadeIn;
 }
 
 /* .overview-broken-image {
@@ -762,6 +858,19 @@ option:hover {
   cursor: pointer;
 }
 
+/* .overview-arrow-background:hover ~ #overview-expand-bubble {
+  pointer-events: none;
+} */
+
+.overview-arrow-background-thumb {
+  background-color: transparent;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  /* box-shadow: 0px 0px 6px rgb(160, 160, 160); */
+  cursor: pointer;
+}
+
 .overview-arrow-background:hover, .overview-arrow-background:hover .overview-arrow, .overview-arrow-background:hover .overview-expanded-arrow {
   opacity: 1;
   background-color: rgb(160, 160, 160);
@@ -787,11 +896,21 @@ option:hover {
 }
 
 .overview-arrow-background-down {
-  transform: rotate(180deg);
-  -webkit-transform: rotate(135deg);
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
   position: absolute;
-  top: 46%;
+  bottom: 0;
   left: 4%;
+  z-index: 200;
+}
+
+.overview-arrow-background-up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  position: absolute;
+  top: 0;
+  left: 4%;
+  z-index: 200;
 }
 
 .overview-expanded-arrow {
@@ -811,7 +930,7 @@ option:hover {
   position: absolute;
   top: 50%;
   right: 4%;
-  z-index: 301;
+  z-index: 501;
   width: 60px;
   height: 60px;
 }
@@ -877,6 +996,33 @@ img:after {
 @keyframes fadeInSelect {
   0% {
     opacity: .6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes photoFadeIn {
+  0% {
+    opacity: 0;
   }
   100% {
     opacity: 1;
