@@ -13,6 +13,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  z-index: 450;
 }
 
 .modal-box {
@@ -40,7 +41,7 @@ z-index: 100;
 
 .modal-background {
   position: fixed;
-  z-index: 1;
+  z-index: 450;
   left: 0;
   top: 0;
   width: 100%;
@@ -78,7 +79,7 @@ review-add-photo:hover {
   width: 100%;
   color: white;
   font-size: 13px;
-  z-index: 400;
+  z-index: 100;
   font-weight: 700;
   pointer-events: none;
 }
@@ -445,7 +446,7 @@ review-add-photo:hover {
   border-radius: 5px;
   margin-right: 5px;
   cursor: pointer;
-  filter: opacity(0.65);
+  filter: opacity(0.8);
   transition: 200ms;
 }
 
