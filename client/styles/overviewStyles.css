@@ -40,6 +40,7 @@ html {
   margin: 0;
   line-height: 22px;
   font-family: "Guardian-EgypTT",serif;
+  letter-spacing: 2px;
 }
 
 .overview-search {
@@ -153,6 +154,7 @@ html {
   margin-bottom: 30px;
   font-size: 30px;
   font-weight: 700;
+  align-items: baseline;
 }
 
 #overview-price-slash {
@@ -163,8 +165,7 @@ html {
 
 #overview-sale-price {
   margin-right: 7px;
-  font-weight: 500;
-  font-size: 16px;
+  font-size: 30px;
   letter-spacing: normal;
 }
 
@@ -299,7 +300,7 @@ color: white;
 }
 
 /* Add To Cart */
-#overview-size-selector, #overview-add-to-bag-btn, #overview-quantity-selector, #overview-view-bag-btn, #overview-star-button {
+#overview-size-selector, #overview-add-to-bag-btn, #overview-quantity-selector, #overview-view-bag-btn, #overview-star-button, .overview-wrapper select:focus {
   background-color: white;
   width: 47%;
   height: 50px;
@@ -312,19 +313,26 @@ color: white;
   color: rgb(80, 80, 80);
   cursor: pointer;
   border-radius: 6px;
-  padding-left: 10px;
   position: relative;
+  padding-left: 10px;
 }
 
 #overview-size-selector {
-  z-index: 1000;
+  z-index: 999;
   position:absolute;
   left: 0;
 }
+
+/* #overview-size-selector {
+  z-index: 999;
+  position:absolute;
+  left: 0;
+} */
+
 #overview-quantity-selector {
   position: absolute;
   right: 0;
-  z-index: 1000;
+  z-index: 999;
 }
 
 #overview-size-selector:focus, #overview-quantity-selector:focus {
@@ -333,21 +341,31 @@ color: white;
   overflow:scroll;
   height: auto;
   min-height: 50px;
-  padding: 0;
+  padding-left: 0;
 }
+
+/* #overview-size-selector::-ms-expand {
+	display: none;
+} */
+
+/* #overview-size-selector:focus, #overview-quantity-selector:focus {
+  padding-left: 10px;
+} */
 
 #overview-size-selector:hover, #overview-add-to-bag-btn:hover, #overview-quantity-selector:hover, #overview-view-bag-btn:hover, #overview-star-button:hover, #overview-size-selector:focus, #overview-quantity-selector:focus {
   transition: border .5s ease;
   transition: box-shadow .2s ease-in;
   border: 1px solid rgba(80, 80, 80, 1);
   box-shadow: 0 0 4px rgba(80, 80, 80, 1);
-  z-index: 1000;
+  z-index: 500;
+  appearance: none;
 }
 
-select {
+.overview-wrapper select, .overview-wrapper select:focus {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   border: none;
-  margin: 0;
   width: 100%;
   font-family: inherit;
   font-size: inherit;
@@ -357,10 +375,25 @@ select {
   height: auto;
   z-index: 1000;
   line-height: 20px;
+  /* padding-left: 10px; */
+  /* overflow: visible; */
+  font-weight: 600;
 }
 
-option {
-  font-weight: 900;
+/* .overview-wrapper select[mutliple] {
+  background-color: aqua;
+} */
+
+/* .overview-wrapper select:focus  {
+  padding-left: 10px;
+} */
+
+/* .overview-wrapper option:checked {
+  padding-left: 10px;
+} */
+
+.overview-wrapper option {
+  font-weight: 600;
   background-color: transparent;
   outline: none;
   margin-bottom: 10px;
@@ -372,11 +405,25 @@ option {
   padding-top: 15px;
   padding-left: 10px;
   width: 100%;
+  /* padding-left: 0px; */
 }
 
-option:hover {
+.overview-wrapper option:hover {
   background-color: #ededed;
 }
+
+/* .overview-wrapper option:default {
+  padding-left: 10px;
+} */
+
+/* .overview-wrapper select option:checked {
+  padding-left: 20px;
+} */
+
+/* .overview-wrapper option::selection {
+  font-size: 20px;
+  padding-left: 20px;
+} */
 
 .overview-add-to-bag-button-area {
   width: 100%;
@@ -408,7 +455,11 @@ option:hover {
   z-index: 20;
 }
 
-.overview-add-to-bag-text {
+#overview-add-to-bag-btn:active, #overview-view-bag-btn:active {
+  transition: transform .1s ease-in;
+  transform: scale(1);
+}
+.overview-add-to-bag-text, .overview-view-bag-text {
   position: absolute;
   top: 50%;
   line-height: 0;
@@ -695,7 +746,7 @@ option:hover {
   /* height: 100vh; */
   outline-style: none;
   position: fixed;
-  z-index: 99;
+  z-index: 1000;
   margin: 0;
   top: 0;
   bottom: 0;
@@ -719,7 +770,7 @@ option:hover {
   /* overflow: visible; */
   outline-style: none;
   position: absolute;
-  z-index: 300;
+  z-index: 1000;
   margin: auto;
   width: 80%;
   height: 80%;

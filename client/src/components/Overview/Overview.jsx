@@ -7,7 +7,7 @@ import ProductOverview from './ProductOverview.jsx';
 const Overview = ({ productInfo, productStyles, reviewsMeta, handleProductChange }) => {
   const header = (
     <div className="overview-header">
-      <h1>DIJTSY</h1>
+      <h1>DIJKSTRA</h1>
       <div className="overview-search">
         <input type="text" id="overview-search-field" /> 🔍
       </div>
