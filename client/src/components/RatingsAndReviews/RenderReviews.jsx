@@ -20,7 +20,7 @@ class RenderReviews extends React.Component {
 
   render() {
     const list = this;
-    const { reviews, product } = this.props;
+    const { reviews, product, app } = this.props;
     if (!reviews || !product) {
       return null;
     }
@@ -34,7 +34,7 @@ class RenderReviews extends React.Component {
       return (
         <>
           <div className="reviews">
-            <SortBy product={product} list={list} />
+            <SortBy product={product} list={list} app={app} />
             <div className="reviews-container">{toRender}</div>
           </div>
           <div className="more-reviews-button">

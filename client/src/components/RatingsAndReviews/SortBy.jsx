@@ -24,14 +24,15 @@ class SortBy extends React.Component {
       },
     };
     event.preventDefault();
+    const { app } = this.props;
     const self = this;
     const { product } = this.state;
     const text = event.target.value;
     axios(
-      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${product}&sort=${text}&count=25`,
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${product}&sort=${text}&count=100`,
       config
     ).then((data) => {
-      self.setState({ current: text }, self.props.list.setState({ reviews: data.data.results }));
+      self.setState({ current: text }, app.setState({ reviews: data.data}));
     });
   }
 
