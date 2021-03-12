@@ -10,6 +10,17 @@ class ImageGallery extends React.Component {
     ImageGallery.disableScrolling();
   }
 
+  static scrollUp(element) {
+    element.focus();
+    element.scrollUp(50);
+  }
+
+  static scrollDown(element) {
+    element.focus();
+    element.scrollDown(50);
+  }
+
+
   static disableScrolling() {
     const x = window.scrollX;
     const y = window.scrollY;
@@ -28,6 +39,8 @@ class ImageGallery extends React.Component {
       selectedThumbnail: 0,
       isExpanded: false,
       zoomExpanded: false,
+      topScroll: false,
+      bottomScroll: true,
     };
     this.handleClick = this.handleClick.bind(this);
     this.openExpand = this.openExpand.bind(this);
@@ -35,7 +48,10 @@ class ImageGallery extends React.Component {
     this.zoomExpand = this.zoomExpand.bind(this);
     this.expandedRef = this.expandedRef.bind(this);
     this.registerMouse = this.registerMouse.bind(this);
+    this.thumbRef = this.thumbRef.bind(this);
+    this.onScroll = this.onScroll.bind(this);
     this.refElement = null;
+    this.refThumb = null;
     this.mouseDown = false;
   }
 
@@ -91,13 +107,6 @@ class ImageGallery extends React.Component {
     }
   }
 
-  addFadeTop() {
-    return <div className="overview-thumb-fade-top" />;
-  }
-
-  addFadeBottom() {
-    return <div className="overview-thumb-fade-bottom" />;
-  }
   // closeExpand() {
   //   const { isExpanded } = this.state;
   //   if (isExpanded) {
@@ -108,17 +117,52 @@ class ImageGallery extends React.Component {
   zoomExpand() {
     const { zoomExpanded } = this.state;
     if (zoomExpanded) {
-      console.log('zoom out');
       this.setState({ zoomExpanded: false });
     }
     if (!zoomExpanded) {
-      console.log('zoom in');
       this.setState({ zoomExpanded: true });
+    }
+  }
+
+  onScroll(element) {
+    const yesTop = this.setState.bind(this, { topScroll: true });
+    const noTop = this.setState.bind(this, { topScroll: false });
+    const yesBottom = this.setState.bind(this, { bottomScroll: true });
+    const noBottom = this.setState.bind(this, { bottomScroll: false });
+    element.onscroll = function () {
+      if (element.scrollTop !== 0) {
+        yesTop();
+        yesBottom();
+      } else {
+        noTop();
+        yesBottom();
+      }
+      if (element.scrollTop === element.scrollHeight - 500) {
+        noBottom();
+      }
+    };
+  }
+
+  addFadeTop() {
+    const { topScroll } = this.state;
+    if (topScroll) {
+      return <div className="overview-thumb-fade-top" ref={this.scrollUp} />;
+    }
+  }
+
+  addFadeBottom() {
+    const { bottomScroll } = this.state;
+    if (bottomScroll) {
+      return <div className="overview-thumb-fade-bottom" ref={this.scrollDown} />;
     }
   }
 
   expandedRef(ref) {
     this.refElement = ref;
+  }
+
+  thumbRef(ref) {
+    this.refThumb = ref;
   }
 
   render() {
@@ -138,9 +182,9 @@ class ImageGallery extends React.Component {
     }
     return (
       <div className="overview-gallery">
-        {/* {this.addFadeTop()} */}
+        {this.addFadeTop()}
         {this.addFadeBottom()}
-        <div className="overview-thumbnails">
+        <div className="overview-thumbnails" ref={this.onScroll}>
           <Thumbnails
             selectedStyle={selectedStyle}
             selectedThumbnail={selectedThumbnail}
