@@ -10,7 +10,6 @@ const calculateRating = (ratings) => {
   });
   let average = aggregateScore / totalReviews;
   average = Math.round(average / 0.25) / 4;
-  debugger;
   return average * 25.746;
 };
 
