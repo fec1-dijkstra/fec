@@ -505,7 +505,7 @@ color: white;
 
 /* Social Share */
 .overview-social-share {
-  padding-top: 10px;
+  padding-top: 15px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -513,20 +513,40 @@ color: white;
 }
 
 .overview-facebook, .overview-twitter, .overview-pinterest {
-  margin-right: 15px;
+  margin-right: 5px;
   background-color: white;
-  text-align: center;
-  padding-top: 8px;
-  font-size: 14px;
-  width: 50px;
-  height: 20px;
-}
-.overview-pinterest {
-  margin-right: 0;
+  width: 28px;
+  height: 28px;
+  background-image: url('../src/components/Overview/img/social-icons.png');
+  background-repeat: no-repeat;
+  background-size: 100px;
+  scale: .6;
+  border: none;
+  outline: none;
+  opacity: .6;
 }
 
-#overview-facebook-share-button {
+.overview-facebook:hover, .overview-twitter:hover, .overview-pinterest:hover {
+  transition: opacity .5s ease;
+  opacity: 1;
+}
+
+.overview-pinterest {
+  margin-right: 0;
+  background-position: -78px 0px;
+}
+
+.overview-twitter {
+  background-position: -49px 0px;
+}
+
+.overview-facebook {
+  background-position: 4px 0px;
+}
+
+/* #overview-facebook-share-button {
   text-decoration: none;
+  display: none;
 }
 
 #overview-twitter-share-button {
@@ -535,7 +555,7 @@ color: white;
 
 #overview-pinterest-share-button {
   text-decoration: none;
-}
+} */
 
 /* Product Overview */
 .overview-overview {
@@ -639,7 +659,7 @@ color: white;
   /* left: 3%; */
 }
 
-.overview-thumb-fade-top {
+.overview-thumb-fade-bottom {
   position: absolute;
   width: 66px;
   height: 66px;
@@ -650,13 +670,13 @@ color: white;
   pointer-events: none;
 }
 
-.overview-thumb-fade-bottom {
+.overview-thumb-fade-top {
   position: absolute;
   width: 66px;
   height: 66px;
   left: 0;
   top: 0;
-  z-index: 4;
+  z-index: 10;
   background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%);
   pointer-events: none;
 }

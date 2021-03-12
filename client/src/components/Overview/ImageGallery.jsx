@@ -139,7 +139,7 @@ class ImageGallery extends React.Component {
     return (
       <div className="overview-gallery">
         {/* {this.addFadeTop()} */}
-        {/* {this.addFadeBottom()} */}
+        {this.addFadeBottom()}
         <div className="overview-thumbnails">
           <Thumbnails
             selectedStyle={selectedStyle}
