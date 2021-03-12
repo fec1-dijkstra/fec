@@ -16,13 +16,15 @@ class Outfit extends React.Component {
     this.setState({ outfits: this.getCurrentOutfit() }, () => this.calculateScroll());
   }
 
-  calculateScroll(scrollOnDelete) {
+  calculateScroll() {
     const element = document.getElementById('outfitCarousel');
-    const scrolled = element.scrollLeft;
+    const scrolled = Math.floor(element.scrollLeft);
+    console.log(scrolled);
     if (scrolled === 0) {
       this.setState({ startIndex: 0}, () => this.showArrows());
     } else {
-      this.setState({startIndex: scrolled/230}, () => this.showArrows())
+      this.setState({startIndex: scrolled/230 - 1}, () => this.showArrows())
+      console.log(this.state.startIndex);
     }
   }
 

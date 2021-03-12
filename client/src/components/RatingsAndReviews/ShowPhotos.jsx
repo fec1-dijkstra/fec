@@ -29,6 +29,7 @@ class RenderPhoto extends React.Component {
     if (!wasClicked) {
       return (
         <img
+          className="img"
           src={photo.url}
           alt=""
           onClick={this.handleClick}

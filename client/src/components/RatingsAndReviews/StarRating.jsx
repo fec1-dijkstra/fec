@@ -7,10 +7,10 @@ const StarRating = ({ meta }) => {
   return (
     <div className="star-rating">
       <div className="star-rating-top" style={{ width: `${pixelCount}px` }}>
-        <span>★★★★★</span>
+        <span className="star-rating-span">★★★★★</span>
       </div>
       <div className="star-rating-bot">
-        <span>★★★★★</span>
+        <span className="star-rating-span">★★★★★</span>
       </div>
     </div>
   );
