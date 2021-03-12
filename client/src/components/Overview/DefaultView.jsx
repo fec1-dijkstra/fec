@@ -15,6 +15,36 @@ const urlCheck = (url) => {
 };
 
 const DefaultView = ({ selectedStyle, selectedThumbnail, openExpand, registerMouse, navClick }) => {
+  let arrowLeft = <></>;
+  let arrowRight = <></>;
+  const leftArrow = (
+    <div
+      className="overview-arrow-background overview-arrow-background-left"
+      onClick={navClick}
+      role="button"
+      onKeyPress={navClick}
+      tabIndex={0}
+    >
+      <div className="overview-arrow" id="overview-arrow-left" />
+    </div>
+  );
+  const rightArrow = (
+    <div
+      className="overview-arrow-background overview-arrow-background-right"
+      onClick={navClick}
+      role="button"
+      onKeyPress={navClick}
+      tabIndex={0}
+    >
+      <div className="overview-arrow" id="overview-arrow-right" />
+    </div>
+  );
+  if (selectedThumbnail !== 0) {
+    arrowLeft = leftArrow;
+  }
+  if (selectedThumbnail < selectedStyle.photos.length - 1) {
+    arrowRight = rightArrow;
+  }
   let renderDefault = <div className="overview-default-view" />;
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
     if (
@@ -31,24 +61,8 @@ const DefaultView = ({ selectedStyle, selectedThumbnail, openExpand, registerMou
             tabIndex={0}
             role="button"
           />
-          <div className="overview-arrow-background overview-arrow-background-left"
-            onClick={navClick}
-            role="button"
-            onKeyPress={navClick}
-            tabIndex={0}
-          >
-            <div className="overview-arrow" id="overview-arrow-left" />
-          </div>
-          <div
-            className="overview-arrow-background overview-arrow-background-right"
-            onClick={navClick}
-            role="button"
-            onKeyPress={navClick}
-            tabIndex={0}
-          >
-            <div className="overview-arrow" id="overview-arrow-right" />
-          </div>
-
+          {arrowLeft}
+          {arrowRight}
           <img
             src={urlCheck(selectedStyle.photos[selectedThumbnail].url)}
             alt={`${selectedStyle.name} default view`}
