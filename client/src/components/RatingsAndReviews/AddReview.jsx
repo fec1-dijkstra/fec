@@ -171,9 +171,12 @@ class AddReview extends React.Component {
               </div>
               <DisplayError error={error} />
             </form>
-            <button type="button" className="add-review" onClick={this.showModal}>
-              Close
-            </button>
+            <div className="close-button">
+              <div className="close-text">Close</div>
+              <button type="button" className="review-close" onClick={this.showModal}>
+                Close
+              </button>
+            </div>
           </div>
         </div>
       );

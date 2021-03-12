@@ -1,6 +1,6 @@
 .modal {
   position: fixed;
-  z-index: 1;
+  z-index: 440;
   left: 0;
   top: 0;
   width: 100%;
@@ -22,7 +22,6 @@
   border: 1px solid #888;
   width: 40%;
   text-align: center;
-
   box-shadow: 0 6px 36px rgb(34 34 34 / 33%);
   background: #fff;
   border-radius: 24px;
@@ -63,6 +62,27 @@ review-add-photo:hover {
   width: 100%;
   height: 25px;
 }
+
+.more-reviews-button {
+  width: 150px;
+  height: 100%;
+  position: relative;
+  margin-top: 10px;
+}
+
+.more-reviews-button-text {
+  position: absolute;
+  margin-top: 25px;
+  line-height: 0;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-size: 16;
+  z-index: 400;
+  font-weight: 700;
+  pointer-events: none;
+}
+
 .submit-button {
   width: 100%;
   height: 100%;
@@ -96,6 +116,49 @@ review-add-photo:hover {
 }
 
 .review-submit:hover {
+  box-shadow: none;
+  transition: transform 0.1s ease-in;
+  transform: scale(1.04);
+  background-color: rgb(91, 91, 91);
+  color: rgb(91, 91, 91);
+  border: none;
+  z-index: 20;
+}
+
+.close-button {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-top: 10px;
+}
+
+.close-text {
+  position: absolute;
+  top: 50%;
+  line-height: 0;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-size: 16;
+  z-index: 444;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.review-close {
+  height: 50px;
+  width: 150px;
+  position: relative;
+  color: rgb(80, 80, 80);
+  border-radius: 50px 50px 50px 50px;
+  border: 2px solid rgb(55, 55, 55);
+  padding: 0;
+  background-color: rgb(80, 80, 80);
+  box-shadow: none;
+  border: none;
+}
+
+.review-close:hover {
   box-shadow: none;
   transition: transform 0.1s ease-in;
   transform: scale(1.04);
@@ -413,7 +476,6 @@ review-add-photo:hover {
 .recommends {
 }
 
-#more-reviews,
 .add-review {
   background-color: white;
   width: 150px;
