@@ -849,6 +849,17 @@ color: white;
   cursor: pointer;
 }
 
+.overview-expanded-arrow {
+  border: solid rgb(160, 160, 160);
+  border-width: 0 5px 5px 0;
+  width: 30%;
+  height: 30%;
+  position: absolute;
+  top: 27%;
+  left: 27%;
+  cursor: pointer;
+}
+
 .overview-arrow-background {
   background-color: #ededed;
   border-radius: 100%;
@@ -913,26 +924,16 @@ color: white;
   z-index: 200;
 }
 
-.overview-expanded-arrow {
-  border: solid rgb(160, 160, 160);
-  border-width: 0 5px 5px 0;
-  width: 30%;
-  height: 30%;
-  position: absolute;
-  top: 27%;
-  left: 27%;
-  cursor: pointer;
-}
-
 .overview-expanded-arrow-background-right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   position: absolute;
   top: 50%;
   right: 4%;
-  z-index: 501;
+  /* z-index: 501; */
   width: 60px;
   height: 60px;
+  z-index: 1001;
 }
 
 .overview-expanded-arrow-background-left {
@@ -941,9 +942,10 @@ color: white;
   position: absolute;
   top: 50%;
   left: 4%;
-  z-index: 301;
+  /* z-index: 301; */
   width: 60px;
   height: 60px;
+  z-index: 301;
 }
 
 .overview-checkmark-background {

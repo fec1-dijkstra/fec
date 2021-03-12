@@ -14,7 +14,7 @@ const Overview = ({ productInfo, productStyles, reviewsMeta, handleProductChange
     </div>
   );
   const productHighlight = () => {
-    handleProductChange(17071);
+    handleProductChange(17072);
   };
   if (productInfo.id) {
     return (
