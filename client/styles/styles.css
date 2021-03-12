@@ -63,28 +63,46 @@ review-add-photo:hover {
   width: 100%;
   height: 25px;
 }
-.review-submit {
-  background-color: black;
-  width: 150px;
-  height: 50px;
-  border: 2px solid black;
-  font-size: 14px;
-  font-weight: bold;
-  color: white;
-  font-weight: bold;
+.submit-button {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-top: 20px;
+}
+
+.submit-button-text {
+  position: absolute;
+  top: 50%;
+  line-height: 0;
   text-align: center;
-  padding-left: 15px;
-  margin-right: 20px;
-  margin-top: 5px;
-  appearance: none;
-  outline-style: none;
-  border-radius: 25px;
-  transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42), background 150ms ease-out,
-    box-shadow 200ms;
+  width: 100%;
+  color: white;
+  font-size: 16;
+  z-index: 444;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.review-submit {
+  height: 50px;
+  width: 150px;
+  position: relative;
+  color: rgb(80, 80, 80);
+  border-radius: 50px 50px 50px 50px;
+  padding: 0;
+  background-color: rgb(80, 80, 80);
+  box-shadow: none;
+  border: none;
 }
 
 .review-submit:hover {
-  transform: scale(1.05);
+  box-shadow: none;
+  transition: transform 0.1s ease-in;
+  transform: scale(1.04);
+  background-color: rgb(91, 91, 91);
+  color: rgb(91, 91, 91);
+  border: none;
+  z-index: 20;
 }
 
 .image {
@@ -345,7 +363,7 @@ review-add-photo:hover {
 }
 
 .img {
-  border-radius: 25%;
+  border-radius: 5px;
 }
 
 .rec-percent {

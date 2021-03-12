@@ -165,7 +165,10 @@ class AddReview extends React.Component {
                   onChange={this.uploadPhoto}
                 />
               </div>
-              <button className="review-submit" type="submit">Submit</button>
+              <div className="submit-button">
+                <div className="submit-button-text">Submit</div>
+                <button className="review-submit" type="submit">Submit</button>
+              </div>
               <DisplayError error={error} />
             </form>
             <button type="button" className="add-review" onClick={this.showModal}>
