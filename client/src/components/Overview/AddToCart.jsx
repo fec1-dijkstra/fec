@@ -10,6 +10,10 @@ class AddToCart extends React.Component {
     element.focus();
   }
 
+  static makeBlur(element) {
+    element.blur();
+  }
+
   static getAllSizesAndQuantities(skus) {
     const allSkus = [];
     const allSizes = [];
@@ -47,7 +51,9 @@ class AddToCart extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.addCurrentSelectionsToCart = this.addCurrentSelectionsToCart.bind(this);
     this.pleaseSelect = this.pleaseSelect.bind(this);
+    this.quantitySelect = this.quantitySelect.bind(this);
     this.selectElement = null;
+    this.selectQuantity = null;
   }
 
   componentDidMount() {
@@ -70,6 +76,7 @@ class AddToCart extends React.Component {
     const maxQuantity = allQuantities.quantities[valueIndex];
     if (event.target.id === 'overview-size-selector') {
       event.target.size = '0';
+      AddToCart.makeBlur(this.selectElement);
       this.setState({
         selectedSku,
         selectedSize: value,
@@ -81,6 +88,7 @@ class AddToCart extends React.Component {
     }
     if (event.target.id === 'overview-quantity-selector') {
       event.target.size = '0';
+      AddToCart.makeBlur(this.selectQuantity);
       this.setState({ selectedQuantity: value });
     }
   }
@@ -118,6 +126,10 @@ class AddToCart extends React.Component {
 
   pleaseSelect(element) {
     this.selectElement = element;
+  }
+
+  quantitySelect(element) {
+    this.selectQuantity = element;
   }
 
   addCurrentSelectionsToCart() {
@@ -171,9 +183,15 @@ class AddToCart extends React.Component {
       let addToBagButton = () => {
         if (toggleCart) {
           return (
-            <button type="submit" id="overview-view-bag-btn" onClick={this.handleClick}>
-              VIEW BAG {`(${this.cartCount()})`}
-            </button>
+            <div className="overview-add-to-bag-button-area">
+              <div className="overview-view-bag-text">VIEW BAG {`(${this.cartCount()})`}</div>
+              <button
+                type="submit"
+                id="overview-view-bag-btn"
+                aria-label="button"
+                onClick={this.handleClick}
+              />
+            </div>
           );
         }
         return (
@@ -229,6 +247,7 @@ class AddToCart extends React.Component {
               value={selectedQuantity}
               onChange={this.handleChange}
               disabled={selectedSize === ''}
+              ref={this.quantitySelect}
             >
               <option value="1">{defaultQuantity}</option>
               <Quantities max={max} />

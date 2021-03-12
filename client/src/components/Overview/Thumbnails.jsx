@@ -15,7 +15,7 @@ const urlCheck = (url) => {
 };
 
 const Thumbnails = ({ selectedStyle, selectedThumbnail, handleClick }) => {
-  let key = 9999;
+  let key = 0;
   if (selectedStyle.photos) {
     let thumbnailClass = 'overview-thumbnail-icon';
     let thumb = <div className={thumbnailClass} key="error" />;
