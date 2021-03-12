@@ -443,6 +443,14 @@ review-add-photo:hover {
 
 .img {
   border-radius: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+  filter: opacity(0.65);
+  transition: 200ms;
+}
+
+.img:hover {
+  filter: opacity(1);
 }
 
 .rec-percent {
