@@ -182,9 +182,12 @@ class AddReview extends React.Component {
       );
     }
     return (
-      <button type="button" className="add-review" onClick={this.showModal}>
-        Leave Your Review
-      </button>
+      <div className="more-reviews-button">
+        <div className="more-reviews-button-text">Add Your Review</div>
+        <button type="button" className="review-submit" onClick={this.showModal}>
+          text
+        </button>
+      </div>
     );
   }
 }

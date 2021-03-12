@@ -77,7 +77,7 @@ review-add-photo:hover {
   text-align: center;
   width: 100%;
   color: white;
-  font-size: 16;
+  font-size: 13px;
   z-index: 400;
   font-weight: 700;
   pointer-events: none;
@@ -97,7 +97,7 @@ review-add-photo:hover {
   text-align: center;
   width: 100%;
   color: white;
-  font-size: 16;
+  font-size: 13px;
   z-index: 444;
   font-weight: 700;
   pointer-events: none;
@@ -139,7 +139,7 @@ review-add-photo:hover {
   text-align: center;
   width: 100%;
   color: white;
-  font-size: 16;
+  font-size: 13px;
   z-index: 444;
   font-weight: 700;
   pointer-events: none;
@@ -481,7 +481,7 @@ review-add-photo:hover {
   width: 150px;
   height: 50px;
   border: 2px solid rgb(55, 55, 55);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   text-align: center;
   padding-left: 15px;
