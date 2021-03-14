@@ -91,11 +91,18 @@ class ImageGallery extends React.Component {
   }
 
   openExpand(event) {
+    console.log(event.target.id)
+    console.log(event.target.className)
     const { isExpanded } = this.state;
     if (!isExpanded && this.mouseDown) {
       this.mouseDown = false;
       this.setState({ isExpanded: true }, () => ImageGallery.moveFocus(this.refElement));
-    } else {
+    } else if (
+      event.target.id !== 'overview-arrow-right' ||
+      !event.target.className.includes('overview-expanded-arrow-background-right') ||
+      event.target.id !== 'overview-arrow-left' ||
+      !event.target.className.includes('overview-expanded-arrow-background-left')
+    ) {
       this.mouseDown = false;
       this.setState({ isExpanded: false }, () => ImageGallery.enableScrolling());
     }
@@ -119,7 +126,8 @@ class ImageGallery extends React.Component {
     let { selectedThumbnail } = this.state;
     if (
       event.target.id === 'overview-arrow-right' ||
-      event.target.className.includes('overview-arrow-background-right')
+      event.target.className.includes('overview-arrow-background-right') ||
+      event.target.className.includes('overview-expanded-arrow-background-right')
     ) {
       if (selectedThumbnail < selectedStyle.photos.length - 1) {
         selectedThumbnail += 1;
@@ -128,7 +136,8 @@ class ImageGallery extends React.Component {
     }
     if (
       event.target.id === 'overview-arrow-left' ||
-      event.target.className.includes('overview-arrow-background-left')
+      event.target.className.includes('overview-arrow-background-left') ||
+      event.target.className.includes('overview-expanded-arrow-background-left')
     ) {
       if (selectedThumbnail > 0) {
         selectedThumbnail -= 1;
@@ -215,6 +224,7 @@ class ImageGallery extends React.Component {
           zoomExpand={this.zoomExpand}
           openExpand={this.openExpand}
           expandedRef={this.expandedRef}
+          navClick={this.navClick}
         />
       );
     }
