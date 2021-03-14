@@ -50,9 +50,13 @@ class ImageGallery extends React.Component {
     this.thumbRef = this.thumbRef.bind(this);
     this.onScroll = this.onScroll.bind(this);
     this.navClick = this.navClick.bind(this);
+    this.mouseMove = this.mouseMove.bind(this);
     this.refElement = null;
     this.refThumb = null;
+    this.imageRef = React.createRef();
     this.mouseDown = false;
+    this.xScroll = null;
+    this.yScroll = null;
   }
 
   // componentDidMount() {
@@ -91,8 +95,6 @@ class ImageGallery extends React.Component {
   }
 
   openExpand(event) {
-    console.log(event.target.id)
-    console.log(event.target.className)
     const { isExpanded } = this.state;
     if (!isExpanded && this.mouseDown) {
       this.mouseDown = false;
@@ -104,7 +106,7 @@ class ImageGallery extends React.Component {
       !event.target.className.includes('overview-expanded-arrow-background-left')
     ) {
       this.mouseDown = false;
-      this.setState({ isExpanded: false }, () => ImageGallery.enableScrolling());
+      this.setState({ isExpanded: false, zoomExpanded: false }, () => ImageGallery.enableScrolling());
     }
   }
 
@@ -205,6 +207,7 @@ class ImageGallery extends React.Component {
   }
 
   expandedRef(ref) {
+    console.log('expandedref',ref);
     this.refElement = ref;
   }
 
@@ -212,9 +215,30 @@ class ImageGallery extends React.Component {
     this.refThumb = ref;
   }
 
+  mouseMove(event) {
+    const { zoomExpanded } = this.state;
+    const rect = this.refElement.getBoundingClientRect();
+    // const wWidth = window.innerWidth * 0.1;
+    // const wHeight = window.innerHeight * 0.1;
+    const imageH = this.imageRef.current.height;
+    const imageW = this.imageRef.current.width;
+    console.log(imageH);
+    if (zoomExpanded) {
+
+      if (this.xScroll && this.yScroll) {
+        this.refElement.scrollLeft = (imageW * this.xScroll) - rect.left;
+        this.refElement.scrollTop = (imageH * 2.5 * this.yScroll) - rect.top;
+      }
+
+      this.xScroll = (event.clientX - rect.left) / rect.width;
+      this.yScroll = (event.clientY - rect.top) / rect.height;
+      // console.log(imageH, this.xScroll, this.yScroll);
+    }
+  }
+
   render() {
     const { selectedStyle } = this.props;
-    const { selectedThumbnail, isExpanded } = this.state;
+    const { selectedThumbnail, isExpanded, zoomExpanded } = this.state;
     let viewExpanded = <></>;
     if (isExpanded) {
       viewExpanded = (
@@ -225,6 +249,9 @@ class ImageGallery extends React.Component {
           openExpand={this.openExpand}
           expandedRef={this.expandedRef}
           navClick={this.navClick}
+          zoomExpanded={zoomExpanded}
+          mouseMove={this.mouseMove}
+          imageRef={this.imageRef}
         />
       );
     }

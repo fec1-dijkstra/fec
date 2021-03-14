@@ -8,10 +8,14 @@ const ExpandedView = ({
   openExpand,
   expandedRef,
   navClick,
+  zoomExpanded,
+  mouseMove,
+  imageRef,
 }) => {
   if (selectedStyle.photos && selectedStyle.photos.length > 0) {
     let arrowLeft = <></>;
     let arrowRight = <></>;
+    let zoomImage = "overview-expanded-view-img";
     const leftArrow = (
       <div
         className="overview-arrow-background overview-expanded-arrow-background-left"
@@ -40,6 +44,9 @@ const ExpandedView = ({
     if (selectedThumbnail < selectedStyle.photos.length - 1) {
       arrowRight = rightArrow;
     }
+    if (zoomExpanded) {
+      zoomImage = "overview-expanded-view-img-zoom";
+    }
     return (
       <div className="overview-expanded-view-wrapper">
         <div
@@ -58,13 +65,15 @@ const ExpandedView = ({
           tabIndex={0}
           role="button"
           ref={expandedRef}
+          onMouseMove={mouseMove}
         >
           {arrowLeft}
           {arrowRight}
           <img
             src={selectedStyle.photos[selectedThumbnail].url}
-            alt={`${selectedStyle.name} default view`}
-            id="overview-expanded-view-img"
+            alt={`${selectedStyle.name} expanded view`}
+            id={zoomImage}
+            ref={imageRef}
           />
         </div>
       </div>
