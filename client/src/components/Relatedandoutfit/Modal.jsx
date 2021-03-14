@@ -18,7 +18,9 @@ class Modal extends React.Component {
     return (
       <div className="comparisonModal" id="modal" onClick={(e) => {this.onClick(e)}}>
           <div className="content" onClick={(e) => e.stopPropagation()}>
+            <div id="comparingh3">
           <h3>Comparing</h3>
+            </div>
           <div id="overflowTable">
             <table>
               <thead>

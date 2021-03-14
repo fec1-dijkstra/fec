@@ -9,6 +9,9 @@ lerna-debug.log*
 # API key
 token.js
 
+# AWS
+FEC.pem
+
 #package lock
 package-lock.json
 
