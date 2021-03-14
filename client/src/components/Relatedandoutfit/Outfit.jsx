@@ -19,17 +19,18 @@ class Outfit extends React.Component {
 
   calculateScroll() {
     const element = document.getElementById('outfitCarousel');
-    const scrolled = element.scrollLeft;
+    const scrolled = Math.floor(element.scrollLeft);
     if (scrolled === 0) {
-      this.setState({ startIndex: 0}, () => this.showArrows());
+      this.setState({ startIndex: 0 }, () => this.showArrows());
     } else {
-      this.setState({startIndex: Math.floor(scrolled/230)}, () => this.showArrows())
+      console.log(Math.floor(scrolled / 230));
+      this.setState({ startIndex: Math.floor(scrolled / 230) }, () => this.showArrows())
     }
   }
 
   handleAdd() {
     const { id, name, category } = this.props.productInfo;
-    const { original_price, sale_price, photos} = this.props.productStyles.results[0];
+    const { original_price, sale_price, photos } = this.props.productStyles.results[0];
     localStorage.setItem(
       `${id}`,
       `${id}, ${name}, ${category}, ${original_price}, ${sale_price}, ${photos[0].url}`
@@ -51,6 +52,7 @@ class Outfit extends React.Component {
         document.getElementById('outfit_carousel_right').style.display = 'block';
       }
     } else if (this.state.startIndex !== 0) {
+      console.log('items: ', document.getElementsByClassName('outfit_carousel_item').length, 'start index: ', this.state.startIndex)
       document.getElementById('outfit_carousel_left').style.display = 'block';
       if (document.getElementsByClassName('outfit_carousel_item').length - 4 === this.state.startIndex) {
         document.getElementById('outfit_carousel_right').style.display = 'none';
@@ -64,7 +66,7 @@ class Outfit extends React.Component {
     let outfits = [];
     let keys = Object.keys(localStorage);
     let i = keys.length;
-    while ( i -- ) {
+    while (i--) {
       outfits.push(localStorage.getItem(keys[i]));
     }
     return outfits;
@@ -88,19 +90,19 @@ class Outfit extends React.Component {
       <div id="YourOutfit">
         <h3>Your Outfit</h3>
         <div className="carousel" id="outfitCarousel" onScroll={this.scrolled} >
-            <div className="ProductCard outfit_carousel_item" id="addItem" onClick={this.handleAdd}>
-              <button id="addOutfit" title="Add current product to your outfit">+</button>
-              <div className="ProductCardImage"></div>
-              <div className="ProductInfo"></div>
-            </div>
+          <div className="ProductCard outfit_carousel_item" id="addItem" onClick={this.handleAdd}>
+            <button id="addOutfit" title="Add current product to your outfit">+</button>
+            <div className="ProductCardImage"></div>
+            <div className="ProductInfo"></div>
+          </div>
           {this.state.outfits.map((outfit) => (
-            <OutfitCard key={outfit.split(',')[0]} outfit={outfit.split(',')} handleDelete={this.handleDelete} handleProductChange={this.props.handleProductChange} showArrows={this.showArrows}/>
+            <OutfitCard key={outfit.split(',')[0]} outfit={outfit.split(',')} handleDelete={this.handleDelete} handleProductChange={this.props.handleProductChange} showArrows={this.showArrows} />
           ))}
         </div>
-          <div className="carousel_actions">
-            <button id="outfit_carousel_left" onClick={() => this.scroll(-1)}></button>
-            <button id="outfit_carousel_right" onClick={() => this.scroll(1)}></button>
-          </div>
+        <div className="carousel_actions">
+          <button id="outfit_carousel_left" onClick={() => this.scroll(-1)}></button>
+          <button id="outfit_carousel_right" onClick={() => this.scroll(1)}></button>
+        </div>
       </div>
     );
   }
