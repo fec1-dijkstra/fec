@@ -54,7 +54,7 @@ const ExpandedView = ({
           onClick={openExpand}
           role="button"
           tabIndex={0}
-          onKeyPress={zoomExpand}
+          onKeyPress={openExpand}
           aria-label="button"
         />
         <div

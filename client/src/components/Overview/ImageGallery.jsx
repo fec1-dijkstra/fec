@@ -40,6 +40,7 @@ class ImageGallery extends React.Component {
       zoomExpanded: false,
       topScroll: false,
       bottomScroll: true,
+      zoomEvent: null,
     };
     this.handleClick = this.handleClick.bind(this);
     this.openExpand = this.openExpand.bind(this);
@@ -65,8 +66,12 @@ class ImageGallery extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { selectedStyle } = this.props;
+    const { zoomExpanded, zoomEvent } = this.state;
     if (prevProps.selectedStyle.style_id !== selectedStyle.style_id) {
       this.resetGallery();
+    }
+    if (zoomExpanded) {
+      this.mouseMove(zoomEvent);
     }
   }
 
@@ -106,7 +111,9 @@ class ImageGallery extends React.Component {
       !event.target.className.includes('overview-expanded-arrow-background-left')
     ) {
       this.mouseDown = false;
-      this.setState({ isExpanded: false, zoomExpanded: false }, () => ImageGallery.enableScrolling());
+      this.setState({ isExpanded: false, zoomExpanded: false }, () =>
+        ImageGallery.enableScrolling()
+      );
     }
   }
 
@@ -148,13 +155,13 @@ class ImageGallery extends React.Component {
     }
   }
 
-  zoomExpand() {
+  zoomExpand(event) {
     const { zoomExpanded } = this.state;
     if (zoomExpanded) {
       this.setState({ zoomExpanded: false });
     }
     if (!zoomExpanded) {
-      this.setState({ zoomExpanded: true });
+      this.setState({ zoomExpanded: true, zoomEvent: event });
     }
   }
 
@@ -207,7 +214,6 @@ class ImageGallery extends React.Component {
   }
 
   expandedRef(ref) {
-    console.log('expandedref',ref);
     this.refElement = ref;
   }
 
@@ -218,21 +224,12 @@ class ImageGallery extends React.Component {
   mouseMove(event) {
     const { zoomExpanded } = this.state;
     const rect = this.refElement.getBoundingClientRect();
-    // const wWidth = window.innerWidth * 0.1;
-    // const wHeight = window.innerHeight * 0.1;
-    const imageH = this.imageRef.current.height;
-    const imageW = this.imageRef.current.width;
-    console.log(imageH);
+    const scrollbarWidth = this.imageRef.current.offsetWidth * 2.5 - this.refElement.offsetWidth;
+    const scrollbarHeight = this.imageRef.current.offsetHeight * 2.5 - this.refElement.offsetHeight;
+    const xScroll = (event.clientX - rect.left) / rect.width;
+    const yScroll = (event.clientY - rect.top) / rect.height;
     if (zoomExpanded) {
-
-      if (this.xScroll && this.yScroll) {
-        this.refElement.scrollLeft = (imageW * this.xScroll) - rect.left;
-        this.refElement.scrollTop = (imageH * 2.5 * this.yScroll) - rect.top;
-      }
-
-      this.xScroll = (event.clientX - rect.left) / rect.width;
-      this.yScroll = (event.clientY - rect.top) / rect.height;
-      // console.log(imageH, this.xScroll, this.yScroll);
+      this.refElement.scrollTo(scrollbarWidth * xScroll, scrollbarHeight * yScroll);
     }
   }
 

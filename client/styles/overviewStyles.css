@@ -1,5 +1,5 @@
 html {
-  scroll-behavior: smooth;
+  scroll-behavior:smooth;
 }
 
 /* #app {
@@ -826,6 +826,7 @@ color: white;
   overflow: scroll;
   display: flex;
   justify-content: center;
+  scroll-behavior: auto;
 }
 
 .overview-expanded-view::-webkit-scrollbar {
@@ -834,7 +835,7 @@ color: white;
 
 #overview-expanded-view-img, #overview-expanded-view-img-zoom {
   object-fit:contain;
-  /* width: 100%; */
+  /* width: auto; */
   /* height: 100%; */
   z-index: 2001;
   animation: .3s ease-in 0s 1 photoFadeIn;
@@ -842,18 +843,26 @@ color: white;
 }
 
 #overview-expanded-view-img-zoom {
-  object-fit:none;
-  transition: transform .3s ease;
+  /* object-fit:none; */
+  /* transition: width .3s ease; */
+  /* transition: height .3s ease; */
+  /* min-width: 250%; */
+  /* max-width: 250%; */
+  /* max-width: auto; */
+  /* min-height: 250%; */
+  /* max-height: 250%; */
+  /* transition: transform .3s ease; */
   transform: scale(2.5);
-  transform-origin: 0 0;
+  transform-origin:0 0;
   cursor: url('../src/components/Overview/img/cursor-minus.png') 16 16, auto;
   position: absolute;
   /* width: auto; */
   /* height: auto; */
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0;*/
   top: 0;
   left: 0;
+  /* margin: auto; */
 }
 
 /* .overview-broken-image {
