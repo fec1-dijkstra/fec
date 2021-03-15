@@ -837,7 +837,6 @@ color: white;
   object-fit:contain;
   /* width: auto; */
   /* height: 100%; */
-  z-index: 2001;
   animation: .3s ease-in 0s 1 photoFadeIn;
   cursor: url('../src/components/Overview/img/cursor-plus.png') 16 16, auto;
 }
@@ -856,6 +855,7 @@ color: white;
   transform-origin:0 0;
   cursor: url('../src/components/Overview/img/cursor-minus.png') 16 16, auto;
   position: absolute;
+  z-index: 9990;
   /* width: auto; */
   /* height: auto; */
   /* margin: 0;
@@ -966,7 +966,7 @@ color: white;
   /* z-index: 501; */
   width: 60px;
   height: 60px;
-  z-index: 1001;
+  z-index: 1004;
 }
 
 .overview-expanded-arrow-background-left {
@@ -978,7 +978,7 @@ color: white;
   /* z-index: 301; */
   width: 60px;
   height: 60px;
-  z-index: 301;
+  z-index: 1004;
 }
 
 .overview-checkmark-background {

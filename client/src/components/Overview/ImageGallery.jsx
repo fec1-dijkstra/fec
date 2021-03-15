@@ -140,7 +140,7 @@ class ImageGallery extends React.Component {
     ) {
       if (selectedThumbnail < selectedStyle.photos.length - 1) {
         selectedThumbnail += 1;
-        this.setState({ selectedThumbnail });
+        this.setState({ selectedThumbnail, zoomExpanded: false });
       }
     }
     if (
@@ -150,7 +150,7 @@ class ImageGallery extends React.Component {
     ) {
       if (selectedThumbnail > 0) {
         selectedThumbnail -= 1;
-        this.setState({ selectedThumbnail });
+        this.setState({ selectedThumbnail, zoomExpanded: false });
       }
     }
   }

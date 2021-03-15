@@ -57,24 +57,25 @@ const ExpandedView = ({
           onKeyPress={openExpand}
           aria-label="button"
         />
+                  {arrowLeft}
+          {arrowRight}
         <div
           className="overview-expanded-view"
           // onBlur={openExpand}
-          onClick={zoomExpand}
+          onMouseDown={zoomExpand}
           onKeyPress={zoomExpand}
           tabIndex={0}
           role="button"
           ref={expandedRef}
           onMouseMove={mouseMove}
         >
-          {arrowLeft}
-          {arrowRight}
           <img
             src={selectedStyle.photos[selectedThumbnail].url}
             alt={`${selectedStyle.name} expanded view`}
             id={zoomImage}
             ref={imageRef}
           />
+
         </div>
       </div>
     );
