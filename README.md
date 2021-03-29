@@ -1,6 +1,6 @@
 # Catwalk
 
-*Welcome!
+Welcome!
 
 This is a one-page website application for a retail product that features the following widgets:
 - Product Overview
@@ -12,7 +12,7 @@ An Express server is connected to a legacy API. Different components were built 
 
 To run locally:
 - You will need an access key for the API.
-- After cloning, run npm install. Then run npm start and open a new terminal and run npm run build.*
+- After cloning, run npm install. Then run npm start and open a new terminal and run npm run build.
 
 ## **To Begin**
 
