@@ -325,3 +325,10 @@ thead th {
   min-height: 30px;
   height: 30px;
 }
+
+@media (hover: none) {
+  .ProductCard .actionButton {
+    opacity: 1;
+    visibility: visible;
+  }
+}
